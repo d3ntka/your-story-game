@@ -1,0 +1,636 @@
+# TODO: Translation updated at 2020-05-27 20:37
+
+# game/demostuff.rpy:20
+translate english epizod7n_6d06f760:
+
+    # "Lia przebudziła się dość wcześnie, wyjątkowo wypoczęta."
+    "Lia woke up quite early this time, but to her surprise she was well rested."
+
+# game/demostuff.rpy:23
+translate english epizod7n_8f2a3369:
+
+    # "Wczorajsza decyzja o wczesnym pójściu spać najwidoczniej już się opłaciła."
+    "Yesterday's decision to hit the sack early has apparently paid off."
+
+# game/demostuff.rpy:24
+translate english epizod7n_52c8921a:
+
+    # "Usiadła na łóżku. Przeciągając się bezgłośnie, zauważyła kartkę przy łóżku."
+    "She sat on the bed and stretched a bit before completely waking up. Out of the corner of her eye, she noticed a note lying by her side."
+
+# TODO: Translation updated at 2020-06-15 18:49
+
+# game/demostuff.rpy:307
+translate english demo_wioska_fb24e9c7:
+
+    # "Gdy Lia zbliżyła się do wioski to natychmiast podeszła do niej postać w pełnej zbroi."
+    "As soon as she came close to the village, she was approached by a person in full armor."
+
+# game/demostuff.rpy:309
+translate english demo_wioska_0f0e0fec:
+
+    # "Lia lekko się zdziwiła, strażnicy nie byli zbyt często widywani w okolicy."
+    "Lia was slightly surprised, it is not often that you see guards in the area."
+
+# game/demostuff.rpy:316
+translate english demo_wioska_b6d81bfd:
+
+    # "Lia nie wiedziała za bardzo co odpowiedzieć, więc uśmiechnęła się i ruszyła dalej."
+    "Lia wasn't sure how to respond, so she just smiled and moved on."
+
+# game/demostuff.rpy:331
+translate english demo_wioska_cf6dad1f:
+
+    # p1 "Hmm... Szkoda, że smok nie jest różowy. Byłoby wtedy uroczo."
+    p1 "Hmm... It's a shame the dragon isn't pink. That'd be cute."
+
+# game/demostuff.rpy:333
+translate english demo_wioska_651612be:
+
+    # p1 "Ciekawe ile jeszcze potrwa festiwal... Sporo pracy ktoś włożył, żeby było tutaj tak ładnie."
+    p1 "I wonder how much longer will the festival last... Someone put in a lot of work to make it so beautiful here."
+
+# game/demostuff.rpy:335
+translate english demo_wioska_bb28b3a9:
+
+    # p1 "Trochę to podejrzane, że tak siedzą w cieniu i nic nie robią..."
+    p1 "It's a bit suspicious that they are just sitting in the shade, doing nothing..."
+
+# game/demostuff.rpy:337
+translate english demo_wioska_8633b1fd:
+
+    # p1 "Nie pamiętam, żebyśmy my całą rodziną gdzieś tak wychodzili..."
+    p1 "I don't remember our family ever going out together like this..."
+
+# game/demostuff.rpy:341
+translate english demo_wioska_29025e5c:
+
+    # p1 "Dziwne, że wciąż mieli czelność zostać w okolicy... Odważni. Lub głupi."
+    p1 "It's strange that they still had the audacity to stay around... They are brave. Or stupid."
+
+# game/demostuff.rpy:343
+translate english demo_wioska_2addda84:
+
+    # p1 "Hmm, całkiem ładne sukienki... "
+    p1 "Hmm, those are some pretty dresses...."
+
+# game/demostuff.rpy:345
+translate english demo_wioska_836cb291:
+
+    # p1 "Ojej! Jaki słodki kotek!"
+    p1 "Oh! What a cute kitty!"
+
+# game/demostuff.rpy:358
+translate english demo_wioska_734dea7f:
+
+    # p1 "Czy mógłby Pan przypomnieć co tu się stało?"
+    p1 "Can you please remind me what happened here?"
+
+# game/demostuff.rpy:366
+translate english demo_wioska_cb23f562:
+
+    # p1 "I do kiedy ma ta cała sytuacja tak wyglądać?"
+    p1 "And for how long is it going to be like this?"
+
+# game/demostuff.rpy:371
+translate english demo_wioska_9a913ffd:
+
+    # p1 "Można jakoś wesprzeć?"
+    p1 "Can I help somehow?"
+
+# game/demostuff.rpy:374
+translate english demo_wioska_f6ebb032:
+
+    # p1 "No tak... Dziękuję w takim razie."
+    p1 "Yeah... In that case, thank you."
+
+# game/demostuff.rpy:379
+translate english demo_wioska_1421cb72:
+
+    # p1 "Pójdę już sobie."
+    p1 "I'll be going now."
+
+# game/demostuff.rpy:382
+translate english demo_wioska_110d9332:
+
+    # p1 "Chyba nikt nie był w stanie już tego posprzątać..."
+    p1 "I think nobody was able to clean this up..."
+
+# game/demostuff.rpy:419
+translate english demo_monument_8e1c0f1c:
+
+    # "Lia dotarła po dłuższym spacerze w okolicę tego Monumentu o którym wszyscy mówią."
+    "After a longer walk, Lia finally made it to the Monument everyone seems to be talking about."
+
+# game/demostuff.rpy:420
+translate english demo_monument_3acfd6ec:
+
+    # "Z daleka dostrzegła jednak, że całość jest jeszcze zasłonięta, gdy miała zawracać to usłyszała w tle głosy..."
+    "From a distance, however, she noticed that the thing was still covered. As soon as she wanted to turn around, she heard some voices..."
+
+# game/demostuff.rpy:421
+translate english demo_monument_0fffffd0:
+
+    # pa "... taaaak? Odsłonięcia na dwudziestego mu się zachciało tak? PROSZĘ MU POWIEDZ..."
+    pa "... oh yeeees? So he wants it unveiled on the twentieth, yes? WELL, TELL HIM PLEASE..."
+
+# game/demostuff.rpy:423
+translate english demo_monument_4a0bdafa:
+
+    # pa "Tak? To proszę przekazać wiadomość, żeby się tam w łeb ktoś mocno puknął."
+    pa "Oh yes? Well then, tell him that he must have hit his head on something hard if he thinks it's possible to do it so quickly."
+
+# game/demostuff.rpy:426
+translate english demo_monument_d26819a1:
+
+    # pa "Chociaż coś. Na co PAN czeka w takim razie?"
+    pa "That's something. Well, what are YOU waiting for?"
+
+# game/demostuff.rpy:428
+translate english demo_monument_d65481ed:
+
+    # pa "A CHOLERA BY WAS I WASZE ZASADY, sama pójdę!"
+    pa "DAMN YOU AND YOUR RULES, I will go by myself then!"
+
+# game/demostuff.rpy:429
+translate english demo_monument_cd244e12:
+
+    # "Lia zauważyła, że niewysoka Pani Architekt tupnęła tylko nogą na zakończenie rozmowy i skierowała się w jej stronę."
+    "Lia noticed that the not very tall Architect stamped her foot in anger, and then started walking towards her."
+
+# game/demostuff.rpy:430
+translate english demo_monument_59268879:
+
+    # "Zbliżyła się dość szybko, zatrzymała się, zmierzyła wzrokiem Lię po czym zapytała:"
+    "She approached Lia quite quickly, then stopped, looked at her and asked:"
+
+# game/demostuff.rpy:431
+translate english demo_monument_e8d99b00:
+
+    # pa "A Ty dziewczyno co tutaj robisz co? Skąd się wzięłaś?"
+    pa "And you girl, what are you doing here? Where did you come from?"
+
+# game/demostuff.rpy:432
+translate english demo_monument_eb63ade9:
+
+    # p1 "Z Tawerny prze Pani... Znaczy mieszkam tam i pracuję. Chciałam zobaczyć..."
+    p1 "From the tavern, ma'am... I live and work there. I wanted to see..."
+
+# game/demostuff.rpy:433
+translate english demo_monument_3a683aba:
+
+    # pa "Nieskończony jeszcze, nie widać? Ach, przepraszam. Zdenerwowana jestem."
+    pa "It's not done yet, can't you see? Ah, I'm sorry. I'm a bit angry."
+
+# game/demostuff.rpy:434
+translate english demo_monument_91ed7dbd:
+
+    # pa "Jak widzisz jeszcze nie jest zakończony, termin premiery ustawiony jest zdecydowanie zbyt wcześnie. Pytania?"
+    pa "As you can see, it's not finished yet. The reveal date is set far too early. Any questions?"
+
+# game/demostuff.rpy:439
+translate english demo_mon_poc_f5bb8817:
+
+    # "Zapytała Lia i szybko zaczęła żałować tego pytania. Zauważyła jak Architekt powstrzymuje się przed nakrzyczeniem na nią."
+    "Asked Lia and immediately regretted it. She saw the Architect try to stop herself from yelling at her."
+
+# game/demostuff.rpy:440
+translate english demo_mon_poc_09a598b0:
+
+    # "Rozpoznała to bo jej ojciec robił bardzo podobnie... Myślenie przerwała jednak spokojnym głosem rozmówczyni."
+    "She knew because her father often did the same thing... Her thoughts were interrupted by the lady's calm voice."
+
+# game/demostuff.rpy:441
+translate english demo_mon_poc_8c045795:
+
+    # pa "Bo bardzo mi zależy, żeby wszystko dopracować. Każdy najmniejszy szczegół zasługuje na chwilę uwagi."
+    pa "Because I really want everything to be perfect. Every little detail deserves a bit of attention."
+
+# game/demostuff.rpy:442
+translate english demo_mon_poc_070df54a:
+
+    # pa "Widzisz... Sztuka w każdej postaci, czy to tego pomniku, czy obrazu czy czegokolwiek innego jest czymś czego nie można zrobić byle jak."
+    pa "You see, art in every form, be it this monument, or a painting, or anything else, is not something that can be done in rush."
+
+# game/demostuff.rpy:443
+translate english demo_mon_poc_bc554160:
+
+    # pa "Jeśli chcesz, żeby ktoś się zatrzymał i spojrzał na to co zrobiłaś z szacunkiem czy nawet z podziwem."
+    pa "If you want someone to stop and think about what you created with respect, or even with admiration."
+
+# game/demostuff.rpy:444
+translate english demo_mon_poc_3af40cf8:
+
+    # pa "To wszystko wymaga bardzo dużo pracy..."
+    pa "It all requires a lot of work..."
+
+# game/demostuff.rpy:449
+translate english demo_mon_poc_18694766:
+
+    # pa "Ach, dobrze. To zmykaj. Do widzenia."
+    pa "Ah, alright. Be on your way then. Goodbye."
+
+# game/demostuff.rpy:450
+translate english demo_mon_poc_4aff4b91:
+
+    # "Lia zauważyła tylko kątem oka jak Pani Architekt czmychnęła obok niej i ruszyła w stronę wioski."
+    "Lia noticed out of the corner of her eye as Lady Architect quickly dashed past her and moved towards the village."
+
+# game/demostuff.rpy:456
+translate english demo_mon_1a_46c6d6ec:
+
+    # pa "Czy można... Hmm, tak. Jest oficjalna zbiórka, można dorzucić się do budowy."
+    pa "Can you... Hmm, yes. There's an official fundraiser, you can put some money towards construction."
+
+# game/demostuff.rpy:457
+translate english demo_mon_1a_64201f58:
+
+    # pa "{a=https://www.kickstarter.com/projects/gameload/yourstory}Tutaj{/a} masz wszystkie szczegóły."
+    pa "{a=https://www.kickstarter.com/projects/gameload/yourstory}Here{/a} you can find all the details."
+
+# game/demostuff.rpy:458
+translate english demo_mon_1a_83fb7d57:
+
+    # p1 "Dziękuję! Na pewno zobaczę i sprawdzę. Powodzenia w pracy!"
+    p1 "Thank you! I will definitely check it out. Good luck with your work!"
+
+# game/demostuff.rpy:465
+translate english demo_mon_1a_bffaadce:
+
+    # pa "Nie przeszkadzałaś... Ah, nieważne. Bezpiecznej drogi. Muszę iść. Do widzenia."
+    pa "You weren't disturbing... Ah, never mind. I wish you a safe road, I have to go now. Goodbye."
+
+# game/demostuff.rpy:490
+translate english demo_mon_1a_dbb54ca7:
+
+    # p1 "O co tutaj dokładnie chodzi?"
+    p1 "What exactly is this about?"
+
+# game/demostuff.rpy:496
+translate english demo_mon_1a_c6711d8f:
+
+    # p1 "Tak... Dziękuję."
+    p1 "Yes... Thank you."
+
+# game/demostuff.rpy:501
+translate english demo_mon_1a_21040fe6:
+
+    # p1 "A kiedy odsłonięcie?"
+    p1 "And when will it be unveiled?"
+
+# game/demostuff.rpy:510
+translate english demo_mon_1a_b2402db4:
+
+    # p1 "Co właściwie na nim ma być?"
+    p1 "And what exactly is it supposed to illustrate?"
+
+# game/demostuff.rpy:514
+translate english demo_mon_1a_6f41da60:
+
+    # p1 "Wystarczy… Już sobie idę."
+    p1 "I'm done... I will leave now."
+
+# game/demostuff.rpy:520
+translate english demo_mon_1a_f132628f:
+
+    # p1 "To ja już chyba sobie pójdę."
+    p1 "I think I'll go now."
+
+translate english strings:
+
+    # game/demostuff.rpy:356
+    old "Czy mógłby Pan przypomnieć co tu się stało?"
+    new "Can you please remind me what happened here?"
+
+    # game/demostuff.rpy:356
+    old "I do kiedy ma ta cała sytuacja tak wyglądać?"
+    new "And for how long is it going to be like this?"
+
+    # game/demostuff.rpy:356
+    old "Można jakoś wesprzeć?"
+    new "Can I help somehow?"
+
+    # game/demostuff.rpy:356
+    old "Pójdę już sobie."
+    new "I'll be going now."
+
+    # game/demostuff.rpy:437
+    old "Dlaczego za wcześnie?"
+    new "Why too early?"
+
+    # game/demostuff.rpy:437
+    old "Nie, nie mam żadnych pytań."
+    new "No, no questions."
+
+    # game/demostuff.rpy:454
+    old "Czy można jakoś pomóc?"
+    new "Can I help somehow?"
+
+    # game/demostuff.rpy:454
+    old "Rozumiem, to nie przeszkadzam."
+    new "I understand. In that case, I won't disturb you."
+
+    # game/demostuff.rpy:488
+    old "O co tutaj dokładnie chodzi?"
+    new "What exactly is this about?"
+
+    # game/demostuff.rpy:488
+    old "A kiedy odsłonięcie?"
+    new "And when will it be unveiled?"
+
+    # game/demostuff.rpy:488
+    old "Co właściwie na nim ma być?"
+    new "And what exactly is it supposed to illustrate?"
+
+# TODO: Translation updated at 2020-06-15 18:56
+
+# game/demostuff.rpy:514
+translate english demo_mon_1a_f77e73e4:
+
+    # p1 "Wystarczy... Już sobie idę."
+    p1 "I'm done... I will leave now."
+
+translate english strings:
+
+    # game/demostuff.rpy:400
+    old "Warta przy drodze... Też mi... Ahh, witam!"
+    new "He has to guard the road, would you believe it... Oh, hello!"
+
+# TODO: Translation updated at 2020-06-15 18:59
+
+translate english strings:
+
+    # game/demostuff.rpy:79
+    old "Tryb eksploracji w wersji demo to tylko prezentacja funkcji jaką chcemy wprowadzić w pełnej wersji gry, gdzie będziecie mogli odbyć pełne rozmowy z większością napotkanych postaci oraz podróżować po różnych lokacjach. W tym momencie jeśli chcecie przetestować dostępne funkcji kliknijcie na mapę dostępną w prawym dolnym rogu. Przeniesie Was do widoku świata. Żeby przenieść się do odpowiedniej lokacji po prostu na nią kliknijcie."
+    new "Exploration mode in the demo version is just a presentation of the functions we want to introduce in the full version of the game, where you will be able to have full conversations with most of the characters encountered and travel to different locations. At this point, if you want to test the available functions, click on the map available in the bottom right corner. It will take you to the world view. To move to the location you want, just click on it."
+
+    # game/demostuff.rpy:286
+    old "Witaj Obywatelko!"
+    new "Greetings, citizen!"
+
+    # game/demostuff.rpy:288
+    old "Jak mogę pomóc?"
+    new "How may I help?"
+
+    # game/demostuff.rpy:290
+    old "Hmm... Tak?"
+    new "Hmm... Yes?"
+
+    # game/demostuff.rpy:292
+    old "Przepraszam, mówiłaś coś?"
+    new "I'm sorry, were you saying something?"
+
+    # game/demostuff.rpy:294
+    old "Cholerne Słońce... Ahhh, witam obywatelkę!"
+    new "That damn Sun... Ahhh, greetings, citizen!"
+
+    # game/demostuff.rpy:401
+    old "Jakoś pomóc?"
+    new "Need some help?"
+
+    # game/demostuff.rpy:403
+    old "Hmm... Czego?"
+    new "Hmm... What?"
+
+    # game/demostuff.rpy:405
+    old "Mówiłaś coś?"
+    new "Were you saying something?"
+
+    # game/demostuff.rpy:407
+    old "Cholerne Słońce... Eh.. Witam!"
+    new "Damn Sun... Ahhh, greetings."
+
+# TODO: Translation updated at 2020-06-15 19:28
+
+# game/demostuff.rpy:383
+translate english demo_wioska_e596a40f:
+
+    # p1 "Śliczne są te światełka!"
+    p1 "These lights are beautiful!"
+
+# TODO: Translation updated at 2020-06-16 10:53
+
+# game/demostuff.rpy:370
+translate english demo_wioska_dd9075be:
+
+    # p1 "Jakaś szansa, że skończą wcześniej?"
+    p1 "Any chance they'll finish it sooner?"
+
+translate english strings:
+
+    # game/demostuff.rpy:355
+    old "Jakaś szansa, że skończą wcześniej?"
+    new "Any chance they'll finish it sooner?"
+
+# TODO: Translation updated at 2020-06-16 11:01
+
+# game/demostuff.rpy:338
+translate english demo_wioska_c1711a2b:
+
+    # p1 "Każdy w swoim kierunku, każdy z setką obowiązków. Pewnie tak właśnie wyglądam w pracy..."
+    p1 "Each in their own direction, each with their own hundreds of different responsibilities. This is probably exactly how I look like at work..."
+
+# TODO: Translation updated at 2020-06-16 11:54
+
+translate english strings:
+
+    # game/demostuff.rpy:121
+    old "Dostępne w pełnej wersji."
+    new "Available in full version"
+
+# TODO: Translation updated at 2020-06-16 13:02
+
+# game/demostuff.rpy:461
+translate english demo_mon_1a_18694766:
+
+    # pa "Ach, dobrze. To zmykaj. Do widzenia."
+    pa "Ah, alright. Be on your way then. Goodbye."
+
+# game/demostuff.rpy:462
+translate english demo_mon_1a_4aff4b91:
+
+    # "Lia zauważyła tylko kątem oka jak Pani Architekt czmychnęła obok niej i ruszyła w stronę wioski."
+    "Lia noticed out of the corner of her eye as Lady Architect quickly dashed past her and moved towards the village."
+# TODO: Translation updated at 2020-06-16 15:03
+
+# game/demostuff.rpy:305
+translate english demo_wioska_84f77358:
+
+    # strzwio "Obywatelko! Nim wejdziesz do wioski muszę ostrzec Cię o trwających tam pracach."
+    strzwio "Citizen! Before you enter the village, I must warn you about the work going on there."
+
+# game/demostuff.rpy:307
+translate english demo_wioska_e63db565:
+
+    # strzwio "Jak za moment zobaczysz... Wszystko wygląda dość, ekhem... dziwnie."
+    strzwio "As you will notice soon... Everything seems rather, well... strange."
+
+# game/demostuff.rpy:308
+translate english demo_wioska_a6dca2b2:
+
+    # strzwio "Powodem są prace jakichś trzech magów. Nic więcej niestety nie wiem."
+    strzwio "The reason is the work of some three mages. Unfortunately I know nothing more."
+
+# game/demostuff.rpy:309
+translate english demo_wioska_9cb3f398:
+
+    # strzwio "Prosili informować o tym, żeby nikt nie pomyślał, że to jakiś problem czy coś."
+    strzwio "They just asked me to inform people about it, so that nobody gets worried."
+
+# game/demostuff.rpy:310
+translate english demo_wioska_30498cd4:
+
+    # strzwio "Termin zakończenia prac przewidują na październik."
+    strzwio "The expected completion date is October."
+
+# game/demostuff.rpy:356
+translate english demo_wioska_120624b8:
+
+    # strzwio "Tak jak wcześniej wspominałem..."
+    strzwio "As I said earlier..."
+
+# game/demostuff.rpy:357
+translate english demo_wioska_23056e76:
+
+    # strzwio "Ma to związek z pracami trójki magów czy kogoś takiego."
+    strzwio "It has something to do with the work of three wizards, or someone like that."
+
+# game/demostuff.rpy:358
+translate english demo_wioska_6ffd9167:
+
+    # strzwio "Co dokładnie robią... Nie mam pojęcia."
+    strzwio "And as to what exactly they're doing... I have no idea."
+
+# game/demostuff.rpy:359
+translate english demo_wioska_1ef84d09:
+
+    # strzwio "Wiem, że wszystko będzie na swoim miejscu jak skończą."
+    strzwio "All I know is that everything will be in place once they're finished."
+
+# game/demostuff.rpy:364
+translate english demo_wioska_19c91726:
+
+    # strzwio "Ah... Całość ma być zakończona do października."
+    strzwio "Ah... It's supposed to be done by October."
+
+# game/demostuff.rpy:369
+translate english demo_wioska_323aee35:
+
+    # strzwio "Szansa jest zawsze. {a=https://www.kickstarter.com/projects/gameload/yourstory}Tutaj{/a} ulotka jak można wesprzeć całą tę inicjatywę."
+    strzwio "There's always a chance. {a=https://www.kickstarter.com/projects/gameload/yourstory}Here's{/a} a leaflet that shows you how you can support the cause."
+
+# game/demostuff.rpy:370
+translate english demo_wioska_41e1ad2e:
+
+    # strzwio "Ale wiemy jak jest, może się uda, a może nie. Trzeba trzymać kciuki."
+    strzwio "We all know how it is. Maybe they'll succeed, maybe not. All we can do is root for them."
+
+# game/demostuff.rpy:421
+translate english demo_monument_419d1901:
+
+    # strzmon "Ależ Pani Architekt, proszę nie krzyczeć. Ja tylko pilnuję i przekazuję wiadomość."
+    strzmon "But Lady Architect, please don't yell. I'm just trying to pass a message."
+
+# game/demostuff.rpy:423
+translate english demo_monument_977cf2ce:
+
+    # strzmon "Dobrze Pani wie, że nie mogę przekazać takiej wiadomości."
+    strzmon "You know very well I can't tell him that."
+
+# game/demostuff.rpy:424
+translate english demo_monument_5dae0a95:
+
+    # strzmon "Powiem jednak, że sugerowała Pani przeanalizowanie raz jeszcze terminu odsłonięcia."
+    strzmon "I will however mention that you suggested reconsidering the date of unveiling."
+
+# game/demostuff.rpy:426
+translate english demo_monument_af8a19f5:
+
+    # strzmon "Mój zmiennik będzie dopiero wieczorem, wcześniej nie mogę zejść ze stanowiska..."
+    strzmon "My shift doesn't end until evening. I can't leave until then."
+
+# game/demostuff.rpy:489
+translate english demo_mon_1a_ee41b8db:
+
+    # strzmon "Pani Architekt Ci nie powiedziała?"
+    strzmon "Did Lady Architect not tell you?"
+
+# game/demostuff.rpy:490
+translate english demo_mon_1a_efc29916:
+
+    # strzmon "Ludzie na wsi nie gadają o tym?"
+    strzmon "Do people in the village not talk about it?"
+
+# game/demostuff.rpy:491
+translate english demo_mon_1a_fa1ecb8f:
+
+    # strzmon "Nie jesteś stąd czy jak?"
+    strzmon "Are you not from here or what?"
+
+# game/demostuff.rpy:492
+translate english demo_mon_1a_747fe03a:
+
+    # strzmon "No nieważne, to Monument Legend - wszyscy bohaterowie królestwa będą tutaj upamiętnieni."
+    strzmon "Well, no matter. This is the Monument of Legends - all the heroes of this kingdom will be immortalized here."
+
+# game/demostuff.rpy:493
+translate english demo_mon_1a_e06a49ee:
+
+    # strzmon "Czy to wystarczy?"
+    strzmon "Does this answer satisfy you?"
+
+# game/demostuff.rpy:500
+translate english demo_mon_1a_a8a00c7b:
+
+    # strzmon "Eh.. Kolejna. Nie wiem dokładnie. Zakładam, że inny termin niż był rano."
+    strzmon "Eh, another one. I don't know exactly. I assume on a different date than was said in the morning."
+
+# game/demostuff.rpy:501
+translate english demo_mon_1a_9d3f458f:
+
+    # strzmon "Zmieniają to ciągle, raz jest wcześniej, raz jest później."
+    strzmon "They keep changing it. Once it's earlier, once later."
+
+# game/demostuff.rpy:502
+translate english demo_mon_1a_e7f6b110:
+
+    # strzmon "Będzie odsłonięty to na pewno każdy zauważy."
+    strzmon "Once it's revealed, everyone will notice for sure."
+
+# game/demostuff.rpy:508
+translate english demo_mon_1a_2a449f5d:
+
+    # strzmon "Ty słuchałaś co mówiłem czy tak sobie stoisz i tylko ładnie wyglądasz?"
+    strzmon "Were you even listening to what I was saying, or are you just standing here looking pretty?"
+
+# game/demostuff.rpy:509
+translate english demo_mon_1a_a0d26a47:
+
+    # strzmon "Ehh... Nie wytrzymam zbyt długo tutaj... Imiona będą. Bohaterów królestwa."
+    strzmon "Ehh... I won't make it long here... There will be names. Of the kingdom's heroes."
+
+# game/demostuff.rpy:510
+translate english demo_mon_1a_09f4f4df:
+
+    # strzmon "Wystarczy czy jeszcze jakieś inteligentne pytania?"
+    strzmon "Are you done or do you have any more smart questions?"
+
+# TODO: Translation updated at 2020-06-16 16:00
+
+# game/demostuff.rpy:350
+translate english demo_wioska_08c1f963:
+
+    # strzwio "[tekstguardawio!t]"
+    strzwio "[tekstguardawio!t]"
+
+# game/demostuff.rpy:483
+translate english demo_mon_1a_29cb33c0:
+
+    # strzmon "[tekstguardamon!t]"
+    strzmon "[tekstguardamon!t]"
+
+translate english strings:
+
+    # game/demostuff.rpy:79
+    old "W tym momencie odblokowany został tryb eksploracji. Żeby przejść do mapy świata wystarczy kliknąć mapę znajdującą się w prawym dolnym rogu. Podróżujecie klikając na wybraną lokację.\n\nTryb eksploracji jest dostępny w wersji demonstracyjnej - to co zobaczycie teraz to tylko przedsmak tego co czeka Was w pełnej wersji gry. \n\nNie zapomnijcie podzielić się Waszą opinią na naszych forach! Dzięki!"
+    new "Exploration mode has been unlocked. To go to the world map, just click the map in the bottom right corner. You travel by clicking on the selected location. \n\nThis exploration mode is a demo version - what you will see now is just a foretaste of what awaits you in the full version of the game. \n\nDon't forget to share your opinion on our forums! Thanks!"

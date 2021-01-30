@@ -1,0 +1,10 @@
+﻿I'm sorry, but errors were detected in your script. Please correct the
+errors listed below, and try again.
+
+
+File "game/labexplo.rpy", line 72: u'text_align' is not a keyword argument or valid child for the screen statement.
+    text_align 0.5
+              ^
+
+Ren'Py Version: Ren'Py 7.4.0.1167
+Thu Jan 21 14:45:31 2021
