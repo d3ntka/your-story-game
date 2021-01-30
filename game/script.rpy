@@ -62,6 +62,8 @@ default licznikAkcji = 0
 default powrotPoNocy = 0
 default ee = 0 ##Etap Eksploracji
 default ravenDress = "_covered" #sluzy do uzupelnienia nazwy pliku zeby korzystalo ze starej sukienki do czasu e8_p4 gdzie jest to zamienione na "" dla nowej sukienki
+default jakoscDrzewa = "" #zrobic skale od 1 do 6 czy iles i dodac do nazwy pliku tj ravenDress
+
 
 ######### cechy
 default c_destiny = False
