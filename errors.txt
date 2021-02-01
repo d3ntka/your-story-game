@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/labexplo.rpy", line 72: u'text_align' is not a keyword argument or valid child for the screen statement.
-    text_align 0.5
-              ^
+File "game/journal.rpy", line 33: expected 'word' not found.
+    use "journal_base"
+        ^
 
 Ren'Py Version: Ren'Py 7.4.0.1167
-Thu Jan 21 14:45:31 2021
+Mon Feb  1 17:22:03 2021

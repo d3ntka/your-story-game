@@ -1,58 +1,40 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/labexplo.rpy", line 38, in script
-    call screen testowaniekart
-  File "renpy/common/000statements.rpy", line 554, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-  File "game/labexplo.rpy", line 65, in execute
-    screen testowaniekart():
-  File "game/labexplo.rpy", line 65, in keywords
-    screen testowaniekart():
-  File "game/labexplo.rpy", line 67, in <module>
-    style_prefix ttkarty
-NameError: name 'ttkarty' is not defined
+After initialization, but before game start.
+  File "game/explo.rpy", line 259, in prepare_screen
+    screen ee_tavern_hall():
+  File "game/explo.rpy", line 259, in prepare
+    screen ee_tavern_hall():
+  File "game/explo.rpy", line 264, in prepare
+    imagebutton auto "tavern_hall_bathroom1_%s" focus_mask True action [Return("ee_hall_bathroom")SetVariable("HatePath","1")] tooltip __("ŁAZIENKA")
+  File "game/explo.rpy", line 264, in prepare
+    imagebutton auto "tavern_hall_bathroom1_%s" focus_mask True action [Return("ee_hall_bathroom")SetVariable("HatePath","1")] tooltip __("ŁAZIENKA")
+SyntaxError: invalid syntax (explo.rpy, line 264)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/labexplo.rpy", line 38, in script
-    call screen testowaniekart
-  File "renpy/ast.py", line 1960, in execute
-    self.call("execute")
-  File "renpy/ast.py", line 1948, in call
-    return renpy.statements.call(method, parsed, *args, **kwargs)
-  File "renpy/statements.py", line 278, in call
-    return method(parsed, *args, **kwargs)
-  File "renpy/common/000statements.rpy", line 554, in execute_call_screen
-    store._return = renpy.call_screen(name, *args, **kwargs)
-  File "renpy/exports.py", line 2969, in call_screen
-    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
-  File "renpy/ui.py", line 298, in interact
-    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
-  File "renpy/display/core.py", line 2978, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "renpy/display/core.py", line 3378, in interact_core
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "renpy/display/core.py", line 566, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/core.py", line 566, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/core.py", line 566, in visit_all
-    d.visit_all(callback, seen)
-  File "renpy/display/screen.py", line 432, in visit_all
-    callback(self)
-  File "renpy/display/core.py", line 3378, in <lambda>
-    root_widget.visit_all(lambda i : i.per_interact())
-  File "renpy/display/screen.py", line 443, in per_interact
-    self.update()
-  File "renpy/display/screen.py", line 631, in update
-    self.screen.function(**self.scope)
-  File "game/labexplo.rpy", line 65, in execute
-    screen testowaniekart():
-  File "game/labexplo.rpy", line 65, in keywords
-    screen testowaniekart():
-  File "game/labexplo.rpy", line 67, in <module>
-    style_prefix ttkarty
-NameError: name 'ttkarty' is not defined
+  File "renpy/bootstrap.py", line 326, in bootstrap
+    renpy.main.main()
+  File "renpy/main.py", line 617, in main
+    run(restart)
+  File "renpy/main.py", line 97, in run
+    renpy.display.screen.prepare_screens()
+  File "renpy/display/screen.py", line 939, in prepare_screens
+    s.ast.prepare_screen()
+  File "game/explo.rpy", line 259, in prepare_screen
+    screen ee_tavern_hall():
+  File "game/explo.rpy", line 259, in prepare
+    screen ee_tavern_hall():
+  File "game/explo.rpy", line 264, in prepare
+    imagebutton auto "tavern_hall_bathroom1_%s" focus_mask True action [Return("ee_hall_bathroom")SetVariable("HatePath","1")] tooltip __("ŁAZIENKA")
+  File "game/explo.rpy", line 264, in prepare
+    imagebutton auto "tavern_hall_bathroom1_%s" focus_mask True action [Return("ee_hall_bathroom")SetVariable("HatePath","1")] tooltip __("ŁAZIENKA")
+  File "renpy/pyanalysis.py", line 712, in ast_eval
+    return self.ast_eval_literal(expr)[0]
+  File "renpy/pyanalysis.py", line 696, in ast_eval_literal
+    expr = py_compile(expr, 'eval', ast_node=True)
+  File "renpy/python.py", line 746, in py_compile
+    raise e
+SyntaxError: invalid syntax (explo.rpy, line 264)
 

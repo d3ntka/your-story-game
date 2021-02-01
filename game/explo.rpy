@@ -86,6 +86,7 @@ screen devscreen():
 
 screen timeskip():
     zorder 100
+    imagebutton auto "dziennik_button_dialogue_%s" focus_mask True action ShowTransient('journal_bookmark1')
     use devscreen ########### TODO usunąć po wszystkim
     #if dt >= 5:
     #    imagebutton auto "gui/timeskip/time_%s.png" focus_mask True action [Return("dt=1"),SetVariable("dt", 1), SetVariable("day", day+1), SetVariable("licznikAkcji", licznikAkcji+1)]
@@ -124,6 +125,9 @@ screen obiekty():
 screen map_button():
     zorder 101
     imagebutton auto "button_map_%s" xalign 1.0 yalign 1.0 focus_mask True action Show("ee_mapka", fc)
+
+
+############# OLD BACKUP #################
 screen ee_mapka_backup():
     zorder 200
     modal True
@@ -167,7 +171,7 @@ screen ee_mapka_backup():
         elif lok == "mon":
             imagebutton idle "monument_idle" focus_mask True action NullAction() tooltip __("Jesteś tu")
     imagebutton auto "room_lia_exit_%s" focus_mask True action ToggleScreen("ee_mapka", dissolve)
-
+############# /OLD BACKUP #################
 ###################################################################################################
 screen ee_mapka():
     zorder 200
