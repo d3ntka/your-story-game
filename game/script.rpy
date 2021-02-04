@@ -82,8 +82,14 @@ default RavenLove = 0
 default RavenHate = 0
 default MeamirLove = 0
 default MeamirHate = 0
+default LeviusLove = 0
+default LeviusHate = 0
+default HenriettaLove = 0
+default HenriettaHate = 0
+default CirdanLove = 0
+default CirdanHate = 0
 default AinaLove = 0
-
+default AinaHate = 0
 
 ###### dodatkowe zmienne
 default StrazWiedza = 0

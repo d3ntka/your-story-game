@@ -86,7 +86,7 @@ screen devscreen():
 
 screen timeskip():
     zorder 100
-    imagebutton auto "dziennik_button_dialogue_%s" focus_mask True action ShowTransient('journal_bookmark1')
+    imagebutton auto "button_journal_%s" focus_mask True action ShowTransient('journal_bookmark1')
     use devscreen ########### TODO usunąć po wszystkim
     #if dt >= 5:
     #    imagebutton auto "gui/timeskip/time_%s.png" focus_mask True action [Return("dt=1"),SetVariable("dt", 1), SetVariable("day", day+1), SetVariable("licznikAkcji", licznikAkcji+1)]

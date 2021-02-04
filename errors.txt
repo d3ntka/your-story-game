@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/journal.rpy", line 33: expected 'word' not found.
-    use "journal_base"
-        ^
+File "game/journal.rpy", line 10: style statement expects a non-empty block.
+    style journal_names_text:
+                             ^
 
 Ren'Py Version: Ren'Py 7.4.0.1167
-Mon Feb  1 17:22:03 2021
+Thu Feb  4 11:41:00 2021
