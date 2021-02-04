@@ -32,8 +32,6 @@ label e1:
             gd "Cokolwiek. Zróbmy coś po prostu."
             p1 "Nie wiem. Nie jestem przekonana..."
 
-            #przejście do tabeli niżej
-
         "gd Nic nowego. Dziwne, że jeszcze to wytrzymujesz.":
             p1 "A co mam innego zrobić?"
             gd "Chwilowo wygląda na to, że nieważne co zrobisz to będzie już pójściem do przodu."
@@ -43,15 +41,13 @@ label e1:
             gd " Coś wymyślimy. Warto spróbować."
             p1 "Nie wiem. Nie jestem przekonana..."
 
-            #przejście do tabeli niżej
-
         "gd W takim razie otwórz drzwi i uciekaj od tego życia.":
             p1 "Co masz na myśli?"
-            G: Zostaw to wszystko. Otwórz drzwi i uciekaj."
+            gd "Zostaw to wszystko. Otwórz drzwi i uciekaj."
             p1 "…"
-            G: Szybko. Teraz."
+            gd "Szybko. Teraz."
             p1 "Eh… W sumie czemu nie…"
-            G: Biegnij!"
+            gd "Biegnij!"
             #ujęcie komiks E1AC
             "I pobiegła."
             #czarny ekran, napis biały na środku
@@ -143,7 +139,7 @@ label e1a:
     #background stary las w nocy, przejście jak wcześniej było (ruch tła na zoomie, Lia powoli idzie od prawej do lewej)"
     p1 "Może i dobrze, że mnie do tego namówiłeś."
     p1 "Chodźmy. To niedaleko. Musimy przejść tylko kawałek przy lesie."
-"
+
     p1 "W sumie jesteś tu ze mną pierwszy raz. To Stary Las."
     p1 "Ścieżka którą mijaliśmy prowadzi do wioski, ale mało kto z niej korzysta."
     p1 "Początkowo miała prowadzić do jakiejś kopalni, ale dawno już nikt się tym nie interesuje."
@@ -195,7 +191,7 @@ label e1a:
             # TODO +1 pkt PODEJDZLAS
             $ pojscieDoLasu = True
             #confused Lia ON
-            p1 "No dobrze…
+            p1 "No dobrze…"
             #komiks E1A ujęcie 2
             "Gdy tylko Lia się zbliżyła to zauważyła, że postać zniknęła."
             p1 "Huh. Gdzie podziała się ta osoba?"
@@ -419,7 +415,7 @@ label e2a:
                     jump e2a1
 
         "gd [Nic nie mów.]":
-            # TODO jump be01
+            jump be01
             #przejście do BE01
 
 
@@ -479,7 +475,7 @@ label e2a1:
     jump e3
     #przejście do E3A1
 
-label e2b
+label e2b:
     # bez śniadania bo koszmar
     #na ekranie pokój P1, poranek
     "..."
@@ -582,7 +578,7 @@ label e3:
         #przechodzimy niżej
 
 
-    else e3a3:
+    else:
         #background sala główna, P1 lewo i P3 prawo stoją sobie
         p3 "O! Jesteś wreszcie. Chodź mi pomóc."
         #przechodzimy od razu niżej
@@ -597,35 +593,29 @@ label e3:
     # odpala się mini gra ze stoliczkiem
     jump czyszcz
 
-    #### Na ekranie: Minigra z wycieraniem stołu ########
 label poczyszczeniustolu:
-
+    #sala główna, Lia na środku, neutral ON
     if n == n_max:
         "Lia wyprostowała się, aby przyjrzeć się czy czegoś nie ominęła."
-        "Wygląda na to, że wszystko zrobione!"
-        show p1 lsmile wink at zabarem with fc:
-            xalign .5"
-        "Chciała pomyśleć Lia. Zrozumiała, że to głos Ojca zza jej ramienia."
-        show p3 behind tavern_main_bar_bar1, p1 at zabarem with dissolve:
-            xalign 0.2"
-        show p1 at zabarem with dissolve:
-            xalign .5 xzoom 1"
+        "Wygląda na to, że wszystko dobrze!"
+        "Chciała pomyśleć Lia, ale zrozumiała, że to głos ojca."
+        #P3 od prawej pojawia się znienacka, Lia obraca się w jego kierunku
         p3 "Mówiłem, że sprawdzę. Bardzo ładnie. Teraz zajmij się resztą, a pot..."
+
     else:
-        "Lia wyprostowała się, aby przyjrzeć się czy coś jej nie umknęło."
-        "Od razu zauważyła, że pominęła jeden fragment."
-        "Gdy tylko chciała zabrać się za poprawki, usłyszała za sobą głos."
-        show p3 behind tavern_main_bar_bar1 at zabarem with dissolve:
-            xalign (0.2)"
+        "Lia wyprostowała się, aby przyjrzeć się czy czegoś nie ominęła."
+        "Od razu zauważyła, że ominęła jeden fragment."
+        "Gdy tylko chciała zabrać się za poprawienie tego usłyszała za sobą głos."
+        #P3 od prawej pojawia się znienacka, Lia obraca się w jego kierunku
         p3 "Ominęłaś fragment, o tam!"
-        "Odezwał się Ojciec wskazując palcem na niedoczyszczony fragment."
-        #Na ekranie: Angry Lia ON"
+        "Odezwał się ojciec wskazując palcem na niedoczyszczony fragment."
+        #angry Lia ON
         show p1 bangry narrowedwink with fc
-        p1 "Tak, widzę! Musiałeś akurat podejść i sprawdzić?"
+        p1 "Tak, widzę! Akurat teraz musiałeś podejść i sprawdzić?"
         "Powiedziała Lia ze złością w głosie. Natychmiast tego pożałowała widząc złość na twarzy Taty."
-        #Na ekranie: Angry Zorn ON"
-        show p3 angry at zabarem with Dissolve(.2):
-            xalign 0.2"
+        #Angry Zorn ON"
+        show p3 angry with fc:
+            xalign 0.2
         p3 "Młoda Damo, proszę się zachowywać! Nastę..."
 
 
@@ -1377,7 +1367,7 @@ label e6:
 
 
     menu:
-        "gd Myślę, że warto sprawdzić co u Raven."
+        "gd Myślę, że warto sprawdzić co u Raven.":
             #surprised_happy Lia ON
             p1 "Możesz mieć rację…"
             #sad_smile Lia ON"
@@ -1410,3 +1400,9 @@ label e6:
             p1 "Dobra, ogarnę się i idę spać. Dobranoc."
             #Lia znika, taki efekt upływającego czasu za oknem, aż do rana
             #przejście do E7-N
+
+
+
+
+label be01:
+    "bado endingo"

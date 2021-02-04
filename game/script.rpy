@@ -1134,7 +1134,7 @@ label epizod3b:
     jump czyszcz
 
 #### Na ekranie: Minigra z wycieraniem stołu ########
-label poczyszczeniustolu:
+label poczyszczeniustolu_old:
     scene tavern_main_bar_bg0
     show p1 at zabarem:
         xalign .5 xzoom -1
