@@ -1,15 +1,13 @@
 
 default pojscieDoLasu = False
-
+default runFromThisLife = False
 
 label e1:
-
-    ##jakby tu dodać jakąś krótką rozmowę, a może monolog nawet ‘gracza’ //
-    ##przykład: Szkoda mi jej… Rzeczywiście strasznie monotonne życie. Dziewczyna mocno walczy ze swoimi emocjami i jest więźniem własnej rutyny. Może postaram się jej pomóc. Spróbuję dziś. //
 
     #Na ekranie: Ciemny ekran.
     #Harmider w tle (oddalające się głosy rozmów)
     #Dźwięk zamykanych drzwi
+    scene black with fade
     play sound sfx_ambient_people_doors fadein 1.0 fadeout 3.0 # TODO do poprawki mimo wszystko
     play ambient sfx_ambient_fire fadein 1.0 fadeout 3.0
     $ renpy.music.set_volume(0.5, delay=0, channel='music')
@@ -72,7 +70,7 @@ label e1:
         "Nic nowego. Dziwne, że jeszcze to wytrzymujesz.":
             p1 "A co mam innego zrobić?"
             menu:
-                "Chwilowo wygląda na to, że nieważne co zrobisz to będzie już pójściem do przodu.":
+                "Chwilowo wygląda na to, że nieważne co zrobisz, to będzie już pójściem do przodu.":
                     pass
             p1 "Może."
             p1 "A może nie."
@@ -82,7 +80,7 @@ label e1:
                     pass
             p1 "Nie wiem. Nie jestem przekonana..."
 
-        "W takim razie otwórz drzwi i uciekaj od tego życia.":
+        "W takim razie otwórz drzwi i uciekaj od tego życia." if not runFromThisLife:
             p1 "Co masz na myśli?"
             menu:
                 "Zostaw to wszystko. Otwórz drzwi i uciekaj.":
@@ -95,21 +93,36 @@ label e1:
             menu:
                 "Biegnij!":
                     pass
+            scene black with fade
+            show e1a with dissolve
             #ujęcie komiks E1AC
             "I pobiegła."
+            $ runFromThisLife = True
             #czarny ekran, napis biały na środku
-            "I tak Lia ruszyła przed siebie opuszczając obecne życie. Prawdopodobnie nikt już jej nigdy nie widział."
+            window hide
+            hide e1a with dissolve
+            pause 0.2
+            show text _("{color=#eee}I tak Lia ruszyła przed siebie opuszczając obecne życie. Prawdopodobnie nikt już jej nigdy nie widział.{/color}") with dissolve
+            pause
+            window auto
             # TODO w tle głos DUB01
             # TODO \Co to było? Cofnij. Teraz.\
             # TODO cofa grę do samego początku i usuwa tę opcję
             # TODO dostajemy achievement ACHIEV01
+            jump e1
+
 
     # TODO w momencie pojawienia się tych opcji w tle poleci DUB02 (jednorazowo)
+    #background ciemna sala Tawerny, Lia na środku przybliżona do ekranu jak w rozmowach z graczem
+    scene img_tavern_mainroom_night
+    show p1pl wink_player shadow
+    with fade
     menu:
         "Może pokazałabyś mi w końcu Twoje ulubione miejsce.":
-            #background ciemna sala Tawerny, Lia na środku przybliżona do ekranu jak w rozmowach z graczem
             "Lia wstała i stanęła na równe nowi wpatrując się w drzwi."
+            show p1pl
             #Lia confused ON"
+            show p1pl bsurprised wink lneutral with fc
             p1 "Masz na myśli Ogród?"
             menu:
                 "Tak.":
@@ -119,32 +132,38 @@ label e1:
                 "To na co czekamy?":
                     pass
             #Lia surprised_neutral ON"
+            show p1pl bsurprised widenedwink lneutral with fc
             p1 "Ale tak od razu? Teraz?"
             menu:
                 "Pewnie. Trzeba jakoś przełamać rutynę.":
                     pass
             #Lia surprised_happy ON"
+            show p1pl bsurprised widenedwink lsmile with fc
             p1 "W sumie czemu nie…"
             menu:
                 "Super! No to chodźmy!":
                     pass
             #Lia smile ON"
+            show p1pl bneutral wink lsmile with fc
             p1 "Niech tak będzie!"
-
             #przejście do E1A
+            jump e1a
 
         "Nie ma sensu ciągle narzekać.":
-            #background ciemna sala Tawerny, Lia na środku przybliżona do ekranu jak w rozmowach z graczem
             "Lia wstała i stanęła na równe nowi wpatrując się w drzwi."
             #Lia frown ON"
+            show p1pl bangry wink lneutral with fc
             p1 "No tak, a co mam niby robić?"
             #Lia angry ON"
+            show p1pl bangry narrowedwink lsad with fc
             p1 "Zresztą myślisz, że narzekam bez powodu?"
             menu:
                 "Nie.":
                     #relaxed Lia ON
+                    show p1pl bneutral closed lsmile with fc
                     p1 "No właśnie."
                     #Lia surprised_neutral ON"
+                    show p1pl bsurprised widenedwink lneutral with fc
                     p1 "To powiesz mi co mam zrobić?"
                     menu:
                         "A co z tym Twoim ulubionym miejscem?":
@@ -158,49 +177,54 @@ label e1:
                         "Tak.":
                             pass
                     #Lia surprised_happy ON"
+                    show p1pl bsurprised widenedwink lsmile with fc
                     p1 "W sumie czemu nie…"
                     menu:
                         "Super! No to chodźmy!":
                             pass
                     #Lia smile ON"
+                    show p1pl bneutral wink lsmile with fc
                     p1 "Niech tak będzie!"
                     #przejście do E1A
 
                 "Tak.":
                     #disappointed Lia ON
+                    show p1pl bsad closed lsad with fc
                     p1 "Eh. Po co tu właściwie jesteś?"
                     menu:
                         "Już tłumaczę...":
                             pass
                     #Lia annoyed ON"
+                    show p1pl bangry narrowedwink lneutral with fc
                     p1 "Wiesz co. Nawet nic nie mów."
                     p1 "Średnio mnie to teraz interesuje."
                     p1 "Idę spać."
-
                     #przejście do E1B
+                    jump e1b
 
 
 
 
         "To rób jak chcesz.":
-            #background ciemna sala Tawerny, Lia na środku przybliżona do ekranu jak w rozmowach z graczem"
-            "Lia wstała i stanęła na równe nowi wpatrując się w drzwi."
+            "Lia wstała i stanęła na równe nogi wpatrując się w drzwi."
             #Lia annoyed ON"
+            show p1pl bangry narrowedwink lneutral with fc
             p1 "Pff. Super pomoc."
             p1 "Dobra. To na razie."
             #przejście do E1B
+            jump e1b
 
 
 
 label e1a:
-    #w momencie przejścia w tle jest dźwięk: DUB03
+    # TODO w momencie przejścia w tle jest dźwięk: DUB03
     $ LovePath += 1
 
     p1 "Nim pójdziemy pokażę Ci to miejsce na mapie. Spójrz."
     #pokazuje się mapa, zoom na Tawernę"
     p1 "W tym miejscu jest Tawerna, tu jesteśmy."
     #zoom utrzymany z przejściem na secret garden"
-    p1 "A tutaj mamy Sekretny Ogród do którego zaraz idziemy."
+    p1 "A tutaj mamy Sekretny Ogród, do którego zaraz idziemy."
     #background stary las w nocy, przejście jak wcześniej było (ruch tła na zoomie, Lia powoli idzie od prawej do lewej)"
     p1 "Może i dobrze, że mnie do tego namówiłeś."
     p1 "Chodźmy. To niedaleko. Musimy przejść tylko kawałek przy lesie."
@@ -219,23 +243,30 @@ label e1a:
         "Tak.":
             p1 "To fajnie."
             #neutral Lia ON"
+            show p1 bneutral wink lneutral with fc
             p1 "Tak czy inaczej."
 
         "Nie.":
             p1 "O nie!"
             #neutral Lia ON"
+            show p1 bneutral wink lneutral with fc
             p1 "Tak czy inaczej."
 
     #Lia thinking ON
+    show p1 bangry closed lsad with fc
     p1 "Tak się zastanawiam…"
     #sad_smile Lia ON"
+    show p1 bsad wink lsmile with fc
     p1 "Może mogłabym tu przychodzić częściej."
     p1 "Nie wiem w sumie do końca czemu tego nie robiłam od dawna. Chociaż…"
     #surprised_neutral Lia ON"
+    show p1 bsurprised widenedwink lneutral with fc
     p1 "Chociaż może wiem… Chcesz też wiedzieć?"
     #smile Lia ON"
+    show p1 bneutral wink lsmile with fc
     p1 "A zresztą i tak Ci powiem."
     #sad_smile Lia ON"
+    show p1 bsad wink lsmile with fc
     p1 "Myślę, że zaczynam wpadać w ten monotonny tryb życia, który forsują na mnie rodzice."
     p1 "Rodzice ciągle powtarzają mi, że mam ciężko pracować i być posłuszna."
     p1 "Tylko jaki to ma sens? Nie mam nic konkretnego z tego życia…"
@@ -245,11 +276,12 @@ label e1a:
     menu:
         "Oczywiście! Zrobię co w mojej mocy.":
             pass
-    #dźwięk szelestu krzaczkowego w tle z 1sec opóźnienia"
+    # TODO dźwięk szelestu krzaczkowego w tle z 1sec opóźnienia"
     p1 "Dziękuję! Może…"
     #Lia shock ON"
+    show p1 bsurprised widenedwink lopen with fc
     p1 "Zaraz. Słyszałeś to?"
-    #komiks E1A ujęcie 1"
+    # TODO komiks E1A ujęcie 1"
     p1 "Widzisz to? Ktoś tam chyba stoi?"
     p1 "Co mam zrobić?"
 
@@ -333,10 +365,11 @@ label e1a:
     #przejście do E2A
 
 label e1b:
-    #DUB04 - “try better next time”
+    # TODO DUB04 - “try better next time”
 
     $ HatePath += 1
     #czarne tło
+    scene black with fade
     "Obrażona na cały świat Lia ruszyła w stronę swojego pokoju."
     #background pokój Lii, wersja nocna i Lia w pozycji rozmawiającej z graczem"
     "Dotarła dość szybko do swojego pokoju i zatrzasnęła drzwi, które wydały głośniejszy huk niż się spodziewała."
@@ -1473,7 +1506,9 @@ label e6:
             #podświetlenie opcjonalnych celów"
             p1 "Takie mniej ważne będę wpisywać w tym miejscu."
             #standardowa ikona wyłączenia dziennika"
-            p1 "Jak będzie potrzeba zamknięcia dziennika, to w najlepiej w tym miejscu."
+            p1 "Jeśli będziesz chciał, żeby wszystko Ci przypomnieć to kliknij tutaj."
+            #podświetlenie znaku zapytania
+            p1 "Jak skończysz to tutaj możesz zamknąć dziennik."
             #cały dziennik otwarty"
             p1 "No dobra. To chyba wszystko. Sprawdź co i jak i daj mi znać jak skończysz."
             #kontrola nad dziennikiem witam, DZIENNIK N01

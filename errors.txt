@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/journal.rpy", line 10: style statement expects a non-empty block.
-    style journal_names_text:
-                             ^
+File "game/akti.rpy", line 53: Line is indented, but the preceding show statement statement does not expect a block. Please check this line's indentation.
+    zoom 1.05
+    ^
 
 Ren'Py Version: Ren'Py 7.4.0.1167
-Thu Feb  4 11:41:00 2021
+Thu Feb  4 17:32:22 2021
