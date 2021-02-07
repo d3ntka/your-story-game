@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/akti.rpy", line 53: Line is indented, but the preceding show statement statement does not expect a block. Please check this line's indentation.
-    zoom 1.05
-    ^
+File "game/akti.rpy", line 873: expected statement.
+    sohw p1pl bneutral wink_player lsmile with fc
+                                          ^
 
 Ren'Py Version: Ren'Py 7.4.0.1167
-Thu Feb  4 17:32:22 2021
+Sun Feb  7 19:37:09 2021

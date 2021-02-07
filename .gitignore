@@ -1,6 +1,6 @@
 *.bak
 proxy
-game\cache\*
-game\saves\*
+game\cache\
+game\saves\
 errors.txt
 log.txt

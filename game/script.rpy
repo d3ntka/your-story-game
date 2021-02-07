@@ -216,14 +216,15 @@ screen wyborepizodow():
         #xfill True
         #yfill True
         textbutton "epizod 1" action Jump("epizod1")
-        textbutton "epizod 2-poz" action [SetVariable("d_e1_senmarzen", True), Jump("epizod2")]
-        textbutton "epizod 2-neutr" action [SetVariable("d_e1_senneutral", True), Jump("epizod2")]
+        textbutton "epizod 1a" action Jump("e1a")
+        textbutton "epizod 1b" action Jump("e1b")
         null
 
-        textbutton "epizod 3-nolie" action [SetVariable("d_krotkienogiklamstwa", 0), Jump("epizod3")]
-        textbutton "epizod 3-lie1" action [SetVariable("d_krotkienogiklamstwa", 1), Jump("epizod3")]
-        textbutton "epizod 3-lie2" action [SetVariable("d_krotkienogiklamstwa", 1), Jump("epizod3")]
-        textbutton "epizod 3b" action [SetVariable("d_koszmar", True), Jump("epizod3b")]
+        textbutton "epizod 2a" action Jump("e2a")
+        textbutton "epizod 2b" action Jump("e2b")
+        textbutton "epizod 3" action Jump("e3")
+        null
+
 
         textbutton "epizod 4" action [SetVariable("d_gofestiwal", True), Jump("epizod4")]
         textbutton "ep 4 piwo" action [SetVariable("d_gofestiwal", True), Jump("ep4piwo")]
@@ -364,7 +365,7 @@ label epizod1:
 
 #########################  Epizod 1 Ujecie 1B POKOJ  ###########################
 label e1u1b:
-    scene anim_room_lia_nightdragonlight     # TODO podmienić szkic na final
+    scene anim_room_lia_nightdragonlight
     with fade
     show p1 shadow
     $ c_lenistwo = True

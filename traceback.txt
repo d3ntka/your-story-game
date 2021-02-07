@@ -1,18 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/akti.rpy", line 102, in script
-    text "I tak Lia ruszyła przed siebie opuszczając obecne życie. Prawdopodobnie nikt już jej nigdy nie widział."
-Exception: Sayer 'text' is not defined.
+  File "game/akti.rpy", line 269, in script
+    show secretgarden_bg with tr_show_garden
+Exception: Parameter 'new_widget' is not known by ATL Transform.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/akti.rpy", line 102, in script
-    text "I tak Lia ruszyła przed siebie opuszczając obecne życie. Prawdopodobnie nikt już jej nigdy nie widział."
-  File "renpy/ast.py", line 671, in execute
-    who = eval_who(self.who, self.who_fast)
-  File "renpy/ast.py", line 574, in eval_who
-    raise Exception("Sayer '%s' is not defined." % who)
-Exception: Sayer 'text' is not defined.
+  File "game/akti.rpy", line 269, in script
+    show secretgarden_bg with tr_show_garden
+  File "renpy/ast.py", line 1388, in execute
+    renpy.exports.with_statement(trans, paired)
+  File "renpy/exports.py", line 1640, in with_statement
+    return renpy.game.interface.do_with(trans, paired, clear=clear)
+  File "renpy/display/core.py", line 2517, in do_with
+    clear=clear)
+  File "renpy/display/core.py", line 2978, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
+  File "renpy/display/core.py", line 3331, in interact_core
+    new_widget=layers_root)
+  File "renpy/atl.py", line 508, in __call__
+    raise Exception('Parameter %r is not known by ATL Transform.' % k)
+Exception: Parameter 'new_widget' is not known by ATL Transform.
 
