@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/akti.rpy", line 873: expected statement.
-    sohw p1pl bneutral wink_player lsmile with fc
-                                          ^
+File "game/akti.rpy", line 1301: expected 'image_name_component' not found.
+    show
+        ^
 
 Ren'Py Version: Ren'Py 7.4.0.1167
-Sun Feb  7 19:37:09 2021
+Mon Feb  8 16:13:14 2021

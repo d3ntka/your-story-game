@@ -3,6 +3,8 @@ default pojscieDoLasu = False
 default runFromThisLife = False
 default theTruthHasBeenSpoken = False
 default be01 = False
+default e3a1 = False
+default e3a2 = False
 
 
 label e1:
@@ -452,7 +454,7 @@ label e1a:
             pass
     $ renpy.sound.set_volume(1, delay=0, channel='ambient')
     $ renpy.sound.set_pan(0, delay=0, channel='ambient')
-
+    show cg_dream_good
     # TODO przejście w sen, taka mgiełka ładna i pojawia się CG_dream_good. Troszkę światła się majtają i efekt ekran przechodzi zoomem od dołu do góry, żeby jakoś tak zatrzymał się lekko na twarzy i potem poof budzi się
     #przejście do E2A
     jump e2a
@@ -509,7 +511,7 @@ label e1b:
             show p1pl bangry narrowedwink_player lsad with fc
             p1 "Dobranoc."
 
-
+    show cg_dream_bad
     # TODO
     #po “dobranoc” powolne przejście w czarny ekran jakby sen, może lekka mgiełka?
     #tutaj odpala się zły sen
@@ -564,7 +566,7 @@ label e2a:
             p1 "Zaraz obok mojego pokoju jest sypialnia rodziców. Czyli nic ciekawego."
             p1 "Tam z tyłu jest łazienka."
             #smirk Lia ON"
-            show p1pl bangry narrowedwink_player lsmile with fc
+            show p1pl bangry narrowedwink_player lsmirk with fc
             p1 "Swoją drogą. Nie zaglądaj do mnie jak tam jestem! Nie wypada."
             menu:
                 "Haha, dobrze! Masz rację. Obiecuję, że nie będę.":
@@ -864,7 +866,7 @@ label e2b:
             p1 "Zaraz obok mojego pokoju jest sypialnia rodziców. Czyli nic ciekawego."
             p1 "Tam z tyłu jest łazienka."
             #smirk Lia ON"
-            show p1pl bangry narrowedwink_player lsmile with fc
+            show p1pl bangry narrowedwink_player lsmirk with fc
             p1 "Swoją drogą. Nie zaglądaj do mnie jak tam jestem! Nie wypada."
             menu:
                 "Haha, dobrze! Masz rację. Obiecuję, że nie będę.":
@@ -912,15 +914,26 @@ label e3:
     #########################################
 
     if e3a1:
+        scene tavern_main_bar_bg0
+        show p3 at zabarem:
+            xalign 0.5 xzoom -1.0
+        show tavern_main_bar_bar1
+        show p1:
+            align (0.0,1.0) xzoom -1
+        with fade
         #tło bar, P1 po lewej, P3 prawo za barem
+
         "Po wyjściu z kuchni na Lię czekał ojciec."
         #confused Lia ON
-        p3 "Poczekaj moment Lia."
-        p3 "Rozmawiałem moment z Twoją matką."
-        p3 "Mimo, że byłaś nieodpowiedzialna to przyznałaś się co jest dobre."
+        show p1 bsurprised wink lneutral with fc
+        p3 "Poczekaj Lia."
+        p3 "Rozmawiałem z Twoją matką."
+        p3 "Mimo, że byłaś nieodpowiedzialna to przyznałaś się, co jest dobre."
         #surprised_neutral Lia ON"
+        show p1 bsurprised widenedwink lneutral with fc
         p3 "Możliwe, że trochę zbyt mocno Cię pilnujemy, więc mamy propozycję..."
         #surprised_happy Lia ON"
+        show p1 bsurprised widenedwink lsmile with fc
         p3 "Jeśli masz ochotę możesz dziś skończyć wcześniej pracę i przejść się na festiwal do wioski."
         p1 "Oh... Nie wiem co powiedzieć..."
         p3 "Po prostu powiedz czy chcesz iść."
@@ -929,33 +942,63 @@ label e3:
                 # +1pkt FESTIVAL01
                 $ d_gofestiwal = True
                 #smile Lia ON
+                show p1 bneutral wink lsmile with fc
                 p1 "Chętnie pójdę. Dziękuję."
                 p3 "No dobrze... To przed wieczorem Cię zastąpię."
                 p3 "Tymczasem czas na pracę."
 
             "Powiedz, że nie chcesz.":
                 #sad_smile Lia ON
+                show p1 bsad wink lsmile with fc
                 p1 "Dziękuję za propozycję, ale nie chcę iść."
                 p3 "Oh. No dobrze. Twoja decyzja."
                 p3 "No to czas na pracę."
 
     elif e3a2:
+        scene tavern_main_bar_bg0
+        show p3 angry at zabarem:
+            xalign 0.5 xzoom -1.0
+        show tavern_main_bar_bar1
+        show p1:
+            align (0.0,1.0) xzoom -1
+        with fade
         #tło bar, P1 po lewej, P3 prawo za barem - P3 angry ON
         p3 "No jesteś w końcu. Zostań chwilę."
         #surprised_sad Lia ON"
+        show p1 bsurprised widenedwink lsad with fc
         p3 "Mam nadzieję, że następnym razem nie będziesz próbować kłamać."
         p3 "Zacznij być bardziej odpowiedzialna."
         p3 "A teraz chodź do pracy."
 
     else:
+        scene ep_img_tavern_mainroom
+        show p1:
+            align(0.2,1.0) xzoom -1
+        show p3:
+            align(0.6,1.0) xzoom -1
+        with dissolve
         #background sala główna, P1 lewo i P3 prawo stoją sobie
         p3 "O! Jesteś wreszcie. Chodź mi pomóc."
 
-
+    scene ep_img_tavern_mainroom
+    show p1:
+        align(0.2,1.0) xzoom -1
+    show p3:
+        align(0.6,1.0) xzoom -1
+    with dissolve
     #background zmienia się na całą salę główną, P1 lewo i P3 prawo stoją sobie
     p3 "Dobra. Ja idę przygotować drugą salę. Ty zacznij od wytarcia stołów."
     p3 "Tylko dokładnie! Sprawdzę później."
     #P3 wychodzi do prawej sali. frown Lia ON, mówi do gracza:
+    show p3 with fc:
+        xzoom 1
+    show p3:
+        linear 1 xalign 1.45
+
+    show p1:
+        linear 1.3 xalign .4
+    pause 1
+    show p1 wink_player with fc
     p1 "Zawsze tak mówi i potem i tak nie sprawdza... No ale i tak trzeba to ogarnąć."
     # odpala się mini gra ze stoliczkiem
     jump czyszcz
@@ -968,11 +1011,18 @@ label e3:
 
 label poczyszczeniustolu:
     #sala główna, Lia na środku, neutral ON
+    scene ep_img_tavern_mainroom
+    show p1:
+        align(0.5,1.0)
     if n == n_max:
         "Lia wyprostowała się, aby przyjrzeć się czy czegoś nie ominęła."
         "Wygląda na to, że wszystko dobrze!"
         "Chciała pomyśleć Lia, ale zrozumiała, że to głos ojca."
         #P3 od prawej pojawia się znienacka, Lia obraca się w jego kierunku
+        show p3 behind p1 with Dissolve(1.0):
+            align (0.75,1.0) xzoom -1
+        show p1 with fc:
+            xzoom -1
         p3 "Mówiłem, że sprawdzę. Bardzo ładnie. Teraz zajmij się resztą, a pot..."
 
     else:
@@ -980,6 +1030,10 @@ label poczyszczeniustolu:
         "Od razu zauważyła, że ominęła jeden fragment."
         "Gdy tylko chciała zabrać się za poprawienie tego usłyszała za sobą głos."
         #P3 od prawej pojawia się znienacka, Lia obraca się w jego kierunku
+        show p3 behind p1 with Dissolve(1.0):
+            align (0.75,1.0) xzoom -1
+        show p1 with fc:
+            xzoom -1
         p3 "Ominęłaś fragment, o tam!"
         "Odezwał się ojciec wskazując palcem na niedoczyszczony fragment."
         #angry Lia ON
@@ -987,75 +1041,135 @@ label poczyszczeniustolu:
         p1 "Tak, widzę! Akurat teraz musiałeś podejść i sprawdzić?"
         "Powiedziała Lia ze złością w głosie. Natychmiast tego pożałowała widząc złość na twarzy Taty."
         #Angry Zorn ON"
-        show p3 angry with fc:
-            xalign 0.2
+        show p3 angry with fc
         p3 "Młoda Damo, proszę się zachowywać! Nastę..."
 
-
+    play audio sfx_drzwi
     "Nagle z hukiem otworzyły się drzwi, Zorn zareagował pierwszy."
     #sala główna, Zorn stoi bliżej środka i patrzy w lewo, Lia za nim też patrzy w lewo"
     #angry P3 ON"
+    show p1 behind p3:
+        linear 0.5 xalign .74
+    show p3:
+        linear 0.5 xalign 0.45
+    show p3 angry with fc
+    pause 0.3
+    show p1 with fc:
+        xzoom 1
     p3 "Halo! Zamknięte jeszcze! Proszę wyp..."
     #neutral P3 ON, po lewej wchodzi P6 i patrzy w prawo"
+    show p6 with easeinleft:
+        align (.5,.5) pos (0.2,0.78) xzoom -1
+    show p3 neutral with fc
     p3 "Aaa, HAHA - to Wy Panie Mohon. Wchodź, nie krępuj się!"
     p6 "HAHA, a czego miałbym się krępować? Zgłupiałeś Zorn?"
     p6 "Weź polej piwo bo mnie chuj strzeli zar... Oooo, panienko!"
     #P1 wychodzi przed Zorna"
+    show p3 behind p1
+    show p1:
+        linear 0.5 xalign 0.6
     p6 "Uszanowanie, dzień dobry - prześlicznie panienka dziś wygląda!"
     #blush Lia ON"
+    show p1 blush with fc
     p1 "Dzień dobry Panie Mohon!"
+    show p1:
+        linear 0.5 xalign 0.74
+    show p1 behind p3 with fc
     #Zorn wychodzi znów przed Lię, Lia znów w prawo"
     p3 "No dobra dobra, starczy tych uprzejmości. Chodź Mohon, potrzebujesz czegoś?"
     #frown Lia ON"
+    show p1 bangry wink lneutral with fc
     p6 "Hmm, ten... Mieliśmy omówić..."
     p3 "Ach, tak - pamiętam. Chodź, coś Ci naleję i pogadamy. Lia posprzątaj ostatnią salę."
     p1 "Dobrze."
+    hide p1 with moveoutleft
     #przejście do lewej sali"
     #Lia mówi do gracz, sad_smile ON"
+    scene img_tavern_leftroom:
+        zoom 1.2 align (1.0,1.0)
+    show p1pl bsad wink_player lsmile
+    with dissolve
     p1 "Dobra. Daj mi chwilę, ogarnę wszystko."
 
 
     menu:
         "Kto to był?":
             #happy Lia ON
+            show p1pl bneutral narrowedwink_player lsmile with fc
             p1 "Oh, to był Pan Mohon. Często tutaj przychodzi."
             p1 "Jak na pewno było widać to krasnolud."
             #confused Lia ON"
+            show p1pl bsurprised wink_player lneutral with fc
             p1 "Hmm, co by jeszcze można o nim powiedzieć..."
             p1 "Eh, opowiadanie o kimś jest skomplikowane."
             #neutral Lia ON"
+            show p1pl bneutral wink_player lneutral with fc
             p1 "Pracuje w kopalni z tego co mi wiadomo."
             p1 "W sumie go lubię, jest zawsze miły dla mnie."
             p1 "Może trochę wulgarny, ale nadrabia to uśmiechem."
             p1 "Często widują się z moim ojcem. Nie wiem po co."
             p1 "Hmm. To chyba wszystko."
             #sad_smile Lia ON"
+            show p1pl bsad wink_player lsmile with fc
             p1 "Nigdy bardziej się nad tym nie zastanawiałam. Wybacz."
             menu:
                 "Nie przejmuj się. Dziękuję.":
                     pass
             #smile Lia ON"
+            show p1pl bneutral wink_player lsmile with fc
             p1 "Nie ma za co! Dobra, czas wziąć się do pracy."
 
         "Dobrze, poczekam w ciszy.":
             pass
 
     #lewa sala sama, lekki ruch kamery, zoom/przejście (2-3sec)
+    hide p1pl with fc
+    show img_tavern_leftroom:
+        linear 3 xalign 0.0
     "Lia zabrała się za sprzątanie sali. Jak tylko skończyła to ruszyła z powrotem do głównej sali."
     #przejście do sali głównej, Zorn za barem"
+    scene img_tavern_mainroom
+    show p3:
+        zoom 0.3 xpos 0.6 yalign 0.6
+        xzoom -1
+    show tavern_main_bar3_dn_idle
+    with dissolve
     "..."
     #Lia wchodzi od lewej"
+    show p1 with moveinleft:
+        align (0.0,1.0) xzoom -1
     p3 "O, Lia - chodź tutaj."
+    # show img_tavern_mainroom:
+    #     linear 0.4 zoom 1.5 align(0.6,0.5)
+    scene tavern_main_bar_bg0
+    show p3 at zabarem:
+        xalign 0.6 xzoom -1.0
+    show tavern_main_bar_bar1
+    with dissolve
+    show p1 bangry wink lneutral  with easeinleft:
+        align (0.0,1.0) xzoom -1
     #zoom na bar, Lia po lewej i Zorn po prawej"
     #frown Lia ON"
     p3 "Wszystko posprzątane?"
     p1 "Tak."
     p3 "Super, to przejmij bar i..."
     tg1 "Ekhem."
+    hide p3 with moveoutleft
+    scene ep_img_tavern_mainroom
+    show p3:
+        align (0.68,1.0) xzoom -1
+    show tg1:
+        align (0.2,1.0) xzoom -1
+    with dissolve
     #powrót do widoku sali głównej, Lia za barem (jeśli możliwe), po lewej TG1, Zorn staje przed nim"
     tg1 "Jeśli można."
     p3 "Oczywiście. Za Tobą."
     #wychodzą z pomieszczenia, powrót do zoomu na bar, Lia do gracza, confused ON"
+    scene tavern_main_bar_bg0
+    show p1 bsurprised wink_player lneutral at zabarem:
+        xalign 0.6
+    show tavern_main_bar_bar1
+    with dissolve
     p1 "Huh. Dziwne. Znów jeden z tych zakapturzonych typów."
 
     menu:
@@ -1069,46 +1183,75 @@ label poczyszczeniustolu:
             p1 "Dobra, kiedy indziej o tym pogadamy - słyszę, że wraca."
 
         "Rzeczywiście dziwne.":
-            p1 "Przerażający są trochę. No nic, wracam do pracy."
+            p1 "Są trochę przerażający. No nic, wracam do pracy."
             "Po krótkiej chwili Zorn wrócił do pomieszczenia."
 
 
     #Lia surprised_neutral ON
     #zoom na bar, Lia po prawej, Zorn po lewej
+    show p1 bsurprised widenedwink lneutral with fc
+    show p3 with moveinleft:
+        align (0.0,1.0)
     p3 "Dobra, wszystko ogarnięte. Jak coś to ktoś z nich przyjdzie później po paczkę z prowiantem."
     p1 "Od tych zakapturzonych?"
     p3 "Tak, od nich. Za paczkę zapłacili z góry. Idę ją przygotować."
     p3 "Później Ci ją przyniosę, po prostu im ją wydasz."
     p3 "Pilnuj Tawerny, wkrótce ludzie zaczną krążyć."
     #Zorn wychodzi z pomieszczenia"
+    hide p3 with moveoutleft
     "..."
     #Lia mówiąca do gracza, neutral ON"
+    show p1 bneutral wink_player lneutral with fc
     p1 "No to zaczynamy pracę."
     #tutaj skip, przejście na background zewnątrz Tawerny i upływ czas do południa, 3-4sec, +1 upływ czasu"
+    window hide
+    show anim_tavern outside dragon with dissolve
+    pause 4
+    hide anim_tavern outside dragon
     #po przejściu powrót do Tawerny, zoom taki sam jak wcześniej i Lia mówiąca do gracza, Lia frown ON"
+    show p1 bangry wink lneutral
+    with dissolve
+    window auto
+    show p1 wink_player with fc
     p1 "Oh... Jesteś tutaj dalej ze mną?"
     menu:
         "Oczywiście.":
             pass
     #sad_smile Lia ON"
+    show p1 bsad wink_player lsmile with fc
     p1 "Dzięki."
     p1 "Przynajmniej rano jest mały ruch, więc można pogadać..."
     #tutaj bez imienia pierwsze powiedzenie od Ainy i bez pokazywania jej"
-    p7 "Halo, słyszysz mnie?"
+    p7q "Halo, słyszysz mnie?"
     #Lia wraca na pozycję, zoom na bar"
     #surprised_neutral Lia ON"
     #Aina się pojawia, neutral ON, po lewej przed barem"
+    show p1 bsurprised widenedwink lneutral with fc
+    show p7 with fc:
+        align (0.1,1.0)
     p7 "Halo?"
     p1 "Oh. Przepraszam, zamyśliłam się. Co potrzeba?"
     #Aina smile ON"
+    show p7 bneutral wink lsmile with fc
     p7 "Haha! Nie ma problemu, też czasem zdarza mi się odlecieć myślami nie wiadomo gdzie."
     #Lia smile ON"
+    show p1 bneutral wink lsmile with fc
     p7 "Dla mnie to co zwykle!"
     p1 "Już podaję!"
+    show black with dissolve
+    show work3a with dissolve
+    show work3b with Dissolve(1.0)
+    pause 0.5
+    hide work3b with Dissolve(1.0)
+    hide work3a with dissolve
+    hide black with dissolve
     #komiks z folderu work work, tak by jako animacja wyglądał work 3A i work 3B"
     #Lia blush ON"
+    show p1 blush with fc
     p7 "Dzięki ślicznotko! Do zobaczenia!"
     #Aina znika z ekranu, Lia do gracza"
+    hide p7 with moveoutleft
+    show p1 -blush wink_player with fc
     p1 "To było lekko niespodziewane..."
 
     menu:
@@ -1119,43 +1262,85 @@ label poczyszczeniustolu:
 
     #wracamy na standardowy zoom, pojawia się TG2 (inny niż wcześniej) i podpis go ‘???’
     #surprised_neutral Lia ON
+    show p1 wink with fc
+    show tg2 with moveinleft:
+        align (0.1,1.0) xzoom -1
     tg2 "Witam."
     p1 "Dzień dobry. W czym mogę pomóc?"
     #confused Lia ON"
+    show p1 bsurprised wink lneutral with fc
     tg2 "Ja po paczkę."
     p1 "Hmm? Ah, paczka... dziś rano zamówiona, tak?"
     tg2 "Tak."
     #sad_smile Lia ON"
+    show p1 bsad wink lsmile with fc
     p1 "Um, już podaję."
     #komiks folder work work Lia podająca paczkę"
+    show black with dissolve
+    show work_bar_base with dissolve
+    show work_bar_package with dissolve
     p1 "Proszę."
+    hide work_bar_package with dissolve
     tg2 "Mhm."
+    hide work_bar_base with Dissolve(0.2)
+    hide black with dissolve
+    hide tg2 with moveoutleft
+    pause 0.2
+    show p1 bangry narrowedwink_player lneutral with fc
     #annoyed Lia ON, TG2 wychodzi ze sceny od razu. Lia mówi do gracza"
     p1 "Nie dość, że nie pokazują twarzy to jeszcze są niemili. Pff."
     #levius na razie bez imienia i jego podpis jako ‘???’"
-    p9 "Hej Lia!"
+    p9q "Hej Lia!"
     #przejście do standardowej sceny, Levius po lewej, Lia wciąż za barem, Lia surprised_neutral ON,"
+    show p9 with moveinleft:
+        align (0.1,1.0)
+    show p1 bsurprised widenedwink lneutral with fc
     p1 "Um... Cześć!"
     p9 "To ja, Levius. Pamiętasz mnie?"
     #sad_smile Lia ON, Levius smile ON"
+    show p1 bsad wink lsmile with fc
+    show p9 bneutral wink lsmile with fc
     p1 "Oh, tak - oczywiście."
     p9 "Cieszę się! Umm... Co porabiasz?"
     p1 "Huh? Teraz jak widzisz pracuję."
     #sad_smile Levius ON"
+    show p9 bsad wink lsmile with fc
     p9 "Oh, no tak. To nie przeszkadzam teraz."
     p9 "Jakbyś miała ochotę później porozmawiać to nie krępuj się proszę."
     #smile Lia ON, Levius smile ON"
+    show p1 bneutral wink lsmile with fc
+    show p9 bneutral wink lsmile with fc
     p1 "Dobrze, będę pamiętać."
     p9 "Dziękuję! Do zobaczenia!"
     #Levius wychodzi z kadru, Lia confused ON i mówi do gracza:"
+    hide p9 with moveoutleft
+    show p1 bsurprised wink_player lneutral with fc
     p1 "Dziwny dzień. Dziwni ludzie. Wracam do pracy."
-    #Lia znika z ekranu, główna sala (ruch ludzi z cieniami może), lekki ruch out zoom z baru na całość, 2-3 sec"
+    # TODO Lia znika z ekranu, główna sala (ruch ludzi z cieniami może), lekki ruch out zoom z baru na całość, 2-3 sec"
+    show ep_img_tavern_mainroom with dissolve
     "Lia wróciła do pracy i w pełni się na niej skupiła."
     #tutaj odpala się przejście na zewnątrz Tawerny i dwie ścieżki są:
 
 
+    ################ devstuff #################
+    if config.developer:
+        menu:
+            "dev/ idziemy na festiwal":
+                $ d_gofestiwal = True
+                pass
+            "dev/ nie idziemy nigdzie":
+                pass
+    #########################################
+
     if d_gofestiwal:
+
         #czas upływa o jeden, do popołudnia. Wracamy do sali i ujęcie na Lię za barem i Zorn stoi po lewej też za barem
+        show anim_tavern outside dragon with Dissolve(1.2)
+        pause 3.5
+        hide ep_img_tavern_mainroom
+        hide anim_tavern outside dragon with Dissolve(1.2)
+        show p3 with moveinleft:
+            align (.1,1.0)
         p3 "Hej Lia, jak idzie praca?"
         p1 "Wszystko dobrze."
         p3 "To dobrze. Jeśli chcesz dalej iść na festiwal to mogę Cię już zastąpić."
@@ -1164,54 +1349,98 @@ label poczyszczeniustolu:
         menu:
             "Chodźmy na festiwal!":
                 #smile Lia ON
+                show p1 bneutral wink lsmile with fc
                 p1 "Tak! Z chęcią pójdę."
                 p3 "No dobrze. Tylko uważaj na siebie."
                 p1 "Będę na pewno!"
                 p3 "Obiecaj, że będziesz."
                 #frown Lia ON"
+                show p1 bangry wink lneutral with fc
                 p1 "Obiecuję!"
                 p3 "No dobrze dobrze. Zmykaj już. Nie wracaj za późno."
                 #przejście na zewnątrz Tawerny, przechodzimy do E4
+                scene anim_tavern outside dragon with Dissolve(1.2)
+                pause 2
             "Lepiej zostań w pracy.":
                 #confused Lia ON
+                show p1 bsurprised wink lneutral with fc
                 p1 "Nie, nie trzeba."
                 p1 "Zostanę i jeszcze popracuję."
                 p3 "Oh. Hmm, no dobrze. Twoja decyzja."
                 #smile Lia ON"
+                show p1 bneutral wink lsmile with fc
                 p3 "Dzięki, że zostałaś pomagać."
                 #Zorn wychodzi, Lia do gracza"
+                hide p3 with moveoutleft
                 p1 "Zawsze coś w zamian. Chociaż nie jestem do końca przekonana do tej decyzji."
                 #sad_smile Lia ON"
+                show p1 bsad wink_player lsmile with fc
                 p1 "No ale już nic nie zrobimy. Wracam do pracy."
                 #efekt wyjścia z tawerny, out zoom od baru do pełnej sali i wyjście na zewnątrz Tawerny, upływ czasu do wieczora"
                 #powrót do ujęcia za barem. Pojawia się Zorn po lewej za barem obok Lii"
+                show anim_tavern outside dragon with Dissolve(1.2)
+                pause 1.2
+                show anim_tavern nighttime dragon with Dissolve(2.0)
+                pause 1.0
+                hide anim_tavern outside dragon
+                show p1 bneutral wink lneutral
+                hide anim_tavern nighttime dragon with Dissolve(1.0)
+                show p3 behind tavern_main_bar_bar1 at zabarem:
+                    xalign -0.3
+                    linear 1 xalign .2
+                pause 1
                 p3 "Jak tam?"
                 #frown Lia ON"
+                show p1 bangry wink lneutral with fc
                 p1 "Dobrze."
                 p3 "Możesz iść już spać. Ja zamknę Tawernę."
                 #sad_smile Lia ON"
+                show p1 bsad wink lsmile with fc
                 p3 "Jeszcze raz dzięki, że zostałaś pomóc. Dobranoc."
                 p1 "Dobranoc."
                 #przejście do pokoju Lii, Lia do gracza, relaxed ON"
+                scene anim_room_lia_nightdragon
+                show p1pl bneutral closed lsmile shadow
+                with fade
                 p1 "Uh, jestem zmęczona. Pójdę od razu spać."
                 #neutral Lia ON"
+                show p1pl bneutral wink_player lneutral with fc
                 p1 "Dobranoc."
                 menu:
                     "Dobranoc.":
                         pass
                 #przejście do E5
+                jump e5
 
     else:
+
         #jeśli nie ma tego punktu
         #czas upływa o dwa, do wieczora, wracamy do ujęcia za barem. Pojawia się Zorn po lewej za barem obok Lii
+        show anim_tavern outside dragon with Dissolve(1.2)
+        pause 1.2
+        show anim_tavern nighttime dragon with Dissolve(2.0)
+        pause 1.0
+        hide anim_tavern outside dragon
+        hide ep_img_tavern_mainroom
+        show p1 bneutral wink lneutral
+        hide anim_tavern nighttime dragon with Dissolve(1.0)
+        show p3 behind tavern_main_bar_bar1 at zabarem:
+            xalign -0.3
+            linear 1 xalign .2
+        pause 1
         p3 "Jak idzie praca?"
         #frown Lia ON"
+        show p1 bangry wink lneutral with fc
         p1 "Idzie dobrze."
         p3 "Mhm. Możesz iść już spać. Ja zamknę. Dobranoc."
         p1 "Eh. Dobranoc."
         #przejście do pokoju Lii, Lia do gracza, relaxed ON"
+        scene anim_room_lia_nightdragon
+        show p1pl bneutral closed lsmile shadow
+        with fade
         p1 "Uh, jestem zmęczona. Pójdę od razu spać."
         #neutral Lia ON"
+        show p1pl bneutral wink_player lneutral with fc
         p1 "Dobranoc."
         menu:
             "Dobranoc.":
@@ -1226,44 +1455,54 @@ label poczyszczeniustolu:
 
 
 label e4:
-
+    scene anim_tavern outside dragon with dissolve
     #background zewnątrz Tawerny, popołudnie, Lia do gracza, surprised_happy ON
     p1 "Dobra. Tak jak ostatnio, pokażę Ci w ogóle gdzie idziemy."
     #otwiera się mapa, zoom na lokację Tawerny i przesunięcie zoomu na wioskę"
     p1 "Idziemy tutaj do wioski, pójdziemy skrótem przez las, nic się nie powinno stać."
     #mapa się zamyka, Lia do gracza, Lia happy ON"
+    show p1pl bneutral narrowedwink_player lsmile with fc
     p1 "Chodźmy!"
     #przejście, upływ czasu +1, backgroung ścieżka przed wioską, Lia do gracza, surprised_neutral ON"
+    show p1pl bneutral wink_player lneutral with fc
     p1 "Jesteśmy prawie na miejscu. W sumie jak już tu dotarliśmy to nie jestem przekonana do tego pomysłu..."
     menu:
         "Dlaczego?":
             pass
     #sad Lia ON"
+    show p1pl bneutral wink_player lsad with fc
     p1 "No bo co ja tu właściwie jestem? Nikogo praktycznie nie znam, bawić też zbytnio się nie lubię..."
     menu:
         "Hmm. Na pewno nie zaszkodzi pójść i zobaczyć co i jak.":
             pass
     #sad_smile Lia ON"
+    p1pl bsad wink_player lsmile with fc
     p1 "Niby tak... To co mam zrobić?"
     menu:
         "Wejdź do wioski, znajdź jakieś piwo i zobaczymy co dalej. Na pewno nie będzie źle.":
             pass
     #relaxed Lia ON"
+    show p1pl bneutral closed lsmile with fc
     p1 "Hmm."
     #smile Lia ON"
+    show p1pl bneutral wink_player lsmile with fc
     p1 "No dobrze. Ufam Ci, chodźmy."
     #przejście na wioskę, bawiący się ludzie cienie, Lia od prawej do lewej bardzo powoli ‘idzie’, surprised_happy ON
+    show p1 bsurprised widenedwink lsmile with fc
     "Lia ruszyła przez wioskę sprawnie unikając bliższego kontaktu z ludźmi."
     "Wolała nie ryzykować potencjalnego wciągnięcia w wir tańca."
     "Wzięła piwo i przystanęła gdzieś na boku."
     #Lia do gracza, neutral ON w tle ciągle wioska"
+    show p1 bneutral wink_player lneutral with fc
     p1 "Nie jest tak źle póki co..."
     #surprised_neutral Lia ON"
+    show p1 bsurprised widenedwink lneutral with fc
     p1 "Wyjątkowo dobrze widać Zielonego Smoka podczas tego festiwalu."
     menu:
         "Co masz na myśli?":
             pass
     #neutral Lia ON"
+    show p1 bneutral wink_player lneutral with fc
     p1 "Hmm. Przeważnie jest słabiej widoczny. Spójrz w górę."
     #Lia znika, kamera przechodzi na niebo skupiając się na smoku (lekki ruch)"
     p1 "Na jego cześć jest cały festiwal."
@@ -1272,17 +1511,22 @@ label e4:
 
     menu:
         "Bardzo chętnie!":
-            #Lia wraca, jest na boku tak żeby nie zasłaniała smoka i wciąż jakby bliżej ekranu rozmawiając z graczem
-            #sad_smile Lia ON
+            # Lia wraca, jest na boku tak żeby nie zasłaniała smoka i wciąż jakby
+            # bliżej ekranu rozmawiając z graczem
+            # sad_smile Lia ON
+            show p1pl bsad wink_player lsmile with fc
             p1 "Zaznaczę od razu, że w sumie to nie wiem za dużo."
             p1 "Pamiętam tylko tyle co opowiadała mi mama..."
             #smile Lia ON"
+            show p1pl bneutral wink_player lsmile with fc
             p1 "Ale... Po pierwsze smok pojawia się zawsze w różnych odstępach czasowych."
             p1 "Nikt nie wie kiedy dokładnie się pojawi i dlaczego jest to takie losowe."
             p1 "Ostatni festiwal odbywał się jakoś siedem lat temu."
             #blush Lia ON"
+            show p1pl blush with fc
             p1 "Wcześniejszego nie pamiętam bo byłam zbyt mała..."
             #smile Lia ON"
+            show p1pl bneutral wink_player lsmile -blush with fc
             p1 "Obecny trwa prawie dwa tygodnie i powoli zbliżamy się do końca."
             p1 "Wracając do samej legendy. Mówi się, że Smok pojawia się w momencie kiedy Królestwo jest zagrożone."
             p1 "Zielony Smok jest jakby strażnikiem naszej wyspy czy coś takiego."
@@ -1293,8 +1537,10 @@ label e4:
             p1 "Słyszałam od gości w Tawernie, że na zakończenie festiwalu księżniczka Aurora i książę Caius przyjadą świętować do naszej wioski."
             p1 "Wszyscy są tym jakoś specjalnie podekscytowani."
             #blush Lia ON"
+            show p1pl blush with fc
             p1 "W sumie chętnie zobaczę tę księżniczkę, ponoć jest bardzo piękna..."
             #neutral Lia ON"
+            show p1pl bneutral wink_player lneutral -blush with fc
             p1 "No ale nie jest to teraz ważne."
             p1 "Hmm, to chyba wszystko co wiem."
             p1 "Jak będziemy chcieli to może uda się kiedyś dowiedzieć czegoś więcej od kogoś."
@@ -1302,121 +1548,169 @@ label e4:
                 "Dzięki za opowieść.":
                     pass
             #smile Lia ON"
+            show p1pl bneutral wink_player lsmile with fc
             p1 "Nie ma za co!"
 
         "Nie, dzięki.":
             #Lia wraca, jest na boku tak żeby nie zasłaniała smoka i wciąż jakby bliżej ekranu rozmawiając z graczem
             #frown Lia ON
+            show p1pl bangry wink_player lneutral with fc
             p1 "Hmm. Jak chcesz."
 
-    #po tekstach lekki zastój na smoku i powrót na standardowe ujęcie Lii, mówi do gracza, relaxed ON
+    # po tekstach lekki zastój na smoku i powrót na standardowe ujęcie Lii,
+    # mówi do gracza, relaxed ON
+    show p1pl bneutral closed lsmile with fc
     p1 "Hmm. Nie jest tak źle tu..."
     #efekt zatrzęsienia ekranu, Meamir w nią wpadł"
     "Zamyślona Lia prawie się przewróciła po niespodziewanym zderzeniu."
     #zwykły ujęcie, wioska w tle, Lia stoi z boku i przed nią Meamir"
     #Lia shock ON"
+    show p1 bsurprised widenedwink lopen with fc
     "Odzyskała szybko równowagę i zauważyła przed sobą nieznajomego chłopaka!"
     #Meamir podpisany na początku ‘???’, Meamir surprised_happy ON"
-    p5 "Na Zielonego Smoka! Przepraszam! Nie zauważyłem Cię, czy wszystko w porządku?"
+    show p5 bsurprised widenedwink lsmile with fc
+    p5q "Na Zielonego Smoka! Przepraszam! Nie zauważyłem Cię, czy wszystko w porządku?"
     #Lia surprised_neutral ON"
+    show p1 bsurprised widenedwink lneutral with fc
     p1 "Oj, tak... Nic się nie stało. Tylko troszkę się przestraszyłam... i straciłam swoje piwo."
     #Meamir blush ON"
-    p5 "Ojej, przepraszam raz jeszcze... Rozglądałem się i nie patrzyłem przed siebie."
+    show p5 blush with fc
+    p5q "Ojej, przepraszam raz jeszcze... Rozglądałem się i nie patrzyłem przed siebie."
     "”Uroczy.” - pomyślała Lia."
     #happy Lia ON"
+    show p1 bneutral narrowedwink lsmile with fc
     p1 "Nic się nie stało! Naprawdę. Sama byłam też zamyślona... Trochę też moja wina."
-    p5 "Oh, no dobrze! Ale na wszelki wypadek w ramach przeprosin może dasz się skusić na wspólne piwo?"
+    p5q "Oh, no dobrze! Ale na wszelki wypadek w ramach przeprosin może dasz się skusić na wspólne piwo?"
     p1 "Hmm... W zasadzie czemu nie. Ale pod jednym warunkiem."
     #Meamir confused ON"
-    p5 "Jakim?"
+    show p5 bsurprised wink lneutral -blush with fc
+    p5q "Jakim?"
     #Lia smirk ON"
+    show p1 bangry narrowedwink lsmirk with fc
     p1 "Musisz przynajmniej powiedzieć jak się nazywasz!"
     #Meamir surprised_happy ON"
     #Meamir dostaje normalny podpis"
+    show p5 bsurprised widenedwink lsmile with fc
     p5 "Ahh, nie przedstawiłem się. Przepraszam! Jestem Meamir, a Ty?"
     p1 "No nie wiem czy jeszcze na to zasłużyłeś..."
     #Meamir blush ON"
+    show p5 blush with fc
     p5 "Oh... No to..."
     #surprised_happy Lia ON"
+    show p1 bsurprised widenedwink lsmile with fc
     p1 "Oj no! Żartuję tylko, jestem Lia!"
     p1 "Miło Cię poznać!"
     p5 "Oh. Ciebie też miło poznać Lia!"
     p1 "No no, nie czerwień się tak - chodźmy na to piwo!"
     #Meamir smile ON"
+    show p5 -blush bneutral wink lsmile with fc
     p5 "Dobrze, dobrze - chodźmy!"
-    #przejście do zoomu na skrzynkę z piwem i stoją naprzeciwko siebie, both smile ON"
+    # przejście do zoomu na skrzynkę z piwem i stoją naprzeciwko siebie,
+    # both smile ON"
+    show p1 bneutral wink lsmile with fc
+    show p5 bneutral wink lsmile with fc
     "Dotarli do miejsca z piwem. Meamir nalał dwa pełne kubki. Pierwszy podał Lii."
     p5 "Proszę bardzo, ten dla Ciebie."
     p1 "A dziękuję bardzo."
     #both blush ON"
+    show p1 blush with fc
+    show p5 blush with fc
     "Przez moment wpatrywali się na siebie bez słowa, powoli sącząc swoje trunki."
     "”Uroczy jest.” - pomyślała Lia."
     #smile Meamir ON"
+    show p5 bneutral wink lsmile -blush with fc
     p5 "Hmm... Jesteś stąd w ogóle?"
     #confused Lia ON"
+    show p1 bsurprised wink lneutral with fc
     "”Dziwne pytanie.” - pomyślała Lia."
     p1 "Hmm. Nie do końca. Co prawda mieszkam niedaleko, ale nie tutaj we wiosce."
     p5 "A gdzie?"
     p1 "Um... Niedaleko. Przy Tawernie na rozdrożach. Dlaczego pytasz?"
     #surprised_happy Meamir ON"
+    show p5 bsurprised widenedwink lsmile with fc
     p5 "Ah, wybacz. Pytam bo dopiero się wprowadziliśmy i poznaję okolicę."
     #smile Lia ON"
+    show p1 bneutral wink lsmile with fc
     p1 "Oo, nie wiedziałem, że ktoś jeszcze ma się wprowadzić. Słyszałam tylko o nowym kowalu..."
     #smile Meamir ON"
+    show p5 bneutral wink lsmile with fc
     p5 "Hah, to właśnie my. Znaczy dokładnie to mój ojciec."
     #sad_smile Meamir ON"
+    show p5 bsad wink lsmile with fc
     p5 "O mnie pewnie nikt nie wspominał, nie jestem na tyle interesujący."
     #smirk Lia ON"
+    show p1 bangry narrowedwink lsmirk with fc
     p1 "Oj, nie przesadzaj. Na pewno nie jest tak źle! Zresztą kowal bez swojego pomocnika niewiele zrobi!"
     #blush Meamir ON"
+    show p5 blush with fc
     p5 "Oh, pewnie masz rację!"
     #sad_smile Meamir ON"
+    show p5 bsad wink lsmile -blush with fc
     p5 "No ale to właśnie stąd moje dziwne pytanie! Ciekaw jestem co jest w okolicy."
     #happy Lia ON"
+    show p1 bneutral narrowedwink lsmile with fc
     p1 "Rozumiem! Po prostu byłam lekko zaskoczona takim pytanie."
     p1 "Więc jak na ten moment podoba Ci się to nasze otoczenie?"
     #blush Meamir ON"
+    show p5 blush with fc
     p5 "Umm. Na pewno po dzisiejszym wieczorze znacznie bardziej niż wczoraj."
     #blush Lia ON"
+    show p1 blush with fc
     p1 "Oh... A to dlaczego? Stało się coś ciekawego?"
     #smirk Meamir ON"
+    show p5 bangry narrowedwink lsmile -blush with fc
     p5 "Można tak powiedzieć."
     #confused Lia ON"
+    show p1 bsurprised wink lneutral -blush with fc
     p1 "Co masz dokładnie na myśli?"
     #blush Lia ON"
+    show p1 blush with fc
     p5 "To że na siebie wpadliśmy!"
     #blush Meamir ON"
+    show p5 blush with fc
     p5 "Wiem, że nie brzmi to dobrze... Ale cieszę się z tego naszego zderzenia."
     p5 "Nie wiem co bym tu sam robił, a w takim towarzystwie od razu milej..."
     #smile Lia ON"
+    show p1 bneutral wink lsmile -blush with fc with fc
     p1 "Hah, też się cieszę. Sama w sumie też byłam tutaj lekko zagubiona."
     #smile Meamir ON"
+    show p5 bneutral wink lsmile -blush with fc
     p5 "No widzisz! Hmm, to może chciałabyś się jeszcze gdzieś przejść?"
     #sad_smile Lia ON"
+    show p1 bsad wink lsmile with fc
     p1 "Hmm, wiesz co... Bardzo chętnie, ale robi się już trochę późno. Powinnam wracać"
     #sad Meamir ON"
+    show p5 bneutral wink lsad with fc
     p5 "Oj no! Już chcesz uciekać? Przecież jeszcze nie jest tak późno. Zostań jeszcze trochę!"
     p1 "Chciałabym, ale jeszcze muszę wrócić do domu - nie chcę, żeby rodzice się martwili!"
     #sad_smile Meamir ON"
+    show p5 bsad wink lsmile with fc
     p5 "Ah, no dobrze - rozumiem... To ostatnie pytanie tylko, co porabiasz na co dzień, pomagasz w tej Tawernie?"
     #surprised_happy Lia ON"
+    show p1 bsurprised widenedwink lsmile with fc
     p1 "Hah, tak. A czemu pytasz?"
     #smile Meamir ON"
+    show p5 bneutral wink lsmile with fc
     p5 "To w takim razie się może jutro zobaczymy! Mam coś odebrać."
     #smile Lia ON"
+    show p1 bneutral wink lsmile with fc
     p1 "Oo, to bardzo fajnie, więc nie ma co się przejmować skoro jutro się zobaczymy!"
     p5 "Może znajdziesz wtedy chwilkę na rozmowę, co?"
     #smirk Lia ON"
     #sad_smile Meamir ON"
+    show p1 bangry narrowedwink smirk with fc
+    show p5 bsad wink lsmile with fc
     p1 "Może może, kto wie. Zobaczymy jutro!"
     p1 "A teraz muszę naprawdę uciekać, papa!"
     #smile Meamir ON"
+    show p5 bneutral wink lsmile with fc
     p5 "Dobrze, do zobaczenia!"
     #znikają i out zoom wioski by całość bardziej widać"
     "Lia od razu opuściła wioskę i ruszyła w kierunku Tawerny."
     #background Tawerna noc"
     "W Tawernie nie było słychać już żadnych głosów. Po cichu ruszyła do swojego pokoju, żeby nikogo nie obudzić."
     #background pokój, Lia mówi do gracza, smile ON"
+    show p1pl bneutral wink_player lsmile with fc
     p1 "Nie sądziłam, że ten dzień będzie w miarę interesujący."
     p1 "Dziękuję za porady! Ciekawa jestem co czeka nas jutro."
     p1 "A teraz do spania! Dobranoc!"
@@ -1438,6 +1732,7 @@ label e5:
         "Zauważyła, że słońce było już wyżej niż zazwyczaj."
         "Szybko się ubrała i wstała."
         #Lia pojawia się na ekranie, do gracza, confused ON"
+        show p1pl bsurprised wink_player lneutral with fc
         p1 "Dzień dobry... huh, dziwne..."
         menu:
             "Dzień dobry. Co takiego?":
@@ -1446,18 +1741,23 @@ label e5:
         p1 "Hmm. No nic. Idę na śniadanie."
         #bg kuchnia, P1 wchodzi od prawej, mówi do gracza"
         #surprised_sad Lia ON"
+        show p1pl bsurprised widenedwink lsad with fc
         p1 "Oh, widzę, że już po śniadaniu..."
         #smile Lia ON"
+        show p1 bneutral wink lsmile with fc
         p1 "A nie, jednak coś mi zostawili. Zjem i czas do pracy."
         #przejście do sali, zoom na bar, P1 lewo, P3 prawo"
         p3 "A kto to wstał w końcu."
         #frown Lia ON"
+        show p1 bangry wink lneutral with fc
         p1 "Czemu mnie nikt nie obudził..."
         p3 "Pomyśleliśmy, że możesz chcieć odpocząć po wczoraj."
         #blush Lia ON"
+        show p1 blush with fc
         p1 "Oh. Dziękuję."
         p3 "Nie ma za co. A teraz możesz pomóc. Stań za barem i przypilnuj Tawerny."
         #sad_smile ON"
+        show p1 bsad wink lsmile -blush with fc
         p1 "Dobrze tato."
         #Zorn wychodzi, Lia za barem
 
@@ -1472,6 +1772,7 @@ label e5:
         #P2 wychodzi w prawo"
         "Lia przeciągnęła się ze zmęczeniem, westchnęła i w końcu wstała."
         #Lia na środku, mówi do gracza, frown ON"
+        show p1pl bangry wink_player lneutral with fc
         p1 "Dzień dobry... Uh, kolejny dzień przed nami - hurra..."
         menu:
             "Dzień dobry...":
@@ -1479,34 +1780,49 @@ label e5:
         p1 "Dobra, idę do kuchni coś zjeść."
         #bg kuchnia, P2 po lewej, P1 od prawej wchodzi"
         #P2 smile ON, P1 neutral"
+        show p2 smile
         p2 "Dzień dobry Lia, jak Ci minęła noc?"
         p1 "Normalnie. Jak miała niby minąć?"
         #sad Selene ON, surprised_sad Lia ON"
+        show p2 sad with fc
+        show p1 bsurprised widenedwink lsad with fc
         p2 "No dobrze, już o nic nie pytam."
         #neutral Selene ON"
+        show p2 neutral with fc
         p2 "Zjedz śniadanie i idź pomóż tacie."
         #sad_smile Lia ON"
+        show p1 bsad wink lsmile with fc
         p1 "Dobrze..."
         #Selene wychodzi z kuchni, Lia do gracza"
+        show p1 wink_player with fc
         p1 "No dobra. Zjem i idę pracować."
         #przejście do sali, zoom na bar, P1 lewo, P3 prawo"
         #frown Lia ON"
+        show p1 bangry wink lneutral with fc
         p3 "Miło, że w końcu dołączyłaś."
         p1 "Ale..."
         p3 "Dobra, nieważne. Sporo pracy przede mną."
         p3 "Zostań za barem i pilnuj Tawerny, nie powinno być zbyt dużo gości."
         #Zorn wychodzi, Lia za barem
 
-    #Lia do gracza, sad_smile ON
+    #Lia do gracza, sad_smile ON\
+    show p1pl bsad wink_player lsmile with fc
     p1 "Czasem przed południem nie jest tak źle... Ruch przeważnie niewielki."
     p1 "Zobaczymy co dzień przyniesie."
     #przejście na zewnątrz Tawerny, przejście czasowe (ptaszki, ruch słońca) i upływ czasu +1, powrót do środka"
     #po wejściu do Tawerny od razu odpala się komiks z kuflami, jest zoom na barze"
     p1 "Zamówienie nr. 66 gotowe!"
     #pojawia się guest 1, ten elf co ostatnio, podpis Gość po prostu"
+    show elf1:
+        align (-0.1,-0.5)
+        zoom 0.68
+    with dissolve
     p1 "Tylko proszę nie wylać jak ostatnio..."
     r1 "Dobrze! Tak się stanie moja Pani!"
-    #gość znika, pojawia się Henrietta"
+    #gość znika,
+    hide elf1 with dissolve
+    #pojawia się Henrietta"
+    show p8
     p8 "Cześć Lia. Co tam ciekawego?"
     p1 "Oh, hej Henrietta. Nic szczególnego. Coś podać?"
     p8 "Mhm. Daj butelkę czegoś mocnego, długi dzień przede mną."
@@ -1514,8 +1830,11 @@ label e5:
     #komiks jak będzie work z podaniem butelki jakiejś"
     p1 "To powinno być w porządku, proszę."
     #Henrietta smile ON, Lia blush ON"
+    show p8 bneutral wink lsmile with fc
+    show p1 blush with fc
     p8 "Dzięki Lia. Do zobaczenia później."
     #Lia smile ON"
+    show p1 bneutral wink lsmile -blush with fc
     p1 "Do zobaczenia."
     #Hen wychodzi, ujęcie na całą salę, Lia za barem + cienie przechodzących ludzi, ze 2-3 tu i tam"
     "Goście powoli przewijali się przez Tawernę zajmując całkowicie myśli Lii."
@@ -1524,64 +1843,84 @@ label e5:
         "Lia stała akurat plecami do baru gdy nagle usłyszała znajomy głos."
         p5 "Hej Lia! Dzień dobry!"
         #pojawia się Meamir, smile ON, Lia smile ON"
+        show p5 bneutral wink lsmile with fc
+        show p1 bneutral wink lsmile with fc
         p1 "O, hej Meamir! Dzień dobry!"
         p5 "Jak tam Twój dzień mija?"
         p1 "Standardowo, nic ciekawego się nie dzieje, a Twój?"
         p5 "To samo, nic ciekawego..."
         #blush Lia ON"
         #smirk Meamir ON"
+        show p1 blush with fc
+        show p5 bangry narrowedwink lsmile with fc
         p5 "Chociaż teraz już jest ciekawiej..."
         p1 "Znów się wygłupiasz!"
         #smile Meamir ON, Lia smile ON"
+        show p5 bneutral wink lsmile with fc
+        show p1 bneutral wink lsmile with fc
         p5 "No dobrze dobrze... Przyszedłem po zamówienie..."
 
     else:
         "Lia stała akurat plecami do baru gdy usłyszała przyjemny i interesujący głos."
         #podpis Meamira na początek ‘???’"
         #Meamir smile ON, Lia surprised_happy smile ON"
-        p5 "Dzień dobry! Hej!"
+        p5q "Dzień dobry! Hej!"
         #pojawia się Meamir po lewej, Lia wciąż za barem"
         p1 "Dzień dobry..."
         #pojawia się imię Meamira w podpisie"
         p5 "Nazywam się Meamir. Przyszedłem po zamówienie mojego taty, znaczy kowala..."
         #Lia smile ON"
+        show p1 bneutral wink lsmile with fc
         p1 "Oh, musisz chyba chwilkę poczekać, mój tata spodziewał się Ciebie później..."
         #sad_smile Meamir ON"
+        show p5 bsad wink lsmile with fc
         p5 "Ah, rozumiem..."
         #confused Lia ON"
+        show p1 bsurprised wink lneutral with fc
         p1 "..."
         p5 "..."
         p5 "Przepraszam, że pytam... Ale czy mógłbym poznać Twoje imię?"
         #sad_smile Lia ON"
+        show p1 bsad wink lsmile with fc
         p1 "Oh, przepraszam - nazywam się Lia. Powinnam się przedstawić od razu..."
         #smile Meamir ON"
+        show p5 bneutral wink lsmile with fc
         p5 "Nie nie, nic się nie stało! Bardzo miło Cię poznać, śliczne imię!"
         #blush Lia ON"
+        show p1 blush with fc
         p1 "Dziękuję!"
         p5 "Przyjemność po..."
 
 
     #bar zoom, P1 za barem, P5 przed barem po prawej, P3 za barem bardziej po lewej stronie
     #Lia confused ON, Meamir sad_smile ON
+    show p1 bsurprised wink lneutral -blush with fc
+    show p5 bsad wink lsmile with fc
     p3 "A co tu się dzieje młodzieży? Co to za rozmowy w pracy Lia?"
     p1 "Um..."
     p3 "Ty jesteś Meamir tak?"
     p5 "Tak, to ja..."
     p3 "Miałeś być później."
     #Meamir confused ON"
+    show p5 bsurprised wink lneutral with fc
     p5 "Ah, tak to prawda. Ale udało mi się wcześniej wyrobić z obowiązkami..."
     p3 "Hmm, no dobrze. Zaraz przygotuję wszystko. Poczekaj chwilę..."
     #tutaj taki efekt zrobić, że Zorn się odwraca od nich, ale od razu zawraca"
     p3 "Tylko grzecznie mi tutaj. Zaraz wrócę."
+    show p1 bsurprised widenedwink lneutral with fc
+    show p5 blush with fc
     #surprised_neutral Lia ON, Meamir blush ON
     #Zorn wychodzi w lewo
 
 
     if d_gofestiwal:
         #sad_smile Lia ON, smile Meamir ON
+        show p1 bsad wink lsmile with fc
+        show p5 bneutral wink lsmile with fc
         p5 "Hmm..."
         p5 "Wczoraj było bardzo przyjemnie na festiwalu!"
         #blush Lia ON"
+        show p1 blush with fc
         p1 "To prawda!"
         p5 "Może dziś też chciałabyś gdzieś wyjść? Na przykład na spacer wieczorem?"
         p1 "Oh, właściwie czemu..."
@@ -1589,31 +1928,45 @@ label e5:
 
     else:
         #confused Lia ON, Meamir blush ON
+        show p1 bsurprised wink lneutral with fc
+        show p5 blush with fc
         p5 "Um... Pomagasz codziennie w Tawernie?"
         #smile Lia ON"
+        show p1 bneutral wink lsmile with fc
         "”Całkiem uroczy.” - pomyślała Lia."
         p1 "Tak, pomagam tutaj - w zasadzie to moje główne zajęcie."
         #smile Meamir ON"
+        show p5 bneutral wink lsmile with fc
         p5 "Od dawna tu mieszkasz?"
         #surprised_neutral Lia ON"
+        show p1 bsurprised widenedwink lneutral with fc
         p1 "Całe życie w zasadzie... Dlaczego pytasz?"
         #sad_smile Meamir ON"
+        show p5 bsad wink lsmile with fc
         p5 "Ah, wybacz. Wprowadziliśmy się dopiero, więc chciałbym się zorientować w nowej okolicy."
         p5 "Mam nadzieję, że nie zabrzmiało to strasznie źle..."
         #Lia smile ON, Meamir smile ON"
+        show p1 bneutral wink lsmile with fc
+        show p5 bneutral wink lsmile with fc
         p1 "Nie! Bez obaw, tak tylko zapytałam."
         p5 "Ah, to dobrze. A coś jeszcze robisz na co dzień?"
         #sad_smile Lia ON"
+        show p1 bsad wink lsmile with fc
         p1 "Huh. Nie, niezbyt. Głównie pracuję, muszę pomagać rodzicom przy Tawernie."
         #surprised_happy Lia ON"
+        show p1 bsurprised widenedwink lsmile with fc
         p5 "Hmm, to tak sobie myślę. Może zechciałabyś wyjść ze mną na spacer? Pokazać okolicę czy coś..."
         #surprised_happy Meamir ON"
+        show p5 bsurprised widenedwink lsmile with fc
         p1 "Oj, hmm, teraz ciężko mi powiedzieć, ale w sumie czemu..."
 
     #dźwięk przerażającego KRZYKU
     #równo z krzykiem pojawia się Zorn i jego dialog
+    show p1 -blush
+    show p5 -blush
     p3 "Co tam się dzieje na zewnątrz?!"
     #angry Zorn activated
+    show p3 angry with fc
     p3 "Muszę to sprawdzić."
     #przejście do E6
 

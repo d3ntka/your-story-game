@@ -1,26 +1,36 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-While running game code:
-  File "game/akti.rpy", line 269, in script
-    show secretgarden_bg with tr_show_garden
-Exception: Parameter 'new_widget' is not known by ATL Transform.
+Executing ATL code at game/akti.rpy:999
+  File "game/akti.rpy", line 998, in script
+    show p1:
+TypeError: 'float' object is not iterable
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/akti.rpy", line 269, in script
-    show secretgarden_bg with tr_show_garden
-  File "renpy/ast.py", line 1388, in execute
-    renpy.exports.with_statement(trans, paired)
-  File "renpy/exports.py", line 1640, in with_statement
-    return renpy.game.interface.do_with(trans, paired, clear=clear)
-  File "renpy/display/core.py", line 2517, in do_with
-    clear=clear)
-  File "renpy/display/core.py", line 2978, in interact
-    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
-  File "renpy/display/core.py", line 3331, in interact_core
-    new_widget=layers_root)
-  File "renpy/atl.py", line 508, in __call__
-    raise Exception('Parameter %r is not known by ATL Transform.' % k)
-Exception: Parameter 'new_widget' is not known by ATL Transform.
+  File "game/akti.rpy", line 998, in script
+    show p1:
+  File "renpy/ast.py", line 1182, in execute
+    show_imspec(self.imspec, atl=getattr(self, "atl", None))
+  File "renpy/ast.py", line 1152, in show_imspec
+    atl=atl)
+  File "renpy/exports.py", line 753, in show
+    sls.add(layer, img, key, zorder, behind, at_list=at_list, name=name, atl=atl, default_transform=default_transform, transient=transient)
+  File "renpy/display/core.py", line 1095, in add
+    thing._show()
+  File "renpy/display/transform.py", line 1117, in _show
+    super(ATLTransform, self)._show()
+  File "renpy/display/transform.py", line 1086, in _show
+    self.update_state()
+  File "renpy/display/transform.py", line 1105, in update_state
+    fr = self.execute(self, self.st, self.at)
+  File "renpy/atl.py", line 631, in execute
+    action, arg, pause = block.execute(trans, timebase, self.atl_state, events)
+  File "renpy/atl.py", line 838, in execute
+    action, arg, pause = stmt.execute(trans, target - start, child_state, events)
+  File "renpy/atl.py", line 1216, in execute
+    setattr(newts, k, v)
+  File "renpy/display/transform.py", line 438, in set_align
+    self.xanchor, self.yanchor = value
+TypeError: 'float' object is not iterable
 

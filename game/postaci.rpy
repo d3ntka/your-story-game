@@ -1122,3 +1122,125 @@ image p10_hover_gold:
     "ove hover_proxy_gold"
 image p10 = LayeredImageProxy("ove")
 #imagebutton idle "p10" hover "p10_hover_gold" xpos 0.2 yalign 1.0 focus_mask True action NullAction()
+
+
+
+
+image levius_eyes_wink:
+    "levius_eyes_neutral"
+    choice:
+        2.2
+    choice:
+        3.0
+    choice:
+        4.3
+    choice:
+        3.5
+    "levius_eyes_neutral"
+    .23
+    "levius_eyes_closed"
+    .25
+    "levius_eyes_neutral"
+    choice:
+        .91
+    choice:
+        1.4
+    #choice:
+    #    4.5
+    "levius_eyes_closed"
+    .25
+    "levius_eyes_neutral"
+    .13
+    repeat
+image levius_eyes_narrowedwink:
+    "levius_eyes_narrowed"
+    choice:
+        2.2
+    choice:
+        3.0
+    choice:
+        4.3
+    choice:
+        3.5
+    "levius_eyes_narrowed"
+    .23
+    "levius_eyes_closed"
+    .25
+    "levius_eyes_narrowed"
+    .91
+    #choice:
+    #    1.2
+    #choice:
+    #    2.5
+    "levius_eyes_closed"
+    .25
+    "levius_eyes_narrowed"
+    .13
+    repeat
+image levius_eyes_widenedwink:
+    "levius_eyes_widened"
+    choice:
+        2.2
+    choice:
+        3.0
+    choice:
+        4.3
+    choice:
+        3.5
+    "levius_eyes_widened"
+    .23
+    "levius_eyes_closed"
+    .25
+    "levius_eyes_widened"
+    .91
+    #choice:
+    #    1.2
+    #choice:
+    #    2.5
+    "levius_eyes_closed"
+    .25
+    "levius_eyes_widened"
+    .13
+    repeat
+
+layeredimage levius:
+    always "levius_base"
+
+    group eyes:
+        attribute wink default:
+           "levius_eyes_wink"
+        attribute narrowedwink: # zdefiniowane powyżej
+            "levius_eyes_narrowedwink"
+        attribute widenedwink:
+            "levius_eyes_widenedwink"
+        attribute closed
+
+    group lips auto:
+        attribute lneutral default
+
+    group brows auto:
+        attribute bneutral default
+
+    attribute blush:
+        "levius_blush"
+    attribute smalltears:
+        "levius_smalltears"
+    attribute bigtears:
+        "levius_bigtears"
+
+    attribute shadow "levius_shadow"
+    attribute hover_proxy:
+        pos (-48,-48)
+        "levius_base_hover"
+    attribute hover_proxy_gold:
+        pos (-48,-48)
+        "levius_base_hover_gold"
+
+image p9_idle = LayeredImageProxy("levius")
+image p9_hover:
+    "levius hover_proxy"
+
+image p9_hover_gold:
+    "levius hover_proxy_gold"
+image p9 = LayeredImageProxy("levius")
+#imagebutton idle "p8" hover "p8_hover_gold" xpos 0.2 yalign 1.0 focus_mask True action NullAction()
