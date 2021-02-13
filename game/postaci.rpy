@@ -194,7 +194,7 @@ layeredimage lia:
     attribute shadow "lia_shadow"
 
 image p1 = LayeredImageProxy("lia", Transform(zoom=0.65))
-image p1pl = LayeredImageProxy("lia", Transform(xalign=0.5,yalign=0.0))
+image p1pl = LayeredImageProxy("lia", Transform(xalign=0.45,yalign=-0.15))
 
 #######################   RAVEN   ##########################
 

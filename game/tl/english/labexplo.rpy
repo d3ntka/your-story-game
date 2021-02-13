@@ -957,3 +957,193 @@ translate english strings:
     # game/labexplo.rpy:721
     old "“Co znaczy poświęcili się?”"
     new "“How did they sacrifice themselves?”"
+# TODO: Translation updated at 2021-02-10 19:19
+
+
+# game/labexplo.rpy:91
+translate english ee_town_9ce0f90a:
+
+    # "Dostępne w pełnej wersji"
+    "Available in full version"
+
+# game/labexplo.rpy:640
+translate english ee_monument_guard11_talk_ae473098:
+
+    # p11 "[guard11_talk_rand]"
+    p11 "[guard11_talk_rand]"
+
+# game/labexplo.rpy:703
+translate english ee_monument_guard12_talk_36230ace:
+
+    # p12 "[guard12_talk_rand]"
+    p12 "[guard12_talk_rand]"
+
+# game/labexplo.rpy:729
+translate english EE001_P12_ODP1_97f4024d:
+
+    # p12 "[guard12_talk_2_rand]"
+    p12 "[guard12_talk_2_rand]"
+
+# game/labexplo.rpy:745
+translate english ee_monument_architect_talk_f0dd6d73:
+
+    # p13 "[arch_talk_rand]"
+    p13 "[arch_talk_rand]"
+
+# game/labexplo.rpy:854
+translate english architect_talk_odp2_07bff4ad:
+
+    # p13 "[arch_talk_rand_end]"
+    p13 "[arch_talk_rand_end]"
+
+# game/labexplo.rpy:858
+translate english architect_talk_odp2_ca70c993:
+
+    # p13 "[arch_talk_rand_odp4]"
+    p13 "[arch_talk_rand_odp4]"
+
+translate english strings:
+
+    # game/labexplo.rpy:800
+    old "“Co Pani o tym sądzi?”"
+    new "“What do you think about this?”"
+
+# TODO: Translation updated at 2021-02-11 17:15
+
+# game/labexplo.rpy:863
+translate english ee000_tavern_hall_c2abc1b5:
+
+    # p1 "Uh, miałam go podlać... Znów zapomniałam. Muszę pamiętać, zeby zrobić to później."
+    p1 "Uh, I should water it... I forgot again. I have to remember to do it later."
+
+# game/labexplo.rpy:892
+translate english ee000_tavern_leftroom_288b3970:
+
+    # p1 "Hmm… To jeden z założycieli Tawerny."
+    p1 "Hmm, it's one of the Tavern founders."
+# TODO: Translation updated at 2021-02-11 17:40
+
+# game/labexplo.rpy:107
+translate english ee_tavern_hall_c8e6d231:
+
+    # p1 "[ee001_p4n_odp!t]"
+    p1 ""
+
+# game/labexplo.rpy:119
+translate english ee_tavern_hall_5feb6531:
+
+    # p1 "[qa[0]]"
+    p1 ""
+
+# game/labexplo.rpy:127
+translate english ee_tavern_hall_aba265f1:
+
+    # p1 "[qa[2]]"
+    p1 ""
+
+# game/labexplo.rpy:129
+translate english ee_tavern_hall_6208d979:
+
+    # p1 "[qa[3]]"
+    p1 ""
+
+# game/labexplo.rpy:149
+translate english ee_tavern_mainroom_3123b503:
+
+    # p1 "[qa[5]]"
+    p1 ""
+
+# game/labexplo.rpy:154
+translate english ee_tavern_mainroom_3123b503_1:
+
+    # p1 "[qa[5]]"
+    p1 ""
+
+# game/labexplo.rpy:197
+translate english ee_tavern_leftroom_8a721ecc:
+
+    # p1 "[qa[20]]"
+    p1 ""
+
+# game/labexplo.rpy:211
+translate english ee_tavern_rightroom_dcfdd4dc:
+
+    # p1 "[qa[21]]"
+    p1 ""
+
+# game/labexplo.rpy:319
+translate english ee_secretgarden1_eecdd3ca:
+
+    # p1 "secretgarden1_water"
+    p1 ""
+
+# game/labexplo.rpy:327
+translate english ee_secretgarden2_ac22004d:
+
+    # p1 "secretgarden2_owocki"
+    p1 ""
+
+# game/labexplo.rpy:332
+translate english ee_secretgarden2_c3703161:
+
+    # p1 "secretgarden2_sus"
+    p1 ""
+
+# game/labexplo.rpy:334
+translate english ee_secretgarden2_becf66b2:
+
+    # p1 "secretgarden2_terra"
+    p1 ""
+
+# game/labexplo.rpy:349
+translate english ee_secretgarden_70134eb7:
+
+    # p1 "secretgarden_owocki"
+    p1 ""
+
+# game/labexplo.rpy:352
+translate english ee_secretgarden_9ecf995e:
+
+    # p1 "secretgarden_sus"
+    p1 ""
+
+# game/labexplo.rpy:355
+translate english ee_secretgarden_3abeb396:
+
+    # p1 "secretgarden_terra"
+    p1 ""
+
+# game/labexplo.rpy:358
+translate english ee_secretgarden_1b1997c3:
+
+    # p1 "secretgarden_tree"
+    p1 ""
+
+# game/labexplo.rpy:361
+translate english ee_secretgarden_82da9844:
+
+    # p1 "secretgarden_water"
+    p1 ""
+
+# game/labexplo.rpy:363
+translate english ee_secretgarden_31bf5b33:
+
+    # p1 "[xadj.value]"
+    p1 ""
+
+# game/labexplo.rpy:366
+translate english secretgarden_owocki_70134eb7:
+
+    # p1 "secretgarden_owocki"
+    p1 ""
+
+translate english strings:
+
+    # game/labexplo.rpy:121
+    old "testing"
+    new ""
+
+    # game/labexplo.rpy:121
+    old "wylyź"
+    new ""
+

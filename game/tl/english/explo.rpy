@@ -94,3 +94,34 @@ translate english strings:
     # game/explo.rpy:189
     old "POKÓJ RODZICÓW"
     new "PARENTS' ROOM"
+# TODO: Translation updated at 2021-02-10 19:19
+
+translate english strings:
+
+    # game/explo.rpy:36
+    old "niedziela"
+    new "sunday"
+
+    # game/explo.rpy:38
+    old "poniedziałek"
+    new "monday"
+
+    # game/explo.rpy:40
+    old "wtorek"
+    new "tuesday"
+
+    # game/explo.rpy:42
+    old "środa"
+    new "wednesday"
+
+    # game/explo.rpy:44
+    old "czwartek"
+    new "thursday"
+
+    # game/explo.rpy:46
+    old "piątek"
+    new "friday"
+
+    # game/explo.rpy:48
+    old "sobota"
+    new "saturday"

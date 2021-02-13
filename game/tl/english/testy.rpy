@@ -230,3 +230,17 @@ translate english strings:
     old "testy postaci lokacji etc"
     new "testy postaci lokacji etc"
 
+# TODO: Translation updated at 2021-02-11 17:40
+
+# game/testy.rpy:6
+translate english testowanie_0ae9bcd0:
+
+    # ""
+    ""
+
+# game/testy.rpy:31
+translate english testowanie_0ae9bcd0_1:
+
+    # ""
+    ""
+

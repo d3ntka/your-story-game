@@ -6,7 +6,6 @@ default be01 = False
 default e3a1 = False
 default e3a2 = False
 
-
 label e1:
 
     #Na ekranie: Ciemny ekran.
@@ -42,8 +41,10 @@ label e1:
     "Lia zamknęła drzwi za ostatnim gościem i ze zmęczeniem oparła się o ścianę wsłuchując się w ciszę, którą zakłócał jedynie trzaskający ogień w kominku."
     "..."
     window hide
+    with fc
     pause 2.0
     window auto
+    with fc
     stop ambient fadeout 3.0
     #W tle cały czas delikatny dźwięk ognia, który teraz zanika (najlepiej do 5-6sec wyciszenie)""
     "Pomimo ogromnego zmęczenia znów utknęła na chwilę w swoich myślach."
@@ -57,7 +58,7 @@ label e1:
         linear 14 zoom 1.00
 
 
-
+    stop music fadeout 3.0
     menu:
         "Przesadzasz. Widać przecież, że jest w Tobie trochę życia.":
             p1 "Może i przesadzam."
@@ -99,21 +100,24 @@ label e1:
                 "Biegnij!":
                     pass
             scene black with fade
-            show e1a with dissolve
+            show e1c with dissolve
             #ujęcie komiks E1AC
             "I pobiegła."
             $ runFromThisLife = True
             #czarny ekran, napis biały na środku
             window hide
-            hide e1a with dissolve
+            with fc
+            hide e1c with dissolve
             pause 0.2
             show text _("{color=#eee}I tak Lia ruszyła przed siebie opuszczając obecne życie. Prawdopodobnie nikt już jej nigdy nie widział.{/color}") with dissolve
             pause
             window auto
+            with fc
             # TODO w tle głos DUB01
             # TODO \Co to było? Cofnij. Teraz.\
             # TODO cofa grę do samego początku i usuwa tę opcję
             # TODO dostajemy achievement ACHIEV01
+            $ renpy.block_rollback()
             jump e1
 
 
@@ -238,6 +242,7 @@ label e1a:
         ease 2 xalign 0.78 yalign .04
     p1 "A tutaj mamy Sekretny Ogród, do którego zaraz idziemy."
     window hide
+    with fc
     scene forest_night with Dissolve(1.0):
         pos (-1.0,-0.6) zoom 0.98
         linear 12.5 zoom 1.0
@@ -256,6 +261,8 @@ label e1a:
 
     show p1 shadow at right with easeinright:
         xoffset -120
+    window auto
+    with fc
     #background stary las w nocy, przejście jak wcześniej było (ruch tła na zoomie, Lia powoli idzie od prawej do lewej)"
     p1 "Może i dobrze, że mnie do tego namówiłeś."
     p1 "Chodźmy. To niedaleko. Musimy przejść tylko kawałek przy lesie."
@@ -299,7 +306,7 @@ label e1a:
             p1 "Tak czy inaczej."
 
     #Lia thinking ON
-    show p1 bangry closed lsad with fc
+    show p1 bangry closed lneutral with fc
     p1 "Tak się zastanawiam..."
     #sad_smile Lia ON"
     show p1 bsad wink lsmile with fc
@@ -431,7 +438,7 @@ label e1a:
     #background zmiana na Tawerna z zewnątrz (wersja nocna ofc)
     scene anim_tavern nighttime dragon with fade:
         pos (-0.4, -0.8) zoom 2.5
-        linear 8 pos (-0.5,-0.3) zoom 1.8
+        ease 8 pos (-0.5,-0.3) zoom 1.8
 
     $ renpy.sound.set_volume(0.9, delay=0, channel='ambient')
     $ renpy.sound.set_pan(-0.4, delay=0, channel='ambient')
@@ -452,12 +459,18 @@ label e1a:
     menu:
         "Dobranoc.":
             pass
+    hide p1pl with dissolve
+    pause 0.3
     $ renpy.sound.set_volume(1, delay=0, channel='ambient')
     $ renpy.sound.set_pan(0, delay=0, channel='ambient')
-    show cg_dream_good
+    $ quick_menu = False
+    call screen dream_good with Dissolve(2.0)
+    scene black
+    pause 1
     # TODO przejście w sen, taka mgiełka ładna i pojawia się CG_dream_good. Troszkę światła się majtają i efekt ekran przechodzi zoomem od dołu do góry, żeby jakoś tak zatrzymał się lekko na twarzy i potem poof budzi się
     #przejście do E2A
     jump e2a
+
 
 ################################################################################
 #################################    E1B     ###################################
@@ -510,9 +523,14 @@ label e1b:
             #angry Lia ON
             show p1pl bangry narrowedwink_player lsad with fc
             p1 "Dobranoc."
-
-    show cg_dream_bad
+    hide p1pl with dissolve
+    pause 0.3
+    $ quick_menu = False
+    call screen dream_bad with Dissolve(2.0)
+    scene black
+    pause 1
     # TODO
+
     #po “dobranoc” powolne przejście w czarny ekran jakby sen, może lekka mgiełka?
     #tutaj odpala się zły sen
     #efekt mgiełki i przejścia w sen, jako background mamy ciemny las z postacią z pochodnią, powolny zoom na nią leci (podobnie jak było obecnie), zbliżenie trwa chwilę i nagle po paru sekundach wyskakuje CG_dream_bad może z jakimś creepy dźwiękiem i po sekundzie poof znika wszystko i Lia się budzi
@@ -527,8 +545,10 @@ label e1b:
 
 label e2a:
     #na ekranie pokój P1 o brzasku
-    $ dt == 1
+    $ dt = 1
+    $ quick_menu = True
     scene anim_room_lia_morning with fade
+    play music alexander_nakarada_relaxing_ballad volume 0.5
     "Lia otworzyła oczy wraz z pierwszymi promieniami słońca, które muskały jej twarz zza okna."
     "Delikatne ciepło, które poczuła zmotywowało ją od razu do wstania."
     "Uśmiechnęła się niespodziewanie do zbliżającego się dnia."
@@ -637,13 +657,14 @@ label e2a:
     #P2 wychodzi na pierwszy plan (coś podobnego co wcześniej było)"
     #P2 smile ON"
     #surprised_sad Lia ON"
-    show p2:
+    show p2 smile:
         linear 0.5 xalign 0.5
     show p1 bsurprised widenedwink lsad with fc
     p2 "Dziecko... Przecież Cię znamy. Co się stało?"
     #disappointed Lia ON"
     show p1 bsad closed lsad with fc
     p1 "Ehh..."
+    stop music fadeout 5.0
 
     menu:
         "Powiedz im prawdę.":
@@ -714,8 +735,8 @@ label e2a:
                     #w tym miejscu idzie to samo co w E2A1, w całości
                     jump e2a1
 
-        "[[Nic nie mów.]" if not be01:
-            jump be01
+        # TODO "[[Nic nie mów.]" if not be01:
+        #     jump be01
             #przejście do BE01
 
 # osobno bo można tu przejść z 2 wyborów w poprzednim menu
@@ -723,12 +744,15 @@ label e2a1:
     # E2A1
     $ theTruthHasBeenSpoken = True
     #sad_smile Lia ON
-    show p1 bsad wink lsmile with fc
+    show p2 neutral
+    show p1 bsad wink lsmile
+    with fc
     p1 "Uhm. Po prostu byłam się przejść."
     #angry Zorn ON"
     #shock Lia ON"
-    show p3 angry angrywink with fc
-    show p1 bsurprised widenedwink lopen with fc
+    show p3 angry angrywink
+    show p1 bsurprised widenedwink lopen
+    with fc
     p3 "GDZIE?!"
     p3 "Nie każ mi czekać!"
     p2 "Zorn. Nie denerwuj się proszę."
@@ -817,8 +841,9 @@ label e2b:
     p1 "Tato! Nie możesz tak wchodzić bez pukania. Co jakbym była rozebrana?!"
     #surprised_happy Lia ON"
     #neutral P3 ON"
-    show p1 bsurprised widenedwink lsmile with fc
-    show p3 neutral with fc
+    show p1 bsurprised widenedwink lsmile
+    show p3 neutral
+    with fc
     p3 "No dobrze dobrze, przepraszam - masz rację."
     p3 "Po prostu wołałem Cię całą chwilę i martwiłem się, że coś się stało."
     p3 "Ominęło Cię już śniadanie. Trzeba jeszcze przygotować Tawernę na otwarcie."
@@ -899,7 +924,8 @@ label e2b:
 ################################################################################
 
 label e3:
-
+    play music peritune_minstrel fadein 10.0 fadeout 10.0 volume 0.4
+    $ dt = 1
     ################ devstuff #################
     if config.developer:
         menu:
@@ -971,7 +997,7 @@ label e3:
         p3 "A teraz chodź do pracy."
 
     else:
-        scene ep_img_tavern_mainroom
+        scene ep_img_tavern_mainroom_nozoom
         show p1:
             align(0.2,1.0) xzoom -1
         show p3:
@@ -980,7 +1006,7 @@ label e3:
         #background sala główna, P1 lewo i P3 prawo stoją sobie
         p3 "O! Jesteś wreszcie. Chodź mi pomóc."
 
-    scene ep_img_tavern_mainroom
+    scene ep_img_tavern_mainroom_nozoom
     show p1:
         align(0.2,1.0) xzoom -1
     show p3:
@@ -1011,7 +1037,7 @@ label e3:
 
 label poczyszczeniustolu:
     #sala główna, Lia na środku, neutral ON
-    scene ep_img_tavern_mainroom
+    scene ep_img_tavern_mainroom_nozoom
     show p1:
         align(0.5,1.0)
     if n == n_max:
@@ -1128,7 +1154,7 @@ label poczyszczeniustolu:
         linear 3 xalign 0.0
     "Lia zabrała się za sprzątanie sali. Jak tylko skończyła to ruszyła z powrotem do głównej sali."
     #przejście do sali głównej, Zorn za barem"
-    scene img_tavern_mainroom
+    scene ep_img_tavern_mainroom
     show p3:
         zoom 0.3 xpos 0.6 yalign 0.6
         xzoom -1
@@ -1153,6 +1179,10 @@ label poczyszczeniustolu:
     p3 "Wszystko posprzątane?"
     p1 "Tak."
     p3 "Super, to przejmij bar i..."
+
+
+    stop music fadeout 2
+
     tg1 "Ekhem."
     hide p3 with moveoutleft
     scene ep_img_tavern_mainroom
@@ -1203,15 +1233,21 @@ label poczyszczeniustolu:
     #Lia mówiąca do gracza, neutral ON"
     show p1 bneutral wink_player lneutral with fc
     p1 "No to zaczynamy pracę."
+
+
     #tutaj skip, przejście na background zewnątrz Tawerny i upływ czas do południa, 3-4sec, +1 upływ czasu"
     window hide
+    with fc
     show anim_tavern outside dragon with dissolve
     pause 4
     hide anim_tavern outside dragon
+    play ambient medieval_tavern_ambience_5min fadein 1.0 fadeout 2.0 volume 0.7
+    play music the_old_tower_inn fadein 5.0 volume 0.7
     #po przejściu powrót do Tawerny, zoom taki sam jak wcześniej i Lia mówiąca do gracza, Lia frown ON"
     show p1 bangry wink lneutral
     with dissolve
     window auto
+    with fc
     show p1 wink_player with fc
     p1 "Oh... Jesteś tutaj dalej ze mną?"
     menu:
@@ -1238,6 +1274,8 @@ label poczyszczeniustolu:
     show p1 bneutral wink lsmile with fc
     p7 "Dla mnie to co zwykle!"
     p1 "Już podaję!"
+    window hide
+    with fc
     show black with dissolve
     show work3a with dissolve
     show work3b with Dissolve(1.0)
@@ -1245,6 +1283,8 @@ label poczyszczeniustolu:
     hide work3b with Dissolve(1.0)
     hide work3a with dissolve
     hide black with dissolve
+    window auto
+    with fc
     #komiks z folderu work work, tak by jako animacja wyglądał work 3A i work 3B"
     #Lia blush ON"
     show p1 blush with fc
@@ -1298,8 +1338,9 @@ label poczyszczeniustolu:
     p1 "Um... Cześć!"
     p9 "To ja, Levius. Pamiętasz mnie?"
     #sad_smile Lia ON, Levius smile ON"
-    show p1 bsad wink lsmile with fc
-    show p9 bneutral wink lsmile with fc
+    show p1 bsad wink lsmile
+    show p9 bneutral wink lsmile
+    with fc
     p1 "Oh, tak - oczywiście."
     p9 "Cieszę się! Umm... Co porabiasz?"
     p1 "Huh? Teraz jak widzisz pracuję."
@@ -1308,8 +1349,9 @@ label poczyszczeniustolu:
     p9 "Oh, no tak. To nie przeszkadzam teraz."
     p9 "Jakbyś miała ochotę później porozmawiać to nie krępuj się proszę."
     #smile Lia ON, Levius smile ON"
-    show p1 bneutral wink lsmile with fc
-    show p9 bneutral wink lsmile with fc
+    show p1 bneutral wink lsmile
+    show p9 bneutral wink lsmile
+    with fc
     p1 "Dobrze, będę pamiętać."
     p9 "Dziękuję! Do zobaczenia!"
     #Levius wychodzi z kadru, Lia confused ON i mówi do gracza:"
@@ -1320,8 +1362,10 @@ label poczyszczeniustolu:
     show ep_img_tavern_mainroom with dissolve
     "Lia wróciła do pracy i w pełni się na niej skupiła."
     #tutaj odpala się przejście na zewnątrz Tawerny i dwie ścieżki są:
-
-
+    window hide
+    with fc
+    stop ambient
+    stop music
     ################ devstuff #################
     if config.developer:
         menu:
@@ -1338,9 +1382,12 @@ label poczyszczeniustolu:
         show anim_tavern outside dragon with Dissolve(1.2)
         pause 3.5
         hide ep_img_tavern_mainroom
+        show p1 wink
         hide anim_tavern outside dragon with Dissolve(1.2)
         show p3 with moveinleft:
             align (.1,1.0)
+        window auto
+        with fc
         p3 "Hej Lia, jak idzie praca?"
         p1 "Wszystko dobrze."
         p3 "To dobrze. Jeśli chcesz dalej iść na festiwal to mogę Cię już zastąpić."
@@ -1428,6 +1475,8 @@ label poczyszczeniustolu:
             xalign -0.3
             linear 1 xalign .2
         pause 1
+        window auto
+        with fc
         p3 "Jak idzie praca?"
         #frown Lia ON"
         show p1 bangry wink lneutral with fc
@@ -1455,15 +1504,25 @@ label poczyszczeniustolu:
 
 
 label e4:
-    scene anim_tavern outside dragon with dissolve
+    scene anim_tavern outside dragon
     #background zewnątrz Tawerny, popołudnie, Lia do gracza, surprised_happy ON
+    show p1pl bsurprised widenedwink_player lsmile
+    with dissolve
     p1 "Dobra. Tak jak ostatnio, pokażę Ci w ogóle gdzie idziemy."
+    show mapka_fhd with dissolve:
+        zoom 1.5 xalign 0.59 yalign .14
+        ease 2 zoom 2.5
+        ease 4 xalign 0.82 yalign .36
+        ease 2 zoom 2.3 xalign 0.85 yalign .45
     #otwiera się mapa, zoom na lokację Tawerny i przesunięcie zoomu na wioskę"
     p1 "Idziemy tutaj do wioski, pójdziemy skrótem przez las, nic się nie powinno stać."
     #mapa się zamyka, Lia do gracza, Lia happy ON"
+    hide mapka_fhd with dissolve
     show p1pl bneutral narrowedwink_player lsmile with fc
     p1 "Chodźmy!"
     #przejście, upływ czasu +1, backgroung ścieżka przed wioską, Lia do gracza, surprised_neutral ON"
+    scene forest_village_dragonevening with fade:
+        zoom 0.8 align (0.83,0.85)
     show p1pl bneutral wink_player lneutral with fc
     p1 "Jesteśmy prawie na miejscu. W sumie jak już tu dotarliśmy to nie jestem przekonana do tego pomysłu..."
     menu:
@@ -1476,7 +1535,7 @@ label e4:
         "Hmm. Na pewno nie zaszkodzi pójść i zobaczyć co i jak.":
             pass
     #sad_smile Lia ON"
-    p1pl bsad wink_player lsmile with fc
+    show p1pl bsad wink_player lsmile with fc
     p1 "Niby tak... To co mam zrobić?"
     menu:
         "Wejdź do wioski, znajdź jakieś piwo i zobaczymy co dalej. Na pewno nie będzie źle.":
@@ -1488,7 +1547,18 @@ label e4:
     show p1pl bneutral wink_player lsmile with fc
     p1 "No dobrze. Ufam Ci, chodźmy."
     #przejście na wioskę, bawiący się ludzie cienie, Lia od prawej do lewej bardzo powoli ‘idzie’, surprised_happy ON
-    show p1 bsurprised widenedwink lsmile with fc
+    scene anim_festival_night_dragon:
+        align (0.5,0.5)
+        pos (-0.4,-0.14)
+        zoom 0.9
+    show p1 bsurprised widenedwink lsmile:
+        zoom 0.8
+        align (1.0,1.0)
+        linear 10 xalign 0.5
+    $ renpy.music.set_volume(0.3, delay=0, channel='music')
+    play music peritune_market fadein 3.0
+    with fade
+
     "Lia ruszyła przez wioskę sprawnie unikając bliższego kontaktu z ludźmi."
     "Wolała nie ryzykować potencjalnego wciągnięcia w wir tańca."
     "Wzięła piwo i przystanęła gdzieś na boku."
@@ -1504,6 +1574,11 @@ label e4:
     #neutral Lia ON"
     show p1 bneutral wink_player lneutral with fc
     p1 "Hmm. Przeważnie jest słabiej widoczny. Spójrz w górę."
+    hide p1 with fc
+    show anim_festival_night_dragon with dissolve:
+        # align (0.5,0.5) zoom 0.9
+        ease 4 pos (-0.4,0.45)
+
     #Lia znika, kamera przechodzi na niebo skupiając się na smoku (lekki ruch)"
     p1 "Na jego cześć jest cały festiwal."
     p1 "Krąży wokół niego też sporo legend."
@@ -1514,19 +1589,20 @@ label e4:
             # Lia wraca, jest na boku tak żeby nie zasłaniała smoka i wciąż jakby
             # bliżej ekranu rozmawiając z graczem
             # sad_smile Lia ON
-            show p1pl bsad wink_player lsmile with fc
+            show p1 bsad wink_player lsmile with fc:
+                align (1.0,-0.3) zoom 1.5
             p1 "Zaznaczę od razu, że w sumie to nie wiem za dużo."
             p1 "Pamiętam tylko tyle co opowiadała mi mama..."
             #smile Lia ON"
-            show p1pl bneutral wink_player lsmile with fc
+            show p1 bneutral wink_player lsmile with fc
             p1 "Ale... Po pierwsze smok pojawia się zawsze w różnych odstępach czasowych."
             p1 "Nikt nie wie kiedy dokładnie się pojawi i dlaczego jest to takie losowe."
             p1 "Ostatni festiwal odbywał się jakoś siedem lat temu."
             #blush Lia ON"
-            show p1pl blush with fc
+            show p1 blush with fc
             p1 "Wcześniejszego nie pamiętam bo byłam zbyt mała..."
             #smile Lia ON"
-            show p1pl bneutral wink_player lsmile -blush with fc
+            show p1 bneutral wink_player lsmile -blush with fc
             p1 "Obecny trwa prawie dwa tygodnie i powoli zbliżamy się do końca."
             p1 "Wracając do samej legendy. Mówi się, że Smok pojawia się w momencie kiedy Królestwo jest zagrożone."
             p1 "Zielony Smok jest jakby strażnikiem naszej wyspy czy coś takiego."
@@ -1537,10 +1613,10 @@ label e4:
             p1 "Słyszałam od gości w Tawernie, że na zakończenie festiwalu księżniczka Aurora i książę Caius przyjadą świętować do naszej wioski."
             p1 "Wszyscy są tym jakoś specjalnie podekscytowani."
             #blush Lia ON"
-            show p1pl blush with fc
+            show p1 blush with fc
             p1 "W sumie chętnie zobaczę tę księżniczkę, ponoć jest bardzo piękna..."
             #neutral Lia ON"
-            show p1pl bneutral wink_player lneutral -blush with fc
+            show p1 bneutral wink_player lneutral -blush with fc
             p1 "No ale nie jest to teraz ważne."
             p1 "Hmm, to chyba wszystko co wiem."
             p1 "Jak będziemy chcieli to może uda się kiedyś dowiedzieć czegoś więcej od kogoś."
@@ -1548,27 +1624,43 @@ label e4:
                 "Dzięki za opowieść.":
                     pass
             #smile Lia ON"
-            show p1pl bneutral wink_player lsmile with fc
+            show p1 bneutral wink_player lsmile with fc
             p1 "Nie ma za co!"
 
         "Nie, dzięki.":
             #Lia wraca, jest na boku tak żeby nie zasłaniała smoka i wciąż jakby bliżej ekranu rozmawiając z graczem
             #frown Lia ON
-            show p1pl bangry wink_player lneutral with fc
+            show p1 bangry wink_player lneutral with fc:
+                align (1.0,-0.3) zoom 1.5
             p1 "Hmm. Jak chcesz."
 
     # po tekstach lekki zastój na smoku i powrót na standardowe ujęcie Lii,
     # mówi do gracza, relaxed ON
+    hide p1 with fc
+    show anim_festival_night_dragon with fc:
+        # align (0.5,0.5) zoom 0.9
+        ease 4 pos (-0.4,-0.14)
+    pause 4
     show p1pl bneutral closed lsmile with fc
-    p1 "Hmm. Nie jest tak źle tu..."
+    p1 "Hmm. Nie jest tu tak źle..."
+    with hpunch
     #efekt zatrzęsienia ekranu, Meamir w nią wpadł"
+    hide p1pl with fc
     "Zamyślona Lia prawie się przewróciła po niespodziewanym zderzeniu."
     #zwykły ujęcie, wioska w tle, Lia stoi z boku i przed nią Meamir"
     #Lia shock ON"
-    show p1 bsurprised widenedwink lopen with fc
+    show p1 bsurprised widenedwink lopen:
+        align (0.7,1.0)
+    show p5:
+        align (0.5,1.0) xzoom -1
+    with dissolve
     "Odzyskała szybko równowagę i zauważyła przed sobą nieznajomego chłopaka!"
     #Meamir podpisany na początku ‘???’, Meamir surprised_happy ON"
     show p5 bsurprised widenedwink lsmile with fc
+    show p5:
+        linear 1.0 xalign 0.45
+    show p1:
+        ease 0.5 xalign 0.75
     p5q "Na Zielonego Smoka! Przepraszam! Nie zauważyłem Cię, czy wszystko w porządku?"
     #Lia surprised_neutral ON"
     show p1 bsurprised widenedwink lneutral with fc
@@ -1576,7 +1668,7 @@ label e4:
     #Meamir blush ON"
     show p5 blush with fc
     p5q "Ojej, przepraszam raz jeszcze... Rozglądałem się i nie patrzyłem przed siebie."
-    "”Uroczy.” - pomyślała Lia."
+    "{i}Uroczy.{/i} - pomyślała Lia."
     #happy Lia ON"
     show p1 bneutral narrowedwink lsmile with fc
     p1 "Nic się nie stało! Naprawdę. Sama byłam też zamyślona... Trochę też moja wina."
@@ -1607,22 +1699,33 @@ label e4:
     p5 "Dobrze, dobrze - chodźmy!"
     # przejście do zoomu na skrzynkę z piwem i stoją naprzeciwko siebie,
     # both smile ON"
-    show p1 bneutral wink lsmile with fc
-    show p5 bneutral wink lsmile with fc
+
+    scene anim_festival_night_dragon:
+        align (0.5,0.5)
+        pos (-0.1,-0.34)
+        zoom 1.1
+    show festival_skrzynka_night
+    # Lia and Meamir smile ON
+    show p5 bneutral wink lsmile:
+        align (.2,1.0) xzoom -1
+    show p1 bneutral wink lsmile:
+        align (.8,1.0)
+    with fade
     "Dotarli do miejsca z piwem. Meamir nalał dwa pełne kubki. Pierwszy podał Lii."
     p5 "Proszę bardzo, ten dla Ciebie."
     p1 "A dziękuję bardzo."
     #both blush ON"
-    show p1 blush with fc
-    show p5 blush with fc
+    show p1 blush
+    show p5 blush
+    with fc
     "Przez moment wpatrywali się na siebie bez słowa, powoli sącząc swoje trunki."
-    "”Uroczy jest.” - pomyślała Lia."
+    "{i}Uroczy jest.{/i} - pomyślała Lia."
     #smile Meamir ON"
     show p5 bneutral wink lsmile -blush with fc
     p5 "Hmm... Jesteś stąd w ogóle?"
     #confused Lia ON"
     show p1 bsurprised wink lneutral with fc
-    "”Dziwne pytanie.” - pomyślała Lia."
+    "{i}Dziwne pytanie.{/i} - pomyślała Lia."
     p1 "Hmm. Nie do końca. Co prawda mieszkam niedaleko, ale nie tutaj we wiosce."
     p5 "A gdzie?"
     p1 "Um... Niedaleko. Przy Tawernie na rozdrożach. Dlaczego pytasz?"
@@ -1671,7 +1774,7 @@ label e4:
     p5 "Wiem, że nie brzmi to dobrze... Ale cieszę się z tego naszego zderzenia."
     p5 "Nie wiem co bym tu sam robił, a w takim towarzystwie od razu milej..."
     #smile Lia ON"
-    show p1 bneutral wink lsmile -blush with fc with fc
+    show p1 bneutral wink lsmile -blush with fc
     p1 "Hah, też się cieszę. Sama w sumie też byłam tutaj lekko zagubiona."
     #smile Meamir ON"
     show p5 bneutral wink lsmile -blush with fc
@@ -1698,19 +1801,33 @@ label e4:
     p5 "Może znajdziesz wtedy chwilkę na rozmowę, co?"
     #smirk Lia ON"
     #sad_smile Meamir ON"
-    show p1 bangry narrowedwink smirk with fc
-    show p5 bsad wink lsmile with fc
+    show p1 bangry narrowedwink smirk
+    show p5 bsad wink lsmile
+    with fc
     p1 "Może może, kto wie. Zobaczymy jutro!"
     p1 "A teraz muszę naprawdę uciekać, papa!"
     #smile Meamir ON"
     show p5 bneutral wink lsmile with fc
     p5 "Dobrze, do zobaczenia!"
     #znikają i out zoom wioski by całość bardziej widać"
+    hide p1
+    hide p5
+    hide festival_skrzynka_night
+    with dissolve
+    show anim_festival_night_dragon:
+        align (0.5,0.5)
+        pos (-0.1,-0.34) zoom 1.1
+        linear 10 pos (0.1,0.3) zoom 0.65
+    with dissolve
     "Lia od razu opuściła wioskę i ruszyła w kierunku Tawerny."
+    stop music
     #background Tawerna noc"
+    scene img_tavern_mainroom_night with fade
     "W Tawernie nie było słychać już żadnych głosów. Po cichu ruszyła do swojego pokoju, żeby nikogo nie obudzić."
     #background pokój, Lia mówi do gracza, smile ON"
-    show p1pl bneutral wink_player lsmile with fc
+    scene anim_room_lia_nightdragonlight
+    show p1pl bneutral wink_player lsmile shadow
+    with dissolve
     p1 "Nie sądziłam, że ten dzień będzie w miarę interesujący."
     p1 "Dziękuję za porady! Ciekawa jestem co czeka nas jutro."
     p1 "A teraz do spania! Dobranoc!"
@@ -1725,13 +1842,33 @@ label e4:
 
 
 label e5:
+    #animacja przejścia z nocy w dzień, zewnątrz Tawerny
+    #background pokój Lii, rano
+    ################ devstuff #################
+    if config.developer:
+        menu:
+            "dev/ bylismy na festiwalu":
+                $ d_gofestiwal = True
+                pass
+            "dev/ nie bylismy na festiwalu":
+                $ d_gofestiwal = False
+                pass
+    #########################################
+
+    scene anim_tavern nighttoday dragon with dissolve
+    $ renpy.sound.set_volume(0.5, delay=0, channel='ambient')
+    $ renpy.sound.set_pan(-0.4, delay=0, channel='ambient')
+    play ambient sfx_morning_ambience
+    pause 6
+    $ renpy.music.set_volume(0.5, delay=0, channel='musictight')
+    play musictight the_old_tower_inn fadein 1.0
     if d_gofestiwal:
-        #animacja przejścia z nocy w dzień, zewnątrz Tawerny
-        #background pokój Lii, rano
+        scene anim_room_lia_noondragon with fade
         "Lia powoli otworzyła oczy i rozejrzała się po pokoju."
         "Zauważyła, że słońce było już wyżej niż zazwyczaj."
         "Szybko się ubrała i wstała."
         #Lia pojawia się na ekranie, do gracza, confused ON"
+
         show p1pl bsurprised wink_player lneutral with fc
         p1 "Dzień dobry... huh, dziwne..."
         menu:
@@ -1739,14 +1876,27 @@ label e5:
                 pass
         p1 "Zaspałam i nikt nie przyszedł mnie obudzić..."
         p1 "Hmm. No nic. Idę na śniadanie."
+        stop ambient
+        $ renpy.sound.set_volume(1, delay=0, channel='ambient')
+        $ renpy.sound.set_pan(0, delay=0, channel='ambient')
         #bg kuchnia, P1 wchodzi od prawej, mówi do gracza"
         #surprised_sad Lia ON"
-        show p1pl bsurprised widenedwink lsad with fc
+        scene room_kitchenmealday with fade
+        show p1 with moveinright:
+            align (.7,1.0)
+        show p1 bsurprised widenedwink_player lsad with fc
         p1 "Oh, widzę, że już po śniadaniu..."
         #smile Lia ON"
-        show p1 bneutral wink lsmile with fc
+        show p1 bneutral wink_player lsmile with fc
         p1 "A nie, jednak coś mi zostawili. Zjem i czas do pracy."
         #przejście do sali, zoom na bar, P1 lewo, P3 prawo"
+        scene tavern_main_bar_bg0
+        show p3 at zabarem:
+            xalign 0.5 xzoom -1
+        show tavern_main_bar_bar1
+        with fade
+        show p1 at zabarem behind tavern_main_bar_bar1 with moveinleft:
+            xzoom -1
         p3 "A kto to wstał w końcu."
         #frown Lia ON"
         show p1 bangry wink lneutral with fc
@@ -1759,17 +1909,31 @@ label e5:
         #sad_smile ON"
         show p1 bsad wink lsmile -blush with fc
         p1 "Dobrze tato."
+        show p3 at zabarem:
+            linear 1 xalign -0.45
+        show p1 at zabarem:
+            linear 1 xalign 0.5
+        pause 1
+        show p1 at zabarem with fc:
+            xzoom 1
+        pause 0.3
         #Zorn wychodzi, Lia za barem
+        hide p3
 
     else:
-        #animacja przejścia z nocy w dzień, zewnątrz Tawerny
-        #background pokój Lii, rano
+        scene anim_room_lia_morningdragon with fade
         "Lię zbudził dźwięk otwieranych drzwi. Otworzyła oczy."
         #od prawej wchodzi Selene"
+        show p2 with moveinright:
+            align (.7,1.0)
         p2 "Dzień dobry Lia, wstawaj już. Zaraz śniadanie i trzeba tacie pomóc w Tawernie."
         p1 "Uhh... Jeszcze pięć minut..."
         p2 "Wstawaj wstawaj. Śniadanie czeka na Ciebie."
         #P2 wychodzi w prawo"
+        show p2 with fc:
+            xzoom -1
+        pause 0.2
+        hide p2 with moveoutright
         "Lia przeciągnęła się ze zmęczeniem, westchnęła i w końcu wstała."
         #Lia na środku, mówi do gracza, frown ON"
         show p1pl bangry wink_player lneutral with fc
@@ -1778,14 +1942,25 @@ label e5:
             "Dzień dobry...":
                 pass
         p1 "Dobra, idę do kuchni coś zjeść."
-        #bg kuchnia, P2 po lewej, P1 od prawej wchodzi"
-        #P2 smile ON, P1 neutral"
-        show p2 smile
+        stop ambient
+        $ renpy.sound.set_volume(1, delay=0, channel='ambient')
+        $ renpy.sound.set_pan(0, delay=0, channel='ambient')
+
+        ##################### Kuchnia ########################
+        #bg kuchnia, P2 po lewej, P1 wchodzi od prawej
+        #P2 smile ON, P1 neutral
+        scene room_kitchenmealday
+        show p2 smile:
+            align (.3,1.0) xzoom -1
+        with fade
+        show p1 with moveinright:
+            align (.75,1.0)
         p2 "Dzień dobry Lia, jak Ci minęła noc?"
         p1 "Normalnie. Jak miała niby minąć?"
         #sad Selene ON, surprised_sad Lia ON"
-        show p2 sad with fc
-        show p1 bsurprised widenedwink lsad with fc
+        show p2 sad
+        show p1 bsurprised widenedwink lsad
+        with fc
         p2 "No dobrze, już o nic nie pytam."
         #neutral Selene ON"
         show p2 neutral with fc
@@ -1793,25 +1968,66 @@ label e5:
         #sad_smile Lia ON"
         show p1 bsad wink lsmile with fc
         p1 "Dobrze..."
+        hide p2 with moveoutright
         #Selene wychodzi z kuchni, Lia do gracza"
         show p1 wink_player with fc
         p1 "No dobra. Zjem i idę pracować."
+        ######################### bar ###############################
+
         #przejście do sali, zoom na bar, P1 lewo, P3 prawo"
+        scene tavern_main_bar_bg0
+        show p3 at zabarem:
+            xalign .65 xzoom -1
+        show tavern_main_bar_bar1
+        with fade
+        show p1 behind tavern_main_bar_bar1 at zabarem:
+            xalign -0.3 xzoom -1
+            linear 1.5 xalign 0.25
         #frown Lia ON"
         show p1 bangry wink lneutral with fc
         p3 "Miło, że w końcu dołączyłaś."
         p1 "Ale..."
         p3 "Dobra, nieważne. Sporo pracy przede mną."
         p3 "Zostań za barem i pilnuj Tawerny, nie powinno być zbyt dużo gości."
+        hide p3 with moveoutleft
+        pause 1
         #Zorn wychodzi, Lia za barem
 
     #Lia do gracza, sad_smile ON\
-    show p1pl bsad wink_player lsmile with fc
+    hide p1
+    show p1pl bsad wink_player lsmile
+    with fc
     p1 "Czasem przed południem nie jest tak źle... Ruch przeważnie niewielki."
     p1 "Zobaczymy co dzień przyniesie."
     #przejście na zewnątrz Tawerny, przejście czasowe (ptaszki, ruch słońca) i upływ czasu +1, powrót do środka"
     #po wejściu do Tawerny od razu odpala się komiks z kuflami, jest zoom na barze"
+    scene anim_tavern outside dragon with fade
+    pause 7
+    scene tavern_main_bar_bg0
+    show p1 at zabarem:
+        xalign .5
+    show tavern_main_bar_bar1
+    show black with fc
+    with fade
+    show piwo_1 at left:
+        zoom 0.9, yanchor 1.15
+    with dissolve
+    pause 0.5
+    show piwo_2 at center:
+        zoom 0.9, yanchor 1.15
+    with dissolve
+    pause 0.5
+    show piwo_3 at right:
+        zoom 0.9, yanchor 1.15
+    with dissolve
+
+
     p1 "Zamówienie nr. 66 gotowe!"
+    hide piwo_1
+    hide piwo_2
+    hide piwo_3
+    with dissolve
+    hide black with dissolve
     #pojawia się guest 1, ten elf co ostatnio, podpis Gość po prostu"
     show elf1:
         align (-0.1,-0.5)
@@ -1822,28 +2038,49 @@ label e5:
     #gość znika,
     hide elf1 with dissolve
     #pojawia się Henrietta"
-    show p8
+    show p8 with moveinleft:
+        align (0.1,1.0)
     p8 "Cześć Lia. Co tam ciekawego?"
     p1 "Oh, hej Henrietta. Nic szczególnego. Coś podać?"
     p8 "Mhm. Daj butelkę czegoś mocnego, długi dzień przede mną."
     p1 "Hmm."
-    #komiks jak będzie work z podaniem butelki jakiejś"
+    # TODO komiks jak będzie work z podaniem butelki jakiejś"
     p1 "To powinno być w porządku, proszę."
     #Henrietta smile ON, Lia blush ON"
-    show p8 bneutral wink lsmile with fc
-    show p1 blush with fc
+    show p8 bneutral wink lsmile
+    show p1 blush
+    with fc
     p8 "Dzięki Lia. Do zobaczenia później."
     #Lia smile ON"
-    show p1 bneutral wink lsmile -blush with fc
+    show p1 bneutral wink lsmile with fc
     p1 "Do zobaczenia."
     #Hen wychodzi, ujęcie na całą salę, Lia za barem + cienie przechodzących ludzi, ze 2-3 tu i tam"
+    hide p8 with moveoutleft
+    show p1 -blush with fc
+    pause 1
+    scene ep_img_tavern_mainroom_nozoom:
+        align (0.5,0.5) zoom 1.3
+    show p1:
+        zoom 0.4 xpos 0.6 yalign 0.65
+    show tavern_main_bar3_dn_idle:
+        align (0.5,0.5) zoom 1.3
+    show anim_festival_walking_shadows:
+        zoom .95 ypos 0.3
+    with dissolve
     "Goście powoli przewijali się przez Tawernę zajmując całkowicie myśli Lii."
 
     if d_gofestiwal:
+        scene tavern_main_bar_bg0
+        show p1 at zabarem:
+            xalign .5
+        show tavern_main_bar_bar1
         "Lia stała akurat plecami do baru gdy nagle usłyszała znajomy głos."
         p5 "Hej Lia! Dzień dobry!"
         #pojawia się Meamir, smile ON, Lia smile ON"
-        show p5 bneutral wink lsmile with fc
+        show p5 bneutral wink lsmile with moveinright:
+            align (1.0,1.0)
+        show p1 at zabarem with fc:
+            xzoom -1
         show p1 bneutral wink lsmile with fc
         p1 "O, hej Meamir! Dzień dobry!"
         p5 "Jak tam Twój dzień mija?"
@@ -1856,16 +2093,28 @@ label e5:
         p5 "Chociaż teraz już jest ciekawiej..."
         p1 "Znów się wygłupiasz!"
         #smile Meamir ON, Lia smile ON"
-        show p5 bneutral wink lsmile with fc
-        show p1 bneutral wink lsmile with fc
+        show p5 bneutral wink lsmile
+        show p1 bneutral wink lsmile
+        with fc
         p5 "No dobrze dobrze... Przyszedłem po zamówienie..."
 
     else:
+        scene tavern_main_bar_bg0
+        show tavern_main_bar_bar1
+        show p1 behind tavern_main_bar_bar1 at zabarem:
+            xalign 0.5
+        with fade
         "Lia stała akurat plecami do baru gdy usłyszała przyjemny i interesujący głos."
         #podpis Meamira na początek ‘???’"
         #Meamir smile ON, Lia surprised_happy smile ON"
+
+        show p1 bsurprised widenedwink lsmile with fc
         p5q "Dzień dobry! Hej!"
+        show p5 bneutral wink lsmile with moveinright:
+            align (0.8,1.0)
         #pojawia się Meamir po lewej, Lia wciąż za barem"
+        show p1 at zabarem:
+            xzoom -1
         p1 "Dzień dobry..."
         #pojawia się imię Meamira w podpisie"
         p5 "Nazywam się Meamir. Przyszedłem po zamówienie mojego taty, znaczy kowala..."
@@ -1894,11 +2143,15 @@ label e5:
 
     #bar zoom, P1 za barem, P5 przed barem po prawej, P3 za barem bardziej po lewej stronie
     #Lia confused ON, Meamir sad_smile ON
+    show p3 behind tavern_main_bar_bar1 at zabarem with moveinleft:
+        align (0.1,1.0)
     show p1 bsurprised wink lneutral -blush with fc
     show p5 bsad wink lsmile with fc
     p3 "A co tu się dzieje młodzieży? Co to za rozmowy w pracy Lia?"
+    show p1 at zabarem with fc:
+        xzoom 1
     p1 "Um..."
-    p3 "Ty jesteś Meamir tak?"
+    p3 "Ty jesteś Meamir, tak?"
     p5 "Tak, to ja..."
     p3 "Miałeś być później."
     #Meamir confused ON"
@@ -1906,7 +2159,16 @@ label e5:
     p5 "Ah, tak to prawda. Ale udało mi się wcześniej wyrobić z obowiązkami..."
     p3 "Hmm, no dobrze. Zaraz przygotuję wszystko. Poczekaj chwilę..."
     #tutaj taki efekt zrobić, że Zorn się odwraca od nich, ale od razu zawraca"
+    show p3 at zabarem:
+        linear 0.1 xzoom -1
+        linear 2 xalign 0.0
+        linear 0.1 xzoom 1
     p3 "Tylko grzecznie mi tutaj. Zaraz wrócę."
+    show p3 at zabarem:
+        linear 3 xalign -0.4
+    pause 2
+    show p1 at zabarem with fc:
+        xzoom -1
     show p1 bsurprised widenedwink lneutral with fc
     show p5 blush with fc
     #surprised_neutral Lia ON, Meamir blush ON
@@ -1933,7 +2195,7 @@ label e5:
         p5 "Um... Pomagasz codziennie w Tawernie?"
         #smile Lia ON"
         show p1 bneutral wink lsmile with fc
-        "”Całkiem uroczy.” - pomyślała Lia."
+        "{i}Całkiem uroczy.{/i} - pomyślała Lia."
         p1 "Tak, pomagam tutaj - w zasadzie to moje główne zajęcie."
         #smile Meamir ON"
         show p5 bneutral wink lsmile with fc
@@ -1962,12 +2224,20 @@ label e5:
 
     #dźwięk przerażającego KRZYKU
     #równo z krzykiem pojawia się Zorn i jego dialog
-    show p1 -blush
-    show p5 -blush
+    hide p3
+    stop musictight
+    $ renpy.music.set_volume(0.1, delay=0, channel='audio')
+    $ renpy.music.set_pan(0.8, delay=0, channel='audio')
+    play audio sfx_female_scream
+    show p3 with moveinleft:
+        align (0.1,1.0)
+    show p1 -blush widenedwink bsurprised lneutral with fc
+    show p5 -blush widenedwink bsurprised lneutral with fc
     p3 "Co tam się dzieje na zewnątrz?!"
     #angry Zorn activated
     show p3 angry with fc
     p3 "Muszę to sprawdzić."
+    $ renpy.music.set_pan(0.5, delay=0, channel='audio')
     #przejście do E6
 
 
@@ -1978,9 +2248,24 @@ label e5:
 
 
 label e6:
+    scene anim_tavern outside dragon
+    show angry_man1:
+        align (.01,1.0) xzoom -1
+    show angry_man2:
+        align (.25,1.0) xzoom -1
+    show p4 bsurprised widenedwink lsad:
+        align (.6,1.0)
+        xzoom -1.0
+    with fade
     #zewnątrz Tawerny, południe, 2 bandziorów po lewej, P4 po prawej, surprised_sad Raven ON
+    play music alexander_nakarada_the_great_battle fadein 15.0 fadeout 10.0 volume 0.5
     "Wyglądało na to, że jacyś mężczyźni próbowali osaczyć bezbronną dziewczynę."
     #od prawej wjeżdża Zorn, angry ON"
+    show p3 angry:
+        xzoom -1.0
+        align (1.4,1.0)
+    show p3:
+        linear 1.1 align (.9,1.0)
     p3 "Halo, co tu się dzieje? Co to ma znaczyć!?"
     "Na widok Zorna nieznajomi odruchowo spojrzeli się po sobie."
     "Nie wyglądali jednak na takich co dobrowolnie będą się tłumaczyć."
@@ -1992,101 +2277,206 @@ label e6:
     "Jeden z nich ruszył powoli w kierunku dziewczyny wyciągając rękę by ją złapać."
     "Nagle czas jakby się dla niego zatrzymał..."
     #tutaj zaczynamy schemat bójki, elementy różne bez zmian"
+    with vpunch
+    scene zorntheangel 1 at tr_beatupbyzorn
+    show anim_beatupblink
+    with dissolve
     "Obcy nie był w stanie w pierwszej chwili zrozumieć co się stało."
     "Czuł ogromny ból głowy oraz pleców, przez lekko otwarte powieki widział promienie słoneczne..."
     "Dosłownie jakby leżał... W uszach strasznie mu dzwoniło. Po paru sekundach usłyszał tylko przerażający krzyk swojego kompana."
+    show zorntheangel 2 at tr_beatupbyzorn
+    with dissolve
     b2 "Kurwwaaaaa, mój noooos... zabijęęęę Cięęę! Auaaaaa....."
     "Krzyk zagłuszył od razu dźwięk upadającego worka ziemniaków o ziemię... A może to wcale nie był worek..."
+    show zorntheangel 3 at tr_beatupbyzorn
+    with dissolve
     #bez podpisu Zorna tekst Zorna jedna linijka niżej"
     p3 "Powoli bo się bardziej połamiesz."
     "Wstawał bardzo powoli. Dokładnie tak jak zasugerował głos."
     "Zresztą nie miał innego wyboru. Miał chyba złamane ze dwa żebra, nie... trzy."
     "Wstał."
+    scene black
+    pause 0.5
     #jeden bandyta na nogach, drugi leży, Zorn stoi blisko tego stojącego, Raven z tyłu"
+    scene anim_tavern outside dragon
+    show p3:
+        xzoom -1
+        align (.37,1.0)
+    show p4 bsurprised widenedwink lsad:
+        xzoom -1
+        align (.7,1.0)
+    with dissolve
+    show angry_man2 with zoomin:
+        align (.1,1.0)
+    show angry_man2:
+        linear .3 align (.01,1.0)
     p3 "A teraz słuchaj bardzo uważnie. Nie będę się powtarzał."
     p3 "Istnieje duża szansa, że nie wiesz, iż w naszym królestwie nie możesz kogoś sobie sobie posiadać."
     p3 "Nie możesz ot tak powiedzieć, że ktoś jest Twoją własnością!"
     p3 "A już w ogóle nie możesz tego robić przy mojej Tawernie!"
+    stop music fadeout 15.0
     #Zorn obraca się w prawo"
+    show p3 with fc:
+        xzoom 1.0
     p3 "Lia!"
     #Lia pojawia się od prawej, shock Lia ON"
+    show p1 bsurprised widenedwink lopen behind p4:
+        align (1.3,1.0)
+        ease 1 align (.85,1.0)
     p3 "Zabierz ją do środka - zaraz przyjdę."
     #Zorn obraca się do bandziorów, Lia i Raven wychodzą na prawo"
+    show p3 with fc:
+        xzoom -1.0
+    show p1:
+        linear .03 xzoom -1.0
+        linear 1 align (1.35,1.0)
+    show p4:
+        linear .03 xzoom 1.0
+        linear 1.2 align (1.35,1.0)
     p3 "A Was jeśli tutaj zobaczę raz jeszcze to skończycie znacznie gorzej."
     p3 "Radzę teraz się zebrać, przemyśleć swoje życie i najlepiej zacząć od nowa."
     p3 "A teraz bierz swojego kolegę i won mi stąd."
+
     #ładne przejście do kuchni, Raven po lewej, Lia po prawej, Raven confused ON, Lia confused ON"
+    scene room_kitchenday with fade
+    show p1 bsurprised wink lneutral with moveinleft:
+        align (.4,1.0)
+    show p4 bsurprised wink lneutral with moveinleft:
+        align (0.01,1.0)
+    $ renpy.music.set_volume(0.5, delay=2, channel='music')
+    play music [alexander_nakarada_emotionalism, alexander_nakarada_emotionalism, "<silence 1000.0>"] fadein 10.0
     p1 "Hej... Jak masz na imię?"
     #sad_smile Lia ON"
+    show p1 bsad wink lsmile with fc
     p1 "Wszystko w porządku?"
     #blush Raven ON"
+    show p4 blush with fc
     p4 "Nazywam się Raven... I tak, wszystko dobrze. Dziękuję..."
     #blush Lia ON"
+    show p1 blush with fc
     p4 "Um, a Ty jak się nazywasz?"
     #Lia smile ON, Raven sad_smile ON"
-    p1 "Mam na imię Lia, miło Ciebie poznać Raven!"
+    show p1 bneutral wink lsmile
+    show p4 bsad wink lsmile
+    with fc
+    p1 "Mam na imię Lia, miło Cię poznać Raven!"
+    show p1 -blush
+    show p4 -blush
+    with fc
     p1 "Co się stało? Jak tu trafiłaś?"
     #Raven sad ON"
+    show p4 bneutral wink lsad with fc
     p4 "Ja.. Ja nie wiem, uciekałam i..."
     #Zorn wchodzi po prawej, both girls confused ON"
+    show p3 with moveinright:
+        align (1.0,1.0) xzoom -1
+    show p1 bsurprised wink lneutral
+    show p4 bsurprised wink lneutral
+    with fc
     p3 "Załatwione. Tamtymi nie musisz się już martwić, więcej nie powinniśmy ich zobaczyć."
     p3 "W ogóle wszystko dobrze? Nie jesteś ranna czy coś? Hmm, dziewczyno?"
     p3 "Halo, dziewczyno.. Mówię do..."
     #P2 wchodzi od prawej, Lia niech dołączy po lewej do Raven 2on2, Selene smile ON"
+    show p2 with moveinright:
+        align (.7,1.0)
+    show p3 with move:
+        xalign .99
+    show p1 with move:
+        xalign .3
     p2 "Zorn! Nie widzisz, że jest wystraszona?"
+    show p2 smile with fc
     p2 "Ja się tym zajmę. Idź proszę sprawdzić czy nie ma Cię w głównej sali."
     #P3 wychodzi w prawo"
+    hide p3 with moveoutright
     "Zorn popatrzył się na żonę, ale się nie sprzeciwił tylko grzecznie wyszedł sprawdzić czy na pewno nie ma go w tej sali."
     p2 "Podejdź tu i pokaż mi się, zranili Cię gdzieś?"
     #Raven sad ON + zbliża się do Selene jakoś na środku się ogarniają"
+    show p1 with move:
+        xalign .02
+    show p4 bneutral wink lsad with move:
+        xalign .35
+    show p1 with fc:
+        xzoom -1
     p4 "Niee proszę Pani... Nie zdążyli..."
     p2 "Już wszystko dobrze, nie smuć się. Nazywam się Selene, a Ty?"
     p4 "Ra... Raven."
     #Raven blush ON"
+    show p4 blush with fc
     p2 "Piękne imię! Widzę, że wszystko rzeczywiście jest w porządku."
     p2 "No już, nic Ci już nie grozi - widzę, że jesteś wykończona. Chciałabyś odpocząć?"
     #surprised_happy Raven ON"
+    show p4 -blush bsurprised widenedwink lsmile with fc
     "Raven nie wiedziała za bardzo co powiedzieć, pierwszy raz spotykała się z takim podejściem do niej."
     p2 "Dobrze, zakładam, że tak."
     p2 "Lia, weź ją proszę do pokoju gościnnego. Pokaż jej co i gdzie i daj jej odpocząć, dobrze?"
     p1 "Dobrze mamo. Chodź Raven."
     "Obie dziewczyny ruszyły na górę, Raven podążała spokojnie za Lią"
+
+
     #Pokój Raven, P1 wchodzi pierwsza od prawej do lewej, P4 za nią"
     #sad_smile Lia ON, confused Raven ON"
-    p1 "To jest ten pokój. Możesz tutaj odpocząć sobie spokojnie. Potrzebujesz jeszcze czegoś?"
+    scene room_raven_evening_empty with fade
+    show p1 bsad wink lsmile with moveinright:
+        align (.3, 1.0) xzoom -1
+    show p4 bsurprised wink lneutral with moveinright:
+        align (.7, 1.0) xzoom -1
+    p1 "To jest ten pokój. Możesz tutaj sobie spokojnie odpocząć. Potrzebujesz jeszcze czegoś?"
     p4 "Nie, dziękuję. Jeśli mogę to bym się chyba zdrzemnęła..."
-    p1 "Ah, oczywiście - już nie przeszkadzam. Jakbyś czegoś potrzebowała to wołaj, mam pokój na przeciwko."
+    p1 "Ah, oczywiście - już nie przeszkadzam. Jakbyś czegoś potrzebowała to wołaj, mam pokój naprzeciwko."
     #blush Raven ON, Lia smile ON"
+    show p1 bneutral wink lsmile
+    show p4 blush
+    with fc
     p4 "Dziękuję."
     #Pokój P1, Zorn po lewej, Lia wchodzi od prawej, Lia confused ON"
+    scene anim_room_lia_eveningdragon
+    show p3:
+        align (.3, 1.0)
+    with fade
+    show p1 with moveinright:
+        align (.7, 1.0)
     p1 "Hej tato, o co chodzi?"
     p3 "Hmm? O nic! Chciałem tylko przyjść i sprawdzić czy wszystko dobrze."
     p1 "Tak, wszystko w porządku - Raven poszła się zdrzemnąć..."
     #surprised_happy Lia ON"
+    show p1 bsurprised widenedwink lsmile with fc
     p3 "Pytałem bardziej o Ciebie."
     p1 "Oh... Wszystko dobrze, czemu miałoby coś być?"
     p3 "Widziałaś przecież co zrobiłem tym bandytom..."
     #smile Lia ON"
+    show p1 bneutral wink lsmile with fc
     p1 "Oni sobie zasłużyli! Poza tym nie byłam zaskoczona - nie wyglądali na zbyt godnych przeciwników..."
     p3 "Hę? Widzę Wam kobietkom dziś w humorze dokuczanie mi... No nic, ważne, że wszystko dobrze."
     #Zorn wychodzi powoli na prawo, Lia przechodzi na lewo"
+    show p3 with move:
+        xalign 1.0
+    show p1 with move:
+        xalign .4
+    show p1 with fc:
+        xzoom -1
     p3 "Mało godni przeciwnicy? To jacy byliby godni?"
+    hide p3 with easeoutright
     "Powiedział pod nosem tata po czym wyszedł z pokoju. Lia została chwilowo sama."
 
 
 ######################## E6A
 
     #Lia na ekranie, mówi do gracza, thinking ON
+    hide p1
+    show p1pl bangry closed lneutral
+    with fc
     p1 "Huh... Co teraz..."
     menu:
         "Już myślałem, że nie zapytasz.":
             pass
     #surprised_neutral Lia ON"
+    show p1pl bsurprised widenedwink_player lneutral with fc
     p1 "Hmm? Oh! To Ty... Przepraszam, zamyśliłam się i zapomniałam o Tobie troszkę..."
     menu:
         "Auć. Czyli nie potrzebujesz porady?":
             pass
     #sad_smile Lia ON"
+    show p1pl bsad wink_player lsmile with fc
     p1 "Wybacz! Dużo się właśnie wydarzyło... I właściwie to tak! Przydałaby mi się porada."
     menu:
         "Nie ma problemu! Po to tu jestem! Co potrzebujesz?":
@@ -2096,12 +2486,39 @@ label e6:
         "Spróbuj! Na pewno dasz radę.":
             pass
     #smile Lia ON"
+    show p1pl bneutral wink_player lsmile with fc
     p1 "Mam pomysł! Daj mi chwilkę."
+    hide p1pl
     #Lia znika na sekundę, pojawia się komiks z Lią przy biurku piszącą (folder Others E6A comics)"
+    show black
+    with fc
+    show e6a with dissolve
     "Lia usiadła na moment przy swoim biurku i otworzyła dziennik."
     "..."
+
     p1 "Dobra, gotowe! Zobacz."
+
     #otwiera się dziennik i rozpoczynamy mini poradnik"
+    $ jrnl_aina_about = jrnl_aina_about_n01
+    $ jrnl_henrietta_about = jrnl_henrietta_about_n01
+    $ jrnl_levius_about = jrnl_levius_about_n01
+    if d_gofestiwal:
+        $ jrnl_meamir_about = jrnl_meamir_about_n01_fest
+    else:
+        $ jrnl_meamir_about = jrnl_meamir_about_n01_nofest
+    $ jrnl_raven_about = jrnl_raven_about_n01
+
+    $ jrnl_aina_todo_1 = jrnl_aina_todo_n01
+    $ jrnl_henrietta_todo_1 = jrnl_henrietta_todo_n01
+    $ jrnl_levius_todo_1 = jrnl_levius_todo_n01
+    $ jrnl_meamir_todo_1 = jrnl_meamir_todo_n01
+    $ jrnl_raven_todo_1 = jrnl_raven_todo_n01
+
+    $ jrnl_important_1 = jrnl_important_n01
+
+    show tutorial_base with dissolve
+    hide e6a
+    hide black
     p1 "Zrobiłam taki dziennik. Mogę tutaj wszystko zapisywać i dać go Tobie do przejrzenia."
     p1 "Teraz samodzielnie możesz sprawdzić co i jak i pomóc mi podjąć decyzję."
     p1 "Przeprowadzić Cię dokładnie po wszystkim?"
@@ -2109,70 +2526,740 @@ label e6:
     menu:
         "Koniecznie! Pokaż co i jak.":
             p1 "No dobrze! No to po kolei."
+
             #tutaj zrobimy taki obrazkowy poradnik, z podświetleniami fragmentów i podpisami co jest co"
             #podświetlenie imion"
+            show tutorial_bookmarks with fc
             p1 "Tutaj mamy imiona osób, które znam i ostatnie rzeczy z nimi związane."
             #podświetlenie lewej strony notatek"
+            hide tutorial_bookmarks
+            show tutorial_notes
+            with fc
             p1 "W tym miejscu znajdziesz właśnie te ostatnie informacje i moje notatki."
             #podświetlenie najważniejszych celów"
+            hide tutorial_notes
+            show tutorial_important
+            with fc
             p1 "O, a tutaj będę zaznaczać najważniejsze rzeczy do zrobienia - żeby nie zapomnieć."
             #podświetlenie opcjonalnych celów"
+            hide tutorial_important
+            show tutorial_optional
+            with fc
             p1 "Takie mniej ważne będę wpisywać w tym miejscu."
             #standardowa ikona wyłączenia dziennika"
+            hide tutorial_optional
+            show tutorial_help
+            with fc
             p1 "Jeśli będziesz chciał, żeby wszystko Ci przypomnieć to kliknij tutaj."
             #podświetlenie znaku zapytania
+            hide tutorial_help
+            show tutorial_exit
+            with fc
             p1 "Jak skończysz to tutaj możesz zamknąć dziennik."
+            hide tutorial_exit
+            with fc
             #cały dziennik otwarty"
             p1 "No dobra. To chyba wszystko. Sprawdź co i jak i daj mi znać jak skończysz."
+            hide tutorial_base
+            show screen journal_bookmark6
+            with Dissolve(0.1)
             #kontrola nad dziennikiem witam, DZIENNIK N01
             #zwykła opcja wyłączenia dziennika teraz jest OFF
 
 
         "Nie trzeba, jakoś się zorientuję - daj mi chwilkę.":
+            show tutorial_exit
+            with fc
+            p1 "Tylko zaznaczę, że tutaj możesz zamknąć dziennik."
+            hide tutorial_exit
+            with fc
             p1 "No dobrze, to zobacz co i jak i daj znać jak skończysz."
+            hide tutorial_base
+            show screen journal_bookmark6
+            with Dissolve(0.1)
             #kontrola nad dziennikiem witam, DZIENNIK N01
             #zwykła opcja wyłączenia dziennika teraz jest OFF
             #w tej wersji trzeba dodać, że jak się kliknie ikonę rozmowy to wyskoczy ostrzeżenie pt. ‘Na pewno to już wszystko?’ i to wyjątek z takim ostrzeżeniem tylko do tej decyzji
 
 
     #po kliknięciu w ikonę rozmowy zamyka się dziennik i Lia pojawia się z nami rozmawiając, smile Lia ON
+    show p1pl wink_player
     p1 "I jak? Co byś mi doradził teraz?"
+    $ zm_tutorial_jrnl_done = True
 
-
+    stop music
     menu:
         "Myślę, że warto sprawdzić co u Raven.":
             #surprised_happy Lia ON
+            show p1pl bsurprised widenedwink_player lsmile with fc
             p1 "Możesz mieć rację..."
             #sad_smile Lia ON"
+            show p1pl bsad wink_player lsmile with fc
             p1 "Wydawała się dość przybita."
             p1 "Poczekam chwilę. Niech się zdrzemnie i odpocznie."
             p1 "Później do niej pójdę."
             #Lia znika, sam pokój"
-            #upływ czasu +1"
+            hide p1pl with dissolve
+            pause .2
+            show anim_room_lia_goldenhourdragon with Dissolve(1.5)
+            # TODO upływ czasu +1"
             #Lia wraca i do gracza, Lia smile ON"
+            pause .7
+            show p1pl bneutral wink_player lsmile with fc
             p1 "No dobra, już czas."
             #przejście do E7-P4
+            jump epizod7p4
+
         "Może pójdź do wioski spotkać się z Meamirem.":
             #surprised_happy Lia ON
+            show p1pl bsurprised widenedwink_player lsmile with fc
             p1 "Możesz mieć rację..."
             #sad Lia ON"
+            show p1 bneutral wink_player lsad with fc
             p1 "Trochę bez słowa go zostawiłam..."
             #thinking Lia ON"
+            show p1 bangry closed lneutral with fc
             p1 "Poza tym zapraszał na spacer. Może z nim pójdę w ramach przeprosin."
             #smile Lia ON"
+            show p1 bneutral wink_player lsmile with fc
             p1 "Dobra, zrobię tak. Pójdę od razu."
             "Jak powiedziała tak zrobiła. Wyszła z Tawerny i ruszyła w kierunku wioski."
             #przejście do E7-P5
+            jump epizod7p5
 
         "Dużo się dziś wydarzyło. Może po prostu połóż się wcześniej spać.":
             #surprised_sad Lia ON
+            show p1 bsurprised widenedwink_player lsad with fc
             p1 "Możesz mieć rację..."
             #more_sad Lia ON"
+            show p1pl bneutral narrowedwink_player lsad with fc
             p1 "W sumie rzeczywiście jestem zmęczona."
             #disappointed Lia ON"
+            show p1pl bsad closed lsad with fc
             p1 "Dobra, ogarnę się i idę spać. Dobranoc."
+            hide p1pl with fc
             #Lia znika, taki efekt upływającego czasu za oknem, aż do rana
             #przejście do E7-N
+            jump epizod7n
+
+
+################################################################################
+#############################   EPIZOD 7-P4   ##################################
+label epizod7p4:
+    if config.developer:
+        scene black
+        show text "epizod7p4" at truecenter
+        pause
+    # Na ekranie: Pokój Raven, z lewej Raven
+    $ akt1_UkonczenieEpizodow["e7_p4"] = True
+    $ RavenLove += 1
+    $ LovePath += 1
+    scene room_raven_evening_empty
+    show p4:
+        align (.3, 1.0)
+    with fade
+    $ renpy.music.set_volume(0.5, delay=0, channel='music')
+    play music [alexander_nakarada_adventure, alexander_nakarada_adventure, "<silence 1000.0>"] fadein 7.0
+    "Lia zapukała lekko w drzwi. Po krótkiej ciszy usłyszała spokojny głos:"
+    p4 "Proszę, otwarte!"
+    # Na ekranie: P1 wchodzi od prawej, powolutku się przesuwa bardzooo
+    show p1:
+        align (1.3, 1.0)
+        ease 6 xalign .84
+    "Stawiając powolne i niepewne kroki, Lia weszła do pokoju."
+    p1 "Heej! Pomyślałam, że może nie chcesz być teraz sama..."
+    "Powiedziała to prawie łamiącym się głosem. Liczyła na jakąś reakcję ze strony Raven."
+    "Ta jednak się nie pojawiła. Na twarzy Raven pojawił się za to lekki uśmiech."
+    # Raven smile ON
+    show p4 lsmile with fc
+    "Lia się lekko zawahała."
+    p1 "Oczywiście jeśli nie chcesz to mogę sobie pójść..."
+    p4 "Nie, nie! Zostań, proszę."
+    # Lia smile ON
+    show p4 lsmile with fc
+    "Powiedziała szybko Raven."
+    p4 "Przepraszam, że tak wyszło tak oschle. To wszystko jest dla mnie trochę nowe..."
+    p1 "Co dokładnie?"
+    p4 "To..."
+    "Powiedziała Raven rozglądając się najpierw po pomieszczeniu, na końcu skupiając wzrok na Lii."
+    # Lia neutral ON
+    show p1 -lsmile with fc
+    "Lia nie do końca zrozumiała. Jej mina mówiła chyba wystarczająco, gdyż Raven zaczęła od razu tłumaczyć."
+    p4 "Ah. Bo wiesz... nie przywykłam do osób, które w pierwszej kolejności są pomocne i miłe..."
+    p4 "Dla mnie to coś naprawdę nowego. Trochę ciężko mi to wyjaśnić... ale, jeśli chcesz..."
+    p1 "Poproszę. Opowiedz mi."
+    "Odpowiedziała Lia, sama zaskoczona dawką pewności we własnym głosie."
+    "Ciekawość była jednak znacznie większa. Miała wrażenie, że mogła w końcu spotkać kogoś z kim dzieli ją znacznie więcej niż na pierwszy rzut oka może się wydawać."
+    # Raven neutral ON
+    show p4 -lsmile with fc
+    p4 "Dobrze. To może usiądź... nie wiadomo ile to potrwa."
+    "Lia wiedziała, że nie ma w pokoju dodatkowych krzeseł. Raven była tego świadoma i od razu zrobiła jej miejsce na łóżku."
+    p4 "No dobrze... od czego by tu zacząć? Pomyślmy."
+    "Raven zamyślona spoglądała w dal."
+    "Lia wykorzystała ten moment, żeby się jej przyjrzeć..."
+    "Pomyślała, że wygląda naprawdę uroczo i... i atrakcyjnie."
+    "Lia poczuła coś czego jeszcze nigdy chyba nie czuła. Nie była w stanie dokładnie określić co to za uczucie..."
+    "Z myśli wyrwała ją Raven - najwidoczniej zebrała już własne."
+    p4 "To może od początku - gdy miałam kilka lat, nie pamiętam już dokładnie ile, przygarnęła mnie grupa cyrkowców..."
+    p1 "Jak to przygarnęła?"
+    p4 "Moi rodzice... w zasadzie nie wiem kim dokładnie byli. Nawet ich nie pamiętam."
+    p4 "No zresztą nieważne. Byłam mała. Trochę się błąkałam i mnie przygarnęli."
+    p4 "Niewiele pamiętam. Kazali mi początkowo występować w jakichś prostych numerach... musiałam zapracować na jedzenie i dach nad głową."
+    p4 "Czasem zrobiłam coś źle i musiałam spać na zewnątrz. Dlatego też dużo ćwiczyłam."
+    p4 "Głównie akrobacje... jeśli to też Cię interesuje. I tak mijały lata."
+    p4 "Raz było lepiej, raz było gorzej. Czym dalej jednak, tym gorzej."
+    "Raven westchnęła lekko wstając z łóżka."
+    "Przystanęła na moment, wciągnęła powietrze i znów zaczęła:"
+    p4 "Zdarzyło się nawet, że podnosili na mnie rękę jak coś im nie pasowało."
+    p4 "W zasadzie nawet jak wszystko było ok to potrzebowali się wyżyć."
+    p4 "Wystarczyło, że biznes szedł trochę gorzej... zawsze byłam pierwszą do ukarania."
+    p4 "Ciężko się dziwić, że szło słabo. Coraz bardziej skupiali się na wyciąganiu złota od biednych, a nie na występach."
+    p4 "Żeby uniknąć kar jeździliśmy głównie po mniejszych wioskach, z dala od jakiejkolwiek straży czy rycerzy."
+    p4 "No ale w końcu chciwość zwyciężyła i ruszyliśmy w bardziej zaludnione miejsca."
+    p4 "Pomyślałam, że to idealny i zapewne ostatni moment na ucieczkę. "
+    p4 "Więc uciekłam... trzęsąc się ze strachu, że tym razem może nie skończyć się tylko na kilku ciosach..."
+    "Powiedziała, po czym lekko złapała się za ramiona niechcący przywołując niechciane wspomnienia."
+    p1 "Przykro mi to słyszeć... naprawdę przykro..."
+    "Powiedziała smutnym głosem Lia i obserwowała jak Raven zmierza powoli w kierunku okna."
+    p4 "Na szczęście się udało. Twój tata uratował mi życie. Wolę nie myśleć co by się stało gdyby nie jego reakcja... inni bali się mi pomóc..."
+    # Na ekranie: CG Raven otwierająca okno pyk
+    scene black with fade
+    "Otworzyła szeroko okno i głęboko wciągnęła potwierze."
+    scene raven_window_clear with Dissolve(2.0)
+    p4 "Ale wracając... na szczęście się udało. I przepraszam, że opowiadam w tak wielkim skrócie, ale... ale niekoniecznie chcę wracać do szczegółów..."
+    p1 "Nie ma problemu, rozumiem. Nie musisz opowiadać nic więcej jeśli nie chcesz..."
+    "Powiedziała Lia jednocześnie podchodząc powoli do Raven."
+    p4 "Dzięki za zrozumienie... ehh, nawet nie wiem co będzie ze mną dalej..."
+    # TODO Na ekranie: CG Raven siedząca na parapecie (sama)
+    "Powiedziała, po czym nakładając jednocześnie pelerynkę usiadła na parapecie."
+    "Lia chwilę zastanawiała się co powiedzieć, po czym podeszła i usiadła obok Raven."
+    # TODO Na ekranie: CG Raven i Lia na parapecie razem siedzące
+    p1 "Na początek możesz zostać tutaj. Będziesz tu bezpieczna!"
+    p4 "Eh, i co dalej? Jak długo mam tu zostać? Co potem? Nic teraz nie wiem..."
+    p4 "Zresztą to chyba zależy przede wszystkim od Twoich rodziców. Skąd wiesz, że pozwolą mi zostać dłużej?"
+    p1 "Nie zostawią Cię bez pomocy. Będzie dobrze, zobaczysz!"
+    p4 "A Ty?"
+    p1 "Ja? Nie mam tu zbyt wiele do powiedzenia..."
+    p4 "Nie... chodzi mi o to czy Ty też... w sensie.. czy Ty też mnie nie zostawisz?"
+    "Lia wyczuła lekkie napięcie w powietrzu oraz drżenie w głosie Raven. Nie była pewna odpowiedzi:"
+    p1 "Oczywiście, że nie! Bardzo chciałabym, żebyś została - na pewno powiem o tym rodzicom!"
+    p1 "To przykre, że spotkały Cię takie rzeczy... spróbuję zrobić co w moich siłach, żeby było Ci tu dobrze."
+    "Raven spojrzała Lii prosto w oczy, przysuwając powoli dłoń w kierunku jej dłoni"
+    # TODO Na ekranie: CG Raven i Lia na parapecie razem siedzące i dłońmi się łączące
+    "Zmrużyła lekko oczy. Położyła lekko swoją dłoń na dłoni Lii i powiedziała bardzo cichym i spokojnym głosem:"
+    p4 "Dziękuję. Przy Tobie czuję się jakoś lepiej... zupełnie jakbym..."
+    p1 "Jakbyś co?"
+    # TODO Raven smile ON
+    p4 "Jakbym miała nadzieję. Dziękuję Ci za to..."
+    p1 "Cieszę się, że moja obecność nie jest całkiem bezwartościowa..."
+    p4 "Oczywiście, że nie jest głuptasie! Czemu tak mówisz?"
+    "Lia lekko się zawahała. Zaczęła po drobnej pauzie:"
+    p1 "Oh, po prostu nikt mi tak jeszcze nie powiedział..."
+    p1 "To dla mnie coś całkowicie nowego. Przepraszam jeśli to źle zabrzmiało..."
+    p4 "Nie, nie - przecież nic się nie stało. Może teraz Ty opowiesz coś o sobie?"
+    p1 "Myślę, że mogę... Od czego by tu zaczą..."
+    "Nagle zza drzwi rozległ się dźwięk pukania i głos Selene:"
+    p2 "Hej, Dziewczyny - można wejść?"
+    p1 "Jasne Mamo!"
+    # Na ekranie: Ujęcie na pokój, Lia i Raven po lewej, po prawej wchodzi (powoli w miarę) P2
+    scene room_raven_evening_empty
+    show p1:
+        align (.3, 1.0)
+    show p4:
+        align (.05, 1.0)
+    with fade
+    show p2 with moveinright:
+        align (.85, 1.0)
+    "Dziewczyny szybko zeskoczyły z parapetu."
+    show p1:
+        xzoom -1.0
+    p2 "Robi się już późno, a po dzisiejszych \"atrakcjach\" Raven na pewno chciałaby odpocząć."
+    p2 "No już, chodź Lia! Porozmawiamy wszyscy przy śniadaniu i zobaczymy co dalej. Może być?"
+    show p1 with fc:
+        xzoom 1.0
+    p1 "No dobrze... dobranoc Raven!"
+    p4 "Dobranoc Lia i... i dziękuję."
+    # Na ekranie: Lia wychodzi, Raven lewo i Selene po prawej
+    show p1 with fc:
+        xzoom -1
+    hide p1 with easeoutright
+    p2 "Potrzebujesz czegoś jeszcze czy wszystko w porządku?"
+    p4 "Tak, wszystko dobrze - bardzo Pani dziękuję."
+    p2 "Oj, nie musisz - tutaj nic Ci nie grozi. Możesz spokojnie iść spać i zobaczymy się rano na śniadaniu, dobrze?"
+    p4 "Oczywiście, dziękuję jeszcze raz..."
+    p2 "Przyjemność po naszej stronie! A teraz dobranoc, śpij dobrze!"
+    p4 "Dobranoc!"
+    # Na ekranie: Korytarz, po prawej Lia, po lewej pojawia się Selene"
+    scene bg tavern 0:
+        zoom 1.5
+    show p1:
+        align (.85, 1.0)
+    with fade
+    show p2 with moveinleft:
+        align (.25, 1.0) xzoom -1
+    p2 "Ładnie to tak podsłuchiwać, co?"
+    #Lia blush ON
+    show p1 blush with fc
+    p1 "Ja.. Ja tylko bardzo powoli wracałam do pokoju!"
+    p2 "Haha, tak tak. No dobrze, nic się przecież nie stało. No już, marsz do pokoju! Zobaczymy się rano, dobranoc!"
+    p1 "Dobranoc Mamo!"
+    hide p1 with moveoutright
+    # Na ekranie: Pokój P1, Lia na środku
+    scene anim_room_lia_goldenhour
+    show p1
+    with fade
+    "Lia weszła na swojego pokoju, zamknęła drzwi i przystanęła na środku jakby niespodziewanie nawiedziła ją jakaś myśl."
+    # Na ekranie: Pokój P1, Lia na środku - zoom zwraca się do gracza
+    hide p1
+    show lia wink_player:
+        align (0.5,0.0)
+    with fc
+    p1 "Oh, przepraszam, że rozmawialiśmy dziś tak mało. Strasznie pokręcony dzień..."
+    menu:
+        "Nic się nie stało. Bardzo dobrze sobie poradziłaś!":
+            pass
+    p1 "Dziękuję! Za radę także... myślę, że wybrałam bardzo dobrze!"
+    menu:
+        "Dobrze, że się zapytałaś i co najważniejsze... że udało się pomóc!":
+            pass
+    p1 "Oh, nie czuję zmęczenia. Chyba teraz w ogóle nie zasnę."
+    menu:
+        "Bez przesady, trochę dziś się nabiegałaś! Położysz się i wkrótce zaśniesz, zobaczysz...":
+            pass
+    p1 "Ah, pewnie masz rację. Zresztą, jak zwykle! To się kładę, dobranoc!"
+    menu:
+        "Dobranoc, śpij dobrze.":
+            pass
+    "Lia nie tylko zasnęła bardzo szybko, ale także z uśmiechem na twarzy."
+    "Nie zdarzyło się to od bardzo dawna..."
+    # Na ekranie: jakoś przejście, że noc mija - może Tawerna od zewnątrz, może coś w pokoju?
+    scene anim_room_lia_goldenhour with dissolve
+    pause 1
+    show anim_room_lia_nightdragonlight with Dissolve(2.0)
+    pause 1
+    show anim_room_lia_nightdragon with Dissolve(2.0)
+    pause 2
+    show anim_room_lia_morning with Dissolve(2.0)
+    "Lia obudziła się jeszcze nim promienie słoneczne dosięgły jej okna. Była pełna energii."
+    "Pierwszy raz od dawna nie mogła doczekać się śniadania i zbliżającej się rozmowy."
+    jump ee000
+
+################################################################################
+#############################   EPIZOD 7-P5   ##################################
+label epizod7p5:
+    #if config.developer:
+    #    scene black
+    #    show text "epizod7p5" at truecenter
+    #    pause
+    # Na ekranie: Las, przed wieczorkiem - ścieżka
+    $ akt1_UkonczenieEpizodow["e7_p5"] = True
+    scene forest_day:
+        align (.5,.5) zoom .5
+    with fade
+    "Lia obeszła Tawernę i ruszyła w kierunku ścieżki."
+    "Po drodze zastanawiała się nad tym, co właściwie będą robić."
+    "Wchodząc do lasu stwierdziła jednak, że nie ma to znaczenia - czas coś po prostu zrobić."
+    # Na ekranie: Wioska - szerokie ujęcie bez postaci
+    scene anim_festival_day_dragon with fade:
+        align (0.0,0.0) zoom .5
+    show p5 at left:
+        zoom 0.5
+        xzoom -1
+    "Lia dotarła do Wioski. Pamiętała, że Meamir mieszka razem z ojcem przy kuźni."
+    show anim_festival_day_dragon:
+        linear 2 zoom 1.0 pos (0.0,-0.8)
+    show p5 at left:
+        linear 2 zoom 1.0
+    "Poprawiła lekko włosy i ruszyła w odpowiednim kierunku."
+    $ renpy.music.set_volume(0.5, delay=0, channel='music')
+    play music alexander_nakarada_now_we_ride fadein 7.0
+    queue music alexander_nakarada_now_we_ride
+    queue music "<silence 3.0>"
+
+    # Na ekranie: Wioska - Zoom na kuźnię, Meamir stoi po lewej i Lia tak jakby wchodzi od prawej
+
+
+    $ MeamirLove +=1
+
+    "Gdy dotarła pod kuźnię to zauważyła, że Meamir już na nią czekał. \"Ciekawe jak długo?\" - pomyślała."
+    show p1 with moveinright:
+        align (.7,1.0)
+    # Meamir smile ON
+    show p5 lsmile with fc:
+        zoom 1.0
+    p5 "Cześć Lia!"
+    p1 "Hej Meamir!"
+    show p5 with move:
+        align (.3,1.0)
+    p5 "Ciekaw byłem czy przyjdziesz. Cieszę się, że jesteś!"
+    # Lia smile ON
+    show p1 lsmile with fc
+    p1 "Jestem jestem! Mam nadzieję, że Twoja ciekawość została zaspokojona..."
+    p5 "No powiedzmy... tak na dobry początek."
+    # Lia smirk ON
+    show p1 bangry narrowedwink lsmile with fc
+    p1 "Oho, a czego chciałbyś się jeszcze dowiedzieć?"
+    # Meamir smirk ON
+    show p5 bangry narrowedwink lsmile with fc
+    p5 "Ah, wiesz - trochę tego i tamtego. Na pewno kryje się w Tobie jeszcze wiele interesujących rzeczy!"
+    # Lia blush ON
+    show p1 blush with fc
+    p1 "No nie wiem... chyba nie ma we mnie nic ciekawego."
+    # Meamir smile ON
+    show p5 bneutral wink lsmile with fc
+    p5 "Coś na pewno znajdziemy, jeszcze zobaczysz!"
+    # Lia smile ON
+    show p1 -bangry wink lsmile -blush with fc
+    p5 "No ale to później, teraz powiedz co chciałabyś porobić!"
+    p1 "Myślałam, że masz jakiś fajny plan!"
+    p5 "Haha, to prawda - jakiś plan mam. Ale czy fajny to się jeszcze okaże!"
+    # Lia smirk ON
+    show p1 bangry narrowedwink lsmile with fc
+    p1 "To zdradź mi szczegóły i zobaczmy!"
+    # Meamir neutral ON
+    show p5 bneutral lneutral with fc
+    p5 "No dobrze... pomyślałem, że moglibyśmy pójść na spacer. Widziałem ładną ścieżkę niedaleko głównej drogi..."
+    # Lia smile ON
+    show p1 -bangry wink lsmile with fc
+    p1 "Ah, masz pewnie na myśli polanę Ivana. W sumie dawno tam nie byłam..."
+    # Meamir smile ON
+    show p5 lsmile with fc
+    p5 "Hah, możliwe, że właśnie tak się nazywa. To co o tym myślisz?"
+    p1 "Bardzo dobry pomysł! Możesz w takim razie prowadzić - zobaczymy czy znasz już trochę okolicę!"
+    p5 "No dobrze, to chodźmy!"
+    # Na ekranie: Łąka Ivana
+    # Opis ekranu: Tu mogą postacie zniknąć powoli, odjechać może widok powoli na całą wioskę i przejście w las Ivanowy wskoczyć,
+    # a następnie oni sobie mogą wejść z jednej strony razem i stanąć na środku na normalną rozmowę.
+    # W miarę możliwości może lekko niech się przesuwa ten las, tzn od lewej do prawej w trakcie rozmowy, żeby na zoomie było wszystko
+    hide p1 with moveoutright
+    hide p5 with moveoutright
+    show anim_festival_day_dragon:
+        linear 5 align (0.0,0.0) zoom .5
+    pause 5
+    # Na ekranie: Łąka Ivana
+    scene anim_forest_justforest2 with fade:
+        align (0.0,1.0) pos (0.0, 0.0)
+        linear 120 xpos -1.0
+    show p5 with moveinleft:
+        align (.7,1.0)
+    show p1 with moveinleft:
+        align (.4,1.0) xzoom -1
+
+    p1 "No, dotarliśmy. Tu jest początek - chciałeś iść w jakieś konkretne miejsce?"
+    p5 "Hmm, myślałem żeby po prostu się przejść i porozmawiać. Tak wiesz, przed siebie!"
+    p1 "Oh. W zasadzie, czemu nie..."
+    # Lia neutral ON
+    show p1 lneutral wink bneutral with fc
+    # Meamir neutral ON
+    show p5 bneutral wink lneutral with fc
+    "Ruszyli przed siebie. Na początku w lekko niezręcznej ciszy, którą pierwszy postanowił przerwać Meamir."
+    p5 "W zasadzie skąd wzięła się nazwa tego miejsca?"
+    p1 "Ah, nie jestem dokładnie pewna. Nigdy nie zwracałam uwagi na takie historie."
+    # Meamir sad ON
+    show p5 lsad with fc
+    p5 "Oh..."
+    # Meamir smile ON
+    show p5 lsmile with fc
+    p1 "Ale! Wiem tyle, że Ivan był ponoć bardzo dobrym krasnoludem."
+    # Meamir neutral ON
+    show p5 bneutral wink lneutral with fc
+    p5 "W jakim sensie dobrym?"
+    p1 "W takim, że pomagał innym. Jeśli coś komuś się zepsuło to szedł i naprawił. Jeśli ktoś potrzebował pomocy w naprawie dachu to szedł i to zrobił."
+    p1 "Nigdy nie chciał niczego w zamian. Dlatego po jego śmierci nazwano to miejsce na jego cześć."
+    p5 "Ojej, to w sumie piękne - chciałbym żeby kiedyś ktoś tak mnie wspominał..."
+    # Meamir blush ON
+    show p5 blush with fc
+    # Lia smile ON
+    show p1 lsmile with fc
+    p1 "Oho, no proszę - ładne marzenie!"
+    p5 "Oj, tak tylko mi się powiedziało! Byłoby po prostu miło..."
+    # Meamir smirk ON
+    show p5 bangry narrowedwink lsmile with fc
+    # Lia blush ON
+    show p1 blush with fc
+    p5 "Poza tym mówiłaś, że nie zwracasz uwagi na takie historie... a tutaj w zasadzie wiem już prawie wszystko!"
+    p1 "Jakie wszystko? Zapamiętałam tylko kilka szczegółów!"
+    p5 "I przekazałaś te najważniejsze! Chyba jednak zwróciłaś trochę uwagę na tę historię!"
+    p1 "Może ciut..."
+    # Lia smirk ON
+    show p1 -blush bangry narrowedwink lsmile with fc
+    p1 "Poza tym skąd wiesz, że najważniejsze... hmm?"
+    # Meamir smile ON
+    show p5 bneutral wink lsmile with fc
+    p5 "Zwróć uwagę, że wskazałaś na najistotniejsze elementy."
+    # Lia smile ON
+    show p1 -bangry wink lsmile with fc
+    p1 "Czyli jakie dokładnie?"
+    p5 "Powiedziałaś, że był dobry. Po prostu... był dobrą osobą - czy to nie jest najistotniejsze?"
+    "Lia na chwilę się zamyśliła. Spojrzała na Meamira z zaciekawieniem i pewną fascynacją."
+    p1 "Chyba masz rację. Nie pomyślałam, że to może być najistotniejsze."
+    p5 "Czasem najbardziej oczywiste rzeczy są tymi, które najczęściej omijamy."
+    p5 "Nie ma czym się przejmować. Idziemy dalej?"
+    p1 "Tak, chodźmy!"
+    "Lia wskazała ścieżkę idącą w kierunku niewielkiego lasu przy drodze."
+    "Przez chwilę szli w ciszy, obserwując uważnie każdy otaczający ich szczegół."
+    "Tym razem ciszę postanowiła przerwać Lia."
+
+
+    ########################### devstuff #########################
+    if config.developer:
+        menu:
+            "dev/ bylismy na festiwalu":
+                $ d_gofestiwal = True
+                pass
+            "dev/ nie bylismy na festiwalu":
+                pass
+
+    ########################### devstuff #########################
+
+
+    ############################ [ if d_gofestiwal ##############################
+    if d_gofestiwal:
+        p1 "W ogóle... jak Ci się podobało na festiwalu?"
+        # Meamir neutral ON
+        show p5 bneutral wink lneutral with fc
+        p5 "Hmm? Słucham?"
+        "Zapytał lekko wybity ze swoich myśli Meamir."
+        p1 "Pytałam jak Ci się podobał festiwal. W zasadzie jak się podoba, bo pewnie jeszcze chwilę potrwa."
+        # Meamir smile ON
+        show p5 lsmile with fc
+        p5 "Ah, przepraszam - zamyśliłem się. Co do festiwalu... "
+        p5 "Tak szczerze takie imprezy nie są zbytnio w moim stylu, ale finalnie całość muszę ocenić bardzo pozytywnie."
+        p1 "A to dlaczego?"
+        # Meamir blush ON
+        show p5 blush with fc
+        # Lia blush ON
+        show p1 blush -lsmile with fc
+        p5 "No jak to dlaczego? Spotkaliśmy się! Dzięki temu cały festiwal w moich oczach stał się wyśmienitym wydarzeniem!"
+        p1 "Oj, nie wygłupiaj się. Na pewno byłby wyśmienity i beze mnie..."
+        # Meamir smirk ON
+        show p5 bangry narrowedwink lsmile with fc
+        p5 "No nie wiem... myślę, że to jednak Twoja zasługa!"
+        # Meamir neutral ON
+        show p5 bneutral wink lneutral with fc
+        # Lia smile ON
+        show p1 -blush with fc
+        p1 "Oh, no dobrze... a co myślisz o samym festiwalu?"
+        p5 "W jakim sensie?"
+        p1 "W takim ogólnym, co myślisz. Mówisz, że takie imprezy nie są dla Ciebie, ale jednak jest to duża część naszej kultury..."
+        # Meamir smile ON
+        show p5 lsmile with fc
+        p5 "Ah, no tak. Hmm. Na pewno jest w tym czasie ślicznie. Nieczęsto całe niebo jest takie zielone."
+        p5 "I tak sobie myślę, że w sumie chyba nawet polubiłem ten Festiwal."
+        p1 "Dlaczego? "
+        # Lia blush ON
+        show p1 bneutral wink blush with fc
+        p5 "Hmm... można na przykład poznać tam urocze osoby!"
+        # Lia smirk ON
+        show p1 bangry narrowedwink lsmile with fc
+        p1 "Tak? Pierwsze słyszę. Chyba byliśmy na różnych festiwalach..."
+        # Meamir sad ON
+        show p5 lsad with fc
+        p5 "Oh... Bo..."
+    ############################ /if d_gofestiwal ] #############################
+
+    ############################ bez festiwalu #############################
+    else:
+        p1 "Byłeś na festiwalu?"
+        # Meamir neutral ON
+        show p5 bneutral wink lneutral with fc
+        p5 "Hmm? Słucham?"
+        "Wyglądał na wybitego ze swoich myśli."
+        p1 "Pytałam czy byłeś już na festiwalu."
+        # Meamir smile ON
+        show p5 lsmile with fc
+        p5 "Ah, przepraszam - zamyśliłem się."
+        p5 "Co do festiwalu... To tak, byłem."
+        p5 "Ale powiem Ci szczerze, nie jest to chyba rodzaj wydarzenia dla mnie."
+        p5 "Nie miałbym tam co robić..."
+        # Meamir blush ON
+        show p5 blush with fc
+        p5 "Chyba, że..."
+        #Lia smirk ON
+        show p1 bangry narrowedwink lsmile with fc
+        p1 "Chyba, że co?"
+        # Lia blush ON
+        show p1 blush with fc
+        p5 "Chyba, że też byś tam była!"
+        p1 "Oj, nie wygłupiaj się! Nie mogło być aż tak źle..."
+        # Meamir smirk ON
+        show p5 bneutral narrowedwink lsmile with fc
+        p5 "Jednak myślę, że z Tobą byłoby znacznie ciekawiej!"
+        # Meamir neutral ON
+        show p5 bneutral wink lneutral with fc
+        # Lia smile ON
+        show p1 lsmile with fc
+        p1 "Oh, no dobrze... A co myślisz o samym festiwalu?"
+        p5 "W jakim sensie?"
+        p1 "Mówisz, że takie imprezy nie dla Ciebie, ale no jednak jest to duża część naszej kultury..."
+        # Meamir smile ON
+        show p5 lsmile with fc
+        p5 "Ah, no tak. Hmm. Na pewno jest w tym czasie ślicznie, nieczęsto całe niebo jest takie zielone."
+        p5 "No ale mimo wszystko, żeby w pełni się tym nacieszyć potrzeba czegoś więcej..."
+        p1 "Na przykład czego?"
+        # Meamir blush ON
+        show p5 blush with fc
+        p5 "Nie czego, a kogo..."
+        # Meamir sad ON
+        show p5 lsad -blush with fc
+        # Lia smirk ON
+        show p1 bangry narrowedwink lsmile with fc
+        p1 "Hmm, nie mam pojęcia o co może Ci chodzić..."
+        p1 "Dziwne rzeczy opowiadasz!"
+        p5 "Oh... Bo myślałem..."
+
+    # Meamir smile ON
+    show p5 lsmile with fc
+    p1 "Oj no, przecież żartuję. Miałeś przestać się wygłupiać! Teraz musisz mnie odprowadzić - aż do domu!"
+    p5 "Ahh... trochę się przez Ciebie zmieszałem..."
+    # Lia smile ON
+    show p1 bneutral wink lsmile with fc
+    p1 "Haha, taki był cel! Chodźmy powoli w drugą stronę... nie chcemy po nocy tułać się po lasku."
+    p5 "No dobrze, dobrze. Idziemy do Tawerny?"
+    p1 "Dokładnie tak, chodź - nie stój jak słup!"
+    "Meamir od razu ruszył w kierunku wskazanym przez Lię."
+    # TODO Na ekranie: Tu by się przydało takie ujęcie na łąkę Ivana, żeby nie było widać lasu
+    # lub jakaś ścieżka po prostu by się przydała. Pomyśleć trzeba
+    "Wracali głównie w ciszy, czasem wymieniając spostrzeżenia na temat mijanych obiektów."
+    "Lia była radosna. Nie czuła takiej swobody od dawna i bardzo ją to cieszyło."
+    "Ale teraz skupiła się na drodze - powoli zbliżali się do Tawerny."
+    # Na ekranie: Tawerna wieczór, P1 lewo i P5 prawo
+    scene anim_tavern nighttime dragon
+    show p5 lsmile with moveinleft:
+        align (.7,1.0)
+    show p1 lsmile with moveinleft:
+        align (.4,1.0) xzoom -1
+    "Gdy dotarli, z wewnątrz usłyszeli odgłosy przekrzykujących się gości."
+    # Meamir blush ON
+    show p5 blush with fc
+    p1 "No dobrze, jesteśmy. Dziękuję za spacer i za odprowadzenie. Było naprawdę miło!"
+    p5 "Ja też dziękuję! Cieszę się, że przyszłaś i że udało nam się miło spędzić czas."
+    p5 "Hmm... a czy zasłużyłem może na przytulasa na pożegnanie?"
+    # Lia blush ON
+    show p1 blush with fc
+
+    menu:
+        "Przytul go!":
+            p1 "No powiedzmy... powiedzmy, że zasłużyłeś."
+            # TODO Na ekranie: Hug, jeśli nie będzie CG no to trudno
+            show black
+            show e7p5c1 with dissolve
+            pause 1
+            show e7p5c2 with dissolve
+            "Lia z lekkim stresem postanowiła lekko przytulić Meamira na pożegnanie."
+            "\"To całkiem przyjemne!\" - pomyślała Lia i wzmocniła lekko swój uścisk."
+            "Meamir odwzajemnił się z podobnym zaangażowaniem."
+            "Po chwili odsunęli się od siebie. Lia pożegnała się pierwsza:"
+            hide black
+            hide e7p5c1
+            hide e7p5c2
+            with dissolve
+            show p5 blush
+            p1 "To do zobaczenia, papa i dziękuję za spacer!"
+            p5 "Ja też dziękuję - do zobaczenia! Dobranoc!"
+            p1 "Dobranoc!"
+
+        "Za wcześnie na takie rzeczy.":
+            #confused Lia ON
+            #sad Meamir ON
+            show p1 bsurprised wink lneutral
+            show p5 bneutral wink lsad
+            with fc
+            p1 "No nie wiem… Może następnym razem."
+            p5 "Oh, no dobrze..."
+            #sad_smile Lia ON
+            show p1 bsad wink lsmile -blush with fc
+            p1 "Ale i tak dziękuję za spacer. Było naprawdę miło!"
+            #sad_smile Meamir ON
+            show p5 bsad wink lsmile with fc
+            p5 "Oh… Cieszę się!"
+            #smile Meamir ON
+            show p5 bneutral wink lsmile with fc
+            p5 "I też dziękuję!"
+            #happy Lia ON
+            show p1 bneutral narrowedwink lsmile with fc
+            p1 "Muszę już uciekać, do zobaczenia później! Dobranoc!  "
+            p5 "Dobranoc!"
+
+
+
+
+
+
+    "Lia pomachała jeszcze na pożegnanie Meamirowi, po czym ruszyła w kierunku swojego pokoju."
+    # Na ekranie: Pokój P1, Lia (neutral) na środku
+    scene anim_room_lia_evening
+    show p1pl
+    with fade
+    "Lia weszła do swojego pokoju, zamknęła drzwi i przystanęła na środku jakby niespodziewanie nawiedziła ją jakaś myśl."
+    # Na ekranie: Pokój P1, Lia (sad) na środku - zoom zwraca się do gracza
+    show p1pl lsad wink_player with fc
+    p1 "Oh, przepraszam, że rozmawialiśmy dziś tak mało. Strasznie pokręcony dzień..."
+    menu:
+        "Nic się nie stało. Bardzo dobrze sobie poradziłaś!":
+            pass
+    # Lia smile ON
+    show p1pl lsmile with fc
+    p1 "Dziękuję! Za radę także... myślę, że wybrałam bardzo dobrze!"
+    menu:
+        "Dobrze, że się zapytałaś i co najważniejsze... że udało się pomóc!":
+            pass
+    p1 "Oh, nie czuję zmęczenia. Chyba teraz w ogóle nie zasnę."
+    menu:
+        "Bez przesady, trochę dziś się nabiegałaś! Położysz się i wkrótce zaśniesz, zobaczysz...":
+            pass
+    p1 "Ah, pewnie masz rację. Zresztą, jak zwykle! To się kładę, dobranoc!"
+    menu:
+        "Dobranoc, śpij dobrze.":
+            pass
+    "Lia nie tylko zasnęła bardzo szybko, ale także z uśmiechem na twarzy."
+    "Nie zdarzyło się to od bardzo dawna..."
+    # Na ekranie: jakoś przejście, że noc mija - może Tawerna od zewnątrz, może coś w pokoju?
+    hide p1pl with fc
+    scene anim_room_lia_goldenhour with dissolve
+    pause 1
+    show anim_room_lia_nightdragonlight with Dissolve(2.0)
+    pause 1
+    show anim_room_lia_nightdragon with Dissolve(2.0)
+    pause 2
+    show anim_room_lia_morning with Dissolve(2.0)
+    "Lia obudziła się jeszcze nim promienie słoneczne dosięgły jej okna. Była pełna energii."
+    "Pierwszy raz od dawna nie mogła doczekać się śniadania i zbliżającej się rozmowy."
+    jump ee000
+
+################################################################################
+#############################   EPIZOD 7-N   ###################################
+label epizod7n:
+    if config.developer:
+        scene black
+        show text "epizod7n" at truecenter
+        pause
+    # Na ekranie: zewnątrz Tawerny, noc w dzień pyk animowane takie ładne
+    $ akt1_UkonczenieEpizodow["e7_n"] = True
+    scene anim_room_lia_goldenhour with dissolve
+    pause 1
+    show anim_room_lia_nightdragonlight with Dissolve(2.0)
+    pause 1
+    show anim_room_lia_nightdragon with Dissolve(2.0)
+    pause 2
+    show anim_room_lia_morning with Dissolve(2.0)
+    # Na ekranie: Pokój P1
+    scene anim_room_lia_morning
+    "Lia przebudziła się dość wcześnie, wyjątkowo wypoczęta."
+    "Wczorajsza decyzja o wczesnym pójściu spać najwidoczniej już się opłaciła."
+    "Usiadła na łóżku. Przeciągając się bezgłośnie, była ciekawa zbliżającego się śniadania."
+    jump ee000
+
+
+
+
+
+
+
+
+
+
+
 
 
 ################################################################################
@@ -2181,3 +3268,4 @@ label e6:
 
 label be01:
     "bado endingo"
+    "zawroc wedrowcze"

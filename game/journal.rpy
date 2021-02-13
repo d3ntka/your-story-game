@@ -1,4 +1,152 @@
 default jb = 1
+
+default jrnl_important_1 = ""
+default jrnl_important_2 = ""
+default jrnl_important_3 = ""
+default jrnl_important_4 = ""
+default jrnl_important_5 = ""
+
+default jrnl_optional_1 = ""
+default jrnl_optional_2 = ""
+default jrnl_optional_3 = ""
+default jrnl_optional_4 = ""
+default jrnl_optional_5 = ""
+
+default jrnl_aina_about = ""
+default jrnl_cirdan_about = ""
+default jrnl_henrietta_about = ""
+default jrnl_levius_about = ""
+default jrnl_meamir_about = ""
+default jrnl_raven_about = ""
+default jrnl_others_about = ""
+
+default jrnl_aina_todo_1 = ""
+default jrnl_aina_todo_2 = ""
+default jrnl_aina_todo_3 = ""
+default jrnl_aina_todo_4 = ""
+
+default jrnl_cirdan_todo_1 = ""
+default jrnl_cirdan_todo_2 = ""
+default jrnl_cirdan_todo_3 = ""
+default jrnl_cirdan_todo_4 = ""
+
+default jrnl_henrietta_todo_1 = ""
+default jrnl_henrietta_todo_2 = ""
+default jrnl_henrietta_todo_3 = ""
+default jrnl_henrietta_todo_4 = ""
+
+default jrnl_levius_todo_1 = ""
+default jrnl_levius_todo_2 = ""
+default jrnl_levius_todo_3 = ""
+default jrnl_levius_todo_4 = ""
+
+default jrnl_meamir_todo_1 = ""
+default jrnl_meamir_todo_2 = ""
+default jrnl_meamir_todo_3 = ""
+default jrnl_meamir_todo_4 = ""
+
+default jrnl_raven_todo_1 = ""
+default jrnl_raven_todo_2 = ""
+default jrnl_raven_todo_3 = ""
+default jrnl_raven_todo_4 = ""
+
+default jrnl_others_todo_1 = ""
+default jrnl_others_todo_2 = ""
+default jrnl_others_todo_3 = ""
+default jrnl_others_todo_4 = ""
+
+
+
+
+
+
+
+
+################################################################################
+#####################            IMPORTRANT             ########################
+################################################################################
+
+define jrnl_important_n01 = __("- powinnam spotkać się z Raven lub Meamirem.")
+
+
+################################################################################
+#####################             OPTIONAL             #########################
+################################################################################
+
+
+
+################################################################################
+######################             ABOUT               #########################
+################################################################################
+
+###################         BOOKMARK 1 - AINA            #######################
+define jrnl_aina_about_n01 = __("W sumie to nie miałam okazji poznać jej dobrze. Wiem tylko, że pracowała kiedyś chyba w Stolicy. Może dowiem się kiedyś czegoś więcej.")
+###################        /BOOKMARK 1 - AINA            #######################
+
+
+###################         BOOKMARK 2 - CIRDAN          #######################
+
+
+###################        /BOOKMARK 2 - CIRDAN          #######################
+
+
+
+###################         BOOKMARK 3 - HENRIETTA       #######################
+define jrnl_henrietta_about_n01 = __("Henrietta... Hmm, momentami wydaje się bardzo poważna, ale znów ciężko mi dokładnie stwierdzić. Wiem tylko, że mieszka tu od paru lat, chyba 7? Nie pamiętam dokładnie...")
+
+###################        /BOOKMARK 3 - HENRIETTA       #######################
+
+
+
+###################         BOOKMARK 4 - LEVIUS          #######################
+define jrnl_levius_about_n01 = __("Hmm. Kolejna osoba o której wcześniej zbytnio nie myślałam... Levius na pewno jest bardzo uroczy, często wygląda chyba na smutnego? Ale nie jestem pewna, nie jestem najlepsza w czytaniu emocji u innych...")
+
+###################        /BOOKMARK 4 - LEVIUS          #######################
+
+
+
+###################         BOOKMARK 5 - MEAMIR          #######################
+define jrnl_meamir_about_n01_fest = __("Tutaj całkiem zabawna historia. Wpadliśmy na siebie na festiwalu - dosłownie! Można by powiedzieć, że to było przeznaczenie bo to normalnie nie wychodzę nigdzie, a akurat tego dnia jednak poszłam na festiwal! Wydaje się bardzo miły, zaprosił mnie na spacer. Na pewno warto to rozważyć, chociaż wiem, że na pewno się jeszcze spotkamy skoro dopiero wprowadził się do wioski.")
+define jrnl_meamir_about_n01_nofest = __("Meamir to nowy chłopak w okolicy, coś wcześniej słyszałam, że wprowadza się razem z ojcem - kowalem. Poznaliśmy się w Tawernie jak przyszedł po paczkę. Wydaje się bardzo miły, zaprosił mnie na spacer. Na pewno warto to rozważyć, chociaż wiem, że na pewno się jeszcze spotkamy skoro dopiero wprowadził się do wioski.")
+###################        /BOOKMARK 5 - MEAMIR          #######################
+
+###################         BOOKMARK 6 - RAVEN           #######################
+define jrnl_raven_about_n01 = __("Tutaj z kolei nietypowa sytuacja... Raven właśnie śpi w pokoju gościnnym i mam nadzieję, że odpoczywa. Gonili ją jacyś bandyci, wolę sobie nie wyobrażać czego od niej chcieli. Takie tragiczne sytuacje jak dziś nie zdarzają się zbyt często na naszej wyspie, więc musiała mieć ogromnego pecha. Dobrze, że mój tata pokazał tym bandziorom, gdzie ich miejsce. Mam nadzieję, że Raven szybko wydobrzeje i może przy okazji dowiem się czegoś więcej o niej...")
+
+###################        /BOOKMARK 6 - RAVEN           #######################
+
+###################         BOOKMARK 7 - OTHERS          #######################
+
+###################        /BOOKMARK 7 - OTHERS          #######################
+
+
+################################################################################
+#####################              TO DO               #########################
+################################################################################
+
+###################          BOOKMARK 1 - AINA           #######################
+define jrnl_aina_todo_n01 = __("Hmm... Chyba w tym momencie nic.")
+
+###################         BOOKMARK 2 - CIRDAN          #######################
+
+###################         BOOKMARK 3 - HENRIETTA       #######################
+define jrnl_henrietta_todo_n01 = __("Może kiedyś coś będzie... Kto wie.")
+###################         BOOKMARK 4 - LEVIUS          #######################
+define jrnl_levius_todo_n01 = __("Nawet nie wiem co bym mogła tu wpisać.")
+###################         BOOKMARK 5 - MEAMIR          #######################
+define jrnl_meamir_todo_n01 = __("Mogę iść się z nim spotkać, powinien być w Wiosce przy kuźni.")
+
+###################         BOOKMARK 6 - RAVEN           #######################
+define jrnl_raven_todo_n01 = __("Mogłabym pójść sprawdzić jak się czuje.")
+###################         BOOKMARK 7 - OTHERS          #######################
+
+
+
+
+
+################################################################################
+################################################################################
+
 init:
     style journal_names:
         xalign 0.5
@@ -35,7 +183,7 @@ screen journal_base():
     add "dziennik_bg"
     add "dziennik_base"
     add "dziennik_likeindicator_base"
-    text "[weekdayName!u] [day]" style "journal_date"
+    text "[weekdayName!ut]" style "journal_date"
     text __("Notatki:") xpos 0.22 ypos 0.15 style "journal_titles"
     text __("Do zrobienia:") xpos 0.22 ypos 0.49 style "journal_titles"
     text __("Najważniejsze:") xpos 0.63 ypos 0.1 style "journal_titles"
@@ -44,8 +192,20 @@ screen journal_base():
         add "dziennik_hateindicator_lvl[HatePath]"
     if LovePath > 0:
         add "dziennik_loveindicator_lvl[LovePath]"
+
+    #najważniejsze
+    fixed:
+        area (.63,.16,480,500)
+        text "[jrnl_important_1!t]\n[jrnl_important_2!t]\n[jrnl_important_3!t]\n[jrnl_important_4!t]\n[jrnl_important_5!t]" style "journal_about"
+
+    #opcjonalne
+    fixed:
+        area (.63,.55,480,500)
+        text "[jrnl_optional_1!t]\n[jrnl_optional_2!t]\n[jrnl_optional_3!t]\n[jrnl_optional_4!t]\n[jrnl_optional_5!t]" style "journal_about"
     use journal_bookmarks
     use journal_buttons
+
+
 
 screen journal_buttons():
     zorder 65
@@ -57,12 +217,14 @@ screen journal_buttons():
 screen journal_bookmarks():
     zorder 55
     imagebutton auto "dziennik_button_aina_%s" focus_mask True action ShowTransient('journal_bookmark1')
-    imagebutton auto "dziennik_button_cirdan_%s" focus_mask True action  ShowTransient('journal_bookmark2')
+    if zm_tutorial_jrnl_done:
+        imagebutton auto "dziennik_button_cirdan_%s" focus_mask True action ShowTransient('journal_bookmark2')
     imagebutton auto "dziennik_button_henrietta_%s" focus_mask True action ShowTransient('journal_bookmark3')
     imagebutton auto "dziennik_button_levius_%s" focus_mask True action ShowTransient('journal_bookmark4')
     imagebutton auto "dziennik_button_meamir_%s" focus_mask True action ShowTransient('journal_bookmark5')
     imagebutton auto "dziennik_button_raven_%s" focus_mask True action ShowTransient('journal_bookmark6')
-    imagebutton auto "dziennik_button_others_%s" focus_mask True action ShowTransient('journal_bookmark7')
+    if zm_tutorial_jrnl_done:
+        imagebutton auto "dziennik_button_others_%s" focus_mask True action ShowTransient('journal_bookmark7')
 
 
 screen journal_bookmark1():
@@ -77,29 +239,17 @@ screen journal_bookmark1():
         add "dziennik_loveindicator_lvl[AinaLove]"
 
     text "Aina" style "journal_names"
+    imagebutton auto "dziennik_button_exit_%s" focus_mask True action Hide("journal_bookmark1",fc)
 
     # about
     fixed:
         area (.22,.21,530,500)
-        text "Przybieżeli do Betlejem pasterze Grając skocznie Dzieciąteczku na lirze Chwała na wysokości, chwała na wysokości, a pokój na ziemi Chwała na wysokości, chwała na wysokości, a pokój na ziemi Oddawali swe ukłony w pokorze Tobie z serca ochotnego, o Boże! Chwała na wysokości, chwała na wysokości, a pokój na ziemi Chwała na wysokości, chwała na wysokości, a pokój na ziemi Anioł Pański sam ogłosił te dziwy Których oni nie słyszeli, jak żywi Chwała na wysokości, chwała na wysokości, a pokój na ziemi" style "journal_about"
+        text "[jrnl_aina_about!t]" style "journal_about"
     #todo
     fixed:
         area (.22,.55,530,500)
-        text " - Nulla senserit doctrina do quem a te dolore nescius. \n - Expetendis minim export ullamco velit, fugiat voluptate o duis dolore, a hic graviterque, veniam admodum ab labore tempor.\n - Duis mandaremus ad quem malis, sed amet arbitrantur, de export consequat, \n - occaecat esse sunt iudicem nulla." style "journal_about"
+        text "[jrnl_aina_todo_1!t]\n[jrnl_aina_todo_2!t]\n[jrnl_aina_todo_3!t]\n[jrnl_aina_todo_4!t]" style "journal_about"
 
-    #najważniejsze
-    fixed:
-        area (.63,.16,480,500)
-        text " - Nulla senserit doctrina do quem a te dolore nescius. \n - Expetendis minim export ullamco velit, fugiat voluptate o duis dolore, a hic graviterque, veniam admodum ab labore.\n - Duis mandaremus ad quem malis, sed amet arbitrantur, de export consequat, \n - occaecat esse sunt iudicem nulla." style "journal_about"
-
-    #opcjonalne
-    fixed:
-        area (.63,.55,480,500)
-        text " - Nulla senserit doctrina do quem a te dolore nescius. \n - Expetendis minim export ullamco velit, fugiat voluptate o duis dolore, a hic graviterque, veniam admodum.\n - Duis mandaremus ad quem malis, sed amet arbitrantur, de export consequat" style "journal_about"
-
-
-
-    imagebutton auto "dziennik_button_exit_%s" focus_mask True action Hide("journal_bookmark1")
 
 screen journal_bookmark2():
     zorder 50
@@ -111,7 +261,17 @@ screen journal_bookmark2():
     if CirdanLove > 0:
         add "dziennik_loveindicator_lvl[CirdanLove]"
     text "Cirdan" style "journal_names"
-    imagebutton auto "dziennik_button_exit_%s" focus_mask True action Hide("journal_bookmark2")
+    imagebutton auto "dziennik_button_exit_%s" focus_mask True action Hide("journal_bookmark2",fc)
+
+    # about
+    fixed:
+        area (.22,.21,530,500)
+        text "[jrnl_cirdan_about!t]" style "journal_about"
+    #todo
+    fixed:
+        area (.22,.55,530,500)
+        text "[jrnl_cirdan_todo_1!t]\n[jrnl_cirdan_todo_2!t]\n[jrnl_cirdan_todo_3!t]\n[jrnl_cirdan_todo_4!t]" style "journal_about"
+
 
 screen journal_bookmark3():
     zorder 50
@@ -123,7 +283,17 @@ screen journal_bookmark3():
     if HenriettaLove > 0:
         add "dziennik_loveindicator_lvl[HenriettaLove]"
     text "Henrietta" style "journal_names"
-    imagebutton auto "dziennik_button_exit_%s" focus_mask True action Hide("journal_bookmark3")
+    imagebutton auto "dziennik_button_exit_%s" focus_mask True action Hide("journal_bookmark3",fc)
+
+    # about
+    fixed:
+        area (.22,.21,530,500)
+        text "[jrnl_henrietta_about!t]" style "journal_about"
+    #todo
+    fixed:
+        area (.22,.55,530,500)
+        text "[jrnl_henrietta_todo_1!t]\n[jrnl_henrietta_todo_2!t]\n[jrnl_henrietta_todo_3!t]\n[jrnl_henrietta_todo_4!t]" style "journal_about"
+
 
 screen journal_bookmark4():
     zorder 50
@@ -135,7 +305,17 @@ screen journal_bookmark4():
     if LeviusLove > 0:
         add "dziennik_loveindicator_lvl[LeviusLove]"
     text "Levius" style "journal_names"
-    imagebutton auto "dziennik_button_exit_%s" focus_mask True action Hide("journal_bookmark4")
+    imagebutton auto "dziennik_button_exit_%s" focus_mask True action Hide("journal_bookmark4",fc)
+
+    # about
+    fixed:
+        area (.22,.21,530,500)
+        text "[jrnl_levius_about!t]" style "journal_about"
+    #todo
+    fixed:
+        area (.22,.55,530,500)
+        text "[jrnl_levius_todo_1!t]\n[jrnl_levius_todo_2!t]\n[jrnl_levius_todo_3!t]\n[jrnl_levius_todo_4!t]" style "journal_about"
+
 
 screen journal_bookmark5():
     zorder 50
@@ -147,7 +327,17 @@ screen journal_bookmark5():
     if MeamirLove > 0:
         add "dziennik_loveindicator_lvl[MeamirLove]"
     text "Meamir" style "journal_names"
-    imagebutton auto "dziennik_button_exit_%s" focus_mask True action Hide("journal_bookmark5")
+    imagebutton auto "dziennik_button_exit_%s" focus_mask True action Hide("journal_bookmark5",fc)
+
+    # about
+    fixed:
+        area (.22,.21,530,500)
+        text "[jrnl_meamir_about!t]" style "journal_about"
+    #todo
+    fixed:
+        area (.22,.55,530,500)
+        text "[jrnl_meamir_todo_1!t]\n[jrnl_meamir_todo_2!t]\n[jrnl_meamir_todo_3!t]\n[jrnl_meamir_todo_4!t]" style "journal_about"
+
 
 screen journal_bookmark6():
     zorder 50
@@ -159,12 +349,31 @@ screen journal_bookmark6():
     if RavenLove > 0:
         add "dziennik_loveindicator_lvl[RavenLove]"
     text "Raven" style "journal_names"
-    imagebutton auto "dziennik_button_exit_%s" focus_mask True action Hide("journal_bookmark6")
+    imagebutton auto "dziennik_button_exit_%s" focus_mask True action Hide("journal_bookmark6",fc)
+
+    # about
+    fixed:
+        area (.22,.21,530,500)
+        text "[jrnl_raven_about!t]" style "journal_about"
+    #todo
+    fixed:
+        area (.22,.55,530,500)
+        text "[jrnl_raven_todo_1!t]\n[jrnl_raven_todo_2!t]\n[jrnl_raven_todo_3!t]\n[jrnl_raven_todo_4!t]" style "journal_about"
+
 
 screen journal_bookmark7():
     zorder 50
     modal True
     tag dziennik
     use journal_base
-    text "Inni" style "journal_names"
-    imagebutton auto "dziennik_button_exit_%s" focus_mask True action Hide("journal_bookmark7")
+    text __("Inni") style "journal_names"
+    imagebutton auto "dziennik_button_exit_%s" focus_mask True action Hide("journal_bookmark7",fc)
+
+    # about
+    fixed:
+        area (.22,.21,530,500)
+        text "[jrnl_others_about!t]" style "journal_about"
+    #todo
+    fixed:
+        area (.22,.55,530,500)
+        text "[jrnl_others_todo_1!t]\n[jrnl_others_todo_2!t]\n[jrnl_others_todo_3!t]\n[jrnl_others_todo_4!t]" style "journal_about"

@@ -1126,3 +1126,59 @@ translate english strings:
     old "Copies the errors.txt file to the clipboard as Markdown for Discord."
     new "Copies the errors.txt file to the clipboard as Markdown for Discord."
 
+# TODO: Translation updated at 2021-02-10 19:19
+
+translate english strings:
+
+    # renpy/common/00accessibility.rpy:193
+    old "Self-Voicing Volume Drop"
+    new ""
+
+    # renpy/common/00preferences.rpy:388
+    old "self voicing volume drop"
+    new ""
+
+    # renpy/common/00preferences.rpy:464
+    old "system cursor"
+    new ""
+
+    # renpy/common/00gltest.rpy:100
+    old "Force GL Renderer"
+    new ""
+
+    # renpy/common/00gltest.rpy:105
+    old "Force ANGLE Renderer"
+    new ""
+
+    # renpy/common/00gltest.rpy:110
+    old "Force GLES Renderer"
+    new ""
+
+    # renpy/common/00gltest.rpy:116
+    old "Force GL2 Renderer"
+    new ""
+
+    # renpy/common/00gltest.rpy:121
+    old "Force ANGLE2 Renderer"
+    new ""
+
+    # renpy/common/00gltest.rpy:126
+    old "Force GLES2 Renderer"
+    new ""
+
+    # renpy/common/00gltest.rpy:245
+    old "This game requires use of GL2 that can't be initialised."
+    new ""
+
+    # renpy/common/00gltest.rpy:256
+    old "More details on how to fix this can be found in the {a=[url]}documentation{/a}."
+    new ""
+
+    # renpy/common/00gltest.rpy:273
+    old "Change render options"
+    new ""
+
+    # renpy/common/00gamepad.rpy:58
+    old "Press or move the '[control!s]' [kind]."
+    new ""
+

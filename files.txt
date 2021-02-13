@@ -1,13 +1,21 @@
+Caveat-Regular.ttf
+Cinzel-Medium.ttf
+Cinzel-Regular.ttf
+Cookie-Regular.ttf
 Montserrat-Light.ttf
+akti.rpy
+akti.rpyc
 aktii.rpy
+aktii.rpy.bak
 aktii.rpyc
+customscreens.rpy
+customscreens.rpyc
 defobrazki.rpy
 defobrazki.rpyc
-demostuff.rpy.bak
-demostuff.rpyc.bak
 devconf.rpy
 devconf.rpyc
 explo.rpy
+explo.rpy.bak
 explo.rpyc
 gallery.rpy
 gallery.rpyc
@@ -15,6 +23,8 @@ gui.rpy
 gui.rpyc
 icon.icns
 icon.ico
+journal.rpy
+journal.rpyc
 labexplo.rpy
 labexplo.rpy.bak
 labexplo.rpyc
@@ -25,10 +35,6 @@ postaci.rpyc
 proxy
 screens.rpy
 screens.rpyc
-script — kopia.rpy.bak
-script — kopia.rpyc.bak
-script — kopia2.rpy.bak
-script — kopia2.rpyc.bak
 script.rpy
 script.rpyc
 testy.rpy
@@ -67,6 +73,7 @@ audio\sfx\sfx_windy_forest.mp3
 cache\bytecode.rpyb
 cache\pyanalysis.rpyb
 cache\screens.rpyb
+cache\shaders.txt
 gui\cursor.png
 gui\frame.png
 gui\game_menu.png
@@ -198,12 +205,21 @@ gui\timeskip\time_hover.png
 gui\timeskip\time_hover.png.bak
 gui\timeskip\time_idle.png
 gui\timeskip\time_idle.png.bak
+images\button_journal_hover.png
+images\button_journal_idle.png
 images\cg\cg tavern wall.jpg
+images\cg\cg_dream_bad.jpg
+images\cg\cg_dream_good.jpg
 images\cg\raven_window_clear.jpg
 images\cg\tavern_door_lia_eyesclosed.png
 images\cg\tavern_door_lia_eyesopened.png
 images\cg\tavern_door_lights1.png
 images\cg\tavern_door_lights2.png
+images\cg\karty\card_back.png
+images\cg\karty\card_destiny.png
+images\cg\karty\card_hover.png
+images\cg\karty\card_love.png
+images\cg\karty\card_nothing.png
 images\cg\zorn angel\cg_zorn_helping_raven.png
 images\cg\zorn angel\effect_blinkingpov_bottom.png
 images\cg\zorn angel\effect_blinkingpov_top.png
@@ -212,9 +228,9 @@ images\characters\others\angry_man2.png
 images\characters\others\elf1.png
 images\characters\others\guard.png
 images\characters\others\guard_blue.png
-images\characters\others\hidden_dude.png
-images\characters\others\hidden_dude2.png
-images\characters\others\hidden_dude3.png
+images\characters\others\tg1.png
+images\characters\others\tg2.png
+images\characters\others\tg3.png
 images\characters\p1 lia\lia_base.png
 images\characters\p1 lia\lia_bigtears.png
 images\characters\p1 lia\lia_blush.png
@@ -242,8 +258,8 @@ images\characters\p10 ove\ove_base.png
 images\characters\p10 ove\ove_base_hover_gold.png
 images\characters\p10 ove\ove_base_hover_standard.png
 images\characters\p10 ove\ove_brows_bangry.png
+images\characters\p10 ove\ove_brows_bneutral.png
 images\characters\p10 ove\ove_brows_bsad.png
-images\characters\p10 ove\ove_brows_neutral.png
 images\characters\p10 ove\ove_eyes_angry.png
 images\characters\p10 ove\ove_eyes_closed.png
 images\characters\p10 ove\ove_eyes_neutral.png
@@ -303,7 +319,9 @@ images\characters\p4 raven\raven_brows_bneutral.png
 images\characters\p4 raven\raven_brows_bsad.png
 images\characters\p4 raven\raven_brows_bsurprised.png
 images\characters\p4 raven\raven_covered_base.png
-images\characters\p4 raven\raven_covered_base_hover.png
+images\characters\p4 raven\raven_covered_base_hover_gold.png
+images\characters\p4 raven\raven_covered_base_hover_standard.png
+images\characters\p4 raven\raven_covered_shadow.png
 images\characters\p4 raven\raven_eyes_closed.png
 images\characters\p4 raven\raven_eyes_narrowed.png
 images\characters\p4 raven\raven_eyes_open.png
@@ -311,7 +329,6 @@ images\characters\p4 raven\raven_eyes_widened.png
 images\characters\p4 raven\raven_lips_lneutral.png
 images\characters\p4 raven\raven_lips_lsad.png
 images\characters\p4 raven\raven_lips_lsmile.png
-images\characters\p4 raven\raven_shadow.png
 images\characters\p4 raven\raven_smalltears.png
 images\characters\p5 meamir\meamir_base.png
 images\characters\p5 meamir\meamir_base_hover.png
@@ -374,6 +391,25 @@ images\characters\p8 henrietta\henrietta_lips_lsad.png
 images\characters\p8 henrietta\henrietta_lips_lsmile.png
 images\characters\p8 henrietta\henrietta_shadow.png
 images\characters\p8 henrietta\henrietta_smalltears.png
+images\characters\p9 levius\levius_base.png
+images\characters\p9 levius\levius_base_hover.png
+images\characters\p9 levius\levius_base_hover_gold.png
+images\characters\p9 levius\levius_base_hover_standard.png
+images\characters\p9 levius\levius_bigtears.png
+images\characters\p9 levius\levius_blush.png
+images\characters\p9 levius\levius_brows_bangry.png
+images\characters\p9 levius\levius_brows_bneutral.png
+images\characters\p9 levius\levius_brows_bsad.png
+images\characters\p9 levius\levius_brows_bsurprised.png
+images\characters\p9 levius\levius_eyes_closed.png
+images\characters\p9 levius\levius_eyes_narrowed.png
+images\characters\p9 levius\levius_eyes_neutral.png
+images\characters\p9 levius\levius_eyes_widened.png
+images\characters\p9 levius\levius_lips_lneutral.png
+images\characters\p9 levius\levius_lips_lsad.png
+images\characters\p9 levius\levius_lips_lsmile.png
+images\characters\p9 levius\levius_shadow.png
+images\characters\p9 levius\levius_smalltears.png
 images\comics\e5 kufel i piwo\piwo_1.png
 images\comics\e5 kufel i piwo\piwo_2.png
 images\comics\e5 kufel i piwo\piwo_3.png
@@ -391,13 +427,28 @@ images\comics\e8p16 powrót cirdana\e8p16c4b.png
 images\comics\e8p4 raven hug\e8p4c1.png
 images\comics\e8p4 raven hug\e8p4c2.png
 images\comics\e8p4 raven hug\e8p4c3.png
+images\comics\e8p4w do roboty raven\e8p4wc1.png
+images\comics\e8p4w do roboty raven\e8p4wc2.png
 images\comics\e8p5 meamir hug pod drzewkiem\E8P5C1.png
 images\comics\e8p5 meamir hug pod drzewkiem\E8P5C2.png
 images\comics\e8p5 meamir hug pod drzewkiem\E8P5C3A.png
 images\comics\e8p5 meamir hug pod drzewkiem\E8P5C3B.png
 images\comics\e8p5 meamir hug pod drzewkiem\E8P5C3C.png
-images\comics\ee001 raven smooch\ee001_raven_kitchen_smooch_1.png
-images\comics\ee001 raven smooch\ee001_raven_kitchen_smooch_2.png
+images\comics\ee001 raven smooch\ee001c1.png
+images\comics\ee001 raven smooch\ee001c2.png
+images\comics\others\e1b.png
+images\comics\others\e1b_2.png
+images\comics\others\e1c.png
+images\comics\others\e6a.png
+images\comics\others\roslinka.png
+images\comics\work work\work1a.png
+images\comics\work work\work1b.png
+images\comics\work work\work2a.png
+images\comics\work work\work2b.png
+images\comics\work work\work3a.png
+images\comics\work work\work3b.png
+images\comics\work work\work_bar_base.png
+images\comics\work work\work_bar_package.png
 images\gameplay\button_exit_hover.png
 images\gameplay\button_exit_idle.png
 images\inne\piwo_1.png
@@ -424,6 +475,66 @@ images\inne\table minigame\stain1.png
 images\inne\table minigame\stain2.png
 images\inne\table minigame\stain3.png
 images\inne\table minigame\stol.png
+images\journal\desktop.ini
+images\journal\dziennik_base.png
+images\journal\dziennik_base.png.bak
+images\journal\dziennik_bg.jpg
+images\journal\dziennik_button_aina_hover.png
+images\journal\dziennik_button_aina_idle.png
+images\journal\dziennik_button_aina_selected_idle.png
+images\journal\dziennik_button_cirdan_hover.png
+images\journal\dziennik_button_cirdan_idle.png
+images\journal\dziennik_button_cirdan_selected_idle.png
+images\journal\dziennik_button_dialogue_hover.png
+images\journal\dziennik_button_dialogue_idle.png
+images\journal\dziennik_button_exit_hover.png
+images\journal\dziennik_button_exit_idle.png
+images\journal\dziennik_button_help_hover.png
+images\journal\dziennik_button_help_idle.png
+images\journal\dziennik_button_henrietta_hover.png
+images\journal\dziennik_button_henrietta_idle.png
+images\journal\dziennik_button_henrietta_selected_idle.png
+images\journal\dziennik_button_levius_hover.png
+images\journal\dziennik_button_levius_idle.png
+images\journal\dziennik_button_levius_selected_idle.png
+images\journal\dziennik_button_meamir_hover.png
+images\journal\dziennik_button_meamir_idle.png
+images\journal\dziennik_button_meamir_selected_idle.png
+images\journal\dziennik_button_others_hover.png
+images\journal\dziennik_button_others_idle.png
+images\journal\dziennik_button_others_selected_idle.png
+images\journal\dziennik_button_raven_hover.png
+images\journal\dziennik_button_raven_idle.png
+images\journal\dziennik_button_raven_selected_idle.png
+images\journal\dziennik_checkbox1.png
+images\journal\dziennik_checkbox2.png
+images\journal\dziennik_filters.png
+images\journal\dziennik_hateindicator_lvl1.png
+images\journal\dziennik_hateindicator_lvl2.png
+images\journal\dziennik_hateindicator_lvl3.png
+images\journal\dziennik_hateindicator_lvl4.png
+images\journal\dziennik_likeindicator_base.png
+images\journal\dziennik_likeindicator_hate1.png
+images\journal\dziennik_likeindicator_hate2.png
+images\journal\dziennik_likeindicator_hate3.png
+images\journal\dziennik_likeindicator_like1.png
+images\journal\dziennik_likeindicator_like2.png
+images\journal\dziennik_likeindicator_like3.png
+images\journal\dziennik_loveindicator_lvl1.png
+images\journal\dziennik_loveindicator_lvl2.png
+images\journal\dziennik_loveindicator_lvl3.png
+images\journal\dziennik_loveindicator_lvl4.png
+images\journal\dziennik_tick.png
+images\journal\dziennik_tick_characters.png
+images\journal\dziennik_tick_main.png
+images\journal\dziennik_tick_side.png
+images\journal\tutorial\tutorial_base.png
+images\journal\tutorial\tutorial_bookmarks.png
+images\journal\tutorial\tutorial_exit.png
+images\journal\tutorial\tutorial_help.png
+images\journal\tutorial\tutorial_important.png
+images\journal\tutorial\tutorial_notes.png
+images\journal\tutorial\tutorial_optional.png
 images\mapa\button_map_hover.png
 images\mapa\button_map_hover.png.bak
 images\mapa\button_map_idle.png
@@ -582,6 +693,8 @@ images\places\tavern\hall\tavern_hall_liaroom1_hover.png
 images\places\tavern\hall\tavern_hall_liaroom1_idle.png
 images\places\tavern\hall\tavern_hall_parentsroom1_hover.png
 images\places\tavern\hall\tavern_hall_parentsroom1_idle.png
+images\places\tavern\hall\tavern_hall_plant5_dry_hover.png
+images\places\tavern\hall\tavern_hall_plant5_dry_idle.png
 images\places\tavern\hall\tavern_hall_stairs2_hover.png
 images\places\tavern\hall\tavern_hall_stairs2_idle.png
 images\places\tavern\kitchen\room_kitchenday.png
@@ -789,14 +902,22 @@ saves\quick-7-LT1.save
 saves\quick-8-LT1.save
 tl\None\common.rpym
 tl\None\common.rpymc
+tl\english\akti.rpy
+tl\english\akti.rpyc
+tl\english\aktii.rpy
+tl\english\aktii.rpyc
 tl\english\common.rpy
 tl\english\common.rpyc
+tl\english\customscreens.rpy
+tl\english\customscreens.rpyc
 tl\english\defobrazki.rpy
 tl\english\defobrazki.rpyc
 tl\english\demostuff.rpy.bak
 tl\english\demostuff.rpyc.bak
 tl\english\explo.rpy
 tl\english\explo.rpyc
+tl\english\journal.rpy
+tl\english\journal.rpyc
 tl\english\labexplo.rpy
 tl\english\labexplo.rpyc
 tl\english\options.rpy
@@ -810,3 +931,5 @@ tl\english\testy.rpy
 tl\english\testy.rpyc
 tl\english\gui\timeskip\time_hover.png.bak
 tl\english\gui\timeskip\time_idle.png.bak
+tl\english\images\customscreens.rpy
+tl\english\images\customscreens.rpyc

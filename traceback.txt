@@ -1,36 +1,44 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
-Executing ATL code at game/akti.rpy:999
-  File "game/akti.rpy", line 998, in script
-    show p1:
-TypeError: 'float' object is not iterable
+While running game code:
+  File "game/akti.rpy", line 530, in script
+    call screen dream_bad with Dissolve(2.0)
+  File "renpy/common/000statements.rpy", line 554, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+IOError: Couldn't find file 'sfx/clang.ogg'.
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/akti.rpy", line 998, in script
-    show p1:
-  File "renpy/ast.py", line 1182, in execute
-    show_imspec(self.imspec, atl=getattr(self, "atl", None))
-  File "renpy/ast.py", line 1152, in show_imspec
-    atl=atl)
-  File "renpy/exports.py", line 753, in show
-    sls.add(layer, img, key, zorder, behind, at_list=at_list, name=name, atl=atl, default_transform=default_transform, transient=transient)
-  File "renpy/display/core.py", line 1095, in add
-    thing._show()
-  File "renpy/display/transform.py", line 1117, in _show
-    super(ATLTransform, self)._show()
-  File "renpy/display/transform.py", line 1086, in _show
-    self.update_state()
-  File "renpy/display/transform.py", line 1105, in update_state
-    fr = self.execute(self, self.st, self.at)
-  File "renpy/atl.py", line 631, in execute
-    action, arg, pause = block.execute(trans, timebase, self.atl_state, events)
-  File "renpy/atl.py", line 838, in execute
-    action, arg, pause = stmt.execute(trans, target - start, child_state, events)
-  File "renpy/atl.py", line 1216, in execute
-    setattr(newts, k, v)
-  File "renpy/display/transform.py", line 438, in set_align
-    self.xanchor, self.yanchor = value
-TypeError: 'float' object is not iterable
+  File "game/akti.rpy", line 530, in script
+    call screen dream_bad with Dissolve(2.0)
+  File "renpy/ast.py", line 1960, in execute
+    self.call("execute")
+  File "renpy/ast.py", line 1948, in call
+    return renpy.statements.call(method, parsed, *args, **kwargs)
+  File "renpy/statements.py", line 278, in call
+    return method(parsed, *args, **kwargs)
+  File "renpy/common/000statements.rpy", line 554, in execute_call_screen
+    store._return = renpy.call_screen(name, *args, **kwargs)
+  File "renpy/exports.py", line 2969, in call_screen
+    rv = renpy.ui.interact(mouse="screen", type="screen", roll_forward=roll_forward)
+  File "renpy/ui.py", line 298, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "renpy/display/core.py", line 2978, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
+  File "renpy/display/core.py", line 3660, in interact_core
+    renpy.audio.audio.periodic()
+  File "renpy/audio/audio.py", line 1106, in periodic
+    raise_(exc[0], exc[1], exc[2])
+  File "renpy/audio/audio.py", line 1084, in periodic_thread_main
+    periodic_pass()
+  File "renpy/audio/audio.py", line 1026, in periodic_pass
+    c.periodic()
+  File "renpy/audio/audio.py", line 492, in periodic
+    topf = load(self.file_prefix + filename + self.file_suffix)
+  File "renpy/audio/audio.py", line 74, in load
+    rv = renpy.loader.load(fn)
+  File "renpy/loader.py", line 766, in load
+    raise IOError("Couldn't find file '%s'." % name)
+IOError: Couldn't find file 'sfx/clang.ogg'.
 

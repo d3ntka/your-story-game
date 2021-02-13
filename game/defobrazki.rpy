@@ -1745,6 +1745,117 @@ init:
 
 
 ##### animacje do dreams #######
+    image img_dream_good:
+        contains:
+            4
+            "cg_dream_good"
+            alpha 0.0
+            align (.5,.8) zoom 1.0
+            parallel:
+                linear 8 alpha 1.0
+            parallel:
+                ease 16 align (0.5,.0) zoom 0.8
+        contains:
+            5
+            "white_sparkles1"
+            zoom 1.3 alpha 0.0 align (0.5,0.5) ypos 0.0
+            ease 13 ypos 0.5 alpha 1.0 zoom 1.6
+            block:
+                linear .3 alpha 1.0
+                .2
+                linear .5 alpha 0.7
+                .1
+                repeat
+        contains:
+            6
+            "white_sparkles2"
+            zoom 1.0 alpha 0.0 align (0.5,0.5) ypos -0.2
+            ease 3 alpha 1.0
+            parallel:
+                 ease 13 ypos 0.5 zoom 1.5
+            parallel:
+                block:
+                    linear .3 alpha 1.0
+                    .2
+                    linear .5 alpha 0.7
+                    .1
+                    repeat
+        contains:
+            10
+            "white_sparkles2"
+            zoom 1.2 alpha 0.0 align (0.5,0.5) ypos 0.5
+            ease 3 alpha 1.0
+            parallel:
+                 ease 13 ypos -0.2 zoom 1.5
+            parallel:
+                block:
+                    linear .3 alpha 1.0
+                    .2
+                    linear .5 alpha 0.7
+                    .1
+                    repeat
+        contains:
+            "fog2"
+            align (.2,.4)
+            alpha 0.9
+            parallel:
+                linear 8 xalign .6
+            parallel:
+                linear 6 alpha .2
+        contains:
+            "fog1"
+            align (.4,.7)
+            alpha 0.9
+            parallel:
+                linear 20 xalign .8
+            parallel:
+                linear 6 alpha .2
+        contains:
+            "anim_dreams_border"
+
+
+
+    image img_dream_bad:
+        contains:
+            "anim_forest_night_man"
+            alpha 0.0
+            linear 4 alpha 0.0
+            align (0.5,0.5) zoom 0.6 pos (0.3,0.2)
+            parallel:
+                linear 8 alpha 1.0
+            parallel:
+                ease 12 pos (-0.5,0.0) zoom 1.0
+        contains: #wczytywane od razu, ujawnia się po 16s
+            "cg_dream_bad"
+            alpha 0.0
+            16
+            alpha 1.0
+        contains: #wczytywane od razu, ujawnia się po 16.1s po czarnym przejściu
+            "anim_forest_night_noman"
+            alpha 0.0
+            16.1
+            alpha 1.0 align (0.5,0.5) pos (-0.5,0.0) zoom 1.0
+        contains:
+            "fog2"
+            align (.2,.4)
+            alpha 0.9
+            parallel:
+                linear 20 xalign .6
+            parallel:
+                linear 6 alpha .5
+        contains:
+            "fog1"
+            align (.4,.7)
+            alpha 0.9
+            parallel:
+                linear 40 xalign .8
+            parallel:
+                linear 6 alpha .5
+        contains:
+            "anim_dreams_border"
+
+
+
     image anim_forest_night_noman:
         contains:
             "forest_night"
@@ -1752,7 +1863,9 @@ init:
             "forest_night_torch"
         contains:
             "anim_torchonground"
+            linear 16 alpha 1.0
             linear 5 alpha 0.0
+
     image anim_forest_justforest:
         contains:
             "forest_justforest"

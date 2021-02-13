@@ -33,23 +33,23 @@ label timechange:
         $ dt = 1
     $ weekday = day % 7
     if weekday == 0:
-        $ weekdayName = _("niedziela")
+        $ weekdayName = __("niedziela")
     if weekday == 1:
-        $ weekdayName = _("poniedziałek")
+        $ weekdayName = __("poniedziałek")
     if weekday == 2:
-        $ weekdayName = _("wtorek")
+        $ weekdayName = __("wtorek")
     if weekday == 3:
-        $ weekdayName = _("środa")
+        $ weekdayName = __("środa")
     if weekday == 4:
-        $ weekdayName = _("czwartek")
+        $ weekdayName = __("czwartek")
     if weekday == 5:
-        $ weekdayName = _("piątek")
+        $ weekdayName = __("piątek")
     if weekday == 6:
-        $ weekdayName = _("sobota")
+        $ weekdayName = __("sobota")
     return
 
 label spacerMiedzyLokacjami(gotoLok):
-    call timechange
+    call timechange from _call_timechange
     if gotoLok == "town":
         jump ee_town
     if gotoLok == "tavern":
@@ -86,7 +86,7 @@ screen devscreen():
 
 screen timeskip():
     zorder 100
-    imagebutton auto "button_journal_%s" focus_mask True action ShowTransient('journal_bookmark1')
+    imagebutton auto "button_journal_%s" focus_mask True action ShowTransient('journal_bookmark6',fc)
     use devscreen ########### TODO usunąć po wszystkim
     #if dt >= 5:
     #    imagebutton auto "gui/timeskip/time_%s.png" focus_mask True action [Return("dt=1"),SetVariable("dt", 1), SetVariable("day", day+1), SetVariable("licznikAkcji", licznikAkcji+1)]
@@ -113,6 +113,7 @@ screen timeskip():
         text _("Naciśnij by przeczekać") size 15
 
 screen obiekty():
+    zorder 30
     $ tooltip = GetTooltip()
     if tooltip:
         frame at ttobiekt_appear:
@@ -502,12 +503,15 @@ screen ee000_tavern_hall():
     tag ee000
     modal True
     #add "tavern_hall_bg0"
-    imagebutton auto "tavern_hall_bathroom1_%s" focus_mask True action Return("ee000_hall_bathroom")
-    imagebutton auto "tavern_hall_diningroom1_%s" focus_mask True action Return("ee000_hall_diningroom")
-    imagebutton auto "tavern_hall_guestroom1_%s" focus_mask True action Return("ee000_hall_guestroom")
-    imagebutton auto "tavern_hall_liaroom1_%s" focus_mask True action Return("ee000_hall_liaroom")
-    imagebutton auto "tavern_hall_parentsroom1_%s" focus_mask True action Return("ee000_hall_parentsroom")
-    imagebutton auto "tavern_hall_stairs2_%s" focus_mask True action Return("ee000_hall_mainroom")
+    imagebutton auto "tavern_hall_bathroom1_%s" focus_mask True action Return("ee000_hall_bathroom") tooltip __("ŁAZIENKA")
+    imagebutton auto "tavern_hall_diningroom1_%s" focus_mask True action Return("ee000_hall_diningroom") tooltip __("JADALNIA")
+    imagebutton auto "tavern_hall_guestroom1_%s" focus_mask True action Return("ee000_hall_guestroom") tooltip __("POKÓJ GOŚCINNY")
+    imagebutton auto "tavern_hall_liaroom1_%s" focus_mask True action Return("ee000_hall_liaroom") tooltip __("POKÓJ LII")
+    imagebutton auto "tavern_hall_parentsroom1_%s" focus_mask True action Return("ee000_hall_parentsroom") tooltip __("POKÓJ RODZICÓW")
+    imagebutton auto "tavern_hall_stairs2_%s" focus_mask True action Return("ee000_hall_mainroom") tooltip __("NA DÓŁ")
+    imagebutton auto "tavern_hall_plant5_dry_%s" focus_mask True action Return("ee000_hall_dry_plant")
+
+    use obiekty
 
 screen ee000_tavern_mainroom():
     tag ee000
@@ -538,13 +542,14 @@ screen ee000_tavern_leftroom():
     #imagebutton auto "tavern_leftroom_painting1_%s" focus_mask True #action NullAction()
     #imagebutton auto "tavern_leftroom_decorations1_%s" focus_mask True #action NullAction()
     #imagebutton auto "tavern_leftroom_shields1_%s" focus_mask True #action NullAction()
-    imagebutton idle "tavern_leftroom_painting1_idle" focus_mask True #action NullAction()      \
+    imagebutton auto "tavern_leftroom_painting1_%s" focus_mask True action Return("ee000_leftroom_painting1")
     imagebutton idle "tavern_leftroom_decorations1_idle" focus_mask True #action NullAction()    |### na czas demo
     imagebutton idle "tavern_leftroom_shields1_idle" focus_mask True #action NullAction()       /
     #imagebutton auto "tavern_leftroom_bottle2_%s" focus_mask True #action NullAction()
     #imagebutton auto "tavern_leftroom_aina3_%s" focus_mask True #action NullAction()
     #imagebutton auto "tavern_leftroom_dude3_%s" focus_mask True #action NullAction()
     #imagebutton auto "tavern_leftroom_lady3_%s" focus_mask True #action NullAction()
+    use obiekty
 
 
 screen ee000_tavern_rightroom():

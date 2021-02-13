@@ -7,10 +7,6 @@ init offset = 0
 
 ######################## KARTY ##############################
 
-image card1_text = Text("siabadaba1")
-image card2_text = Text("To teraz jeszcze pytanie co z tekstem XD pisać go na kartach? czy może dopiero będzie się pojawiał jak się obróci?")
-image card3_text = Text("napis na górze będzie z info co to w ogóle tu się dzieje")
-
 image karta_1:
     "card_nothing"
 image karta_2:
@@ -94,6 +90,7 @@ image karta_3_button:
 
 
 screen chooseYourCard():
+    tag cardsoffuture
     modal True
     style_prefix "ttkarty"
     add "black"
@@ -110,22 +107,34 @@ screen chooseYourCard():
         align (0.5,0.5) pos (0.25,0.45)
         add "karta_1_button"
         #focus_mask True
-        action NullAction()
-        tooltip __("{size=30}{color=#a6870a}NIC{/color}{/size}\n\n\"Nie chcę niczego. \"")
+        action [SetVariable("c_nothing","True"),Return("")]
+        tooltip __("{size=30}{color=#a6870a}NIC{/color}{/size}\n\n\"Nie chcę niczego.\"")
     button:
         xysize (439, 740)
         align (0.5,0.5) pos (0.5,0.45)
         add "karta_2_button"
         #focus_mask True
-        action NullAction()
-        tooltip __("{size=30}{color=#d1713d}PRZEZNACZENIE{/color}{/size}\n\n\"Może czeka na mnie coś więcej… \"")
+        action [SetVariable("c_destiny","True"),Return("")]
+        tooltip __("{size=30}{color=#d1713d}PRZEZNACZENIE{/color}{/size}\n\n\"Może czeka na mnie coś więcej...\"")
     button:
         xysize (439, 740)
         align (0.5,0.5) pos (0.75,0.45)
         add "karta_3_button"
         #focus_mask True
-        action NullAction()
+        action [SetVariable("c_hal","True"),Return("")]
         tooltip __("{size=30}{color=#ba243c}SZCZĘŚCIE I MIŁOŚĆ{/color}{/size}\n\n\"Chciałabym kogoś sobie znaleźć i być szczęśliwa.\"")
 
 
 ############################## / KARTY #########################################
+screen chosenCardDestiny:
+    tag cardsoffuture
+    modal True
+    add "card_destiny"
+
+screen chosenCardHAL:
+    tag cardsoffuture
+    modal True
+
+screen chosenCardNothing:
+    tag cardsoffuture
+    modal True

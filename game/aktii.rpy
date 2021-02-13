@@ -212,7 +212,7 @@ label e8_p4:
             "”Położę się na chwilę.” - pomyślała i tak zrobiła."
             hide p1
             scene black with dissolve
-            call timechange
+            call timechange from _call_timechange_1
             scene img_pokojlii_dragon with dissolve
             # TODO Upływ czasu: 1
             "Po pewnym czasie Lię obudziło pukanie do drzwi."
@@ -619,7 +619,7 @@ label e8_p4a:
             p4 "Dobrze, chodźmy."
             "Obie ruszyły w drogę powrotną, uśmiechając się i zerkając na siebie co chwilę."
             # TODO w tym miejscu mamy upływ czasu o jedną porę do przodu
-            call timechange
+            call timechange from _call_timechange_2
             #$ dt + 1
             #przejście przed drzewami obok drogi do starego lasu
             scene forest_dn:
@@ -655,7 +655,7 @@ label e8_p4a:
             p4 "No dobrze. Zrobię co w mojej mocy. Możemy już wracać?"
             p1 "Oczywiście. Chodźmy."
             # TODO w tym miejscu mamy upływ czasu o jedną porę do przodu
-            call timechange
+            call timechange from _call_timechange_3
             #przejście przed drzewami obok drogi do starego lasu
             scene forest_dn:
                 pos (-0.15,-0.5) zoom 0.98
@@ -683,7 +683,7 @@ label e8_p4a:
             #ujęcie z powolnym odjazdem od drzewa
             "Dziewczyny wstały w ciszy i ruszyły w drogę powrotną."
             # TODO w tym miejscu mamy upływ czasu o jedną porę do przodu
-            call timechange
+            call timechange from _call_timechange_4
             #przejście przed drzewami obok drogi do starego lasu
             scene forest_dn:
                 pos (-0.15,-0.5) zoom 0.98
@@ -789,7 +789,7 @@ label e8_p4a:
         scene black with fade
         "Dziewczyny udały się do swoich pokojów i szybko zasnęły."
         # TODO upływ czasu o 1
-        call timechange
+        call timechange from _call_timechange_5
         "Noc minęła spokojnie. Rano obie szybko się ubrały i zeszły piętro niżej."
         #przejście do E8-WORK2
 
@@ -1331,7 +1331,7 @@ label e8_p4b:
             p4 "Dobrze, chodźmy."
             "Obie ruszyły w drogę powrotną, uśmiechając się i zerkając na siebie co chwilę."
             # TODO CHECK w tym miejscu mamy upływ czasu o jedną porę do przodu
-            call timechange
+            call timechange from _call_timechange_6
             # przejście przed Tawerną lekki zoom na Tawernę
             "Droga powrotna była spokojna, obie spędziły ją na rozmyślaniach."
             "W Tawernie przywitał je Zorn."
@@ -1360,7 +1360,7 @@ label e8_p4b:
             p4 "No dobrze. Zrobię co w mojej mocy. Możemy iść dalej?"
             p1 "Oczywiście. Chodźmy."
             # TODO w tym miejscu mamy upływ czasu o jedną porę do przodu
-            call timechange
+            call timechange from _call_timechange_7
             #przejście przed Tawerną lekki zoom na Tawernę
             "Powrót minął spokojnie, obie miały chwilę na uspokojenie emocji i pozbieranie myśli."
             "Dotarły do Tawerny, tam przywitał je Zorn."
@@ -1384,7 +1384,7 @@ label e8_p4b:
             #ujęcie z powolnym ruchem na ścieżce
             "Dziewczyny ruszyły dalej w ciszy."
             # TODO w tym miejscu mamy upływ czasu o jedną porę do przodu
-            call timechange
+            call timechange from _call_timechange_8
             #przejście na zewnątrz Tawerny
             "Droga minęła głównie na rozmyślaniu."
             "W końcu dotarły do Tawerny, tam z powitaniem czekał Zorn."
@@ -1469,7 +1469,7 @@ label e8_p4b:
         p3 "Mhm."
         "Dziewczyny udały się do swoich pokojów i szybko zasnęły."
         #upływ czasu o 1
-        call timechange
+        call timechange from _call_timechange_9
         "Noc minęła spokojnie. Rano obie szybko się ubrały i zeszły piętro niżej."
 
         #przejście do E8-WORK2
@@ -2255,7 +2255,7 @@ label e8_work2:
         #Meamir wychodzi i lecimy dalej to co niżej
 
     #upływ czasu +1
-    call timechange
+    call timechange from _call_timechange_10
 
     scene tavern_main_bar_bg0_dn
     show p1 at zabarem:
@@ -2450,9 +2450,9 @@ label e8_work2:
     $ ee001_UkonczenieEpizodow['e8_work2'] = True
     $ ee001_UkonczenieEpizodow['e8_work1'] = True
     if dt == 4:
-        call timechange
+        call timechange from _call_timechange_11
         scene anim_room_lia_nightdragonlight with Dissolve(1.0)
         pause 1
-    call timechange
+    call timechange from _call_timechange_12
     scene img_pokojlii_dragon with Dissolve(1.0)
     jump ee_tavern_liaroom

@@ -208,7 +208,7 @@ default preferences.afm_time = 15
 ## Controls the platform-specific place Ren'Py will place the save files for
 ## this game. The save files will be placed in:
 ##
-## Windows: %APPDATA\RenPy\<config.save_directory>
+## Windows: %APPDATA%\RenPy\<config.save_directory>
 ##
 ## Macintosh: $HOME/Library/RenPy/<config.save_directory>
 ##

@@ -28,45 +28,7 @@ __("“Ah, jedna z osób bez której ta Tawerna by nie powstała.”")
 
 
 
-################################################################################
-################################################################################
-################################ TESTOWANIE ####################################
-label testowanie:
-    ""
-    scene black
 
-
-
-
-
-
-
-    show work3a with dissolve
-    show work3b with Dissolve(1.0)
-    hide work3b
-    hide work3a
-    pause
-
-    show work2a with dissolve
-    show work2a:
-        align (0.5,0.5)
-        linear 0.5 xzoom 0.0
-    pause 0.5
-    show work1a:
-        align (0.5,0.5)
-        xzoom 0.0
-        linear 0.5 xzoom 1.0
-    pause 1.0
-    ""
-    return
-
-
-
-
-
-############################## / TESTOWANIE ####################################
-################################################################################
-################################################################################
 
 ######################   POTĘŻNE LABELE EKSPLORACYJNE  #########################
 ################################## EE WIOSKA ###################################
@@ -182,7 +144,7 @@ label ee_tavern_mainroom:
             if not ee001_UkonczenieEpizodow['e8_work1']:
                 if not ee001_UkonczenieEpizodow['e8_p4'] or not ee001_UkonczenieEpizodow['e8_p5']:
                     if dt < 4:
-                        call e8_work1
+                        call e8_work1 from _call_e8_work1
                     if dt >= 4:
                         p1 "[qa[5]]"
             else:
@@ -882,6 +844,7 @@ label ee000_tavern_liaroom:
 ##########################
 label ee000_tavern_hall:
     scene img_tavern_hall
+    show tavern_hall_plant5_dry_idle
     while _return != "0":
         call screen ee000_tavern_hall with dissolve
 
@@ -897,6 +860,8 @@ label ee000_tavern_hall:
             jump ee000_tavern_liaroom
         if _return == "ee000_hall_mainroom":
             jump ee000_tavern_mainroom
+        if _return == "ee000_hall_dry_plant":
+            p1 "Uh, miałam go podlać... Znów zapomniałam. Muszę pamiętać, zeby zrobić to później."
 
 
 ###########################
@@ -924,6 +889,8 @@ label ee000_tavern_leftroom:
         call screen ee000_tavern_leftroom with dissolve
         if _return == "ee000_tavern_mainroom":
             jump ee000_tavern_mainroom
+        if _return == "ee000_leftroom_painting1":
+            p1 "Hmm… To jeden z założycieli Tawerny."
 
 
 ###########################

@@ -944,6 +944,13 @@ screen preferences():
                     label _("Language")
                     textbutton "Polish" action Language(None)
                     textbutton "English" action Language("english")
+
+
+                # vbox:
+                #     style_prefix "check"
+                #     label _("Cursor")
+                #     textbutton "Hardware" action Preference(system_cursor, "toggle")
+
                 ## Additional vboxes of type "radio_pref" or "check_pref" can be
                 ## added here, to add additional creator-defined preferences.
 
