@@ -1,7 +1,7 @@
 *.bak
 proxy
-/game/cache/*
-/game/saves/*
+game/cache/*
+game/saves/*
 errors.txt
 log.txt
 
@@ -30,3 +30,4 @@ log.txt
 errors.txt
 traceback.txt
 files.txt
+game/saves/auto-1-LT1.save

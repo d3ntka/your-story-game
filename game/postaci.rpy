@@ -165,13 +165,13 @@ layeredimage lia:
 
     group eyes:
         attribute wink default:
-           "lia_eyes_wink"
+            "lia_eyes_wink"
         attribute narrowedwink: # zdefiniowane powyżej
             "lia_eyes_narrowedwink"
         attribute widenedwink:
             "lia_eyes_widenedwink"
         attribute wink_player:
-           "lia_eyes_wink_player"
+            "lia_eyes_wink_player"
         attribute narrowedwink_player:
             "lia_eyes_narrowedwink_player"
         attribute widenedwink_player:
@@ -284,7 +284,7 @@ layeredimage raven:
             "raven_lips_lneutral"
     group eyes:
         attribute wink default:
-           "raven_eyes_wink"
+            "raven_eyes_wink"
         attribute open
         attribute closed
         attribute narrowedwink:
@@ -403,7 +403,7 @@ layeredimage meamir:
 
     group eyes:
         attribute wink default:
-           "meamir_eyes_wink"
+            "meamir_eyes_wink"
         attribute narrowedwink: # zdefiniowane powyżej
             "meamir_eyes_narrowedwink"
         attribute widenedwink:
@@ -606,7 +606,7 @@ layeredimage mohon:
     always "mohon_neutral"
     group eyes:
         attribute wink default:
-           "mohon_eyes_wink"
+            "mohon_eyes_wink"
         attribute angrywink:
             "mohon_angryeyes_wink"
     attribute blush:
@@ -704,7 +704,7 @@ layeredimage aina:
             "aina_lips_lneutral"
     group eyes:
         attribute wink default:
-           "aina_eyes_wink"
+            "aina_eyes_wink"
         attribute open
         attribute closed
         attribute narrowedwink:
@@ -884,7 +884,7 @@ layeredimage henrietta:
 
     group eyes:
         attribute wink default:
-           "henrietta_eyes_wink"
+            "henrietta_eyes_wink"
         attribute narrowedwink: # zdefiniowane powyżej
             "henrietta_eyes_narrowedwink"
         attribute widenedwink:
@@ -1001,7 +1001,7 @@ layeredimage cirdan:
 
     group eyes:
         attribute wink default:
-           "cirdan_eyes_wink"
+            "cirdan_eyes_wink"
         attribute narrowedwink: # zdefiniowane powyżej
             "cirdan_eyes_narrowedwink"
         attribute widenedwink:
@@ -1098,7 +1098,7 @@ layeredimage ove:
 
     group eyes:
         attribute wink default:
-           "ove_eyes_wink"
+            "ove_eyes_wink"
         attribute narrowedwink: # zdefiniowane powyżej
             "ove_eyes_narrowedwink" # to jest wersja 'angry' oczu u p10
         attribute closed
@@ -1208,7 +1208,7 @@ layeredimage levius:
 
     group eyes:
         attribute wink default:
-           "levius_eyes_wink"
+            "levius_eyes_wink"
         attribute narrowedwink: # zdefiniowane powyżej
             "levius_eyes_narrowedwink"
         attribute widenedwink:
