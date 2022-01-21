@@ -36,9 +36,9 @@ transform ttobiekt_appear:
 
 transform splash_anim:
     on show:
-        alpha 0 zoom .24
-        linear .6 alpha 1.0 zoom .3
-        linear 1 zoom .30888
+        alpha 0 zoom .14
+        linear .6 alpha 1.0 zoom .2
+        linear 1 zoom .20888
         linear .3 alpha 0.0 zoom .55
 
 
@@ -73,8 +73,8 @@ screen nowosci():
             spacing 45
             hbox:
                 xalign 0.5
-                text _("{b}Co nowego w Demo 3.0{/b}") style "srodek_text"
-            text _("Cześć! Dzięki za pobranie wersji demonstracyjnej Your Story! \n\nW najnowszej aktualizacji: \n• Lia otrzymała pełne usprawnienie graficzne, \n• Selene otrzymała usprawnienia graficzne, \n• dodaliśmy trzy nowe pomieszczenia w Tawernie, \n• dodaliśmy kontynuację wątków fabularnych, \n• szereg drobnych poprawek i usprawnień. \n\nJeśli macie sugestie, uwagi lub znaleźliście błąd to zapraszamy na nasz serwer {a=https://discord.com/invite/FgsaqrR}Discord{/a}! Tymczasem życzymy przyjemnej gry!") xalign 0.0
+                text _("{b}Co nowego w Demo 4.0{/b}") style "srodek_text"
+            text __("Cześć! Dzięki za pobranie wersji demonstracyjnej Your Story! \n\nW najnowszej aktualizacji: \n• optymalizacja tekstów i dialogów na obszarze całego demo, \n• optymalizacja mimiki twarzy postaci (teraz emocje powinny być bardziej czytelne), \n• nowe dźwięki w wybranych momentach, \n• dodanie dziennika gry z którym wstępnie możecie się zapoznać w tym demo (jego rola znacznie - wzrośnie w późniejszej fazie gry), \n• wstępne wprowadzenie postaci Ainy, Henrietty i Leviusa, \n• tło korytarza Tawerny otrzymało finalny wygląd, \n• finalne wersje dwóch dodatkowych sal dla gości w Tawernie, \n• tło Sekretnego Ogrodu otrzymało finalny wygląd, \n• wprowadziliśmy kursor! \n\nJeśli macie sugestie, uwagi lub znaleźliście błąd to zapraszamy na nasz serwer {a=https://discord.com/invite/FgsaqrR}Discord{/a}! Tymczasem życzymy przyjemnej gry!") xalign 0.0
 
             hbox:
                 xalign 0.5
@@ -115,7 +115,9 @@ screen podziekowanie():
             hbox:
                 xalign 0.5
                 text _("{b}Informacja{/b}") style "srodek_text"
-            text _("W tym miejscu kończy się wersja demonstracyjna Twojej Historii. Ponownie zostawiamy Was z możliwością eksploracji naszej krainy i odkrywania pozostałych lokacji. \n\nJeśli jesteście zainteresowani dalszymi przygodami Lii to zapraszamy Was na nasz serwer {a=https://discord.com/invite/FgsaqrR}Discord{/a}, gdzie możecie śledzić postęp naszych prac oraz podzielić się swoją opinią na temat obecnego stanu naszej gry.\n\nDziękujemy wszystkim, którzy zainteresowali się naszą grą. Wasze wsparcie jest dla nas bardzo ważne! Dzięki temu mamy energię do dalszej pracy i wierzymy, że wkrótce będziemy mogli dostarczyć Wam w pełni gotowe dzieło, które pobudzi - mamy nadzieję - w Was masę różnorodnych emocji.\n\nDzięki,\nZespół GameLoad")
+            fixed:
+                area (.01,.00,1500,400)
+                text _("W tym miejscu kończy się wersja demonstracyjna Your Story. Chcielibyśmy podziękować Ci za przejście całego demo, jeśli masz chwilkę czasu to będziemy wdzięczni jeśli dasz nam znać co sądzisz o naszej grze. Znajdziesz nas na naszym serwerze {a=https://discord.com/invite/FgsaqrR}Discord{/a}. \n\nDziękujemy za Twoje zainteresowanie, każde pobranie demo to dodatkowa energia dla nas przy tworzeniu kolejnych fragmentów historii. Mamy nadzieję, że w ciągu najbliższych miesięcy Lia zagości z kompletną historią na naszych wirtualnych półkach. \n\nTymczasem dziękujemy za wsparcie i zapraszamy do śledzenie nas na {a=https://twitter.com/GameLoadStudio}Twitterze{/a},\nZespół GameLoad")
 
             hbox:
                 xalign 0.5

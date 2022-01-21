@@ -127,6 +127,9 @@ screen map_button():
     zorder 101
     imagebutton auto "button_map_%s" xalign 1.0 yalign 1.0 focus_mask True action Show("ee_mapka", fc)
 
+screen journal_button():
+    zorder 80
+    imagebutton auto "button_journal_%s" focus_mask True action Show('journal_bookmark6',fc)
 
 ############# OLD BACKUP #################
 screen ee_mapka_backup():
@@ -496,13 +499,14 @@ screen ee000_tavern_liaroom():
     modal True
     #add "anim_room_lia_morning"
     imagebutton auto "room_lia_exit_%s" focus_mask True action Return("ee000_tavern_hall")
+    use journal_button
     #imagebutton auto "room_lia_bed_%s" focus_mask True action Return("")  #łóżko - tędy chyba nie ma wyjścia obecnie - może będzie komentarz od Lii
 
 
 screen ee000_tavern_hall():
     tag ee000
     modal True
-    #add "tavern_hall_bg0"
+    add "tavern_hall_bg0"
     imagebutton auto "tavern_hall_bathroom1_%s" focus_mask True action Return("ee000_hall_bathroom") tooltip __("ŁAZIENKA")
     imagebutton auto "tavern_hall_diningroom1_%s" focus_mask True action Return("ee000_hall_diningroom") tooltip __("JADALNIA")
     imagebutton auto "tavern_hall_guestroom1_%s" focus_mask True action Return("ee000_hall_guestroom") tooltip __("POKÓJ GOŚCINNY")
@@ -510,15 +514,15 @@ screen ee000_tavern_hall():
     imagebutton auto "tavern_hall_parentsroom1_%s" focus_mask True action Return("ee000_hall_parentsroom") tooltip __("POKÓJ RODZICÓW")
     imagebutton auto "tavern_hall_stairs2_%s" focus_mask True action Return("ee000_hall_mainroom") tooltip __("NA DÓŁ")
     imagebutton auto "tavern_hall_plant5_dry_%s" focus_mask True action Return("ee000_hall_dry_plant")
-
     use obiekty
+    use journal_button
 
 screen ee000_tavern_mainroom():
     tag ee000
     modal True
     add "tavern_main_bg0"
-    #imagebutton auto "tavern_main_rightroom1_%s" focus_mask True action Return("ee000_tavern_rightroom") tooltip _("PRAWA SALA")
-    imagebutton idle "tavern_main_rightroom1_idle" focus_mask True action NullAction()
+    imagebutton auto "tavern_main_rightroom1_%s" focus_mask True action Return("ee000_tavern_rightroom") tooltip _("PRAWA SALA")
+    # imagebutton idle "tavern_main_rightroom1_idle" focus_mask True action NullAction()
     imagebutton auto "tavern_main_leftroom1_%s" focus_mask True action Return("ee000_tavern_leftroom") tooltip __("LEWA SALA")
     imagebutton auto "tavern_main_kitchen1_%s" focus_mask True action Return("ee000ep8") tooltip __("KUCHNIA") # wyjście do epizodu
     imagebutton auto "tavern_main_dekoracje1_%s" focus_mask True #action NullAction()
@@ -532,7 +536,7 @@ screen ee000_tavern_mainroom():
     imagebutton auto "tavern_main_beer4_%s" focus_mask True #action NullAction()
 
     use obiekty
-
+    use journal_button
 
 screen ee000_tavern_leftroom():
     tag ee000
@@ -550,23 +554,23 @@ screen ee000_tavern_leftroom():
     #imagebutton auto "tavern_leftroom_dude3_%s" focus_mask True #action NullAction()
     #imagebutton auto "tavern_leftroom_lady3_%s" focus_mask True #action NullAction()
     use obiekty
-
+    use journal_button
 
 screen ee000_tavern_rightroom():
     tag ee000
     modal True
     add "tavern_rightroom_bg0"
-    imagebutton auto "tavern_rightroom_mainroom1_%s" focus_mask True action Return("ee000_tavern_mainroom")
+    imagebutton auto "tavern_rightroom_mainroom1_%s" focus_mask True action Return("ee000_tavern_mainroom") tooltip __("SALA GŁÓWNA")
     imagebutton auto "tavern_rightroom_painting1_%s" focus_mask True action #NullAction()
     imagebutton auto "tavern_rightroom_barrels1_%s" focus_mask True action #NullAction()
     imagebutton auto "tavern_rightroom_decorations2_%s" focus_mask True action #NullAction()
-    imagebutton auto "tavern_rightroom_mohon2_%s" focus_mask True action #NullAction()
-    imagebutton auto "tavern_rightroom_harion2_%s" focus_mask True action #NullAction()
-    imagebutton auto "tavern_rightroom_lady3_%s" focus_mask True action #NullAction()
-    imagebutton auto "tavern_rightroom_mess3_%s" focus_mask True action #NullAction()
+    # imagebutton auto "tavern_rightroom_mohon2_%s" focus_mask True action #NullAction()
+    # imagebutton auto "tavern_rightroom_lady3_%s" focus_mask True action #NullAction()
     imagebutton auto "tavern_rightroom_pickaxe3_%s" focus_mask True action #NullAction()
-    imagebutton auto "tavern_rightroom_couple3_%s" focus_mask True action #NullAction()
-    imagebutton auto "tavern_rightroom_chandelier4_%s" focus_mask True action #NullAction()
+    # imagebutton auto "tavern_rightroom_couple3_%s" focus_mask True action #NullAction()
+    use obiekty
+    use journal_button
+
 
 
 

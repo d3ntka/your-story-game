@@ -243,24 +243,23 @@ label e1a:
     p1 "A tutaj mamy Sekretny Ogród, do którego zaraz idziemy."
     window hide
     with fc
-    scene forest_night with Dissolve(1.0):
-        pos (-1.0,-0.6) zoom 0.98
-        linear 12.5 zoom 1.0
+
     #play music sfx_szumdrzew fadein 3.0
     $ renpy.music.set_volume(0.5, delay=0, channel='music')
     play music arthur_vyncke_red_forest
     play ambient sfx_windy_forest
     transform tr_sciezkadolas:
         pos(-1.0, -0.6)
-        ease 12.5 pos (-0.1, -0.5) zoom 0.9
+        ease 16 pos (-0.0, -0.5) zoom 0.9
 
     scene forest_night at tr_sciezkadolas:
         ease 60.0 zoom 0.9
         ease 60.0 zoom 1.0
         repeat
 
-    show p1 shadow at right with easeinright:
-        xoffset -120
+    show p1 shadow:
+        align (1.3,1.0)
+        ease 1 align (0.9,1.0)
     window auto
     with fc
     #background stary las w nocy, przejście jak wcześniej było (ruch tła na zoomie, Lia powoli idzie od prawej do lewej)"
@@ -352,7 +351,8 @@ label e1a:
             p1 "No dobrze..."
             show black with dissolve
             show e1b with dissolve
-            show e1b_2 with dissolve
+            pause 0.4
+            show e1b_2 with Dissolve(1.0)
             #komiks E1A ujęcie 2
             "Gdy tylko Lia się zbliżyła to zauważyła, że postać zniknęła."
             p1 "Huh. Gdzie podziała się ta osoba?"
@@ -454,12 +454,12 @@ label e1a:
     p1 "Dzięki za ten spacer."
     p1 "Mam nadzieję, że teraz z Twoją pomocą uda się coś zmienić w moim życiu."
     p1 "Dobranoc!"
-    stop ambient fadeout 1.0
-    stop music
     menu:
         "Dobranoc.":
             pass
     hide p1pl with dissolve
+    stop ambient fadeout 1.0
+    stop music
     pause 0.3
     $ renpy.sound.set_volume(1, delay=0, channel='ambient')
     $ renpy.sound.set_pan(0, delay=0, channel='ambient')
@@ -755,12 +755,16 @@ label e2a1:
     with fc
     p3 "GDZIE?!"
     p3 "Nie każ mi czekać!"
+    show p2 with fc:
+        xzoom -1
     p2 "Zorn. Nie denerwuj się proszę."
     #confused Lia ON"
     show p1 bsurprised wink lneutral with fc
     p2 "Ja się tym zajmę. Ty może przejdź się do sali głównej i sprawdź czy Cię tam nie ma."
     p3 "Mhm. Może Tobie pójdzie sprawniej."
-    p3 "Czekam na Ciebie Lia w sali. Mamy sporo pracy."
+    show p2 with fc:
+        xzoom 1
+    p3 "Lia, czekam na Ciebie w sali. Mamy sporo pracy."
     #P3 wychodzi, P2 troszkę zbliża się do P1"
     show p3 with fc:
         xzoom 1
@@ -828,11 +832,16 @@ label e2a1:
 label e2b:
     # bez śniadania bo koszmar
     #na ekranie pokój P1, poranek
+    $ quick_menu = True
     scene anim_room_lia_morning with fade
+    play sound sfx_easy_door_opening
     "..."
     #od prawej wchodzi P3 angry
-    show p3 angry with easeinright:
-        xzoom -1 align (0.7, 1.0)
+    show p3 angry:
+        align (1.35,1.0) xzoom -1
+        linear 1 align (0.7, 1.0)
+    $ renpy.music.set_volume(0.5, delay=0, channel='music')
+    play music [alexander_nakarada_spring, alexander_nakarada_spring, "<silence 10000.0>"] fadein 5.0 fadeout 10
     "Lia gwałtownie wybudziła się z przerażającego snu gwałtownym wejściem ojca do pokoju."
     p3 "Nie słyszysz jak Cię wołam?"
     #Lia pojawia się po lewej, angry ON"
@@ -2003,6 +2012,7 @@ label e5:
     #po wejściu do Tawerny od razu odpala się komiks z kuflami, jest zoom na barze"
     scene anim_tavern outside dragon with fade
     pause 7
+    play ambient medieval_tavern_ambience_5min fadein 1.0 fadeout 2.0 volume 0.7
     scene tavern_main_bar_bg0
     show p1 at zabarem:
         xalign .5
@@ -2226,6 +2236,7 @@ label e5:
     #równo z krzykiem pojawia się Zorn i jego dialog
     hide p3
     stop musictight
+    stop ambient
     $ renpy.music.set_volume(0.1, delay=0, channel='audio')
     $ renpy.music.set_pan(0.8, delay=0, channel='audio')
     play audio sfx_female_scream
@@ -2258,7 +2269,7 @@ label e6:
         xzoom -1.0
     with fade
     #zewnątrz Tawerny, południe, 2 bandziorów po lewej, P4 po prawej, surprised_sad Raven ON
-    play music alexander_nakarada_the_great_battle fadein 15.0 fadeout 10.0 volume 0.5
+    play music alexander_nakarada_the_great_battle fadein 3.0 fadeout 10.0 volume 0.5
     "Wyglądało na to, że jacyś mężczyźni próbowali osaczyć bezbronną dziewczynę."
     #od prawej wjeżdża Zorn, angry ON"
     show p3 angry:
@@ -2548,11 +2559,13 @@ label e6:
             p1 "Takie mniej ważne będę wpisywać w tym miejscu."
             #standardowa ikona wyłączenia dziennika"
             hide tutorial_optional
-            show tutorial_help
-            with fc
-            p1 "Jeśli będziesz chciał, żeby wszystko Ci przypomnieć to kliknij tutaj."
-            #podświetlenie znaku zapytania
-            hide tutorial_help
+
+            # show tutorial_help
+            # with fc
+            # p1 "Jeśli będziesz chciał, żeby wszystko Ci przypomnieć to kliknij tutaj."
+            # #podświetlenie znaku zapytania
+            # hide tutorial_help
+
             show tutorial_exit
             with fc
             p1 "Jak skończysz to tutaj możesz zamknąć dziennik."
@@ -2585,7 +2598,7 @@ label e6:
     #po kliknięciu w ikonę rozmowy zamyka się dziennik i Lia pojawia się z nami rozmawiając, smile Lia ON
     show p1pl wink_player
     p1 "I jak? Co byś mi doradził teraz?"
-    $ zm_tutorial_jrnl_done = True
+
 
     stop music
     menu:
@@ -2615,13 +2628,13 @@ label e6:
             show p1pl bsurprised widenedwink_player lsmile with fc
             p1 "Możesz mieć rację..."
             #sad Lia ON"
-            show p1 bneutral wink_player lsad with fc
+            show p1pl bneutral wink_player lsad with fc
             p1 "Trochę bez słowa go zostawiłam..."
             #thinking Lia ON"
-            show p1 bangry closed lneutral with fc
+            show p1pl bangry closed lneutral with fc
             p1 "Poza tym zapraszał na spacer. Może z nim pójdę w ramach przeprosin."
             #smile Lia ON"
-            show p1 bneutral wink_player lsmile with fc
+            show p1pl bneutral wink_player lsmile with fc
             p1 "Dobra, zrobię tak. Pójdę od razu."
             "Jak powiedziała tak zrobiła. Wyszła z Tawerny i ruszyła w kierunku wioski."
             #przejście do E7-P5
@@ -2629,7 +2642,7 @@ label e6:
 
         "Dużo się dziś wydarzyło. Może po prostu połóż się wcześniej spać.":
             #surprised_sad Lia ON
-            show p1 bsurprised widenedwink_player lsad with fc
+            show p1pl bsurprised widenedwink_player lsad with fc
             p1 "Możesz mieć rację..."
             #more_sad Lia ON"
             show p1pl bneutral narrowedwink_player lsad with fc
@@ -2659,7 +2672,7 @@ label epizod7p4:
         align (.3, 1.0)
     with fade
     $ renpy.music.set_volume(0.5, delay=0, channel='music')
-    play music [alexander_nakarada_adventure, alexander_nakarada_adventure, "<silence 1000.0>"] fadein 7.0
+    play music alexander_nakarada_adventure fadein 7.0
     "Lia zapukała lekko w drzwi. Po krótkiej ciszy usłyszała spokojny głos:"
     p4 "Proszę, otwarte!"
     # Na ekranie: P1 wchodzi od prawej, powolutku się przesuwa bardzooo
@@ -2857,6 +2870,8 @@ label epizod7p5:
         align (.5,.5) zoom .5
     with fade
     "Lia obeszła Tawernę i ruszyła w kierunku ścieżki."
+    $ renpy.music.set_volume(0.5, delay=0, channel='music')
+    play music alexander_nakarada_now_we_ride fadein 5.0
     "Po drodze zastanawiała się nad tym, co właściwie będą robić."
     "Wchodząc do lasu stwierdziła jednak, że nie ma to znaczenia - czas coś po prostu zrobić."
     # Na ekranie: Wioska - szerokie ujęcie bez postaci
@@ -2871,10 +2886,7 @@ label epizod7p5:
     show p5 at left:
         linear 2 zoom 1.0
     "Poprawiła lekko włosy i ruszyła w odpowiednim kierunku."
-    $ renpy.music.set_volume(0.5, delay=0, channel='music')
-    play music alexander_nakarada_now_we_ride fadein 7.0
-    queue music alexander_nakarada_now_we_ride
-    queue music "<silence 3.0>"
+
 
     # Na ekranie: Wioska - Zoom na kuźnię, Meamir stoi po lewej i Lia tak jakby wchodzi od prawej
 

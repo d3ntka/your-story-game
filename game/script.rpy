@@ -151,14 +151,13 @@ image white = "#FFF"
 image grey = "#060606"
 
 
-default persistent.updatetest201007_1 = True  # przy persistent zmieniać datę i if'a niżej w label splashscreen
+default updatetest_demo4_0 = True  # przy persistent zmieniać datę i if'a niżej w label splashscreen
 
 label splashscreen:
     call screen splash
-    if persistent.updatetest201007_1: #aktualizowac date przy nowym update
+    if updatetest_demo4_0: #aktualizowac date przy nowym update
         call screen nowosci
-        $ persistent.updatetest201007_1 = False #aktualizowac date przy nowym update
-    $ preferences.system_cursor = True
+        $ updatetest_demo4_0 = False #aktualizowac date przy nowym update
     return
 
 # JEDZIEMY Z TYM KOKSEM
@@ -278,7 +277,7 @@ label begin:
             add "demo_version_ee"
     ###########################################################
 
-    $ preferences.system_cursor = False
+    # $ preferences.system_cursor = False
 
     jump e1
 
@@ -292,6 +291,23 @@ label ee000:
         show text "ee000" at truecenter
         pause 1
 
+    if akt1_UkonczenieEpizodow["e7_p4"] == True:
+        $ jrnl_raven_about = jrnl_raven_about_n02_chosen
+        $ jrnl_meamir_about = jrnl_meamir_about_n02_notchosen
+        $ jrnl_meamir_todo_1 = jrnl_meamir_todo_n02_notchosen
+    elif akt1_UkonczenieEpizodow["e7_p5"] == True:
+        $ jrnl_meamir_about = jrnl_meamir_about_n02_chosen
+        $ jrnl_meamir_todo_1 = jrnl_meamir_todo_n02_chosen
+        $ jrnl_raven_about = jrnl_raven_about_n02_notchosen
+    else:
+        $ jrnl_meamir_about = jrnl_meamir_about_n02_notchosen
+        $ jrnl_meamir_todo_1 = jrnl_meamir_todo_n02_notchosen
+        $ jrnl_raven_about = jrnl_raven_about_n02_notchosen
+
+    $ jrnl_raven_todo_1 = jrnl_raven_todo_n02
+    $ jrnl_important_1 = jrnl_important_n02
+
+    play music alexander_nakarada_adventure fadein 3.0 fadeout 5.0 volume 0.5
     scene anim_room_lia_morning with fc
     show p1pl wink_player with fc
     p1 "Uh... Możesz przejąć stery na chwilę? Sporo emocji po wczoraj i zbyt zamyślona jestem."
@@ -410,6 +426,7 @@ label epizod8:
             "Przez moment Lia zastanawiała się nad jej słowami."
             "Nie mogła jednak pojąć dziwnego zachowania mamy."
             "Otrząsnęła się szybko z zamyślenia i wróciła do teraźniejszości."
+            hide p1 with fc
             $ p2_d01_check = True #p2 znika po tej rozmowie
     jump ee_001_intro
 
@@ -465,39 +482,30 @@ label ee_001_intro:
     show p1pl bneutral wink_player lsmile with fc
     #w momencie “oddaję się w Twoje ręce.” trzeba wymyślić jakiś taki mistycznie fajny dźwięk w tle co by nie był zbyt mocny, zostawiam to w takiej formie, żeby podyskutować o tym jak tu będziesz bo jeszcze nic nie wykminiłem
     p1 "To teraz wszystko zależy od Ciebie! Oddaję się w Twoje ręce."
-    menu:
-        "Spokojnie spokojnie! Jeszcze musisz mi powiedzieć jedną rzecz...":
-            pass
+    gr "Spokojnie spokojnie! Jeszcze musisz mi powiedzieć jedną rzecz..."
     #confused Lia ON
     show p1pl bsurprised wink_player lneutral with fc
     p1 "Jaką?"
-    menu:
-        "Mniej więcej określ się jak chciałabyś pokierować Twoje życie.":
-            pass
+    gr "Mniej więcej określ się jak chciałabyś pokierować Twoje życie."
     p1 "Uhh... Ciężko powiedzieć. Nie jestem pewna..."
-    menu:
-        "Spokojnie. Skup się. Pomyśl co może być przed Tobą...":
-            pass
+    gr "Spokojnie. Skup się. Pomyśl co może być przed Tobą..."
     #thinking Lia ON
     show p1pl bangry closed lsad with fc
-    menu:
-        "Pomyśl o tym na czym Ci najbardziej zależy. Zastanów się bardzo dobrze.":
-            pass
-    menu:
-        "To bardzo ważna decyzja, więc spokojnie i nie śpiesz się z odpowiedzią.":
-            pass
+    gr "Pomyśl o tym na czym Ci najbardziej zależy. Zastanów się bardzo dobrze."
+    gr "To bardzo ważna decyzja, więc spokojnie i nie śpiesz się z odpowiedzią."
     p1 "Dobrze..."
     #przy tym równo jak Lia zamyka oczy do nowej miny dodać animację zamykanych oczu tak całkiem, żeby ekran zrobił się czarny cały. I potem wskakują te decyzje w formie graficznej
 
 
     call screen chooseYourCard with dissolve
 
+    play sound sfx_future_calls
     if c_nothing:
         show black
         show card_nothing:
             align (0.5,0.5) pos (0.25,0.45)
             ease 2 pos (0.5,0.45) zoom 1.2
-        pause 5
+        pause 1
         hide black with Dissolve(2.0)
         hide card_nothing with Dissolve(2.0)
 
@@ -520,7 +528,7 @@ label ee_001_intro:
         show card_destiny:
             align (0.5,0.5) pos (0.5,0.45)
             ease 2 zoom 1.2
-        pause 5
+        pause 1
         hide black with Dissolve(2.0)
         hide card_destiny with Dissolve(2.0)
 
@@ -540,7 +548,7 @@ label ee_001_intro:
         show card_love:
             align (0.5,0.5) pos (0.75,0.45)
             ease 2 pos (0.5,0.45) zoom 1.2
-        pause 5
+        pause 1
         hide black with Dissolve(2.0)
         hide card_love with Dissolve(2.0)
 
@@ -564,7 +572,8 @@ label ee_001_intro:
     hide p1pl with dissolve
     call screen podziekowanie with dissolve
     $ ee = 1
-    $ preferences.system_cursor = True
+    $ zm_tutorial_jrnl_done = True
+    # $ preferences.system_cursor = True
     jump ee_tavern_mainroom # przejście do normalnej EE
 
 

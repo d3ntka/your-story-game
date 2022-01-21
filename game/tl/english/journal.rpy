@@ -35,8 +35,8 @@ translate english strings:
     new "I didn't really have a chance to get to know her. All I know is that she used to work in the Capital. Maybe I'll find out more sometime."
 
     # game/journal.rpy:95
-    old "Henrietta... Hmm, momentami wydaje się bardzo poważna, ale znów ciężko mi dokładnie stwierdzić. Wiem tylko, że mieszka tu od paru lat, chyba 7? Nie pamiętam dokładnie..."
-    new "Henrietta... Hmm, she seems very serious at times, but then again it's hard to say for sure. All I know is that she's been living here for a couple of years, I think 7? I can't remember for sure..."
+    old "Henrietta... Hmm, momentami wydaje się bardzo poważna, ale znów ciężko mi dokładnie stwierdzić. Wiem tylko, że mieszka tu od paru lat, chyba siedem? Nie pamiętam dokładnie..."
+    new "Henrietta... Hmm, she seems very serious at times, but then again it's hard to say for sure. All I know is that she's been living here for a couple of years, seven, I think? I can't remember for sure..."
 
     # game/journal.rpy:102
     old "Hmm. Kolejna osoba o której wcześniej zbytnio nie myślałam... Levius na pewno jest bardzo uroczy, często wygląda chyba na smutnego? Ale nie jestem pewna, nie jestem najlepsza w czytaniu emocji u innych..."
@@ -73,3 +73,41 @@ translate english strings:
     # game/journal.rpy:140
     old "Mogłabym pójść sprawdzić jak się czuje."
     new "I could go check on her."
+# TODO: Translation updated at 2021-02-14 14:32
+
+translate english strings:
+
+    # game/journal.rpy:112
+    old "Spotkałam się z Meamirem, wydaje się ciekawą osobą. Muszę pomyśleć jakie miejsca mogę mu jeszcze pokazać, jest nowy w okolicy i przez to ma sporo pytań. Nie jestem przyzwyczajona do odpowiadania na taką ilość. Zobaczymy jednak co przyniesie przyszłość."
+    new "I met Meamir, he seems like an interesting person. I need to think about more places I could show him, he’s new in the area and has a lot of questions. I’m still not used to answering so many; we’ll see what the future brings."
+
+    # game/journal.rpy:113
+    old "Zostawiłam trochę bez słowa Meamira… Ale no sytuacja była dość nietypowa, na pewno nie będzie miał mi tego za złe i jestem pewna, że się jeszcze spotkamy."
+    new "I left Meamir without a word… But the situation was unusual, I’m sure he won’t be mad and that we’ll meet again."
+
+    # game/journal.rpy:119
+    old "Spędziłam chwilę z Raven. Nim przeszkodziła nam moja mama udało się trochę porozmawiać, widać, że sporo przeszła i na pewno nie czuje się tutaj jeszcze swobodnie. Mimo wszystko myślę, że jest bardzo interesująca… Kto wie, może nawet byśmy zostali przyjaciółmi lub… A nie wiem w sumie. Lepiej pójdę już na śniadanie."
+    new "I spent some time with Raven. We managed to have a conversation before mom interrupted; I can see that she’s been through a lot and still doesn’t feel too comfortable around here. Still, I think she’s very interesting… Who knows, maybe we could become friends, or even… I don’t know. I’d better go to breakfast."
+
+    # game/journal.rpy:121
+    old "Dałam Raven odpocząć. Pewnie teraz zobaczę ją na śniadaniu, na które swoją drogą powinnam pójść."
+    new "I let Raven rest. I’ll probably see her at breakfast, which I should probably attend."
+
+    # game/journal.rpy:147
+    old "Chwilowo nie ma planów, ale na pewno się znów spotkamy."
+    new "No plans as of right now, but I’m sure we’ll meet once again."
+
+    # game/journal.rpy:148
+    old "Chwilowo nie ma planów, ale na pewno się spotkamy."
+    new "No plans as of right now, but I’m sure we’ll meet soon."
+
+    # game/journal.rpy:152
+    old "Raven będzie na pewno na śniadaniu to tam zobaczymy co dalej."
+    new "Raven will be at breakfast, we’ll see what happens there."
+# TODO: Translation updated at 2021-02-14 17:08
+
+translate english strings:
+
+    # game/journal.rpy:70
+    old "- powinnam pójść teraz na śniadanie."
+    new "- I should go to breakfast now."

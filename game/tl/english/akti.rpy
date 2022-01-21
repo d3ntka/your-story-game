@@ -6195,3 +6195,10 @@ translate english strings:
     # game/akti.rpy:3113
     old "Za wcześnie na takie rzeczy."
     new "It's too early for such things."
+# TODO: Translation updated at 2021-02-14 14:32
+
+# game/akti.rpy:766
+translate english e2a1_6dfbe7dc:
+
+    # p3 "Lia, czekam na Ciebie w sali. Mamy sporo pracy."
+    p3 "I'll be waiting for you in the main room, Lia. We have a lot of work to do."

@@ -1833,7 +1833,7 @@ init:
         contains: #wczytywane od razu, ujawnia się po 16.1s po czarnym przejściu
             "anim_forest_night_noman"
             alpha 0.0
-            16.1
+            16.3
             alpha 1.0 align (0.5,0.5) pos (-0.5,0.0) zoom 1.0
         contains:
             "fog2"

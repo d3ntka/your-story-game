@@ -804,7 +804,7 @@ translate english strings:
 
     # game/script.rpy:534
     old "Co dokładnie masz na myśli?"
-    new ""
+    new "What exactly do you mean?"
 
     # game/script.rpy:538
     old "Podoba mi się to podejście."
@@ -825,3 +825,41 @@ translate english strings:
     # game/script.rpy:568
     old "W jaki sposób?"
     new ""
+# TODO: Translation updated at 2021-02-14 14:32
+
+# game/script.rpy:546
+translate english ee_001_intro_dcbe8a8a:
+
+    # gr "Co dokładnie masz na myśli?"
+    gr "Do you have something specific on your mind?"
+# TODO: Translation updated at 2021-02-14 17:08
+
+# game/script.rpy:485
+translate english ee_001_intro_84be37f1:
+
+    # gr "Spokojnie spokojnie! Jeszcze musisz mi powiedzieć jedną rzecz..."
+    gr "Easy, easy! You still have to tell me one thing..."
+
+# game/script.rpy:489
+translate english ee_001_intro_c68bbe5a:
+
+    # gr "Mniej więcej określ się jak chciałabyś pokierować Twoje życie."
+    gr "More or less describe how you'd like me to guide Your Story."
+
+# game/script.rpy:491
+translate english ee_001_intro_63f3421a:
+
+    # gr "Spokojnie. Skup się. Pomyśl co może być przed Tobą..."
+    gr "Be calm, focus. Think about what might be ahead of you..."
+
+# game/script.rpy:494
+translate english ee_001_intro_a99894c4:
+
+    # gr "Pomyśl o tym na czym Ci najbardziej zależy. Zastanów się bardzo dobrze."
+    gr "Think about what you care about the most. Think very carefully."
+
+# game/script.rpy:495
+translate english ee_001_intro_2b2725b4:
+
+    # gr "To bardzo ważna decyzja, więc spokojnie i nie śpiesz się z odpowiedzią."
+    gr "It's a very important choice, so take your time and don't rush with an answer."

@@ -342,10 +342,6 @@ translate english strings:
 
 translate english strings:
 
-    # game/screens.rpy:64
-    old "{b}Co nowego w Demo 3.0{/b}"
-    new ""
-
     # game/screens.rpy:65
     old "Cześć! Dzięki za pobranie wersji demonstracyjnej Your Story! \n\nW najnowszej aktualizacji: \n• Lia otrzymała pełne usprawnienie graficzne, \n• Selene otrzymała usprawnienia graficzne, \n• dodaliśmy trzy nowe pomieszczenia w Tawernie, \n• dodaliśmy kontynuację wątków fabularnych, \n• szereg drobnych poprawek i usprawnień. \n\nJeśli macie sugestie, uwagi lub znaleźliście błąd to zapraszamy na nasz serwer {a=https://discord.com/invite/FgsaqrR}Discord{/a}! Tymczasem życzymy przyjemnej gry!"
     new "Hey! Thank you for downloading the demo version of Your Story! \n\nWhat’s new: \n• Lia has received full visual improvements, \n• Selene has received full visual improvements, \n• we have added three new rooms in the Tavern, \n• we have extended some plot elements, \n• a number of minor fixes and improvements. \n\nIf you have any suggestions, comments or have found any bugs, please join our {a=https://discord.com/invite/FgsaqrR}Discord server{/a}! \n\nIn the meantime, have fun playing!"
@@ -358,10 +354,21 @@ translate english strings:
     old "{b}Informacja{/b}"
     new "{b}Info{/b}"
 
-    # game/screens.rpy:106
-    old "W tym miejscu kończy się wersja demonstracyjna Twojej Historii. Ponownie zostawiamy Was z możliwością eksploracji naszej krainy i odkrywania pozostałych lokacji. \n\nJeśli jesteście zainteresowani dalszymi przygodami Lii to zapraszamy Was na nasz serwer {a=https://discord.com/invite/FgsaqrR}Discord{/a}, gdzie możecie śledzić postęp naszych prac oraz podzielić się swoją opinią na temat obecnego stanu naszej gry.\n\nDziękujemy wszystkim, którzy zainteresowali się naszą grą. Wasze wsparcie jest dla nas bardzo ważne! Dzięki temu mamy energię do dalszej pracy i wierzymy, że wkrótce będziemy mogli dostarczyć Wam w pełni gotowe dzieło, które pobudzi - mamy nadzieję - w Was masę różnorodnych emocji.\n\nDzięki,\nZespół GameLoad"
-    new "This is where the demo of Your Story ends. Once again, we leave you with the opportunity to explore our land and discover other locations. \n\nIf you’re interested in Lia’s further adventures, we invite you to our {a=https://discord.com/invite/FgsaqrR}Discord server{/a}. Where you can follow the progress of our work and share your feedback about our game’s current state. \n\nThank you to everyone interested in our game. Your support has been very important to us! Thanks to you we have a lot of energy to continue working and we believe that soon enough we will be able to deliver you a fully developed game which will - we hope - stimulate a lot of different emotions in you.\n\nGameLoad Team"
-
     # game/screens.rpy:112
     old "Rozumiem"
     new "Understood"
+# TODO: Translation updated at 2021-02-14 14:32
+
+translate english strings:
+
+    # game/screens.rpy:76
+    old "{b}Co nowego w Demo 4.0{/b}"
+    new "{b}What's new in Demo 4.0{/b}"
+
+    # game/screens.rpy:77
+    old "Cześć! Dzięki za pobranie wersji demonstracyjnej Your Story! \n\nW najnowszej aktualizacji: \n• optymalizacja tekstów i dialogów na obszarze całego demo, \n• optymalizacja mimiki twarzy postaci (teraz emocje powinny być bardziej czytelne), \n• nowe dźwięki w wybranych momentach, \n• dodanie dziennika gry z którym wstępnie możecie się zapoznać w tym demo (jego rola znacznie - wzrośnie w późniejszej fazie gry), \n• wstępne wprowadzenie postaci Ainy, Henrietty i Leviusa, \n• tło korytarza Tawerny otrzymało finalny wygląd, \n• finalne wersje dwóch dodatkowych sal dla gości w Tawernie, \n• tło Sekretnego Ogrodu otrzymało finalny wygląd, \n• wprowadziliśmy kursor! \n\nJeśli macie sugestie, uwagi lub znaleźliście błąd to zapraszamy na nasz serwer {a=https://discord.com/invite/FgsaqrR}Discord{/a}! Tymczasem życzymy przyjemnej gry!"
+    new "Hey! Thank you for downloading the demo version of Your Story! \n\nWhat’s new: \n• improvements to texts and dialogues throughout the demo, \n• improvements to characters facial expressions (emotions should be more clear now), \n• new sounds at selected moments, \n• the journal, which you may become familiar with in this demo, \n• the initial introduction of three characters: Aina, Henrietta and Levius, \n• the Tavern’s corridor background has received its final look, \n• the final versions of two additional guest rooms in the Tavern, \n• the Secret Garden’s background has received its final look, \n• we’ve introduced a mouse pointer! \n\nIf you have any suggestions, comments or have found any bugs, please join our {a=https://discord.com/invite/FgsaqrR}Discord server{/a}! \n\nIn the meantime, have fun playing!"
+
+    # game/screens.rpy:120
+    old "W tym miejscu kończy się wersja demonstracyjna Your Story. Chcielibyśmy podziękować Ci za przejście całego demo, jeśli masz chwilkę czasu to będziemy wdzięczni jeśli dasz nam znać co sądzisz o naszej grze. Znajdziesz nas na naszym serwerze {a=https://discord.com/invite/FgsaqrR}Discord{/a}. \n\nDziękujemy za Twoje zainteresowanie, każde pobranie demo to dodatkowa energia dla nas przy tworzeniu kolejnych fragmentów historii. Mamy nadzieję, że w ciągu najbliższych miesięcy Lia zagości z kompletną historią na naszych wirtualnych półkach. \n\nTymczasem dziękujemy za wsparcie i zapraszamy do śledzenie nas na {a=https://twitter.com/GameLoadStudio}Twitterze{/a},\nZespół GameLoad"
+    new "This is where the demo of Your Story ends. We’d like to thank you for playing through the entirety of it; if you have a moment we’d be grateful if you’d tell us what you think about the game. You can find us on our {a=https://discord.com/invite/FgsaqrR}Discord server{/a}. \n\nThank you for being interested in our game, every download gives us more energy to create new parts of the story. We’re hoping that during the following months Lia will appear on our virtual shelves with a complete story. \n\nIn the meantime, we thank you for your support and invite you to follow us on {a=https://twitter.com/GameLoadStudio}Twitter{/a},\nThe GameLoad team"

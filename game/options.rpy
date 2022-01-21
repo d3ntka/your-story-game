@@ -30,7 +30,7 @@ define config.gl2 = True
 
 ## The version of the game.
 
-define config.version = "DEMO_4"
+define config.version = "ENG_UPDATE"
 
 #dodane:
 ## Default language.
@@ -41,6 +41,7 @@ define config.mouse = { 'default' : [ ('gui/cursor.png', 3, 0)] }
 
 #dodane:
 default preferences.fullscreen  = True
+default preferences.system_cursor = False
 
 ## Text that is placed on the game's about screen. Place the text between the
 ## triple-quotes, and leave a blank line between paragraphs.
@@ -56,10 +57,6 @@ https://creativecommons.org/licenses/by-sa/4.0/
 Relaxing Ballad by Alexander Nakarada | https://www.serpentsoundstudios.com
 Attribution 4.0 International (CC BY 4.0)
 https://creativecommons.org/licenses/by/4.0/
-
-The Old Pumpkin Patch by Darren-Curtis | https://soundcloud.com/desperate-measurez
-Creative Commons Attribution 3.0 Unported License
-https://creativecommons.org/licenses/by/3.0/deed.en_US
 
 Minstrel by PeriTune | http://peritune.com
 Creative Commons Attribution 3.0 Unported License

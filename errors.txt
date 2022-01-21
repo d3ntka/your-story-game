@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/akti.rpy", line 1301: expected 'image_name_component' not found.
-    show
-        ^
+File "game/script.rpy", line 310: expected end of line
+    play music alexander_nakarada_adventure fadein 3.0 fadout 5.0 volume 0.5
+                                                       ^
 
 Ren'Py Version: Ren'Py 7.4.0.1167
-Mon Feb  8 16:13:14 2021
+Sun Feb 14 17:17:17 2021
