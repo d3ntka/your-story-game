@@ -1513,6 +1513,7 @@ label e8_p5:
 
     ###jeśli E7-P5
     if akt1_UkonczenieEpizodow["e7_p5"]:
+        show p5
         "Lia ruszyła powolnym krokiem w kierunku Meamira."
         #zoom na Kuźnię, Meamir po lewej, Lia po prawej
         #Meamir smile ON

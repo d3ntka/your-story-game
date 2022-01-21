@@ -534,7 +534,7 @@ init:
             "tavern_main_barleftmess5_hover"
 
 
- #### bar
+#### bar
     layeredimage tavern_main_bar_bg0_dn:
         if dt < 5:
             "tavern_main_bar_bg0"
@@ -1772,7 +1772,7 @@ init:
             zoom 1.0 alpha 0.0 align (0.5,0.5) ypos -0.2
             ease 3 alpha 1.0
             parallel:
-                 ease 13 ypos 0.5 zoom 1.5
+                ease 13 ypos 0.5 zoom 1.5
             parallel:
                 block:
                     linear .3 alpha 1.0
@@ -1786,7 +1786,7 @@ init:
             zoom 1.2 alpha 0.0 align (0.5,0.5) ypos 0.5
             ease 3 alpha 1.0
             parallel:
-                 ease 13 ypos -0.2 zoom 1.5
+                ease 13 ypos -0.2 zoom 1.5
             parallel:
                 block:
                     linear .3 alpha 1.0
@@ -1955,7 +1955,7 @@ init:
             linear 60.0 xalign 1.5
             repeat
     image tdr2:
-         contains:
+        contains:
             "tavern_door_lights2"
             yanchor 0.0 alpha 0.0 zoom 1.0
             linear 2.0 yanchor 0.02 alpha 0.5
@@ -1963,7 +1963,7 @@ init:
             linear 2.0 yanchor 0.06 alpha 0.5
             linear 2.0 yanchor 0.08 alpha 0.0
             repeat
-         contains:
+        contains:
             "tavern_door_lights2"
             xanchor 0.2 zoom 1.2 yanchor -0.12 alpha 0.0
             linear 6.0 yanchor -0.06 alpha 0.0

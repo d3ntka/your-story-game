@@ -69,8 +69,8 @@ label e1:
                     pass
             p1 "Niby co?"
             menu:
-                 "Cokolwiek. Zróbmy coś po prostu.":
-                     pass
+                "Cokolwiek. Zróbmy coś po prostu.":
+                    pass
             p1 "Nie wiem. Nie jestem przekonana..."
 
         "Nic nowego. Dziwne, że jeszcze to wytrzymujesz.":
@@ -1167,7 +1167,12 @@ label poczyszczeniustolu:
     show p3:
         zoom 0.3 xpos 0.6 yalign 0.6
         xzoom -1
-    show tavern_main_bar3_dn_idle
+    show tavern_main_bar3_dn_idle:
+        zoom 1.2
+        align (.5,.5)
+    show tavern_main_beer4_idle:
+        zoom 1.2
+        align (.5,.5)
     with dissolve
     "..."
     #Lia wchodzi od lewej"

@@ -238,7 +238,8 @@ screen ee_town():
     imagebutton auto "town_smithy_dn_%s" focus_mask True action Return("niedostepne") tooltip __("KUŹNIA")
     #if dt >= 5:
     #    imagebutton auto "town_night_smithy_%s" focus_mask True action Return("niedostepne")
-    #imagebutton auto "p5_%s" xalign 0.1 yalign 1.0 focus_mask True action Return("e8_p5") #### do wyrzucenia
+    if dt<5:
+        imagebutton auto "p5_%s" xalign 0.1 yalign 1.0 focus_mask True action Jump("e8_p5") 
     use map_button
     use obiekty
 
