@@ -241,9 +241,9 @@ screen wyborepizodow():
         textbutton "epizod 7 N" action Jump("epizod7n")
         null
 
-        textbutton "epizod 8" action Jump("epizod8")
-        null
-        null
+        textbutton "epizod 8 intro" action Jump("epizod8")
+        textbutton "epizod 8 P4" action Jump("e8_p4")
+        textbutton "epizod 8 P5" action Jump("e8_p5")
         null
 
         null

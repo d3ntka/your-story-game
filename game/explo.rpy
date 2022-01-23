@@ -235,11 +235,11 @@ screen ee_town():
     #add "img_festival_dn_dragon":
     #    zoom 0.46875
     use timeskip
-    imagebutton auto "town_smithy_dn_%s" focus_mask True action Return("niedostepne") tooltip __("KUŹNIA")
+    # imagebutton auto "town_smithy_dn_%s" focus_mask True action Return("niedostepne") tooltip __("KUŹNIA")
     #if dt >= 5:
     #    imagebutton auto "town_night_smithy_%s" focus_mask True action Return("niedostepne")
     if dt<5:
-        imagebutton auto "p5_%s" xalign 0.1 yalign 1.0 focus_mask True action Jump("e8_p5") 
+        imagebutton auto "p5_%s" at buttonzoom(0.7) xalign 0.1 yalign 1.0 focus_mask True action Jump("e8_p5") 
     use map_button
     use obiekty
 

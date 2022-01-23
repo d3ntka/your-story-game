@@ -46,11 +46,13 @@ image anim_e7p4_raven_ravenroom_push:
 ############################ wątek Raven #######################################
 ################################################################################
 label e8_p4:
-
+    if config.developer:
+        call card_choice
+        
     #Rozpoczynamy klikając w pokój Raven na korytarzu
     #Proszę pamiętać, że nocą nie da się kliknąć, tylko mamy to -" EE001-P4N
     #Pierwsza linijka dzieje się z perspektywy korytarza, można lekki zoom zrobić na drzwi
-    $ ravenDress = ""
+    $ ravenDress = "" #zmiana na nową sukienkę - usuwa fragment nazwy, po to żeby wybrało inny plik
     show img_tavern_hall:
         linear 3 align (1.0,1.0) zoom 1.2
     "Lia zapukała lekko w drzwi. Po krótkiej chwili usłyszała z wewnątrz “Proszę”."
@@ -1492,10 +1494,27 @@ label e8_p4b:
 
 
 label e8_p5:
+
+    ########################### devstuff #########################
+    
+    if config.developer:
+        call card_choice
+        menu:
+            "dev/ zrobione e8-p5: przejscie do e8-p5b":
+                $ ee001_UkonczenieEpizodow["e8_p5"] = True
+                pass
+            "dev/ inny wybór":
+                pass
+    ########################### /devstuff #########################
+
+
+
     if ee001_UkonczenieEpizodow["e8_p5"]:
         jump e8_p5b
     else:
         pass
+
+
 
     ########################### devstuff #########################
     if config.developer:
@@ -1505,27 +1524,48 @@ label e8_p5:
                 pass
             "dev/ inny wybór":
                 pass
-
-    ########################### devstuff #########################
+    ########################### /devstuff #########################
 
 
     ##############################   E8-P5A    #################################
 
     ###jeśli E7-P5
+    scene img_festival_dn_dragon:
+        zoom 0.75 align (0.0, -1.0)
+    show p5:
+        xalign 0.1 yalign 1.0
+    show p1:
+        align (1.3, 1.0)
+    with dissolve
+    show p1 with move:
+        align (0.9, 1.0)
     if akt1_UkonczenieEpizodow["e7_p5"]:
-        show p5
         "Lia ruszyła powolnym krokiem w kierunku Meamira."
         #zoom na Kuźnię, Meamir po lewej, Lia po prawej
         #Meamir smile ON
+        show p5 with fc:
+            xzoom -1
         "Gdy tylko ją dostrzegł na jego twarzy od razu zagościł uśmiech."
-        p4 "Lia! Hej! Miło Cię znów widzieć!"
+        show p5 bneutral wink lsmile with fc
+        p5 "Lia! Hej! Miło Cię znów widzieć!"
         #surprised_happy Lia ON
+        show p5 with move:
+            align (0.5, 1.0)
+        show p1 bsurprised widenedwink lsmile with fc
         p1 "Hej Meamir!"
-        p4 "Co Cię sprowadza?"
+        p5 "Co Cię sprowadza?"
         p1 "Ah, chciałam..."
+        show p10:
+            align (-0.5, 1.0)
         "Wypowiedź nagle przerwał nieznajomy głos."
         #Wchodzi Ove (P10) od lewej, pozostała dwójka obraca się w jego kierunku
+        show p10 with move:
+            align (0.0, 1.0)
+        show p5 with fc:
+            xzoom 1
         #confused Lia i Meamir ON
+        show p1 bsurprised wink lneutral with fc
+        show p5 bsurprised wink lneutral with fc
         "Brzmiał on nietypowo. Lia niekoniecznie przypisałaby go do tych przyjemnych."
 
     ###jeśli E7-P4 lub E7-N
@@ -1533,24 +1573,47 @@ label e8_p5:
         "Lia ruszyła powolnym krokiem w kierunku Meamira."
         #zoom na Kuźnię, Meamir po lewej, Lia po prawej
         #surprised_happy Meamir ON
+        show p5 with fc:
+            xzoom -1
         "Gdy tylko ją dostrzegł na jego twarzy powoli zagościł uśmiech."
+        show p5 bneutral wink lsmile with fc
         #sad_smile Lia ON
-        p4 "O, hej Lia! Miło Cię zobaczyć."
+        show p1 bsad wink lsmile with fc
+        p5 "O, hej Lia! Miło Cię zobaczyć."
         p1 "Hej Meamir..."
-        p4 "Co Cię sprowadza?"
+        p5 "Co Cię sprowadza?"
         p1 "Oh, właśnie. Chciałam Cię przeprosić, że tak bez słowa Cię zostawiłam wtedy."
-        p4 "Oj, nic się chyba nie stało. Widziałem, że było tam jakieś zamieszanie."
-        p4 "Nie chciałem się wtrącać, zwiększyłbym tylko chaos."
+        p5 "Oj, nic się chyba nie stało. Widziałem, że było tam jakieś zamieszanie."
+        p5 "Nie chciałem się wtrącać, zwiększyłbym tylko chaos."
         p1 "Oh, dzięki za zrozumienie. No trochę dziwna sytuacja była..."
         p1 "Mam teraz nadzieję, że..."
+        show p10:
+            align (-0.5, 1.0)
         "Wypowiedź nagle przerwał nieznajomy głos."
         #Wchodzi Ove (P10) od lewej, pozostała dwójka obraca się w jego kierunku
+        show p10 with move:
+            align (0.0, 1.0)
+        show p5 with fc:
+            xzoom 1
         #confused Lia i Meamir ON
+        show p1 bsurprised wink lneutral with fc
+        show p5 bsurprised wink lneutral with fc
         "Brzmiał on nietypowo. Lia niekoniecznie przypisałaby go do tych przyjemnych."
+
+    ########################### devstuff #########################
+    if config.developer:
+        menu:
+            "dev/ paczka odebrana":
+                $ paczka01 == "odebrana"
+                pass
+            "dev/ inny wybór":
+                pass
+    ########################### /devstuff #########################
 
     ###jeśli mamy PACZKA01
     if paczka01 == "odebrana":
         #angry Ove ON
+        show p10 bangry narrowedwink with fc
         p10 "Co robisz młody? Kto to?"
         p5 "Ah, to jest Lia..."
         #surprised_sad Lia ON
@@ -1574,31 +1637,41 @@ label e8_p5:
     ###jeśli nie mamy PACZKA01
     else:
         #angry Ove ON
+        show p10 bangry narrowedwink with fc
         p10 "Co robisz młody? Kto to?"
         p5 "Ah, to jest Lia..."
         #shock Lia ON
+        show p1 bsurprised widenedwink lopen with fc
         p10 "Ha, Lia od Zorna? Masz moją paczkę?"
         p1 "..."
         p10 "Masz ją czy nie? Bo nic nie widzę..."
         p1 "N-nie... Nie mam proszę Pana."
         #surprised_sad Meamir ON
+        show p5 bsurprised widenedwink lsad with fc
         p10 "No kurwa... Na nikim nie można polegać!"
         p10 "Ile muszę czekać na głupią paczkę?"
         p10 "Młody, idź z nią i ogarnijcie to od razu."
         p10 "Teraz."
+        show p10 with fc:
+            xzoom -1
+        hide p10 with moveoutleft
+        show p5 with fc:
+            xzoom -1
         #Ove wychodzi w lewo, Meamir obraca się do Lii
         #surprised_neutral Lia ON
+        show p1 bsurprised widenedwink lneutral with fc
         p5 "Eh... Przepraszam za mojego tatę..."
         p5 "Nie wiem czemu jest taki... Ciężko mi czasem go zrozumieć. Nie mniej jednak, przepraszam."
         #sad_smile Lia ON
+        show p1 bsad wink lsmile with fc
         p1 "Oh, no cóż. Rozumiem. Nic się nie stało - zdarza się."
         #sad_smile Meamir ON
+        show p5 bsad wink lsmile with fc
         p5 "Dzięki za zrozumienie... To przejdźmy się może po tę paczkę teraz..."
         p1 "Eh, no dobrze... Lepiej ogarnąć to od razu."
         "Dwójka ruszyła powoli poza wioskę."
         #przejście do E8-P5C
         jump e8_p5c
-
 
     menu:
         "“Jasne, z chęcią się przejdę.”":
@@ -1652,7 +1725,6 @@ label e8_p5:
             #neutral mina wraca Lii
             #ekran wraca do widoku wioski i do wolnej gry
             jump ee_town
-
 
 #################################################
     ########################## E8-P5B - paczka oddana ##########################
@@ -1819,10 +1891,10 @@ label e8_p5c:
     #drugie ujęcie komiksu E8-P5
     "Lia kątem oka zauważyła, że Meamir próbuje ją prawdopodobnie przytulić!"
     #tutaj pojawia się decyzja
-
+    # TODO komiksy
     menu:
         "Przytul go.":
-            #ujęcie komiksu nr.
+            # TODO ujęcie komiksu nr.
             #+1pkt MeamirLove
             #+1pkt LovePath
             $ MeamirLove += 1
@@ -1862,7 +1934,7 @@ label e8_p5c:
             # TODO Meamir pojawi się ponownie przy kuźni z E9 po 5 porach
 
         "“Halo, nie przysypiaj mi tu.”":
-            #ujęcie komiksu nr.
+            # TODO ujęcie komiksu nr.
             p5 "Uh... Znaczy... Nie przysypiam..."
             p5 "Tak tylko się przeciągałem..."
             p1 "Dobrze dobrze, to co - wstajemy?"
@@ -1899,7 +1971,7 @@ label e8_p5c:
             #Meamir pojawi się ponownie przy kuźni z E9 po 5 porach
 
         "“A co Ty przepraszam robisz?”":
-            #ujęcie komiksu nr.
+            # TODO ujęcie komiksu nr.
             #+1pkt HatePath
             #+1pkt MeamirHate
             $ HatePath += 1
