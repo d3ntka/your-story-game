@@ -191,6 +191,8 @@ label devskroty hide:
     menu:
         #"testy i inne":
         #    jump metastuff
+        "dev/ testy":
+            jump testowanie
         "dev/ mapka do demo":
             jump testymapy
         "dev/ epizody":

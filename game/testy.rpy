@@ -3,30 +3,83 @@
 ################################################################################
 ################################ TESTOWANIE ####################################
 label testowanie:
-    ""
+    pause
     scene black
-
-
-
-
-
-
-
-    show work3a with dissolve
-    show work3b with Dissolve(1.0)
-    hide work3b
-    hide work3a
+    scene ph
+    show p1
+    pause
+    show p1 crosshands with fc
+    pause 0.5
+    show p1 -crosshands with fc
+    pause 0.5
+    show p1 crosshands with fc
+    pause 0.5
+    show p1 -crosshands with fc
+    pause 0.5
+    show p1 crosshands with fc
+    pause 0.5
+    show p1 angry with fc
+    "angry"
     pause
 
-    show work2a with dissolve
-    show work2a:
-        align (0.5,0.5)
-        linear 0.5 xzoom 0.0
-    pause 0.5
-    show work1a:
-        align (0.5,0.5)
-        xzoom 0.0
-        linear 0.5 xzoom 1.0
+    show p1 annoyed with fc
+    "annoyed"
+    pause
+    show p1 blush with fc
+    "blush"
+    pause
+    show p1 confused with fc
+    "confused"
+    pause
+    show p1 frown with fc
+    "frown"
+    pause
+    show p1 happy with fc
+    "happy"
+    pause
+    show p1 sad with fc
+    "sad"
+    pause
+    show p1 sadsmile with fc
+    "sadsmile"
+    pause
+    show p1 shock with fc
+    "shock"
+    pause
+    show p1 smile with fc
+    "smile"
+    pause
+    show p1 smirk with fc
+    "smirk"
+    pause
+    show p1 surprised with fc
+    "surprised"
+    pause
+
+
+
+    pause
+
+
+    ""
+
+
+
+    # show work3a with dissolve
+    # show work3b with Dissolve(1.0)
+    # hide work3b
+    # hide work3a
+    # pause
+
+    # show work2a with dissolve
+    # show work2a:
+    #     align (0.5,0.5)
+    #     linear 0.5 xzoom 0.0
+    # pause 0.5
+    # show work1a:
+    #     align (0.5,0.5)
+    #     xzoom 0.0
+    #     linear 0.5 xzoom 1.0
     pause 1.0
     ""
     return
