@@ -4,7 +4,9 @@ init:
 #######################   LIA   ######################
 
 image lia_eyes_wink:
-    "lia_eyes_relaxed" with Dissolve(0.1)
+    "lia_eyes_closed"
+    alpha 0.0
+    linear 0.15 alpha 0.0
     choice:
         2.2
     choice:
@@ -13,22 +15,48 @@ image lia_eyes_wink:
         4.3
     choice:
         3.5
-    "lia_eyes_relaxed" with Dissolve(0.1)
+    linear 0.15 alpha 0.0
     .23
-    "lia_eyes_closed" with Dissolve(0.1)
-    .25
-    "lia_eyes_relaxed" with Dissolve(0.1)
+    linear 0.10 alpha 1.0
+    .10
+    linear 0.15 alpha 0.0
     choice:
         .91
     choice:
         1.4
     #choice:
     #    4.5
-    "lia_eyes_closed" with Dissolve(0.1)
-    .25
-    "lia_eyes_relaxed" with Dissolve(0.1)
+    linear 0.10 alpha 1.0
+    .10
+    linear 0.15 alpha 0.0
     .13
     repeat
+# image lia_eyes_wink:
+#     "lia_eyes_relaxed" with Dissolve(0.1)
+#     choice:
+#         2.2
+#     choice:
+#         3.0
+#     choice:
+#         4.3
+#     choice:
+#         3.5
+#     "lia_eyes_relaxed" with Dissolve(0.1)
+#     .23
+#     "lia_eyes_closed" with Dissolve(0.1)
+#     .25
+#     "lia_eyes_relaxed" with Dissolve(0.1)
+#     choice:
+#         .91
+#     choice:
+#         1.4
+#     #choice:
+#     #    4.5
+#     "lia_eyes_closed" with Dissolve(0.1)
+#     .25
+#     "lia_eyes_relaxed" with Dissolve(0.1)
+#     .13
+#     repeat
 image lia_eyes_narrowedwink:
     "lia_eyes_narrowed" with Dissolve(0.1)
     choice:
@@ -158,42 +186,54 @@ image lia_eyes_widenedwink_player:
     repeat
 
 layeredimage lia:
-    always "lia_base"
+    # always "lia_base"
+    group base auto:
+        attribute base default
 
-    group lips auto:
-        attribute lneutral default
+    group face auto
+        # attribute normal default
 
-    group eyes:
+    group eyes auto:
         attribute wink default:
             "lia_eyes_wink"
-        attribute narrowedwink: # zdefiniowane powyżej
-            "lia_eyes_narrowedwink"
-        attribute widenedwink:
-            "lia_eyes_widenedwink"
-        attribute wink_player:
-            "lia_eyes_wink_player"
-        attribute narrowedwink_player:
-            "lia_eyes_narrowedwink_player"
-        attribute widenedwink_player:
-            "lia_eyes_widenedwink_player"
-        attribute closed
 
-    group brows auto:
-        attribute bneutral default:
-            "lia_brows_brelaxed"
-    attribute blush:
-        "lia_blush"
-    if hairpin:
-        "lia_hairpin"
-    attribute smalltears:
-        "lia_smalltears"
-    attribute bigtears:
-        "lia_bigtears"
+    # group lips auto:
+    #     attribute lneutral default
+
+    # group eyes:
+    #     attribute wink default:
+    #         "lia_eyes_wink"
+    #     attribute narrowedwink: # zdefiniowane powyżej
+    #         "lia_eyes_narrowedwink"
+    #     attribute widenedwink:
+    #         "lia_eyes_widenedwink"
+    #     attribute wink_player:
+    #         "lia_eyes_wink_player"
+    #     attribute narrowedwink_player:
+    #         "lia_eyes_narrowedwink_player"
+    #     attribute widenedwink_player:
+    #         "lia_eyes_widenedwink_player"
+    #     attribute closed
+
+    # group brows auto:
+    #     attribute bneutral default:
+    #         "lia_brows_brelaxed"
+
+    # attribute blush:
+    #     "lia_blush"
+    # if hairpin:
+    #     "lia_hairpin"
+    attribute tears:
+        "lia_tears"
+    # attribute smalltears:
+    #     "lia_smalltears"
+    # attribute bigtears:
+    #     "lia_bigtears"
     if paczka01 == "odebrana":
         "lia_package"
-    attribute shadow "lia_shadow"
+    # attribute shadow "lia_shadow"
 
-image p1 = LayeredImageProxy("lia", Transform(zoom=0.65))
+image p1 = LayeredImageProxy("lia", Transform(zoom=0.36))
 image p1pl = LayeredImageProxy("lia", Transform(xalign=0.45,yalign=-0.15))
 
 #######################   RAVEN   ##########################
@@ -278,6 +318,11 @@ image raven_eyes_widenedwink:
 
 layeredimage raven:
     always "raven[ravenDress]_base"
+    # wg dokumentacji lepiej nie używać zmiennych tylko zrobić ale to trzeba sprawdzić czy działa z always
+    # if dress == new:
+    #     always raven_base_new
+    # else:
+    #     always raven_base_first
 
     group lips auto:
         attribute lneutral default:

@@ -10,7 +10,7 @@ init:
     ######## face change transform ########
     define fc = Dissolve(.25)
     #######################################
-
+    image ph = Placeholder("bg")
 ################## IMG DO EXPLO #############################
     layeredimage forest_dn:
         if dt < 5:
