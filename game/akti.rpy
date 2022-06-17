@@ -1,12 +1,35 @@
 
-default pojscieDoLasu = False
+default LasPodejscie = False
 default runFromThisLife = False
 default theTruthHasBeenSpoken = False
 default be01 = False
 default e3a1 = False
 default e3a2 = False
+default e1_intro = 1
+
 
 label e1:
+
+    "Naprawdę mi jej szkoda. Dziewczyna prowadzi szare, monotonne i, w gruncie rzeczy, smutne życie."
+
+    menu:
+        "Chyba czuje się samotna.":
+            "Zdaje się, że nie ma wielu przyjaciół. Po prawdzie - nie ma ich chyba wcale."
+            "Oczywiście pracuje w Tawernie i z tego powodu zna sporo ludzi, często się z nimi styka."
+            "Jednak takie przelotne relacje to nie to samo. Powinna znaleźć kogoś z kim mogłaby być bliżej."
+            "Kogoś, kogo mogłaby nazwać przyjacielem."
+            $ e1_intro = 1
+        "Jej życie wydaje się bardzo monotonne.":
+            "Wciąż tylko praca, po której nie ma już wiele czasu ani siły na cokolwiek innego niż sen."
+            "Przydałaby jej się jakaś odmiana, jakieś nowe doświadczenie. Inaczej zatraci zupełnie jakąkolwiek radość."
+            "Nie musi w końcu zupełnie zmieniać swojego życia. Wystarczy nadać mu nieco… koloru."
+            $ e1_intro = 2
+        "Chyba przytłaczają ją obowiązki.":
+            "Być może ma zbyt wiele obowiązków. Spędza w pracy tyle czasu… w zasadzie to nawet tu mieszka!"
+            "Brakuje jej choćby chwili na oddech, na wsłuchanie się w samą siebie."
+            "Nic dziwnego, że czuje się tym wszystkim coraz bardziej przytłoczona."
+            $ e1_intro = 3
+    "Spróbuję jej pomóc. Może wcale wiele nie trzeba."
 
     #Na ekranie: Ciemny ekran.
     #Harmider w tle (oddalające się głosy rozmów)
@@ -17,7 +40,8 @@ label e1:
     $ renpy.music.set_volume(0.5, delay=0, channel='music')
     play music nowhere_land fadein 5.0
     pause 1.0
-    "Harmider ciągnący się za opuszczającymi powoli Tawernę gośćmi w końcu zmieniał się w utęskniony spokój."
+    "Harmider i hałas przekrzykujących się głosów, trzask naczyń, śmiechy i śpiewy, słowem - wszystkie typowe, karczemne dźwięki, powoli milkną."
+    "Coraz więcej gości opuszcza Tawernę. Miejsce każdego zajmuje cisza, utęskniony spokój. W końcu wypełnia już całą Tawernę."
     #Na ekranie: CG z Tawerny (Lia oparta o drzwi z zamkniętymi oczami)"
     transform alphawdol:
         linear 8 alpha 1.0
@@ -38,7 +62,8 @@ label e1:
             linear 100 zoom 1.2 alpha 0.8
             repeat
     with fade
-    "Lia zamknęła drzwi za ostatnim gościem i ze zmęczeniem oparła się o ścianę wsłuchując się w ciszę, którą zakłócał jedynie trzaskający ogień w kominku."
+    "Gdy ostatni z gości opuszcza Tawernę, Lia zamyka za nim drzwi. Odetchnąwszy opiera się o ścianę i z prawdziwą ulgą przymyka oczy." 
+    "Wsłuchuje się w utęsknioną ciszę, którą przyjemnie zakłóca jedynie delikatny trzask ognia w kominku."
     "..."
     window hide
     with fc
@@ -47,12 +72,12 @@ label e1:
     with fc
     stop ambient fadeout 3.0
     #W tle cały czas delikatny dźwięk ognia, który teraz zanika (najlepiej do 5-6sec wyciszenie)""
-    "Pomimo ogromnego zmęczenia znów utknęła na chwilę w swoich myślach."
-    "Z dnia na dzień miała coraz bardziej dość tego życia."
-    "{i}Wszystko jest tak monotonne i nudne.{/i}"
-    "{i}Wstań. Pracuj. Wykonuj polecenia. Idź spać. Wstań i znów pracuj. Ciągle to samo.{/i}"
+    "Jest zmęczona. Bardzo. Jednak zamiast iść prosto do łóżka znów na chwilę tonie we własnych myślach."
+    "Z dnia na dzień czuje coraz mocniej, że coś traci. Coś bardzo ważnego."
+    "{i}Nuda i monotonia. Nic więcej.{/i}"
+    "{i}Wstań, pracuj, śpij, wstań, pracuj, śpij, wstań, pracuj… Polecenia. Każdy dzień, każda chwila łatwa do przewidzenia. Ciągle to samo.{/i}"
     "..."
-    "{i}Uhhh... Mam dość tego wszystkiego powoli...{/i}"
+    p1 "Powoli zaczynam mieć tego dość…"
     show tavern_door_lia_eyesopened behind tavern_door_lights1, tavern_door_lights2 with Dissolve(1.0):
         zoom 1.05
         linear 14 zoom 1.00
@@ -60,56 +85,58 @@ label e1:
 
     stop music fadeout 3.0
     menu:
-        "Przesadzasz. Widać przecież, że jest w Tobie trochę życia.":
-            p1 "Może i przesadzam."
-            p1 "Może i jest trochę życia."
-            p1 "Ale jak mam to stwierdzić jak nie znam nic innego."
+        "Przesadzasz. Wciąż jest w tobie sporo życia!":
+            p1 "Może przesadzam..."
+            p1 "Ale skąd mogę wiedzieć? Nic innego nie znam."
             menu:
-                "To może czas coś poznać?":
+                "Może to jest rozwiązanie?":
                     pass
             p1 "Niby co?"
             menu:
-                "Cokolwiek. Zróbmy coś po prostu.":
+                "Cokolwiek. Po prostu coś zróbmy. Coś innego.":
                     pass
             p1 "Nie wiem. Nie jestem przekonana..."
+            #przejście do tabeli niżej
 
-        "Nic nowego. Dziwne, że jeszcze to wytrzymujesz.":
-            p1 "A co mam innego zrobić?"
+        "Nic dziwnego, poza tym, że wciąż to wytrzymujesz.":
+            p1 "A co mogę zrobić?"
             menu:
-                "Chwilowo wygląda na to, że nieważne co zrobisz, to będzie już pójściem do przodu.":
+                "Cokolwiek. W tej sytuacji wystarczy, że będzie to coś innego niż zazwyczaj.":
                     pass
             p1 "Może."
             p1 "A może nie."
             p1 "Zresztą nawet nie wiem co można zrobić."
             menu:
-                "Coś wymyślimy. Warto spróbować.":
+                "Za dużo myślisz. Trzeba spróbować.":
                     pass
             p1 "Nie wiem. Nie jestem przekonana..."
+            #przejście do tabeli niżej
 
         "W takim razie otwórz drzwi i uciekaj od tego życia." if not runFromThisLife:
             p1 "Co masz na myśli?"
             menu:
-                "Zostaw to wszystko. Otwórz drzwi i uciekaj.":
+                "Dokładnie to. Otwórz drzwi i uciekaj!":
                     pass
             p1 "..."
             menu:
                 "Szybko. Teraz.":
                     pass
-            p1 "Eh... W sumie czemu nie..."
+            p1 "Może... W sumie czemu nie..."
             menu:
                 "Biegnij!":
                     pass
             scene black with fade
             show e1c with dissolve
             #ujęcie komiks E1AC
-            "I pobiegła."
+            "I pobiegła. Może wbrew sobie, ale pobiegła."
             $ runFromThisLife = True
             #czarny ekran, napis biały na środku
             window hide
             with fc
             hide e1c with dissolve
             pause 0.2
-            show text _("{color=#eee}I tak Lia ruszyła przed siebie opuszczając obecne życie. Prawdopodobnie nikt już jej nigdy nie widział.{/color}") with dissolve
+            show text _("{color=#eee}Lia ruszyła przed siebie zostawiając obecne życie za plecami. Zniknęła dla świata, ale odrodziła się dla siebie. Pewnie nikt już ponownie jej nie zobaczył. Znalazła nową drogę, nowe życie.{/color}") with dissolve
+            show text _("{color=#eee}Czy było szczęśliwsze? To pozostanie tajemnicą.{/color}") with dissolve
             pause
             window auto
             with fc
@@ -122,90 +149,108 @@ label e1:
 
 
     # TODO w momencie pojawienia się tych opcji w tle poleci DUB02 (jednorazowo)
-    #background ciemna sala Tawerny, Lia na środku przybliżona do ekranu jak w rozmowach z graczem
+
+    if e1_intro == 1:
+        p1 "Wiesz…czuję się bardzo samotna."
+        p1 "Tak naprawdę nie mam nikogo. Oczywiście, mam rodziców, ale poza nimi? Kogoś z kim mogłabym oderwać się od codzienności. Kogoś takiego mi brakuje."
+        p1 "Tutaj… tutaj wszyscy mnie znają, jako dziewczynę z Tawerny. Tym jestem i tym zostanę. Nic się nie zmienia…"
+        p1 "Ale może Ty masz jakiś pomysł? Co mogłabym zrobić już, teraz, w tej chwili?"
+    if e1_intro == 2:
+        p1 "Wiesz… Mam wrażenie, że moje życie jest bardzo monotonne."
+        p1 "Praktycznie nic się w nim nie dzieje. Naprawdę! Mam wrażenie, że w tej chwili mogę opowiedzieć ci ze szczegółami, co będę robić za miesiąc."
+        p1 "Żadnych niespodzianek, żadnej przyjemnej niepewności. Nic."
+        p1 "Może zresztą to moja wina…"
+        p1 "Ale może Ty masz jakiś pomysł? Co mogłabym zrobić już, teraz, w tej chwili?"
+    if e1_intro == 3:
+        p1 "Wiesz… chyba przytłaczają mnie te wszystkie obowiązki."
+        p1 "Mam wrażenie, jakby w moim życiu nie było nic poza pracą. Łapię się czasem na takim myśleniu… o Tawernie, rozumiesz?"
+        p1 "O zamówieniach, o zapasach, o liczbie gości, tym czy wszystko jest, czy jedzenie w spiżarni się nie zepsuło, czy piwa starczy. Nie tylko w pracy. Przed snem, zaraz po obudzeniu. Ciągle."
+        p1 "Nie wiem czy tak to powinno wyglądać…"
+        p1 "Ale może Ty masz jakiś pomysł? Co mogłabym zrobić już, teraz, w tej chwili?"
+
+    #TODO background ciemna sala Tawerny, Lia na środku przybliżona do ekranu jak w rozmowach z graczem
     scene img_tavern_mainroom_night
     show p1pl wink_player shadow
     with fade
     menu:
-        "Może pokazałabyś mi w końcu Twoje ulubione miejsce.":
-            "Lia wstała i stanęła na równe nowi wpatrując się w drzwi."
+        "Masz swoje ulubione miejsca, prawda? Może mi je pokażesz?":
+            "Lia staje na równe nogi i wbija wzrok w drzwi."
             #Lia confused ON"
             show p1pl bsurprised lneutral with fc
             p1 "Masz na myśli Ogród?"
             menu:
                 "Tak.":
                     pass
-            p1 "No może..."
+            p1 "Może..."
             menu:
-                "To na co czekamy?":
+                "Może? Na co czekamy?":
                     pass
-            #Lia surprised_neutral ON"
+            #Lia surprised ON"
             show p1pl bsurprised widenedwink_player lneutral with fc
-            p1 "Ale tak od razu? Teraz?"
+            p1 "Ale teraz? Tak od razu?"
             menu:
-                "Pewnie. Trzeba jakoś przełamać rutynę.":
+                "A czemu nie? Chcesz przełamać rutynę?":
                     pass
-            #Lia surprised_happy ON"
+            #Lia surprised ON"
             show p1pl bsurprised lsmile with fc
-            p1 "W sumie czemu nie..."
+            p1 "Nie... tak. Tak, chcę. Zdecydowanie!"
             menu:
                 "Super! No to chodźmy!":
                     pass
-            #Lia smile ON"
+            #Lia happy ON"
             show p1pl bneutral wink_player lsmile with fc
-            p1 "Niech tak będzie!"
+            p1 "Świetnie! Chodźmy!"
             #przejście do E1A
             jump e1a
 
-        "Nie ma sensu ciągle narzekać.":
-            "Lia wstała i stanęła na równe nowi wpatrując się w drzwi."
-            #Lia frown ON"
-            show p1pl bangry lneutral with fc
-            p1 "No tak, a co mam niby robić?"
+        "Po prostu nie narzekaj tyle.":
+            "Lia staje na równe nogi i wbija wzrok w drzwi."
+            #Lia Pose_CrossedArm
+            #Lia annoyed ON
+            show p1pl  with fc
+            p1 "A co innego mogę zrobić?"
             #Lia angry ON"
             show p1pl bangry narrowedwink_player lsad with fc
-            p1 "Zresztą myślisz, że narzekam bez powodu?"
+            p1 "Zresztą, wydaje ci się, że narzekam bez powodu?"
             menu:
                 "Nie.":
-                    #relaxed Lia ON
+                    #neutral Lia ON
                     show p1pl bneutral closed lsmile with fc
                     p1 "No właśnie."
-                    #Lia surprised_neutral ON"
-                    show p1pl bsurprised widenedwink_player lneutral with fc
+                    #Lia Pose_ToCamera
                     p1 "To powiesz mi co mam zrobić?"
                     menu:
-                        "A co z tym Twoim ulubionym miejscem?":
+                        "Masz swoje ulubione miejsca, prawda?":
                             pass
-                    p1 "Co z nim?"
+                    p1 "Tak. Co z nim?"
                     menu:
                         "Może byś mi je w końcu pokazała?":
                             pass
+                    #Lia surprised ON                    
                     p1 "Teraz?"
                     menu:
-                        "Tak.":
+                        "Czemu nie?":
                             pass
-                    #Lia surprised_happy ON"
-                    show p1pl bsurprised lsmile with fc
-                    p1 "W sumie czemu nie..."
+                    p1 "Może..."
                     menu:
                         "Super! No to chodźmy!":
                             pass
-                    #Lia smile ON"
+                    #Lia smile ON
                     show p1pl bneutral wink_player lsmile with fc
-                    p1 "Niech tak będzie!"
+                    p1 "No... no dobra. Tak! Świetnie! Chodźmy!"
                     #przejście do E1A
 
                 "Tak.":
-                    #disappointed Lia ON
-                    show p1pl bsad closed lsad with fc
-                    p1 "Eh. Po co tu właściwie jesteś?"
+                    #Lia angry ON
+                    "Przez całe ciało Lii przebiega nieprzyjemny dreszcz. Odruchowo zaciska szczękę."
+                    p1 "Po co ty tu właściwie jesteś?"
                     menu:
                         "Już tłumaczę...":
                             pass
                     #Lia annoyed ON"
                     show p1pl bangry narrowedwink_player lneutral with fc
-                    p1 "Wiesz co. Nawet nic nie mów."
-                    p1 "Średnio mnie to teraz interesuje."
+                    p1 "Wiesz co? Nie obchodzi mnie to. Ani trochę."
+                    p1 "W ogóle mnie nie obchodzisz. Po prostu się zamknij."
                     p1 "Idę spać."
                     #przejście do E1B
                     jump e1b
@@ -213,12 +258,12 @@ label e1:
 
 
 
-        "To rób jak chcesz.":
-            "Lia wstała i stanęła na równe nogi wpatrując się w drzwi."
-            #Lia annoyed ON"
-            show p1pl bangry narrowedwink_player lneutral with fc
-            p1 "Pff. Super pomoc."
-            p1 "Dobra. To na razie."
+        "Rób co chcesz.":
+            "Lia staje na równe nogi i wbija wzrok w drzwi."
+            #Lia Pose_CrossedArm
+            #Lia annoyed ON
+            p1 "Pff. Wielkie dzięki. Naprawdę, wspaniała pomoc. Dziękuję."
+            p1 "Na razie."
             #przejście do E1B
             jump e1b
 
@@ -230,17 +275,27 @@ label e1a:
     # TODO w momencie przejścia w tle jest dźwięk: DUB03
     $ LovePath += 1
 
-    p1 "Nim pójdziemy pokażę Ci to miejsce na mapie. Spójrz."
-    #pokazuje się mapa, zoom na Tawernę"
+    p1 "Zanim pójdziemy pokażę Ci to miejsce na mapie. Spójrz." 
+    #pokazuje się mapa, zoom na Tawernę 
     show mapka_fhd with dissolve:
         zoom 1.5 xalign 0.59 yalign .14
         ease 2 zoom 2.5
 
-    p1 "W tym miejscu jest Tawerna, tu jesteśmy."
-    #zoom utrzymany z przejściem na secret garden"
+    p1 "W tym miejscu jest Tawerna, o tutaj. Tu jesteśmy teraz."
+    #zoom utrzymany z przejściem na secret garden
     show mapka_fhd:
         ease 2 xalign 0.78 yalign .04
-    p1 "A tutaj mamy Sekretny Ogród, do którego zaraz idziemy."
+    p1 "A w tym miejscu jest mój Sekretny Ogród. Tam właśnie się wybieramy."
+    p1 "To jak? Gotów do drogi?"
+    menu: 
+        "Tak!":
+            #Lia happy ON
+            p1 "Świetnie! No to ruszajmy."
+        "Nie...":
+            #Lia happy ON
+            p1 "To był twój pomysł! Teraz się nie wykręcaj. Ruszamy!"
+
+
     window hide
     with fc
 
@@ -262,16 +317,29 @@ label e1a:
         ease 1 align (0.9,1.0)
     window auto
     with fc
-    #background stary las w nocy, przejście jak wcześniej było (ruch tła na zoomie, Lia powoli idzie od prawej do lewej)"
+    "Lia, uśmiechnięta i, zdaje się, naprawdę zadowolona, opuszcza Tawernę i rusza wskazaną na mapie drogą."
+    #background stary las w nocy, przejście jak wcześniej było (ruch tła na zoomie, Lia powoli idzie od prawej do lewej)
+    "Spacer przebiega spokojnie. Mimo nocy okolica sprawia wrażenie przyjaznego i bezpiecznego miejsca."
     p1 "Może i dobrze, że mnie do tego namówiłeś."
-    p1 "Chodźmy. To niedaleko. Musimy przejść tylko kawałek przy lesie."
+    p1 "Chodźmy. To już niedaleko. Musimy przejść tylko kawałek przy lesie."
+    "Kiedy Lia zbliża się do drzew widać wyraźnie ich grube, poskręcane konary. Rozłożyste gałęzie i potężne pnie świadczą o tym, że las rośnie tu od niepamiętnych czasów."
+    p1 "Właściwie jesteś tu ze mną po raz pierwszy. Oto Stary Las."
 
-    p1 "W sumie jesteś tu ze mną pierwszy raz. To Stary Las."
-    p1 "Ścieżka którą mijaliśmy prowadzi do wioski, ale mało kto z niej korzysta."
-    p1 "Początkowo miała prowadzić do jakiejś kopalni, ale dawno już nikt się tym nie interesuje."
-    #zatrzymanie się i lekki zoom na przejście między drzewami"
-    p1 "O, to tutaj. Teraz tylko przecisnąć się przez las i zaraz jesteśmy na miejscu."
-    # TODO dźwięk przeciskania się i przejście w Sekretny Ogród, zmiana tła"
+    menu:
+        "Powiesz mi o nim coś więcej?":
+            #Lia Pose_ToCamera
+            #neutral Lia ON
+            p1 "Ta stara ścieżka którą mijaliśmy prowadzi do wioski, ale mało kto z niej teraz korzysta."
+            p1 "Początkowo miała prowadzić do jakiejś kopalni, ale dawno już nikt się tym nie interesuje."
+        "Nie traćmy czasu!":
+            #Lia Pose_ToCamera
+            #neutral Lia ON
+            p1 "Masz rację."
+
+    #zatrzymanie się i lekki zoom na przejście między drzewami
+    p1 "O, to tutaj. Już prawie jesteśmy. Teraz tylko przecisnąć się przez las i zaraz będziemy na miejscu."
+    "Lia przeciska się między splątanymi pniami. Nie ma z tym jednak najmniejszego problemu. Porusza się między drzewami z taką swobodą, jakby była we własnym domu. Widać, że choć może dawno tu nie była, to zna to miejsce."
+    # TODO dźwięk przeciskania się i przejście w Sekretny Ogród, zmiana tła
     transform tr_show_garden:
         xalign 0.0
         linear 7 xalign 1.0
@@ -285,7 +353,7 @@ label e1a:
     play musictight sfx_small_stream_flowing
     p1 "Jesteśmy na miejscu."
     #przejście po całym tle, takie pokazowe całego miejsca, 5-7 sec"
-    p1 "I jak? Podoba się?"
+    p1 "I jak? Podoba ci się?"
     show secretgarden_bg with dissolve:
         xalign 1.0
     show p1 with moveinright:
@@ -293,45 +361,79 @@ label e1a:
 
     menu:
         "Tak.":
-            p1 "To fajnie."
-            #neutral Lia ON"
-            show p1 bneutral wink lneutral with fc
+            #Lia smile ON
+            p1 "Świetnie!"
+            #neutral Lia ON
             p1 "Tak czy inaczej."
 
         "Nie.":
+            #Lia shock ON
             p1 "O nie!"
-            #neutral Lia ON"
-            show p1 bneutral wink lneutral with fc
+            #Lia sad ON
             p1 "Tak czy inaczej."
 
-    #Lia thinking ON
-    show p1 bangry closed lneutral with fc
-    p1 "Tak się zastanawiam..."
-    #sad_smile Lia ON"
-    show p1 bsad wink lsmile with fc
+    p1 "Tak się zastanawiam…"
+    #sad_smile Lia ON
     p1 "Może mogłabym tu przychodzić częściej."
-    p1 "Nie wiem w sumie do końca czemu tego nie robiłam od dawna. Chociaż..."
-    #surprised_neutral Lia ON"
-    show p1 bsurprised widenedwink lneutral with fc
-    p1 "Chociaż może wiem... Chcesz też wiedzieć?"
-    #smile Lia ON"
-    show p1 bneutral wink lsmile with fc
-    p1 "A zresztą i tak Ci powiem."
-    #sad_smile Lia ON"
-    show p1 bsad wink lsmile with fc
-    p1 "Myślę, że zaczynam wpadać w ten monotonny tryb życia, który forsują na mnie rodzice."
-    p1 "Rodzice ciągle powtarzają mi, że mam ciężko pracować i być posłuszna."
-    p1 "Tylko jaki to ma sens? Nie mam nic konkretnego z tego życia..."
-    p1 "Nawet nie mam żadnych przyjaciół. Jedyna mi bliska osoba musiała wyjechać do WIELKIEJ stolicy... Eh."
-    p1 "Może z Twoją pomocą spróbowałabym coś zmienić."
-    p1 "Co myślisz? Pomożesz mi?"
+    p1 "Rzadko tu bywam. Tak naprawdę nie wiem dlaczego. Chociaż…"
+    #confused Lia ON
+    p1 "Chociaż może jednak wiem… Powiedzieć ci?"
+    #smile Lia ON 
+    p1 "A zresztą, i tak Ci powiem."
+    #sad_smile Lia ON
+    p1 "Wydaje mi się… Sądzę, że rodzice forsują na mnie taki tryb życia. Wiesz - monotonny, jednostajny, łatwo przewidywalny."
+    p1 "Wydaje mi się, że chcieliby uniknąć wszelkich… niespodzianek? Nieprzewidzianych sytuacji? Chyba tak."
+    p1 "Wciąż powtarzają mi, że muszę ciężko pracować, być posłuszna. Wykonywać ich polecenia."
+    p1 "Tylko jaki to ma sens? Nie mam nic konkretnego z takiego życia…"
+    #Lia sad ON
+    menu:
+        "Tak myślisz?":
+            p1 "Tak właśnie myślę."
+        "Chyba masz rację.":
+            p1 "Sam widzisz…"
+    
+    p1 "Nie mam nawet żadnych przyjaciół, wiesz? Jedyna osoba z którą byłam trochę bliżej musiała wyjechać. Do tej WIELKIEJ stolicy! Zupełnie poza moim zasięgiem…"
+
+    menu:
+        "Kto to taki?":
+            p1 "Ech… nazywa się Cirdan."
+            #sad_smile Lia ON
+            p1 "Kiedyś, lata temu byliśmy… chyba można powiedzieć, że byliśmy przyjaciółmi."
+
+            menu:
+                "Ale wyjechał, tak?":
+                    p1 "Tak, wyjechał studiować do stolicy. To duża zmiana. Straciliśmy kontakt."
+                    p1 "W sumie powinnam się cieszyć. Cirdan zawsze był mądry. Powinnam się cieszyć, że może się rozwijać."
+                    #Lia sad ON
+                    p1 "Tylko… tak naprawdę żałuję, że odkąd wyjechał, jakby zniknął z mojego życia. Zostały tylko wspomnienia, nic więcej."
+                    menu:
+                        "Hej, kontakt zawsze można odnowić!":
+                            #sad_smile Lia ON
+                            p1 "Myślisz? Myślisz, że po tylu latach to ma jeszcze sens?"
+                        "Oczywiście. Zawsze warto spróbować.":
+                            p1 "Może faktycznie. Tak, myślę, że masz rację."
+                        "Musisz spróbować, kiedy będzie okazja!":
+                            #Lia smile ON
+                            p1 "Dziękuję! Chyba tak właśnie zrobię. Wiesz, tak myślę…"
+                "Rozumiem.":
+                    #Lia sad ON
+                    p1 "Niestety, tak już bywa."
+
+        "To faktycznie przykre…":
+            #Lia sad ON
+            p1 "Też tak myślę. Ale…"
+    
+    p1 "Może dzięki tobie udałoby się coś zmienić. Nie oczekuję wiele, ale może coś… cokolwiek."
+    #Lia smile ON
+    p1 "Jak myślisz? Pomożesz mi?"
+
     menu:
         "Oczywiście! Zrobię co w mojej mocy.":
             pass
+
     # TODO dźwięk szelestu krzaczkowego w tle z 1sec opóźnienia"
     play sound sfx_szuranielisci
     p1 "Dziękuję! Może..."
-
     #Lia shock ON"
     show p1 bsurprised widenedwink lopen with fc
     p1 "Zaraz. Słyszałeś to?"
@@ -343,9 +445,10 @@ label e1a:
     hide e1b with dissolve
     hide black with dissolve
     menu:
-        "Podejdź i sprawdź kto to.":
-            # TODO +1 pkt PODEJDZLAS
-            $ pojscieDoLasu = True
+        "Po prostu podejdź i sprawdź.":
+            # +1 pkt PODEJDZLAS
+            $ LasPodejscie = True
+            #Lia Pose_Confused
             #confused Lia ON
             show p1 bsurprised wink lneutral with fc
             p1 "No dobrze..."
@@ -353,13 +456,14 @@ label e1a:
             show e1b with dissolve
             pause 0.4
             show e1b_2 with Dissolve(1.0)
-            #komiks E1A ujęcie 2
-            "Gdy tylko Lia się zbliżyła to zauważyła, że postać zniknęła."
-            p1 "Huh. Gdzie podziała się ta osoba?"
+            # TODO komiks E1A ujęcie 2
+            "Lia ostrożnie zbliża się do źródła hałasu. Gdy tylko jest już wystarczająca blisko ze zdziwieniem odkrywa, że tajemnicza postać…"
+            "...zniknęła."
+            p1 "Co? Jak to? Co się tu dzieje?"
             menu:
-                "Nie wiem. Wyglądało jakby zniknęła na Twoich oczach.":
+                "Nie wiem. Wyglądało jakby, ktokolwiek to był, zniknął na twoich oczach.":
                     pass
-            p1 "To prawda... Dziwne. Może mi się przewidziało."
+            p1 "Właśnie… Dziwne. Nawet bardzo. Może mi się po prostu przewidziało?"
             #powrót do normalnego ujęcia rozmowy z graczem"
             hide e1b
             hide e1b_2
@@ -367,27 +471,24 @@ label e1a:
             hide black
             with dissolve
             menu:
-                "Możesz mieć rację.":
+                "Może masz rację.":
                     pass
-            #surprised_happy Lia ON"
-            show p1 bsurprised widenedwink lsmile with fc
-            p1 "Dzięki."
-
-        "Zawołaj. Zobaczymy kto to.":
-
-
             #confused Lia ON
-            show p1 bsurprised wink lneutral with fc
-            p1 "Hmm... No dobrze..."
+            p1 "Może."
+
+        "Najlepiej zawołaj. Zobaczymy kto to.":
+            #Lia Pose_Confused
+            #confused Lia ON
+            p1 "Może i tak… no dobrze."
             p1 "HALO, JEST TAM KTO?"
             "..."
-            "W odpowiedzi jednak powróciła tylko cisza."
+            "Nie ma odpowiedzi. Do Lii powróciło tylko ledwo uchwytne echo jej wołania."
             #komiks E1A ujęcie 3"
             show black with dissolve
             show e1b_2 with dissolve
-            "Lia zbliżyła się lekko do drzewa."
-            p1 "Huh. Nikogo tu nie ma."
-            #powrót do normalnego ujęcia rozmowy z graczem"
+            "Lia powoli i ostrożnie zbliża się do drzewa, które zdaje się być źródłem hałasu"
+            p1 "Nikogo tu nie ma."
+            #powrót do normalnego ujęcia rozmowy z graczem
             hide e1b
             hide e1b_2
             with dissolve
@@ -397,18 +498,19 @@ label e1a:
             menu:
                 "I przesłyszeć.":
                     pass
-            p1 "W sumie tak."
+            #confused Lia ON
+            p1 "W sumie tak. Dziwny zbieg okoliczności…" 
+            #neutral Lia ON
             p1 "Ale w końcu to las, takie dźwięki to norma."
             menu:
                 "Prawda. Możesz mieć rację.":
                     pass
-            #surprised_happy Lia ON"
-            show p1 bsurprised widenedwink lsmile with fc
-            p1 "Dzięki."
+            #confused Lia ON
+            p1 "Może…"
 
+    #Lia Pose_ToCamera
     #neutral Lia ON
-    show p1 bneutral wink lneutral with fc
-    p1 "Hmm. To jak, starczy przygód na jedną noc?"
+    p1 "Hmm. To jak, chyba nam starczy przygód na jedną noc, co?"
 
     menu:
         "Tak! Wracajmy.":
@@ -417,19 +519,16 @@ label e1a:
             p1 "Świetnie! No to wracamy."
 
         "Nie. Zostańmy jeszcze.":
-            p1 "Ehh... Co chcesz jeszcze tu robić?"
-            #frown Lia ON"
-            show p1 bangry wink lneutral with fc
+            #neutral Lia ON
+            p1 "A co chcesz tu jeszcze robić?"
             menu:
                 "W zasadzie to nie wiem.":
                     pass
             p1 "Świetnie. Mam pomysł. Może wracajmy?"
-            #relaxed Lia ON"
-            show p1 bneutral closed lsmile with fc
             menu:
                 "Hmm. No dobra. Chodźmy.":
                     pass
-            #smile Lia ON"
+            #smile Lia ON
             show p1 bneutral wink lsmile with fc
             p1 "Świetnie! Wracamy."
 
@@ -443,8 +542,8 @@ label e1a:
     $ renpy.sound.set_volume(0.9, delay=0, channel='ambient')
     $ renpy.sound.set_pan(-0.4, delay=0, channel='ambient')
     play ambient sfx_warm_evening_outdoors
-    "Lia wróciła do Tawerny szybko i bez żadnych problemów."
-    "Myślała o tym, że czas ruszyć trochę swoje życie. Nie wiedziała jeszcze dokładnie jak."
+    "Droga powrotna obywa się bez żadnych problemów i Lia szybko dociera do domu."
+    "Po drodze sporo myśli o swoim życiu. Tak prosta rzecz jak spacer skłoniła ją do nowym przemyśleń. Wie już, że chce coś zmienić. Nie wie jeszcze tylko dokładnie co i w jaki sposób."
     #zmiana tła na pokój P1 (ciągle noc), Lia w pozycji rozmowy z graczem"
     #happy Lia ON"
     scene anim_room_lia_nightdragon
@@ -452,7 +551,7 @@ label e1a:
     show p1pl bneutral wink_player shadow lsmile
     with fade
     p1 "Dzięki za ten spacer."
-    p1 "Mam nadzieję, że teraz z Twoją pomocą uda się coś zmienić w moim życiu."
+    p1 "Mam nadzieję, że teraz, z Twoją pomocą, uda się coś zmienić w moim życiu."
     p1 "Dobranoc!"
     menu:
         "Dobranoc.":
@@ -482,47 +581,41 @@ label e1b:
     $ HatePath += 1
     #czarne tło
     scene black with fade
-    "Obrażona na cały świat Lia ruszyła w stronę swojego pokoju."
+    "Widocznie dotknięta Lia rusza w stronę swojego pokoju. Gniew, za którym pewnie kryje się prawdziwy ból, widać w każdym jej gwałtownym kroku."
     #background pokój Lii, wersja nocna i Lia w pozycji rozmawiającej z graczem"
     play audio sfx_drzwi
     scene anim_room_lia_nightdragonlight
     show p1pl shadow
     with fade
-    "Dotarła dość szybko do swojego pokoju i zatrzasnęła drzwi, które wydały głośniejszy huk niż się spodziewała."
-    #shock Lia ON"
-    show p1pl bsurprised widenedwink lopen with fc
-    "Przez moment nasłuchiwała z lekkim strachem czy nikogo nie obudziła."
-    #annoyed Lia ON"
-    show p1pl bangry narrowedwink lneutral with fc
-    "Po krótkiej chwili jednak odetchnęła i usiadła na łóżku."
+    "Gdy tylko dociera do swojego pokoju łapie za krawędź drzwi i z rozmachem je zamyka. Huk, które wydają jest głośniejszy niż się spodziewała."
+    #shock Lia ON
+    "Z lekkim niepokojem zamiera w bezruchu. Nasłuchuje, czy w sąsiednich pokojach ktoś się porusza - boi się, że mogła kogoś obudzić."
+    #Lia Pose_CrossedArm
+    #annoyed Lia ON
+    "Ma szczęście - nikt niczego nie usłyszał. Po krótkiej chwili wypuszcza powietrze i, już nieco spokojniej, siada na łóżku."
     p1 "Dalej tu jesteś?"
     stop music fadeout 3.0
     menu:
-        "Tak.":
+        "Tak, jestem.":
             #angry Lia ON
-            show p1pl bangry narrowedwink_player lsad with fc
             p1 "To chyba tyle z łamania rutyny."
             p1 "Wielkie dzięki za pomoc."
             p1 "Dobranoc."
 
         "Wiesz, że teraz lepiej nie podpadać Twoim rodzicom.":
             #angry Lia ON
-            show p1pl bangry narrowedwink_player lsad with fc
-            p1 "Pff."
-            p1 "Nagle tak się przejmujesz?"
-            p1 "Widzę, że to tyle z łamania rutyny."
+            p1 "Ach, teraz cię to wszystko obchodzi, tak?"
+            p1 "Teraz się przejmujesz?"
+            p1 "Widzę, że to tyle z łamania rutyny.”"
             p1 "Dobranoc."
-
+        
         "...":
             #angry Lia ON
-            show p1pl bangry narrowedwink_player lsad with fc
-            p1 "Racja. Lepiej nic nie mów."
-            #very_sad Lia ON
-            show p1pl bsad narrowedwink_player lsad with fc
-            p1 "Najlepiej zostaw mnie samą sobie."
-            #angry Lia ON
-            show p1pl bangry narrowedwink_player lsad with fc
+            p1 "Tak, lepiej się nie odzywaj."
+            p1 "Po prostu zostaw mnie w spokoju."
+            #sad Lia ON
             p1 "Dobranoc."
+
     hide p1pl with dissolve
     pause 0.3
     $ quick_menu = False
@@ -549,64 +642,60 @@ label e2a:
     $ quick_menu = True
     scene anim_room_lia_morning with fade
     play music alexander_nakarada_relaxing_ballad volume 0.5
-    "Lia otworzyła oczy wraz z pierwszymi promieniami słońca, które muskały jej twarz zza okna."
-    "Delikatne ciepło, które poczuła zmotywowało ją od razu do wstania."
-    "Uśmiechnęła się niespodziewanie do zbliżającego się dnia."
+    "Lia najpierw czuje jak pierwsze promienie słońca delikatnie muskają jej twarz. Dopiero po chwili otwiera oczy."
+    "Delikatne ciepło wlewające się przez okno, oraz to, które poczuła gdzieś głęboko w środku, przekonują ją, aby wstać od razu."
+    "Dopiero po chwili dziewczyna zauważa, że od samego przebudzenia ma uśmiech na twarzy."
     show p1pl bneutral wink_player lsmile with dissolve
     #Lia pojawia się na ekranie, rozmowa z graczem
     #smile Lia ON
     menu:
         "Dzień dobry!":
             pass
-    show p1pl bsurprised widenedwink_player lsmile with fc
-    #surprised_happy Lia ON"
+    #happy Lia ON
     p1 "Oh! Dzień dobry!"
-    #smile Lia ON"
-    show p1pl bneutral wink_player lsmile with fc
-    p1 "Dziękuję za wczoraj! Od razu jakoś lepiej się czuję."
-    #happy Lia ON"
-    show p1pl bneutral wink_player lsmile with fc
-    p1 "Nawet nie mam chęci spać do południa!"
-    p1 "Dobra, czas się ogarnąć. Widzimy się na śniadaniu."
-    #korytarz jako tło, bez postaci"
-    scene tavern_hall_bg0 with fade
-    "Lia wyszła ze swojego pokoju wprost na Tawerniany korytarz."
-    #Lia na ekranie, rozmawia z graczem"
-    #Lia confused ON"
-    show p1pl bsurprised wink_player lneutral with fc
-    p1 "Chyba nigdy nie mówiłam Ci nawet o tym co jest w samej Tawernie..."
-    #Lia surprised_neutral ON"
-    show p1pl bsurprised widenedwink_player lsmile with fc
-    p1 "Powiedzieć Ci teraz?"
+    #smile Lia ON
+    p1 "Dziękuję za wczoraj! Od razu czuję się lepiej."
+    #happy Lia ON
+    p1 "Widzisz? Wstałam od razu! Nawet nie pomyślałam, żeby zostać w łóżku do południa."
+    p1 "Dobra, czas się zbierać na śniadanie."
+    #korytarz jako tło, bez postaci
+    "Lia opuszcza pokój i wychodzi wprost na korytarz części mieszkalnej Tawerny."
+    #Lia na ekranie, rozmawia z graczem
+    #Lia confused ON
+    p1 "Hej, zaraz, moment…"
+    #Lia smile ON
+    p1 "Pokazywałam ci kiedyś co można znaleźć w Tawernie?"
+    menu:
+        "Nie, nigdy":
+            p1 "O, to może pokażę ci wszystko teraz? Co Ty na to?"
+        "Może coś wspominałaś...":
+            p1 "Hm... nie sądzę, nie przypominam sobie. Pokazać ci?"
+
     menu:
         "Tak, chętnie posłucham.":
             #smile Lia ON
-            show p1pl bneutral wink_player lsmile with fc
             p1 "Dobrze!"
-            p1 "Zaraz obok mojego pokoju jest sypialnia rodziców. Czyli nic ciekawego."
-            p1 "Tam z tyłu jest łazienka."
-            #smirk Lia ON"
-            show p1pl bangry narrowedwink_player lsmirk with fc
+            p1 "Zaraz obok mojego pokoju jest sypialnia rodziców. Nic ciekawego."
+            p1 "O, a tam z tyłu jest łazienka."
+            #smirk Lia ON
             p1 "Swoją drogą. Nie zaglądaj do mnie jak tam jestem! Nie wypada."
             menu:
                 "Haha, dobrze! Masz rację. Obiecuję, że nie będę.":
                     pass
-            #smile Lia ON"
-            show p1pl bneutral wink_player lsmile with fc
-            p1 "Haha, no i super! Zaraz obok jest nasza jadalnia i kuchnia."
-            p1 "Teoretycznie mieliśmy tam jeść, ale po co brudzić dwa miejsca."
+            #smile Lia ON
+            p1 "Haha, świetnie! Zaraz obok jest jadalnia i kuchnia."
+            p1 "Oczywiście mieliśmy jeść właśnie tam. No i oczywiście jemy gdzie indziej. Plany to jedno, życie to drugie - po co brudzić dwa miejsca, prawda?"
             p1 "W związku z tym jemy na dole."
-            #confused Lia ON"
-            show p1pl bsurprised wink_player lneutral with fc
-            p1 "Tata chyba woli mieć zawsze oko na Tawernę."
-            #smile Lia ON"
-            show p1pl bneutral wink_player lsmile with fc
-            p1 "No i jest mniej sprzątania!"
-            p1 "Obok jest jedyny w naszym skrzydle pokój gościnny."
+            #confused Lia ON
+            p1 "Zresztą, tata woli mieć zawsze oko na to, co dzieje się w Tawernie."
+            #smile Lia ON
+            p1 "No, ale jest też mniej sprzątania!"
+            p1 "O, a tutaj, obok, jest jedyny w tym skrzydle pokój gościnny."
             p1 "Może kiedyś Ci go pokażę. Teraz i tak jest zamknięty."
-            p1 "No dobrze, to możemy iść dalej."
+            p1 "No dobrze, to chyba wszystko. Możemy iść dalej."
 
         "Nie, nie ma takiej potrzeby.":
+            #Lia confused ON
             p1 "Oh. No dobrze, to chodźmy dalej."
 
     #background sala główna Tawerny, pusta. Lia na środku w pozycji rozmowy z graczem
@@ -614,13 +703,13 @@ label e2a:
     scene img_tavern_mainroom
     show p1pl bsurprised wink_player lneutral
     with fade
-    p1 "No dobra. Rodziców chyba jeszcze nie ma. W razie czego jesteś ze mną?"
+    p1 "No dobra. Rodziców chyba jeszcze nie ma. W razie czego jesteś ze mną tak?"
     menu:
         "Oczywiście. Cały czas.":
                     pass
     #Lia smile ON"
     show p1pl bneutral wink_player lsmile with fc
-    p1 "Cieszę się. Dobra, wchodzę."
+    p1 "Cieszę się. Uch... dobra, wchodzę." 
     #background zmiana na kuchnię, Lia po lewej patrzy w prawo"
     #od prawej wchodzi P2"
     #Lia smile ON"
@@ -641,27 +730,26 @@ label e2a:
     # TODO P2 i P3 patrzą na siebie, oboje confused ON"
     show p2 with fc:
         xzoom -1
-    "Rodzice spojrzeli po sobie lekko zaskoczeni."
-    "Nieczęsto ich córka była tak uśmiechnięta."
-    "Zrodziło to lekkie podejrzenia."
+    "Rodzice spoglądają na siebie, widocznie zaskoczeni tak dobrym humorem córki."
+    "W końcu niezbyt często bywa tak uśmiechnięta od samego rana."
+    "Wydaje się, że są lekko… podejrzliwi?"
     #P2 i P3 patrzą teraz na Lię, tj. w lewo"
     #neutral P2 i P3 ON"
-    #confused Lia ON"
     show p2 neutral wink with fc
     show p3 neutral wink with fc
     show p2 with fc:
         xzoom 1
     show p1 bsurprised wink lneutral with fc
-    p3 "Dzień dobry... Czy coś się stało?"
+    p3 "No dzień dobry, dla ciebie najwidoczniej bardzo dobry... Czy coś się stało?"
+    #confused Lia ON"
+
     p1 "Dlaczego miało się coś stać?"
     #P2 wychodzi na pierwszy plan (coś podobnego co wcześniej było)"
     #P2 smile ON"
-    #surprised_sad Lia ON"
     show p2 smile:
         linear 0.5 xalign 0.5
     show p1 bsurprised widenedwink lsad with fc
     p2 "Dziecko... Przecież Cię znamy. Co się stało?"
-    #disappointed Lia ON"
     show p1 bsad closed lsad with fc
     p1 "Ehh..."
     stop music fadeout 5.0
@@ -677,38 +765,36 @@ label e2a:
             show p1 bsurprised wink lneutral with fc
             show p2 neutral wink with fc
             show p3 neutral wink with fc
-            p1 "Nic się nie stało. Naprawdę."
-            p3 "Czyli mówisz, że jak tylko zamknęłaś Tawernę to poszłaś spać?"
+            p1 "Ale nic się nie stało. Naprawdę."
+            p3 "Czyli twierdzisz, że wczoraj, jak tylko skończyłaś pracę, zamknęłaś Tawernę i grzecznie poszłaś do siebie spać. Mam rację?"
             menu:
                 "Powiedz, że tak. ":
-                    p1 "Tak."
-                    p3 "I po co kłamiesz?"
-                    p1 "Nie kłamię..."
-                    #angry Zorn ON"
-                    show p3 angry angrywink with fc
-                    p3 "Nawet nie zaczynaj."
-                    #shock Lia ON"
-                    show p1 bsurprised widenedwink lopen with fc
-                    p3 "Wiem, że Cię nie było w pokoju..."
-                    #P3 patrzy na P2"
-                    p3 "Nie mam do niej czasem siły."
-                    #P3 patrzy na P1"
-                    #small tears Lia ON"
-                    show p1 smalltears with fc
+                    p1 "No tak. Dokładnie."
+                    p3 "I po co kłamiesz? Czy ty nie rozumiesz…"
+                    p1 "Nie kłamię…"
+                    #angry Zorn ON
+                    p3 "Nie! Nawet nie zaczynaj."
+                    #shock Lia ON
+                    p3 "Wiem, że Cię nie było w pokoju…"
+                    #P3 patrzy na P2
+                    p3 "Naprawdę, czasem nie mam do ciebie sił."
+                    #P3 patrzy na P1
+                    #sad Lia ON
+                    #mała przerwa, jakieś 2-3 sec, żeby gracz poczuł tą przedłużającą się, niezręczną ciszę.
                     p3 "Czekam na Ciebie w sali. Mamy sporo pracy."
-                    #P3 wychodzi z kuchni"
+                    #P3 wychodzi z kuchni
                     show p3 with fc:
                         xzoom 1
                     show p3:
                         linear 1 xalign 1.45
-                    p2 "Musisz być bardziej odpowiedzialna."
-                    p2 "Nie możesz wychodzić nigdzie po nocy."
-                    p2 "Coś mogło Ci się stać..."
-                    p2 "Nie wybaczylibyśmy sobie tego."
-                    #sad P2 ON"
-                    show p2 sad with fc
+                    #sad P2 ON
+                    p2 "Córeczko, musisz być bardziej odpowiedzialna."
+                    p2 "Nie możesz tak bez słowa wychodzić w nocy. Jeszcze do lasu!"
+                    p2 "Coś mogło Ci się stać…"
+                    p2 "Nigdy byśmy tego sobie nie wybaczyli."
+                    p2 "Tata tak się denerwuje właśnie dlatego, że bardzo cię kocha i martwi o ciebie."
                     p2 "Postaraj się być bardziej ostrożna."
-                    #P2 wychodzi z kuchni"
+                    #P2 wychodzi z kuchni
                     #P1 do gracza, sad ON"
                     show p2 with fc:
                         xzoom -1
@@ -718,7 +804,7 @@ label e2a:
                         linear 2 xalign 0.5
                     pause 1.5
                     show p1 bneutral wink_player lsad -smalltears with fc
-                    p1 "Nie wiem czy to była dobra rada..."
+                    p1 "Nie jestem taka pewna, czy to była dobra rada…"
                     p1 "Ale mimo wszystko dzięki."
                     #Lia wychodzi z kuchni
                     show p1:
@@ -728,10 +814,10 @@ label e2a:
                     jump e3
 
                 "Lepiej powiedz prawdę.":
-                    p1 "Nie..."
+                    p1 "Nie do końca…"
                     #angry Zorn ON"
                     show p3 angry angrywink with fc
-                    p3 "Czyli co robiłaś?!"
+                    p3 "Rozumiem. No to powiedz mi jak było DOKŁADNIE. I postaraj się być bardziej precyzyjna."
                     #w tym miejscu idzie to samo co w E2A1, w całości
                     jump e2a1
 
@@ -747,24 +833,26 @@ label e2a1:
     show p2 neutral
     show p1 bsad wink lsmile
     with fc
-    p1 "Uhm. Po prostu byłam się przejść."
+    p1 "No, więc… po prostu… Po prostu byłam się przejść. Tak."
     #angry Zorn ON"
-    #shock Lia ON"
     show p3 angry angrywink
+    p3 "GDZIE?!"
+    #shock Lia ON"
     show p1 bsurprised widenedwink lopen
     with fc
-    p3 "GDZIE?!"
-    p3 "Nie każ mi czekać!"
+    #2-3 sekundy przerwy
+    pause 2.0
+    p3 "Lepiej nie każ mi czekać!"
     show p2 with fc:
         xzoom -1
-    p2 "Zorn. Nie denerwuj się proszę."
-    #confused Lia ON"
+    p2 "Zorn, bardzo cię proszę. Spokojnie. Nie denerwuj się."
+    #confused Lia ON
     show p1 bsurprised wink lneutral with fc
-    p2 "Ja się tym zajmę. Ty może przejdź się do sali głównej i sprawdź czy Cię tam nie ma."
-    p3 "Mhm. Może Tobie pójdzie sprawniej."
+    p2 "Pozwól, że ja się tym zajmę. Ty może zajrzysz do sali głównej? Zerknij czy Cię tam nie ma i nie masz czegoś do zrobienia, dobrze?"
+    p3 "Mhm. Może tobie pójdzie sprawniej."
     show p2 with fc:
         xzoom 1
-    p3 "Lia, czekam na Ciebie w sali. Mamy sporo pracy."
+    p3 "Jak już tutaj skończycie, to czekam na ciebie w głównej sali, Lia. Mamy sporo pracy."
     #P3 wychodzi, P2 troszkę zbliża się do P1"
     show p3 with fc:
         xzoom 1
@@ -772,41 +860,39 @@ label e2a1:
         linear 1 xalign 1.45
     show p2:
         linear 1 xalign 0.42
-    p2 "Lia... Powiedz gdzie dokładnie byłaś."
-    #P1 sad ON"
-    show p1 bneutral wink lsad with fc
-    p1 "W lesie... Znaczy w Ogrodzie dokładnie."
-    p2 "Hmm. W tym Twoim Sekretnym Ogrodzie tak?"
-    #sad_smile Lia ON"
-    show p1 bsad wink lsmile with fc
-    p1 "Tak... Byłam się tylko przejść."
-    p2 "No rozumiem. Czy coś się stało jeszcze?"
-    #sad Lia ON"
-    show p1 bneutral wink lsad with fc
-    p1 "Nic szczególnego, tylko..."
+    p2 "Lia… Powiedz mi, proszę, gdzie dokładnie byłaś."
+    #P1 sad ON
+    p1 "W lesie… Znaczy w Ogrodzie dokładnie."
+    p2 "Rozumiem. W tym Twoim Sekretnym Ogrodzie, tak?"
+    #sad_smile Lia ON
+    p1 "Tak… Byłam się tylko przejść, naprawdę. Nie poszłam na długo."
+    p2 "Oczywiście. Czy podczas tego twojego spaceru coś się wydarzyło? Cokolwiek?"
+    #sad Lia ON
+    p1 "Nic szczególnego, tylko…"
     p2 "Tylko co?"
-    p1 "Eh... Myślałam, że kogoś widziałam. Ale jestem pewna, że mi się przewidziało."
-    p2 "Hmm. Skąd pewność?"
-
+    p1 "Eh… Myślałam, że kogoś widziałam. Tylko mi się wydawało. Jestem pewna. To pewnie tylko jakieś zwierzę w krzakach, nic więcej."
+    p2 "Skąd taka pewność?"
 
     #jeśli 1pkt PODEJDZLAS
-    if pojscieDoLasu:
-        p1 "Poszłam sprawdzić... Nikogo nie było."
-        p2 "Oh dziecko... Bardzo nierozsądnie."
-        p2 "Najważniejsze, że nic się nie stało."
+    if LasPodejscie:
+        p1 "Po prostu poszłam sprawdzić… Nikogo tam nie było."
+        #shocked P2 ON
+        p2 "Oh dziecko… To było bardzo nierozsądne. Bardzo. Pamiętaj, żeby więcej tak nie robić, dobrze?"
+        p2 "Ale… no, najważniejsze, że nic się nie stało."
 
     #jeśli brak punktu PODEJDZLAS
     else:
-        p1 "Zawołałam czy ktoś tam jest. Nikogo nie było."
-        p2 "Nierozsądnie, dziecko."
-        p2 "Dobrze, że nic się nie stało."
+        p1 "Zawołałam czy ktoś tam jest. Nikt nie odpowiedział, ani nawet się nie poruszył."
+        #shocked P2 ON
+        p2 "Oh dziecko… To było bardzo nierozsądne. Bardzo. Pamiętaj, żeby więcej tak nie robić, dobrze?"
+        p2 "Ale… no, najważniejsze, że nic się nie stało."
 
-
-    p2 "Musisz mi obiecać, że będziesz bardziej uważać w przyszłości."
+    p2 "Lia, proszę cię. Musisz mi obiecać, że będziesz bardziej uważać w przyszłości. Wiesz ile zna… wiesz, że jesteś dla nas wszystkim, tak?"
+    p1 "Tak, mamo, rozumiem…"    
     #smile P2 ON"
     show p2 smile
     p1 "No dobrze..."
-    p2 "Cieszę się. Dokończ śniadanie i idź pomóż potem tacie."
+    p2 "Dobrze, dobrze, córeczko. Cieszę się. Dokończ śniadanie i idź pomóż tacie, dobrze?"
     p1 "Dobrze mamo."
     #P2 wychodzi z kuchni"
     #sad_smile Lia ON, do gracza:"
@@ -842,26 +928,26 @@ label e2b:
         linear 1 align (0.7, 1.0)
     $ renpy.music.set_volume(0.5, delay=0, channel='music')
     play music [alexander_nakarada_spring, alexander_nakarada_spring, "<silence 10000.0>"] fadein 5.0 fadeout 10
-    "Lia gwałtownie wybudziła się z przerażającego snu gwałtownym wejściem ojca do pokoju."
-    p3 "Nie słyszysz jak Cię wołam?"
-    #Lia pojawia się po lewej, angry ON"
+    "Lia budzi się gwałtownie i z prawdziwym przerażeniem zrywa z posłania. Przez chwilę jest tylko strach - echo nocnego koszmaru. Dziewczyna nie wie gdzie jest, nie wie co się wokół niej dzieje. Jest tylko przerażenie."
+    "Po chwili dociera do niej, że obudziło ją trzaśnięcie drzwi towarzyszące energicznemu wtargnięciu ojca do jej pokoju."
+    p3 "Nie słyszysz, że cię wołam?"
+    #Lia pojawia się po lewej, angry ON
     show p1 bangry narrowedwink lsad with fc:
         align (0.1,1.0) xzoom -1
-    p1 "Tato! Nie możesz tak wchodzić bez pukania. Co jakbym była rozebrana?!"
-    #surprised_happy Lia ON"
-    #neutral P3 ON"
-    show p1 bsurprised widenedwink lsmile
-    show p3 neutral
+    p1 "Ej, tato! Nie możesz tak wchodzić bez pukania! Co, jakbym była rozebrana?!"
+    #Suprised Lia ON
+    #Confused P3 ON
+    show p1
+    show p3
     with fc
-    p3 "No dobrze dobrze, przepraszam - masz rację."
-    p3 "Po prostu wołałem Cię całą chwilę i martwiłem się, że coś się stało."
-    p3 "Ominęło Cię już śniadanie. Trzeba jeszcze przygotować Tawernę na otwarcie."
-    #surprised_sad Lia ON"
-    show p1 bsurprised widenedwink lsad with fc
-    p3 "Czekam na Ciebie na dole."
-    p1 "No dobrze dobrze, zaraz przyjdę."
-    #P3 wychodzi z pokoju, P1 mówi do gracza"
-    #sad_smile Lia ON"
+    p3 "No dobrze dobrze, masz rację. Przepraszam."
+    p3 "Po prostu wołałem cię już dość długo. Zacząłem się martwić czy wszystko w porządku."
+    p3 "Już zdążyłaś przegapić śniadanie, a trzeba jeszcze przygotować Tawernę do otwarcia."
+    #sad Lia ON
+    p3 "Czekam na ciebie na dole."
+    p1 "Dobrze, tato. Zaraz przyjdę."
+    #P3 wychodzi z pokoju, P1 mówi do gracza 
+    #sad_smile Lia ON
     show p3 with fc:
         xzoom 1
     show p3:
@@ -874,56 +960,58 @@ label e2b:
     menu:
         "Dzień dobry.":
             pass
-    p1 "Ten sen... Był dziwny. Był przerażający..."
-    p1 "Nie rozumiem go."
+    p1 "Ten sen… Był dziwny. Bardzo… I naprawdę przerażający…"
+    p1 "Nie rozumiem..."
     menu:
         "To tylko sen. Nie przejmuj się.":
             pass
-    p1 "Może masz rację. Ale wciąż było to bardzo dziwne..."
-    p1 "No nic. Trzeba się ogarnąć i czas do pracy. Znowu."
+    p1 "Może masz rację. Ale wciąż było to bardzo dziwne… Nigdy nie śniły mi się takie rzeczy."
+    p1 "No nic, może jest tak jak mówisz. Zwykły sen i nic więcej. Trzeba się zbierać. Czas do pracy." 
+    #sad Lia ON
+    p1 "Znowu."
     "Lia wyszła ze swojego pokoju wprost na Tawerniany korytarz."
-    #Lia na ekranie, rozmawia z graczem"
-    #Lia confused ON"
+    #Lia na ekranie, rozmawia z graczem
+
     scene tavern_hall_bg0
     show p1pl bsurprised wink_player lneutral
     with fade
-    p1 "Chyba nigdy nie mówiłam Ci nawet o tym co jest w samej Tawernie..."
-    #Lia surprised_neutral ON"
-    show p1pl bsurprised widenedwink_player lneutral with fc
-    p1 "Powiedzieć Ci teraz?"
+    #Lia confused ON
+    p1 "Hej, zaraz, moment…"
+    #Lia smile ON
+    p1 "Opowiadałam ci kiedyś co można znaleźć w Tawernie?"
+    menu:
+        "Nie, nigdy":
+            p1 "O, to może pokażę ci wszystko teraz? Co Ty na to?"
+        "Może coś wspominałaś...":
+            p1 "Hm... nie sądzę, nie przypominam sobie. Pokazać ci?"
 
     menu:
         "Tak, chętnie posłucham.":
             #smile Lia ON
-            show p1pl bneutral wink_player lsmile with fc
             p1 "Dobrze!"
-            p1 "Zaraz obok mojego pokoju jest sypialnia rodziców. Czyli nic ciekawego."
-            p1 "Tam z tyłu jest łazienka."
-            #smirk Lia ON"
-            show p1pl bangry narrowedwink_player lsmirk with fc
+            p1 "Zaraz obok mojego pokoju jest sypialnia rodziców. Nic ciekawego."
+            p1 "O, a tam z tyłu jest łazienka."
+            #smirk Lia ON
             p1 "Swoją drogą. Nie zaglądaj do mnie jak tam jestem! Nie wypada."
             menu:
                 "Haha, dobrze! Masz rację. Obiecuję, że nie będę.":
                     pass
-            #smile Lia ON"
-            show p1pl bneutral wink_player lsmile with fc
-            p1 "Haha, no i super! Zaraz obok jest nasza jadalnia i kuchnia."
-            p1 "Teoretycznie mieliśmy tam jeść, ale po co brudzić dwa miejsca."
+            #smile Lia ON
+            p1 "Haha, świetnie! Zaraz obok jest jadalnia i kuchnia."
+            p1 "Oczywiście mieliśmy jeść właśnie tam. No i oczywiście jemy gdzie indziej. Plany to jedno, życie to drugie - po co brudzić dwa miejsca, prawda?"
             p1 "W związku z tym jemy na dole."
-            #confused Lia ON"
-            show p1pl bsurprised wink_player lneutral with fc
-            p1 "Tata chyba woli mieć zawsze oko na Tawernę."
-            #smile Lia ON"
-            show p1pl bneutral wink_player lsmile with fc
-            p1 "No i jest mniej sprzątania!"
-            p1 "Obok jest jedyny w naszym skrzydle pokój gościnny."
+            #confused Lia ON
+            p1 "Zresztą, tata woli mieć zawsze oko na to, co dzieje się w Tawernie."
+            #smile Lia ON
+            p1 "No, ale jest też mniej sprzątania!"
+            p1 "O, a tutaj, obok, jest jedyny w tym skrzydle pokój gościnny."
             p1 "Może kiedyś Ci go pokażę. Teraz i tak jest zamknięty."
-            p1 "No dobrze, to możemy iść dalej."
+            p1 "No dobrze, to chyba wszystko. Możemy iść dalej."
 
         "Nie, nie ma takiej potrzeby.":
             p1 "Oh. No dobrze, to chodźmy dalej."
 
-    "Lia dotarła do sali głównej gdzie czekał na nią ojciec."
+    "Lia rusza na dół. W głównej sali już czeka na nią ojciec."
     #przejście do #E3A3
     jump e3 # nie potrzeba żadnych dodatkowych zmiennych
 
