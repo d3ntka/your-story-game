@@ -25,8 +25,8 @@ define p16 = Character("Cirdan", color="#9b7e79")
 define p16q = Character("???", color="#9b7e79")
 
 
-#define p14 = Character(_("Babcia"), color="d0cbcb") #"Grandma" w tłumaczeniu
-#define p15 = Character("Aurora", color="fbf49d")
+#define p14 = Character(_("Starsza pani"), color="#d0cbcb") #"Old Lady" w tłumaczeniu
+#define p15 = Character("Aurora", color="#fbf49d")
 
 define r1 = Character(_("Gość"))
 define b1 = Character(_("Bandyta 1"))
