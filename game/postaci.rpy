@@ -187,7 +187,7 @@ image lia_eyes_widenedwink_player:
 
 layeredimage lia:
     # always "lia_base"
-    group base auto:
+    group pose auto:
         attribute base default
 
     group face auto
